@@ -1,0 +1,17 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+Ready	Public	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Ready	Owner	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Ready	Process Administrator	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+In-Progress	Public	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+In-Progress	Owner	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+In-Progress	Process Administrator	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Complete	Public	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Owner	FALSE		FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Process Administrator	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Suspended	Public	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Suspended	Owner	FALSE		FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Suspended	Process Administrator	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Terminated	Public	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Terminated	Owner	FALSE		FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Terminated	Process Administrator	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+

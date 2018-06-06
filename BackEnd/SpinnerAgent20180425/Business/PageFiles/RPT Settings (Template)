@@ -1,0 +1,27 @@
+#----------------------------------------#
+# Global properties for report generator #
+#----------------------------------------#
+# max.concurrent.processes refers to the maximum allowed concurrent jobs for the
+# queue that will process jobs within the same process as the application server.
+max.concurrent.processes=5
+max.concurrent.per-user.processes=2
+# Specifies a different Matrix RMI server that will be used
+# for the data extraction
+#context.host=//host:port
+#context.server=:bos
+
+#---------------#
+# Mail settings #
+#---------------#
+# These (mail) properties may be overridden
+# in the 'RPT Conversion Properties' attribute
+# on the Report Definition instances
+mail.from.email=reportgenerator@<your domain>
+mail.from.name=Report Daemon
+mail.subject=Report
+mail.message=This is the requested report. Find the attachment below.\n\n
+mail.subject.onerror=The Report generation failed
+mail.message.onerror=The System was unable to generate the requested report.\nDetailed message is provided below.
+mail.sendTo.onerror=<administrator email address>
+#mail.smtp.host=<the mail server>
+

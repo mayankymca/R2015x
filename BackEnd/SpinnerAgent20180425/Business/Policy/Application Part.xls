@@ -1,0 +1,23 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+Preliminary	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Owner	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Manufacturing Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Component Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Senior Manufacturing Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Senior Design Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Employee	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Review	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Review	Owner	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Review	Manufacturing Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Review	Component Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Review	Senior Manufacturing Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Review	Senior Design Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Review	Employee	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Owner	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Manufacturing Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Component Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Senior Manufacturing Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Senior Design Engineer	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Employee	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+

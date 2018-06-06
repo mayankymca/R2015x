@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:widgets xmlns:ds="http://www.3ds.com/enovia/bps/widgets"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.3ds.com/enovia/bps/widgets widgets.xsd ">
+
+
+    <!-- Page object defined may or may not exist.  They can all be defined/referenced using the importWidgets function below and deployed
+         when a given application is installed.
+         An equivalent "custom" page is automatically loaded for each page object defined using same name as prefix and "_CUSTOM" as suffix.
+         For example, when importing UI_BPS_WIDGETS, UI_BPS_WIDGETS_CUSTOM will also be imported if the given page object exists.
+         The "custom" page may define new widgets and/or overwrite existing widgets.
+
+         Also, when the Master page object is modified, the widget cache is reloaded.  To reload the cache when one of the other page objects has been
+         modified, force an update to the master page to reload the cache.
+    -->
+
+  <ds:importWidgets page="UI_BPS_WIDGETS"/>
+  <ds:importWidgets page="UI_CSG_WIDGETS"/>
+  <ds:importWidgets page="UI_DCL_WIDGETS"/>
+  <ds:importWidgets page="UI_ECM_WIDGETS"/>
+  <ds:importWidgets page="UI_ENG_WIDGETS"/>
+  <ds:importWidgets page="UI_FTR_WIDGETS"/>
+  <ds:importWidgets page="UI_GLS_WIDGETS"/>
+  <ds:importWidgets page="UI_LPQ_WIDGETS"/>
+  <ds:importWidgets page="UI_LRA_WIDGETS"/>
+  <ds:importWidgets page="UI_MFG_WIDGETS"/>
+  <ds:importWidgets page="UI_PLC_WIDGETS"/>
+  <ds:importWidgets page="UI_PQC_WIDGETS"/>
+  <ds:importWidgets page="UI_PRG_WIDGETS"/>
+  <ds:importWidgets page="UI_SCE_WIDGETS"/>
+  <ds:importWidgets page="UI_UNT_WIDGETS"/>
+  <ds:importWidgets page="UI_DFT_WIDGETS"/>
+  <ds:importWidgets page="UI_QIC_WIDGETS"/>
+  <ds:importWidgets page="UI_CAP_WIDGETS"/>
+
+  <ds:view name="BPS_View_ChannelHomePage">
+    <ds:ref-experience name="LRA_Experience_MySubmissions"/>
+    <ds:ref-experience name="PQC_Experience_MyComplaints"/>
+    <ds:ref-experience name="LPQ_Experience_MyComplaints"/>
+    <ds:ref-experience name="PRG_Experience_MyProjects"/>
+    <ds:ref-experience name="PRG_Experience_MyTasks"/>
+    <ds:ref-experience name="BPS_Experience_MyInboxTasks"/>
+    <ds:ref-experience name="BPS_Experience_MyIssues"/>
+    <ds:ref-experience name="MFG_Experience_MyManufacturingParts"/>
+    <ds:ref-experience name="UNT_Experience_MyBuildsAndLots"/>
+    <ds:ref-experience name="UNT_Experience_MyPartMarkings"/>
+    <ds:ref-experience name="DCL_Experience_MyDocuments"/>
+    <ds:ref-experience name="DCL_Experience_MyImplementations"/>
+    <ds:ref-experience name="ECM_Experience_MyChangeRequestsAndChangeOrders"/>
+    <ds:ref-experience name="ECM_Experience_MyChangeActions"/>
+    <ds:ref-experience name="ECM_Experience_MyLegacyChanges"/>
+    <ds:ref-experience name="ECM_Experience_MyManufacturingChanges"/>
+    <ds:ref-experience name="ENG_Experience_MyParts"/>
+    <ds:ref-experience name="GLS_Experience_MyProductSpecifications"/>
+    <ds:ref-experience name="PLC_Experience_MyModels"/>
+	<ds:ref-experience name="CAP_Experience_MyArtworkPackages"/>
+    <ds:ref-experience name="DFT_Experience_MyDefectActions"/>
+    <ds:ref-experience name="DFT_Experience_DefectAssessmentDashboard"/>
+    <ds:ref-experience name="QIC_Experience_CAPA"/>
+    <ds:ref-experience name="QIC_Experience_CAPARequest"/>
+    <ds:ref-experience name="QIC_Experience_CAPATemplate"/>
+  </ds:view>
+</ds:widgets>
+

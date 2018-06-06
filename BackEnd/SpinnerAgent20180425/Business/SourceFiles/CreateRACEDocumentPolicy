@@ -1,0 +1,163 @@
+###############################################################################
+#
+# File: CreateRACEDocumentPolicy.tcl
+#
+# Description:  This program changes all the filter expressions to localfilter for Document policy
+###############################################################################
+###############################################################################
+#
+#   Copyright (c) 1998-2015 Dassault Systemes.  All Rights Reserved.
+#   This program contains proprietary and trade secret information of
+#   Matrix One, Inc.  Copyright notice is precautionary only and does not
+#   evidence any actual or intended publication of such program.
+#
+###############################################################################
+
+tcl;
+eval {
+###############################################################################
+#
+# Procedure:    utLoad
+#
+# Description:  Procedure to load other tcl utilities procedures.
+#
+# Parameters:   sProgram                - Tcl file to load
+#
+# Returns:      sOutput                 - Filtered tcl file
+#               glUtLoadProgs           - List of loaded programs
+#
+###############################################################################
+
+proc utLoad { sProgram } {
+
+    global glUtLoadProgs env
+
+    if { ! [ info exists glUtLoadProgs ] } {
+        set glUtLoadProgs {}
+    }
+
+    if { [ lsearch $glUtLoadProgs $sProgram ] < 0 } {
+        lappend glUtLoadProgs $sProgram
+    } else {
+        return ""
+    }
+
+    if { [ catch {
+        set sDir "$env(TCL_LIBRARY)/mxTclDev"
+        set pFile [ open "$sDir/$sProgram" r ]
+        set sOutput [ read $pFile ]
+        close $pFile
+
+    } ] == 0 } { return $sOutput }
+
+    set  sOutput [ mql print program \"$sProgram\" select code dump ]
+
+    return $sOutput
+}
+# end utload
+
+    mql set env REGISTRATIONOBJECT "eServiceSchemaVariableMapping.tcl"
+
+    # Get environment variables
+    set sRegProgName "eServiceSchemaVariableMapping.tcl"
+    # Load utility files
+    eval [utLoad $sRegProgName]
+    set sDoc [emxGetCurrentSchemaName policy $sRegProgName "policy_Document"]
+    set lstates [split [mql print policy "$sDoc" select state dump |] |]
+    lappend lstates "allstate"
+    
+    set sCmd ""
+    foreach sState $lstates {
+        if {"allstate" == "$sState"} {
+            set sStateSelect "allstate"
+        } else {
+            set sStateSelect "state\[$sState\]"
+        }
+        set luser [split [mql print policy "$sDoc" select ${sStateSelect}.user dump |] |]
+        set sStateCmd ""
+        foreach sUser $luser {
+            set sFilter [mql print policy "$sDoc" select ${sStateSelect}.user\[$sUser\].filter dump]
+            set sAccess [mql print policy "$sDoc" select ${sStateSelect}.user\[$sUser\].access dump]
+            if {"$sFilter" != "" && ([string first "read" "$sAccess"] >= 0 || [string first "show" "$sAccess"] >= 0)} {
+                 append sStateCmd "add user \"$sUser\" none filter \"\" localfilter \"$sFilter\" "
+            }
+        }
+        if {"$sStateCmd" != ""} {
+            if {"$sState" == "allstate"} {
+                append sCmd "$sState $sStateCmd"
+            } else {
+                append sCmd "state \"$sState\" $sStateCmd"
+            }
+        }
+    }
+
+    if {"$sCmd" != ""} {
+        set sCmd "mql modify policy \"$sDoc\" $sCmd"
+        set sCmd [regsub -all "\\\\\[" "$sCmd" "\\\\\["]
+        set sCmd [regsub -all "\\\\\]" "$sCmd" "\\\\\]"]
+        set sCmd [regsub -all "\\\\\$" "$sCmd" "\\\\\$"]
+        set mqlret [ catch {eval $sCmd} outStr ]
+        if { $mqlret != 0 } {
+            puts "$outStr"
+            return -code 1
+        }
+    }
+    
+    set lList_DemotePolicyPersonStateActiveDemoteAction \
+        [ list  {Demoting Trigger PolicyPersonStateActiveDemoteAction ..} \
+                {CHANGE_STATE} \
+                {type_eServiceTriggerProgramParameters} \
+                {PolicyPersonStateActiveDemoteAction} \
+                {Notify Employee Status} \
+                {state_InActive} \
+        ]
+
+    set lList_DemotePolicyPersonStateInactivePromoteAction \
+        [ list  {Demoting Trigger PolicyPersonStateInactivePromoteAction ..} \
+                {CHANGE_STATE} \
+                {type_eServiceTriggerProgramParameters} \
+                {PolicyPersonStateInactivePromoteAction} \
+                {Notify Employee Status} \
+                {state_InActive} \
+        ]
+
+    set lList_DemoteAttributeEmailAddressModifyAction \
+        [ list  {Demoting Trigger AttributeEmailAddressModifyAction ..} \
+                {CHANGE_STATE} \
+                {type_eServiceTriggerProgramParameters} \
+                {AttributeEmailAddressModifyAction} \
+                {Notify Email Change} \
+                {state_InActive} \
+        ]
+
+    set lList_TypePersonModifyAttributeOverrideChangeState \
+        [ list {Demoting Trigger TypePersonModifyAttributeOverride..} \
+           {CHANGE_STATE} \
+           {type_eServiceTriggerProgramParameters} \
+           {TypePersonModifyAttributeOverride} \
+           {Override Trigger fired for Attribute Change on Person} \
+           {state_InActive} \
+        ]
+
+
+    set lList_RelationshipEmployeeCreateAction \
+        [ list {Demoting Trigger RelationshipEmployeeCreateAction..} \
+           {CHANGE_STATE} \
+           {type_eServiceTriggerProgramParameters} \
+           {RelationshipEmployeeCreateAction} \
+           {Notify New Employee} \
+           {state_InActive} \
+        ]
+
+    set lCmd  [ list $lList_DemotePolicyPersonStateActiveDemoteAction \
+                     $lList_DemotePolicyPersonStateInactivePromoteAction \
+                     $lList_DemoteAttributeEmailAddressModifyAction \
+                     $lList_TypePersonModifyAttributeOverrideChangeState \
+                     $lList_RelationshipEmployeeCreateAction \
+              ]
+
+    set mqlret [eServiceInstallAdminBusObjs $lCmd]
+
+    return -code $mqlret ""
+}
+

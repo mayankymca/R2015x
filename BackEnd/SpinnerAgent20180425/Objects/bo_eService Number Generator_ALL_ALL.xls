@@ -1,0 +1,134 @@
+Type	Name	Rev	New Name	New Rev 	Policy	State	Vault	Owner	description	eService Next Number	Override Settings	Create Trigger	Modify Trigger	Delete Trigger
+eService Number Generator	type_AccessRequest		type_AccessRequest		eService Object Generator	Exists	eService Administration	creator		0005000
+eService Number Generator	type_Decision		type_Decision		eService Object Generator	Exists	eService Administration	creator		000001
+eService Number Generator	type_Meeting		type_Meeting		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Job		type_Job		eService Object Generator	Exists	eService Administration	creator		1
+eService Number Generator	type_PublishSubscribe		type_PublishSubscribe		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Event		type_Event		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	Revision Generator		Revision Generator		eService Object Generator	Exists	eService Administration	creator		0000000002
+eService Number Generator	Name Generator		Name Generator		eService Object Generator	Exists	eService Administration	creator		0000000002
+eService Number Generator	type_InboxTask		type_InboxTask		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Route		type_Route		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_RouteTemplate	1	type_RouteTemplate	1	eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_Issue		type_Issue		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_DOCUMENTS		type_DOCUMENTS		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_MemberList	-	type_MemberList	-	eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_EngineeringChange		type_EngineeringChange		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ImpactAnalysis		type_ImpactAnalysis		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_OntoOntology		type_OntoOntology		eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_OntoNamedConcept		type_OntoNamedConcept		eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_OntoDataProperty		type_OntoDataProperty		eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_OntoObjectProperty		type_OntoObjectProperty		eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_OntoIndividual		type_OntoIndividual		eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_PlmParameter		type_PlmParameter		eService Object Generator	Exists	eService Administration	creator	Autonumbering object for PlmParameters	0000100
+eService Number Generator	type_ProjectMember		type_ProjectMember		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ProjectFolder		type_ProjectFolder		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Message		type_Message		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_DeploymentInstance		type_DeploymentInstance		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ChangeOrder		type_ChangeOrder		eService Object Generator	Exists	eService Administration	creator		0000101
+eService Number Generator	type_ChangeRequest		type_ChangeRequest		eService Object Generator	Exists	eService Administration	creator		0000101
+eService Number Generator	type_ChangeAction		type_ChangeAction		eService Object Generator	Exists	eService Administration	creator		0000101
+eService Number Generator	type_ChangeTemplate		type_ChangeTemplate		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ComputedParameter		type_ComputedParameter		eService Object Generator	Exists	eService Administration	creator	Autonumbering	0000100
+eService Number Generator	type_PLMResourceSetSubItem		type_PLMResourceSetSubItem		eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_PLMResourceSetSubItemCriterionValue		type_PLMResourceSetSubItemCriterionValue		eService Object Generator	Exists	eService Administration	creator		000100
+eService Number Generator	type_LocationEquivalentObject		type_LocationEquivalentObject		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ApplicationPart	A Size	type_ApplicationPart	A Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ApplicationPart	B Size	type_ApplicationPart	B Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ApplicationPart	C Size	type_ApplicationPart	C Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ApplicationPart	D Size	type_ApplicationPart	D Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_MPN	-	type_MPN	-	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_DECO		type_DECO		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Part	General Size	type_Part	General Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ItemMarkup		type_ItemMarkup		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_BOMMarkup		type_BOMMarkup		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ECO		type_ECO		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ECR		type_ECR		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Sketch		type_Sketch		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Markup		type_Markup		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_EBOMMarkup		type_EBOMMarkup		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Substitute		type_Substitute		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Part	A Size	type_Part	A Size	eService Object Generator	Exists	eService Administration	creator		0000111
+eService Number Generator	type_Part	B Size	type_Part	B Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Part	C Size	type_Part	C Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Part	D Size	type_Part	D Size	eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Image		type_Image		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_Model		type_Model		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_TestCase		type_TestCase		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ProductLine		type_ProductLine		eService Object Generator	Exists	eService Administration	creator		0000004
+eService Number Generator	type_Products		type_Products		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_SoftwareBuild		type_SoftwareBuild		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_HardwareBuild		type_HardwareBuild		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_Document		type_Document		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_Specification		type_Specification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_HardwareProduct		type_HardwareProduct		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_SoftwareProduct		type_SoftwareProduct		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ServiceProduct		type_ServiceProduct		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_DesignSpecification		type_DesignSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_FunctionalSpecification		type_FunctionalSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_RequirementSpecification		type_RequirementSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_TestSpecification		type_TestSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_CustomerSpecification		type_CustomerSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_CustomerRequirementSpecification		type_CustomerRequirementSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_CustomerResponseRequirementSpecification		type_CustomerResponseRequirementSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ProductRequirementSpecification		type_ProductRequirementSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_FeatureRequirementSpecification		type_FeatureRequirementSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_SystemRequirementSpecification		type_SystemRequirementSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ProductSpecification		type_ProductSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_SystemSpecification		type_SystemSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_FeatureSpecification		type_FeatureSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_SoftwareSpecification		type_SoftwareSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_BuildSpecification		type_BuildSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_UseCaseSpecification		type_UseCaseSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_SoftwareRequirementSpecification		type_SoftwareRequirementSpecification		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ConfigurableProduct		type_ConfigurableProduct		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_Portfolio		type_Portfolio		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_TestExecution		type_TestExecution		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_MilestoneHolder		type_MilestoneHolder		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_RetentionRecord		type_RetentionRecord		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_RetentionHold		type_RetentionHold		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Budget		type_Budget		eService Object Generator	Exists	eService Administration	creator		0000102
+eService Number Generator	type_Benefit		type_Benefit		eService Object Generator	Exists	eService Administration	creator		0000101
+eService Number Generator	type_MasterFeature		type_MasterFeature		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_EquipmentFeature		type_EquipmentFeature		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_Quality		type_Quality		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_UseCase		type_UseCase		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_Requirement		type_Requirement		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_UserRequirement		type_UserRequirement		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_Chapter		type_Chapter		eService Object Generator	Exists	eService Administration	creator		000001
+eService Number Generator	type_Comment		type_Comment		eService Object Generator	Exists	eService Administration	creator		000001
+eService Number Generator	type_SoftwareRequirementSpecification	A	type_SoftwareRequirementSpecification	A	eService Object Generator	Exists	eService Administration	creator		0000112
+eService Number Generator	type_SoftwareRequirementSpecification	B	type_SoftwareRequirementSpecification	B	eService Object Generator	Exists	eService Administration	creator		0000114
+eService Number Generator	type_SoftwareRequirementSpecification	C	type_SoftwareRequirementSpecification	C	eService Object Generator	Exists	eService Administration	creator		0000102
+eService Number Generator	type_SoftwareRequirementSpecification	D	type_SoftwareRequirementSpecification	D	eService Object Generator	Exists	eService Administration	creator		0000104
+eService Number Generator	type_CustomerRequirement		type_CustomerRequirement		eService Object Generator	Exists	eService Administration	creator		000001
+eService Number Generator	type_SubSystemRequirementSpecification		type_SubSystemRequirementSpecification		eService Object Generator	Exists	eService Administration	creator		000001
+eService Number Generator	type_RequirementGroup		type_RequirementGroup		eService Object Generator	Exists	eService Administration	creator		000001
+eService Number Generator	type_RVD		type_RVD		eService Object Generator	Exists	eService Administration	creator		0001
+eService Number Generator	type_BooleanCompatibilityRule		type_BooleanCompatibilityRule		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_RuleExtension		type_RuleExtension		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_FixedResource		type_FixedResource		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ProductConfiguration		type_ProductConfiguration		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ConfigurableFeature		type_ConfigurableFeature		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_FeatureList		type_FeatureList		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_SoftwareFeature		type_SoftwareFeature		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_InclusionRule		type_InclusionRule		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ProductCompatibilityRule		type_ProductCompatibilityRule		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_QuantityRule		type_QuantityRule		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_MarketingPreference		type_MarketingPreference		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_Effort		type_Effort		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_ProjectSpace		type_ProjectSpace		eService Object Generator	Exists	eService Administration	creator		0000105
+eService Number Generator	type_TaskManagement		type_TaskManagement		eService Object Generator	Exists	eService Administration	creator		0000113
+eService Number Generator	type_ResourceRequest		type_ResourceRequest		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_Checklist		type_Checklist		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ChecklistItem		type_ChecklistItem		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_LogicalFeature		type_LogicalFeature		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_ManufacturingFeature		type_ManufacturingFeature		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_ConfigurationFeature		type_ConfigurationFeature		eService Object Generator	Exists	eService Administration	creator		00005
+eService Number Generator	type_ConfigurationOption		type_ConfigurationOption		eService Object Generator	Exists	eService Administration	creator		00001
+eService Number Generator	type_ManufacturingPlan		type_ManufacturingPlan		eService Object Generator	Exists	eService Administration	creator		0000002
+eService Number Generator	type_ManufacturingPlanMaster		type_ManufacturingPlanMaster		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_PUEECO		type_PUEECO		eService Object Generator	Exists	eService Administration	creator		0000001
+eService Number Generator	type_ConfiguredECO		type_ConfiguredECO		eService Object Generator	Exists	eService Administration	creator		0000100
+eService Number Generator	type_UKUniquenessKey		type_UKUniquenessKey		eService Object Generator	Exists	eService Administration	creator		000100
+

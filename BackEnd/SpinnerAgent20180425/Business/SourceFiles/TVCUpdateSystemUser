@@ -1,0 +1,33 @@
+tcl;
+
+proc getInput { sQuestion } {
+    set uEntered ""
+    while { 1 } {
+        puts stdout $sQuestion
+        gets stdin uEntered
+        if { $uEntered == "" } {
+            return ""
+        } elseif { [string length $uEntered] > 5 } {
+            return $uEntered
+        } else {
+            puts "The entered password is too short. At least 6 characters must be used."
+        }
+    }
+}
+
+eval {
+    set sProgName "TVCInitSystemUser"
+    set sUser [mql pri program $sProgName select property\[USER_NAME\].value dump]
+
+    puts "\n\n"
+    puts "Update TVC Shadow Agnet user password"
+    set sNewPass [getInput "Enter new password (at least 6 characters):"]
+    if { $sNewPass != "" } {
+        mql mod person $sUser password $sNewPass
+        mql mod program $sProgName property USER_PASS value [mql encrypt password $sNewPass]
+        puts "The password has been changed successfully"
+    } else {
+        puts "The password has not been changed."
+    }
+}
+

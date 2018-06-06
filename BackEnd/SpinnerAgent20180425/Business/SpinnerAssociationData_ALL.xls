@@ -1,0 +1,14 @@
+Name	Registry Name	Description	Definition (use format "<USER> | and / or | <USER>" ...)	Hidden (boolean)	Icon File
+Private Discussion	Private Discussion	Private Discussion	Employee	FALSE
+Public Add	Public Add	Public Add	!User Agent	FALSE
+Public Compliance Modify	Public Compliance Modify	Public Compliance Modify is used to give Modify access to the Documents connected to Materials Compliance objects	!User Agent	FALSE
+Public Compliance Read	Public Compliance Read	Public Compliance Read is used to give Read access to the Documents connected to Materials Compliance objects	!User Agent	FALSE
+Public Delete	Public Delete	Public Delete	!User Agent	FALSE
+Public Disconnect	Public Disconnect	Public Disconnect	!User Agent	FALSE
+Public Inherited	Public Inherited	Public Inherited	!User Agent	FALSE
+Public Modify	Public Modify	Public Modify	!User Agent	FALSE
+Public Read	Public Read	Public Read	!User Agent	FALSE
+Public Remove	Public Remove	Public Remove	!User Agent	FALSE
+Public Unlock	Public Unlock	Public Unlock	!User Agent	FALSE
+Supplier Modify	Supplier Modify	Modify documents for supplier	!User Agent	FALSE
+

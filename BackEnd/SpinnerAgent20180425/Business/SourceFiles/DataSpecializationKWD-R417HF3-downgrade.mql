@@ -1,0 +1,173 @@
+# Created by BMN2 17/04/15
+
+# Modify the type edit form to permit the user to modify comment on types.
+
+delete form EditCustoTypeForm;
+
+add form EditCustoTypeForm web
+description "Edit Custo Type Form"
+field name "parent" label emxDataSpecialization.label.TypeParent
+setting "Required" true
+setting Editable false
+setting "Field Type" program
+setting "program" emxPackagesConfigurationProgram
+setting "function" getEditCustoParentTypeName
+setting "Registered Suite" DataSpecialization
+field name "custoTypeName" label emxDataSpecialization.label.Name
+setting "Required" true
+setting Editable false
+setting "Field Type" program
+setting function getEditCustoTypeName
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+setting Validate checkNames
+field name "instanceName" label emxDataSpecialization.label.InstanceName
+#setting "Field Type" programHTMLOutput
+setting "Field Type" program
+setting Editable true
+setting "Show Clear Button" true
+setting Submit true
+range "${COMMON_DIR}/emxIndentedTable.jsp?table=DeploymentPackagesListTable&toolbar=none&program=emxPackagesConfigurationProgram:getAvailableInstancesList&freezePane=packageName&selection=multiple&header=emxDataSpecialization.label.DeployExtensionTypesList&subHeader=emxDataSpecialization.label.SubHeaderTypesView&submitURL=../DataSpecialization/emxPackagesConfigurationSubmitDeploymentObjects.jsp&showPageURLIcon=false&customize=false&showClipboard=false&objectCompare=false&jpoAppServerParamList=session:DataCustoCacheIndex"
+setting "Access Function" accessCreateInstanceName
+setting "Access Program" emxPackagesConfigurationProgram
+setting function getCreateInstanceNames
+setting program emxPackagesConfigurationProgram
+setting "Update Function" setTypeInstanceNames
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+field name "iconName" label emxDataSpecialization.label.IconName
+setting "Field Type" program
+setting Editable true
+setting "Access Function" accessIconName
+setting "Access Program" emxPackagesConfigurationProgram
+setting function getIconName
+setting program emxPackagesConfigurationProgram
+setting "Update Function" setTypeIconName
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+field name "userComment" label emxDataSpecialization.label.Comment
+setting "Required" false
+setting Editable true
+setting "Input Type" textarea
+setting "Registered Suite" DataSpecialization;
+
+# Modify the Customer extension edit form to permit the user to modify comment on Customers extension.
+
+delete form EditCustoExtensionForm;
+
+add form EditCustoExtensionForm web
+description "New Custo Extension Form"
+field name "parent" label emxDataSpecialization.label.ExtensionParent
+setting "Field Type" programHTMLOutput
+setting "program" emxPackagesConfigurationProgram
+setting "function" getParentExtensionHTML
+setting "Registered Suite" DataSpecialization
+field name "custoExtName" label emxDataSpecialization.label.Name
+setting "Required" true
+setting Editable false
+setting "Field Type" program
+setting function getEditExtensionName
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+field name "extScopes" label emxDataSpecialization.label.ExtensionTypes
+setting "Registered Suite" DataSpecialization
+setting "Field Type" programHTMLOutput
+setting "program" emxPackagesConfigurationProgram
+setting "function" getScopesCustoExtension
+setting "Access Function" accessExtensionsScopeInfo
+setting "Access Program" emxPackagesConfigurationProgram
+field name "iconName" label emxDataSpecialization.label.IconName
+setting "Access Function" accessIconName
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Update Function" setExtensionIconName
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+field name "userComment" label emxDataSpecialization.label.Comment
+setting "Required" false
+setting "Input Type" textarea
+setting "Registered Suite" DataSpecialization;
+
+# Modify the type table to open the type edit form in edit mode if the type is created by the user, and on read mode if it is a DS type.
+
+delete table PackageConfigTypesTable system;
+
+add table PackageConfigTypesTable system
+column name "typeExtName" label emxDataSpecialization.label.Name
+href "${COMMON_DIR}/emxRefreshChannel.jsp?channel=PackageConfigAttributesChannel"
+businessobject "$<attribute[OntoName].value>"
+setting "Registered Suite" DataSpecialization
+column name "nature" label emxDataSpecialization.label.TypeExtNature
+setting "Column Type" programHTMLOutput
+setting function getNatureBitmap
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "extendedBy" label emxDataSpecialization.label.ExtendedBy
+setting "Column Type" programHTMLOutput
+setting function getOtherExtensionHTML
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "publication" label emxDataSpecialization.label.PublicationStatus
+setting "Column Type" program
+setting function getTypePublicationStatus
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "attributes" label emxDataSpecialization.label.Attributes
+setting "Column Type" program
+setting function getTypeAttributes
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "TypeExtComment" label emxDataSpecialization.label.Comment
+setting "Column Type" program
+setting function getTypeExtComment
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "attrLaunchDetails"
+setting "Column Type" icon
+setting "Column Icon" ${COMMON_DIR}/images/iconActionNewWindow.gif
+setting "Target Location" slidein
+#setting "Access Function" accessEditTypes
+#setting "Access Program" emxPackagesConfigurationProgram
+href "${COMMON_DIR}/emxForm.jsp?mode=edit&form=EditCustoTypeForm&toolbar=none&formHeader=emxDataSpecialization.label.TypeEdit&launched=true&findMxLink=false&showPageURLIcon=false"
+setting "Registered Suite" DataSpecialization;
+
+# Modify the custo extension table to open the edit form in edit mode if the custo extension is created by the user, and on read mode if it is a DS custo extension.
+
+delete table PackageConfigExtsTable system;
+
+add table PackageConfigExtsTable system
+column name "typeExtName" label emxDataSpecialization.label.Name
+href "${COMMON_DIR}/emxRefreshChannel.jsp?channel=PackageConfigAttributesChannel"
+businessobject "$<attribute[OntoName].value>"
+setting "Registered Suite" DataSpecialization
+column name "nature" label emxDataSpecialization.label.TypeExtNature
+setting "Column Type" programHTMLOutput 
+setting program emxPackagesConfigurationProgram 
+setting function getNatureBitmap 
+setting "Registered Suite" DataSpecialization
+column name "scopes" label emxDataSpecialization.label.ExtensionScope 
+setting "Column Type" program 
+setting program emxPackagesConfigurationProgram 
+setting function getScopesExtColumn 
+setting "Registered Suite" DataSpecialization
+column name "publication" label emxDataSpecialization.label.PublicationStatus
+setting "Column Type" program 
+setting program emxPackagesConfigurationProgram 
+setting function getTypePublicationStatus 
+setting "Registered Suite" DataSpecialization
+column name "attributes" label emxDataSpecialization.label.Attributes
+setting "Column Type" program
+setting function getTypeAttributes
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "ExtComment" label emxDataSpecialization.label.Comment
+setting "Column Type" program
+setting function getTypeExtComment
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "attrLaunchDetails"
+setting "Column Type" icon
+setting "Column Icon" ${COMMON_DIR}/images/iconActionNewWindow.gif
+setting "Target Location" slidein
+href "${COMMON_DIR}/emxForm.jsp?mode=edit&form=EditCustoExtensionForm&toolbar=none&formHeader=emxDataSpecialization.label.TypeEdit&launched=true&findMxLink=false&showPageURLIcon=false"
+setting "Registered Suite" DataSpecialization;
+

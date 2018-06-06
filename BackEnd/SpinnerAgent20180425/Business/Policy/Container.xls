@@ -1,0 +1,31 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+CREATE	Public	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+CREATE	Owner	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+CREATE	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+CREATE	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+CREATE	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+CREATE	Reviewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+WIP	Public	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+WIP	Owner	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP	Reviewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+REVIEW	Public	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+REVIEW	Owner	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+REVIEW	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+REVIEW	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+REVIEW	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+REVIEW	Reviewer	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+REVIEW	Reviewer	FALSE	Approves Release	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	any	any	any	any	any	any			
+RELEASED	Public	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+RELEASED	Owner	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+RELEASED	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+RELEASED	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+RELEASED	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+OBSOLETE	Public	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+OBSOLETE	Owner	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+OBSOLETE	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+OBSOLETE	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+OBSOLETE	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+

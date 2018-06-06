@@ -1,0 +1,55 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	VPLMAdmin	TRUE	ExtendedModifyAccessForPLMAdmin	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	VPLMLocalCrossOrgContextAccess	TRUE	ExtendedOwnerReadAccess_Login	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	context	any	any	any			
+allstate	VPLMAdmin	TRUE	ExtendedPromoteAccessForPLMAdmin	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	VPLMAdmin	TRUE	ExtendedReadAccessForPLMAdmin	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+allstate	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedOwnerConnectAccess	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	any	single	context	any	any	any	expression[MultiContextualPrivateApplicability]		
+allstate	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedOwnerReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	context	any	any	any	expression[MultiContextualPrivateReadAccess]		
+Preliminary	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Owner	TRUE	VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Preliminary	Owner	TRUE	VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Preliminary	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	VPLMProjectLeader	TRUE	ExtendedAccessForLeader	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Preliminary	VPLMAdmin	TRUE	ExtendedCreateAccessForPLMAdmin	FALSE	-	-	Y	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	VPLMViewer	TRUE	ExtendedCreateAccessForPrivateAuthoring	FALSE	-	-	Y	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+Preliminary	VPLMProjectLeader	TRUE	ExtendedCreateAccessForTechnicalLeader	FALSE	-	-	Y	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Preliminary	VPLMProjectAdministrator	TRUE	ExtendedModifyAccessForPrjAdmin	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any			
+Preliminary	VPLMProjectAdministrator	TRUE	ExtendedReadAccessForPrjAdmin	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Preliminary	VPLMProjectAdministrator	TRUE	ExtenedAccessForPrjAdmin	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	any	single	any	any	any	any			
+Preliminary	VPLMViewer	TRUE	VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+Preliminary	VPLMViewer	TRUE	VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Preliminary	Document Center Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Change Coordinator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedOwnerAccess	FALSE	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	Y	-	Y	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	-	any	any	context	any	any	any			
+Preliminary	Global User	FALSE	owner	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	Y	-	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	single	single	context	any	any	any			
+Preliminary	VPLMProjectAdministrator	FALSE	ExtendedConnectAccessForPrjAdmin	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	any	single	any	any	any	any	expression[MultiContextualPrivateApplicability]		
+Preliminary	VPLMViewer	FALSE	ExtendedMultiCtxModifyAccessOnAnyOrg	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	any	any	any	(!expression[VPLMStrictOrgOwnership]) && expression[MultiContextualAuthoringAbility]		
+Preliminary	VPLMViewer	FALSE	ExtendedMultiCtxModifyAccessOnSingleOrg	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any	expression[MultiContextualAuthoringAbility]		
+Preliminary	VPLMProjectAdministrator	FALSE	ExtendedReadAccessForPrjAdmin_User	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	any	any	any	any	expression[MultiContextualPrivateReadAccess]		
+Complete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Owner	TRUE	VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Complete	Owner	TRUE	VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Complete	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	VPLMProjectLeader	TRUE	ExtendedAccessForLeader	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Complete	VPLMProjectAdministrator	TRUE	ExtendedAccessForPrjAdmin	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	any	single	any	any	any	any			
+Complete	VPLMAdmin	TRUE	ExtendedCreateAccessForPLMAdmin	FALSE	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	VPLMViewer	TRUE	ExtendedCreateAccessForPrivateAuthoring	FALSE	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+Complete	VPLMProjectLeader	TRUE	ExtendedCreateAccessForTechnicalLeader	FALSE	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Complete	VPLMProjectAdministrator	TRUE	ExtendedModifyAccessForPrjAdmin	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any			
+Complete	VPLMProjectAdministrator	TRUE	ExtendedReadAccessForPrjAdmin	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Complete	VPLMViewer	TRUE	VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+Complete	VPLMViewer	TRUE	VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Complete	Document Center Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Change Coordinator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedOwnerAccess	FALSE	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	-	any	any	context	any	any	any			
+Complete	Global User	FALSE	owner	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	single	single	context	any	any	any			
+Complete	VPLMProjectAdministrator	FALSE	ExtendedConnectAccessForPrjAdmin	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	any	single	any	any	any	any	expression[MultiContextualPrivateApplicability]		
+Complete	VPLMViewer	FALSE	ExtendedMultiCtxModifyAccessOnAnyOrg	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	any	any	any	(!expression[VPLMStrictOrgOwnership]) && expression[MultiContextualAuthoringAbility]		
+Complete	VPLMViewer	FALSE	ExtendedMultiCtxModifyAccessOnSingleOrg	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any	expression[MultiContextualAuthoringAbility]		
+Complete	VPLMProjectAdministrator	FALSE	ExtendedReadAccessForPrjAdmin_User	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	any	any	any	any	expression[MultiContextualPrivateReadAccess]		
+

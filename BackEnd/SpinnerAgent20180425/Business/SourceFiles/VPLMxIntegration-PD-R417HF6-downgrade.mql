@@ -1,0 +1,33 @@
+tcl;
+eval {
+	puts "{Running VPLMxIntegration-R417HF6-downgrade.mql...}"
+	
+	# 1.1  the trigger deactivation 
+	
+	set boState [mql temp query bus "eService Trigger Program Parameters" TypePartReviseAction CopyEBOMProjection select current dump;]
+	if {[regexp {.+,Active} $boState]} {
+		mql demote businessobject "eService Trigger Program Parameters" TypePartReviseAction CopyEBOMProjection
+		puts {Disabling the trigger TypePartReviseAction CopyEBOMProjection... - Completed}
+	}	
+	# 1.2 deleting the trigger
+	
+	set boExists [mql temp query bus "eService Trigger Program Parameters" TypePartReviseAction CopyEBOMProjection;]
+	if {$boExists != ""} {
+		mql delete businessobject "eService Trigger Program Parameters" TypePartReviseAction CopyEBOMProjection
+	} 
+	puts {deleting trigger TypePartReviseAction CopyEBOMProjection... - Completed}
+	
+	# 1.3 trigger command creation
+	set progName "VPLMIntegCopyEBOMProjection"
+	set progExists [mql list program $progName]
+	
+	if {$progExists != ""} {
+		set progCmd "mql delete program $progName"
+		eval $progCmd
+	} 
+
+	puts {VPLMxIntegration-PD-R417HF6-downgrade.mql - Completed}
+	
+    exit 0;
+}
+

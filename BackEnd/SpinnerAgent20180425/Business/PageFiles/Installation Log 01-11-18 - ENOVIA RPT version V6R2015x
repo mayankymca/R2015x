@@ -1,0 +1,298 @@
+Validating correctness of decimal symbol...
+--> Current decimal symbol is .
+--> Trying to add a table, to check if current decimal symbol setting is ok...
+--> Current decimal symbol setting is OK
+
+#
+# Installation of the database schema is now ready to start.
+#
+# (Info) Starting transaction (System/Servers)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/System/Servers/runfirst.tcl
+# (Info) Committing transaction (System/Servers)
+# (Info) Starting transaction (Formats)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Formats/Job.tcl
+The symbolic name format_TVCJob could not be resolved, will use the default value RPT Job
+# Processing: format        - RPT Job                             [N/A   -->     1]
+# (Info) Committing transaction (Formats)
+# (Info) Running pre_install script (Programs)
+# (Info) Starting transaction (Programs)
+# Adding program RPTJPOReportBase
+# Processing: program       - RPTJPOReportBase                    [N/A   -->   1.0]
+# Adding program RPTReportGenerator
+# Processing: program       - RPTReportGenerator                  [N/A   -->   1.0]
+# (Info) Committing transaction (Programs)
+# (Info) Starting transaction (Pages)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Pages/ExampleStylesheets.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Pages/PrintOutputHandlerConfiguration.tcl
+The symbolic name page_TVCReportGeneratorPrintOutputHandlerConfiguration could not be resolved, will use the default value RPT Report Generator Print Output Handler Configuration
+# Processing: page          - RPT Report Generator Print Output Handler Configuration [N/A   -->   1.0]
+The symbolic name page_TVCReportGeneratorPrintOutputHandlerConfigurationTemplate could not be resolved, will use the default value RPT Report Generator Print Output Handler Configuration (Template)
+# Processing: page          - RPT Report Generator Print Output Handler Configuration (Template) [N/A   -->   1.0]
+# Processing: page          - RPT Report Generator Print Output Handler Configuration (Template) [1.0   -->   1.8]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Pages/ReportProperties.tcl
+The symbolic name page_TVCReportProperties could not be resolved, will use the default value RPT Settings
+# Processing: page          - RPT Settings                        [N/A   -->   1.0]
+# Processing: page          - RPT Settings                        [1.0   -->   1.9]
+# (Info) Committing transaction (Pages)
+# (Info) Running pre_install script (Attributes)
+# (Info) Starting transaction (Attributes)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/AgentLastAlive.tcl
+The symbolic name attribute_TVCAgentLastAlive could not be resolved, will use the default value RPT Agent Last Alive
+# Processing: attribute     - RPT Agent Last Alive                [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/AgentStartup.tcl
+The symbolic name attribute_TVCAgentStartup could not be resolved, will use the default value RPT Agent Startup
+# Processing: attribute     - RPT Agent Startup                   [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/AgentStopRequest.tcl
+The symbolic name attribute_TVCAgentStopRequest could not be resolved, will use the default value RPT Agent Stop Request
+# Processing: attribute     - RPT Agent Stop Request              [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/CancelRequested.tcl
+The symbolic name attribute_TVCCancelRequested could not be resolved, will use the default value RPT Cancel Requested
+# Processing: attribute     - RPT Cancel Requested                [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Class.tcl
+The symbolic name attribute_TVCClass could not be resolved, will use the default value RPT Class
+# Processing: attribute     - RPT Class                           [N/A   -->     2]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/ConversionProps.tcl
+The symbolic name attribute_TVCConversionProperties could not be resolved, will use the default value RPT Conversion Properties
+# Processing: attribute     - RPT Conversion Properties           [N/A   -->   1.0]
+# Processing: attribute     - RPT Conversion Properties           [1.0   -->     2]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/DataExtractionDefinition.tcl
+The symbolic name attribute_TVCDataExtractionDefinition could not be resolved, will use the default value RPT Data Extraction Definition
+# Processing: attribute     - RPT Data Extraction Definition      [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/DisplayFormat.tcl
+The symbolic name attribute_TVCDisplayedFormat could not be resolved, will use the default value RPT Displayed Output Format
+# Processing: attribute     - RPT Displayed Output Format         [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/ExpandLevel.tcl
+The symbolic name attribute_TVCExpansionLevel could not be resolved, will use the default value RPT Expansion Level
+# Processing: attribute     - RPT Expansion Level                 [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/FilterExpression.tcl
+The symbolic name attribute_TVCFilterExpression could not be resolved, will use the default value RPT Filter Expression
+# Processing: attribute     - RPT Filter Expression               [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Flags.tcl
+The symbolic name attribute_TVCFlags could not be resolved, will use the default value RPT Flags
+# Processing: attribute     - RPT Flags                           [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Format.tcl
+The symbolic name attribute_TVCFormat could not be resolved, will use the default value RPT Output Format
+# Processing: attribute     - RPT Output Format                   [N/A   -->     3]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/GetFrom.tcl
+The symbolic name attribute_TVCGetFrom could not be resolved, will use the default value RPT Get From
+# Processing: attribute     - RPT Get From                        [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/GetTo.tcl
+The symbolic name attribute_TVCGetTo could not be resolved, will use the default value RPT Get To
+# Processing: attribute     - RPT Get To                          [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Global.tcl
+The symbolic name attribute_TVCGlobal could not be resolved, will use the default value RPT Global
+# Processing: attribute     - RPT Global                          [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Hidden.tcl
+The symbolic name attribute_TVCHidden could not be resolved, will use the default value RPT Hidden
+# Processing: attribute     - RPT Hidden                          [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Icon.tcl
+The symbolic name attribute_TVCIcon could not be resolved, will use the default value RPT Icon
+# Processing: attribute     - RPT Icon                            [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Inquiry.tcl
+The symbolic name attribute_TVCInquiry could not be resolved, will use the default value RPT Inquiry
+# Processing: attribute     - RPT Inquiry                         [N/A   -->   1.0]
+# Processing: attribute     - RPT Inquiry                         [1.0   -->   1.1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/JobInfo.tcl
+The symbolic name attribute_TVCJobInfo could not be resolved, will use the default value RPT Job Info
+# Processing: attribute     - RPT Job Info                        [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/JobStatus.tcl
+The symbolic name attribute_TVCJobStatus could not be resolved, will use the default value RPT Job Status
+# Processing: attribute     - RPT Job Status                      [N/A   -->     2]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/KeepJobs.tcl
+The symbolic name attribute_TVCKeepJobs could not be resolved, will use the default value RPT Keep Jobs
+# Processing: attribute     - RPT Keep Jobs                       [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/KeepTime.tcl
+The symbolic name attribute_TVCKeepTime could not be resolved, will use the default value RPT Keep Time
+# Processing: attribute     - RPT Keep Time                       [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Method.tcl
+The symbolic name attribute_TVCMethod could not be resolved, will use the default value RPT Method
+# Processing: attribute     - RPT Method                          [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/ObjectPattern.tcl
+The symbolic name attribute_TVCObjectPattern could not be resolved, will use the default value RPT Object Pattern
+# Processing: attribute     - RPT Object Pattern                  [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/ObjectWhere.tcl
+The symbolic name attribute_TVCObjectWhere could not be resolved, will use the default value RPT Object Where
+# Processing: attribute     - RPT Object Where                    [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/PreProcessPage.tcl
+The symbolic name attribute_TVCPreProcessPage could not be resolved, will use the default value RPT PreProcess Page
+# Processing: attribute     - RPT PreProcess Page                 [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/RelationshipPattern.tcl
+The symbolic name attribute_TVCRelationshipPattern could not be resolved, will use the default value RPT Relationship Pattern
+# Processing: attribute     - RPT Relationship Pattern            [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/RelationshipWhere.tcl
+The symbolic name attribute_TVCRelationshipWhere could not be resolved, will use the default value RPT Relationship Where
+# Processing: attribute     - RPT Relationship Where              [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/SortOrder.tcl
+The symbolic name attribute_TVCSortOrder could not be resolved, will use the default value RPT Sort Order
+# Processing: attribute     - RPT Sort Order                      [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/Stylesheet.tcl
+The symbolic name attribute_TVCStyleSheet could not be resolved, will use the default value RPT Stylesheet
+# Processing: attribute     - RPT Stylesheet                      [N/A   -->   1.0]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Attributes/SystemTable.tcl
+The symbolic name attribute_TVCSystemTable could not be resolved, will use the default value RPT System Table
+# Processing: attribute     - RPT System Table                    [N/A   -->   1.0]
+# (Info) Committing transaction (Attributes)
+# (Info) Running pre_install script (Types)
+# (Info) Starting transaction (Types)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/AdvancedDef.tcl
+The symbolic name type_TVCReportDef could not be resolved, will use the default value RPT Report Definition
+Resolved attribute_TVCFilterExpression to RPT Filter Expression
+Resolved attribute_TVCFormat to RPT Output Format
+Resolved attribute_TVCStyleSheet to RPT Stylesheet
+Resolved attribute_TVCSystemTable to RPT System Table
+Resolved attribute_TVCConversionProperties to RPT Conversion Properties
+Resolved attribute_TVCHidden to RPT Hidden
+# Processing: type          - RPT Report Definition               [N/A   -->   1.0]
+Resolved attribute_TVCPreProcessPage to RPT PreProcess Page
+# Processing: type          - RPT Report Definition               [1.0   -->   1.3]
+# Processing: type          - RPT Report Definition               [1.3   -->   1.4]
+Resolved attribute_TVCGlobal to RPT Global
+# Processing: type          - RPT Report Definition               [1.4   -->   1.5]
+Resolved attribute_TVCDisplayedFormat to RPT Displayed Output Format
+# Processing: type          - RPT Report Definition               [1.5   -->   1.7]
+Resolved attribute_TVCIcon to RPT Icon
+Resolved attribute_TVCSortOrder to RPT Sort Order
+# Processing: type          - RPT Report Definition               [1.7   -->   1.8]
+The symbolic name type_TVCAdvancedReportDef could not be resolved, will use the default value RPT Advanced Report
+Resolved attribute_TVCDataExtractionDefinition to RPT Data Extraction Definition
+Resolved type_TVCReportDef to RPT Report Definition
+# Processing: type          - RPT Advanced Report                 [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/Agent.tcl
+The symbolic name type_TVCAgent could not be resolved, will use the default value RPT Agent
+Resolved attribute_TVCAgentLastAlive to RPT Agent Last Alive
+Resolved attribute_TVCAgentStartup to RPT Agent Startup
+Resolved attribute_TVCAgentStopRequest to RPT Agent Stop Request
+# Processing: type          - RPT Agent                           [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/CustomDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+The symbolic name type_TVCCustomDef could not be resolved, will use the default value RPT Custom Report
+Resolved attribute_TVCClass to RPT Class
+Resolved type_TVCReportDef to RPT Report Definition
+# Processing: type          - RPT Custom Report                   [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/ExpansionDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+The symbolic name type_TVCExpansionDef could not be resolved, will use the default value RPT Expansion Report
+Resolved attribute_TVCExpansionLevel to RPT Expansion Level
+Resolved attribute_TVCRelationshipPattern to RPT Relationship Pattern
+Resolved attribute_TVCObjectPattern to RPT Object Pattern
+Resolved attribute_TVCRelationshipWhere to RPT Relationship Where
+Resolved attribute_TVCObjectWhere to RPT Object Where
+Resolved attribute_TVCGetFrom to RPT Get From
+Resolved attribute_TVCGetTo to RPT Get To
+Resolved type_TVCReportDef to RPT Report Definition
+# Processing: type          - RPT Expansion Report                [N/A   -->   1.0]
+# Processing: type          - RPT Expansion Report                [1.0   -->   1.3]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/InquiryDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+The symbolic name type_TVInquiryDef could not be resolved, will use the default value RPT Inquiry Report
+Resolved attribute_TVCInquiry to RPT Inquiry
+Resolved type_TVCReportDef to RPT Report Definition
+# Processing: type          - RPT Inquiry Report                  [N/A   -->   1.0]
+# Processing: type          - RPT Inquiry Report                  [1.0   -->   1.3]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/Job.tcl
+The symbolic name type_TVCJob could not be resolved, will use the default value RPT Job
+Resolved attribute_TVCJobStatus to RPT Job Status
+Resolved attribute_TVCJobInfo to RPT Job Info
+Resolved attribute_TVCCancelRequested to RPT Cancel Requested
+# Processing: type          - RPT Job                             [N/A   -->    21]
+Resolved attribute_TVCFlags to RPT Flags
+The symbolic name attribute_TVCJobHandler could not be resolved, will use the default value RPT Job Handler
+Resolved attribute_TVCCancelRequested to RPT Cancel Requested
+Resolved attribute_TVCJobInfo to RPT Job Info
+# Processing: type          - RPT Job                             [21    -->    22]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/JPODef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+The symbolic name type_TVCJPODef could not be resolved, will use the default value RPT JPO Report
+Resolved attribute_TVCClass to RPT Class
+Resolved attribute_TVCMethod to RPT Method
+Resolved type_TVCReportDef to RPT Report Definition
+# Processing: type          - RPT JPO Report                      [N/A   -->   1.0]
+# Processing: type          - RPT JPO Report                      [1.0   -->   1.3]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/Queue.tcl
+The symbolic name type_TVCQueue could not be resolved, will use the default value RPT Queue
+# Processing: type          - RPT Queue                           [N/A   -->     1]
+Resolved attribute_TVCKeepJobs to RPT Keep Jobs
+Resolved attribute_TVCKeepTime to RPT Keep Time
+# Processing: type          - RPT Queue                           [1     -->     2]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/ReportDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Types/TableBeanDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+The symbolic name type_TVCTableBeanDef could not be resolved, will use the default value RPT Table Bean Report
+Resolved type_TVCReportDef to RPT Report Definition
+# Processing: type          - RPT Table Bean Report               [N/A   -->     5]
+# (Info) Committing transaction (Types)
+# (Info) Running pre_install script (Relationships)
+# (Info) Starting transaction (Relationships)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Relationships/Agent.tcl
+The symbolic name relationship_TVCAgent could not be resolved, will use the default value RPT Agent
+Resolved type_TVCAgent to RPT Agent
+Resolved type_TVCQueue to RPT Queue
+# Processing: relationship  - RPT Agent                           [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Relationships/Job.tcl
+The symbolic name relationship_TVCJob could not be resolved, will use the default value RPT Job
+# Processing: relationship  - RPT Job                             [N/A   -->     3]
+# (Info) Committing transaction (Relationships)
+# (Info) Running pre_install script (Policies)
+# (Info) Starting transaction (Policies)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Policies/Agent.tcl
+The symbolic name policy_TVCAgent could not be resolved, will use the default value RPT Agent
+Resolved type_TVCAgent to RPT Agent
+# Processing: policy        - RPT Agent                           [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Policies/Job.tcl
+The symbolic name policy_TVCJob could not be resolved, will use the default value RPT Job
+Resolved format_TVCJob to RPT Job
+Resolved type_TVCJob to RPT Job
+# Processing: policy        - RPT Job                             [N/A   -->     1]
+# Processing: policy        - RPT Job                             [1     -->     3]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Policies/Queue.tcl
+The symbolic name policy_TVCQueue could not be resolved, will use the default value RPT Queue
+Resolved type_TVCQueue to RPT Queue
+# Processing: policy        - RPT Queue                           [N/A   -->     2]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Policies/ReportDef.tcl
+The symbolic name policy_TVCReportDef could not be resolved, will use the default value RPT Report Definition
+Resolved type_TVCReportDef to RPT Report Definition
+# Processing: policy        - RPT Report Definition               [N/A   -->   1.0]
+# (Info) Committing transaction (Policies)
+# (Info) Running pre_install script (Visuals/SystemTables)
+# (Info) Starting transaction (Visuals/SystemTables)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Visuals/SystemTables/RPTIssueReport.tcl
+# (Info) Committing transaction (Visuals/SystemTables)
+# (Info) Running pre_install script (UI/Commands)
+# (Info) Starting transaction (UI/Commands)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/UI/Commands/ShowGlobalReports.tcl
+The symbolic name command_TVCShowGlobalReports could not be resolved, will use the default value RPT Show Global Reports
+# Processing: command       - RPT Show Global Reports             [N/A   -->     1]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/UI/Commands/ShowReports.tcl
+The symbolic name command_TVCShowReports could not be resolved, will use the default value RPT Show Reports
+# Processing: command       - RPT Show Reports                    [N/A   -->     1]
+# Processing: command       - RPT Show Reports                    [1     -->     2]
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/UI/Commands/ShowReportsInSidePanel.tcl
+The symbolic name command_TVCShowReportsInSidepanel could not be resolved, will use the default value RPT Show Reports In Sidepanel
+# Processing: command       - RPT Show Reports In Sidepanel       [N/A   -->     1]
+# (Info) Committing transaction (UI/Commands)
+# (Info) Running pre_install script (UI/Menus)
+# (Info) Running pre_install script (UI/Inquiries)
+# (Info) Starting transaction (UI/Inquiries)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/UI/Inquiries/RPTGetMyIssues.tcl
+# Processing: inquiry       - RPTGetMyIssues                      [N/A   -->     1]
+# (Info) Committing transaction (UI/Inquiries)
+# (Info) Running pre_install script (Data)
+# (Info) Starting transaction (Data)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515658070663/tvc-2014.4.0/reportgenerator/db-schema/Data/IssueReport.tcl
+Resolved type_TVInquiryDef to RPT Inquiry Report
+Resolved policy_TVCReportDef to RPT Report Definition
+Resolved attribute_TVCFilterExpression to RPT Filter Expression
+Resolved attribute_TVCPreProcessPage to RPT PreProcess Page
+Resolved attribute_TVCFormat to RPT Output Format
+Resolved attribute_TVCStyleSheet to RPT Stylesheet
+Resolved attribute_TVCSystemTable to RPT System Table
+Resolved attribute_TVCConversionProperties to RPT Conversion Properties
+Resolved attribute_TVCHidden to RPT Hidden
+Resolved attribute_TVCGlobal to RPT Global
+Resolved attribute_TVCInquiry to RPT Inquiry
+# (Info) Committing transaction (Data)
+
+# Installation successfully completed
+# Terminating installation program
+

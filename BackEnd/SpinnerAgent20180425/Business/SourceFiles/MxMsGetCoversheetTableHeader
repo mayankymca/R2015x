@@ -1,0 +1,25 @@
+#**********************************************************************************************
+# @progdoc      MxMsGetCoversheetTableHeader
+#
+# @Brief: This program lets you define table header of the coversheet used in the Office
+# Integration.  The coversheet is a Word table that usually contains version information.  
+#The table header is the value of the first cell of the table. The table data to be
+# updated is controlled by the matrix program MxMsGetCoversheetData. Business Objects
+# get sent to the autoClau process by submitting them to the ClauSetCoversheet set of a particular user.
+# Which the autoClau process will act upon. 
+# @Description:      
+#
+# @Parameters:   None
+#                     
+#
+# @Exit:        
+#
+# @Usage: the return value should be the table header name.
+#
+# @progdoc      Copyright (c) 2001, MatrixOne
+#**********************************************************************************************
+
+tcl;
+
+return "Version"
+

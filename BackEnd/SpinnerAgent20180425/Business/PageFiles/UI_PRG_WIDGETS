@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:services xmlns:ds="http://www.3ds.com/enovia/e6w" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.3ds.com/enovia/e6w services.xsd ">
+
+   <ds:group name="PRG_Group_MyProjects_Channel"><ds:style layout="vertical" />
+      <ds:field name="image">
+         <ds:style align="center" />
+         <ds:url target="content" path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;appName=ENOPRPR_AP" />
+         <ds:image source="primaryOrType" size="thumbnail" />
+      </ds:field>
+      <ds:field name="name">
+         <ds:label text="emxFramework.Basic.Name" show="none"/>
+         <ds:style align="center" />
+         <ds:selectable expression="name" />
+         <ds:sort sortable="true"/>
+      </ds:field>
+      <ds:field name="owner">
+         <ds:style align="center" />
+         <ds:selectable expression="owner" format="user" />
+      </ds:field>
+      <ds:field name="phaseLabel">
+         <ds:label text="emxProgramCentral.Common.CurrentTollgate" registeredSuite="ProgramCentral" />
+         <ds:style align="center" />
+      </ds:field>
+      <ds:field name="phase">
+         <ds:style align="center" />
+         <ds:fieldjpo classname="com.matrixone.apps.program.Widgets" function="getProjectPhase" localInvokation="true" />
+      </ds:field>
+      <ds:field name="percentComplete">
+         <ds:selectable expression="attribute[attribute_PercentComplete]" />
+         <ds:ui type="progressbar" />
+         <ds:fieldjpo classname="com.matrixone.apps.program.Widgets" function="getProjectProgressStatus" localInvokation="true" />
+      </ds:field>
+   </ds:group>
+
+   <ds:experience name="PRG_Experience_MyProjects">
+      <ds:label text="emxProgramCentral.ProgramTop.MyProjects" registeredSuite="ProgramCentral" />
+      <ds:license products="PGE,ENO_PGE_TP"/>
+      <ds:channel name="Channel_MyProjectList">
+         <ds:data>
+            <ds:jpo classname="com.matrixone.apps.program.Widgets" function="getUserProjects" localInvokation="true" returnedData="idsAndData" />
+         </ds:data>
+         <ds:ref-group name="PRG_Group_MyProjects_Channel"/>
+      </ds:channel>
+   </ds:experience>
+
+   <ds:experience name="PRG_Experience_MyProjects_List">
+      <ds:label text="emxProgramCentral.WidgetTitle.PRG_Experience_MyProjects_List" registeredSuite="ProgramCentral" />
+      <ds:license products="PGE,ENO_PGE_TP"/>
+      <ds:availableViews>
+        <ds:view>list</ds:view>
+        <ds:view>channel</ds:view>
+      </ds:availableViews>
+      <ds:list name="List_MyProjectList"><ds:style height="300px" />
+         <ds:data>
+            <ds:jpo classname="com.matrixone.apps.program.Widgets" function="getUserProjects" localInvokation="true" returnedData="idsAndData" />
+         </ds:data>
+         <ds:ref-group view="channel" name="PRG_Group_MyProjects_Channel"/>
+         <ds:group view="list"><ds:style layout="vertical" width="15%" />
+            <ds:field name="image">
+               <ds:style align="center" />
+               <ds:url target="content" path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;appName=ENOPRPR_AP" />
+               <ds:image source="primaryOrType" size="thumbnail" />
+            </ds:field>
+         </ds:group>
+         <ds:group view="list"><ds:style layout="vertical" height="100px" />
+            <ds:group name="ProjectList_Details"><ds:style layout="horizontal" height="60px"/>
+               <ds:group><ds:style layout="vertical" width="30%"/>
+                  <ds:field name="name">
+                     <ds:label text="emxFramework.Basic.Name" show="none"/>
+                     <ds:selectable expression="name" />
+                     <ds:sort sortable="true"/>
+                  </ds:field>
+                  <ds:field name="owner">
+                     <ds:label text="emxProgramCentral.Common.Owner" registeredSuite="ProgramCentral" show="left" />
+                     <ds:selectable expression="owner" format="user" />
+                  </ds:field>
+                  <ds:field name="phase">
+                     <ds:label text="emxProgramCentral.Common.CurrentTollgate" registeredSuite="ProgramCentral" show="left" />
+                     <ds:fieldjpo classname="com.matrixone.apps.program.Widgets" function="getProjectPhase" localInvokation="true" />
+                  </ds:field>
+               </ds:group>
+               <ds:group><ds:style layout="vertical" width="50%"/>
+                  <ds:field name="desc">
+                     <ds:label text="emxFramework.Basic.Description" show="none"/>
+                     <ds:selectable expression="description" />
+                     <ds:sort sortable="true" />
+                  </ds:field>
+               </ds:group>
+               <ds:group><ds:style layout="vertical" align="right" width="20%"/>
+                  <ds:field name="mytaskcount">
+                     <ds:label text="emxProgramCentral.WidgetLabel.PRG_Experience_MyTasks_Count" registeredSuite="ProgramCentral" />
+                     <ds:style align="right" />
+                     <ds:selectable format="numeric" />
+                     <ds:fieldjpo classname="com.matrixone.apps.program.Widgets" function="getProjectPhaseActiveTaskCount" localInvokation="true" />
+                  </ds:field>
+               </ds:group>
+            </ds:group>
+            <ds:group>
+               <ds:style layout="vertical" width="100%" />
+               <ds:field name="percentComplete">
+                  <ds:selectable expression="attribute[attribute_PercentComplete]" />
+                  <ds:ui type="progressbar" />
+                  <ds:fieldjpo classname="com.matrixone.apps.program.Widgets" function="getProjectProgressStatus" localInvokation="true" />
+               </ds:field>
+            </ds:group>
+         </ds:group>
+      </ds:list>
+   </ds:experience>
+
+   <ds:group name="PRG_Group_Channel_MyTasks">
+      <ds:style layout="vertical" />
+      <ds:field name="image">
+         <ds:style align="center" />
+         <ds:url target="content" path="../common/emxSecurityContextSelection.jsp?targetLocation=popup&amp;DefaultCategory=PMCWBSPowerView&amp;appName=ENOPRPR_AP" />
+         <ds:image source="primaryOrType" size="thumbnail" />
+      </ds:field>
+      <ds:field name="name">
+         <ds:label text="emxFramework.Basic.Name" show="none"/>
+         <ds:style align="center" />
+         <ds:selectable expression="name" />
+         <ds:sort sortable="true"/>
+      </ds:field>
+      <ds:field name="type">
+         <ds:label text="emxFramework.Basic.Type" show="none"/>
+         <ds:style align="center" />
+         <ds:selectable expression="type" />
+         <ds:sort sortable="true" />
+      </ds:field>
+      <ds:field name="duedate">
+         <ds:label text="emxProgramCentral.Common.DueDate" registeredSuite="ProgramCentral" show="none" />
+         <ds:style align="center" />
+         <ds:selectable expression="attribute[attribute_TaskEstimatedFinishDate]" format="date" />
+         <ds:sort sortable="true" type="date" />
+      </ds:field>
+      <ds:field name="state">
+         <ds:label text="emxFramework.Basic.State" show="none"/>
+         <ds:style align="center" />
+         <ds:selectable expression="current" />
+         <ds:sort sortable="true" />
+      </ds:field>
+      <ds:field name="percentComplete">
+         <ds:selectable expression="attribute[attribute_PercentComplete]" />
+         <ds:ui type="progressbar" />
+         <ds:fieldjpo classname="com.matrixone.apps.program.Widgets" function="getTaskProgressStatus" localInvokation="true" />
+      </ds:field>
+   </ds:group>
+
+   <ds:experience name="PRG_Experience_MyTasks">
+      <ds:label text="emxProgramCentral.ProgramTop.MyTasks" registeredSuite="ProgramCentral" />
+      <ds:license products="PGE,ENO_PGE_TP"/>
+      <ds:channel name="Channel_MyTaskList">
+         <ds:data>
+            <ds:jpo classname="com.matrixone.apps.program.Widgets" function="getUserTasks" localInvokation="true" returnedData="idsAndData" />
+         </ds:data>
+         <ds:ref-group name="PRG_Group_Channel_MyTasks"/>
+      </ds:channel>
+   </ds:experience>
+
+   <ds:experience name="PRG_Experience_MyTasks_List">
+      <ds:label text="emxProgramCentral.WidgetTitle.PRG_Experience_MyTasks_List" registeredSuite="ProgramCentral" />
+      <ds:license products="PGE,ENO_PGE_TP"/>
+      <ds:availableViews>
+        <ds:view>list</ds:view>
+        <ds:view>channel</ds:view>
+      </ds:availableViews>
+      <ds:list name="List_MyTaskList"><ds:style height="300px" />
+         <ds:data>
+            <ds:jpo classname="com.matrixone.apps.program.Widgets" function="getUserTasks" localInvokation="true" returnedData="idsAndData" />
+         </ds:data>
+         <ds:ref-group view="channel" name="PRG_Group_Channel_MyTasks"/>
+         <ds:group view="list"><ds:style layout="vertical" width="15%" />
+            <ds:field name="image">
+               <ds:style align="center" />
+               <ds:url target="content" path="../common/emxSecurityContextSelection.jsp?targetLocation=popup&amp;DefaultCategory=PMCWBSPowerView&amp;appName=ENOPRPR_AP" />
+               <ds:image source="primaryOrType" size="thumbnail" />
+            </ds:field>
+         </ds:group>
+         <ds:group view="list"><ds:style layout="vertical" height="100px"/>
+            <ds:group name="TaskList_Details"><ds:style layout="horizontal" height="60px"/>
+               <ds:group><ds:style layout="vertical" width="30%"/>
+                  <ds:field name="name">
+                     <ds:label text="emxFramework.Basic.Name" show="none"/>
+                     <ds:selectable expression="name" />
+                     <ds:sort sortable="true"/>
+                  </ds:field>
+                  <ds:field name="duedate">
+                     <ds:label text="emxProgramCentral.Common.DueDate" registeredSuite="ProgramCentral" show="left" />
+                     <ds:selectable expression="attribute[attribute_TaskEstimatedFinishDate]" format="date" />
+                     <ds:sort sortable="true" type="date"/>
+                  </ds:field>
+                  <ds:field name="state">
+                     <ds:label text="emxProgramCentral.Common.State" registeredSuite="ProgramCentral" show="left" />
+                     <ds:selectable expression="current" />
+                     <ds:sort sortable="true" />
+                  </ds:field>
+               </ds:group>
+               <ds:group><ds:style layout="vertical" width="50%"/>
+                  <ds:field name="desc">
+                     <ds:label text="emxFramework.Basic.Description" show="none"/>
+                     <ds:selectable expression="description" />
+                     <ds:sort sortable="true" />
+                  </ds:field>
+               </ds:group>
+               <ds:group><ds:style layout="vertical" width="20%" align="right" />
+                  <ds:field name="owner">
+                     <ds:label text="emxProgramCentral.Common.Owner" registeredSuite="ProgramCentral" show="left" />
+                     <ds:style align="right" />
+                     <ds:selectable expression="owner" format="user" />
+                  </ds:field>
+               </ds:group>
+            </ds:group>
+            <ds:group><ds:style layout="vertical" width="100%" />
+               <ds:field name="percentComplete">
+                  <ds:selectable expression="attribute[attribute_PercentComplete]" />
+                  <ds:ui type="progressbar" />
+                  <ds:fieldjpo classname="com.matrixone.apps.program.Widgets" function="getTaskProgressStatus" localInvokation="true" />
+               </ds:field>
+            </ds:group>
+         </ds:group>
+      </ds:list>
+   </ds:experience>
+</ds:services>
+

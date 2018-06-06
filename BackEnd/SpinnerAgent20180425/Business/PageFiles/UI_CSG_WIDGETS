@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:widgets xmlns:ds="http://www.3ds.com/enovia/bps/widgets"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+            xsi:schemaLocation="http://www.3ds.com/enovia/bps/widgets widgets.xsd ">
+
+<ds:experience name="CSG_Experience_MyCollabSpaces">
+  <ds:label text="emxCollabSpaceCentral.Common.MyCollabSpaces" registeredSuite="CollabSpaceCentral"/>
+  <ds:availableViews>
+    <ds:view>list</ds:view>
+    <ds:view>channel</ds:view>
+  </ds:availableViews>
+  <ds:list name="List_MySpacesList">
+    <ds:jpo><ds:custom-jpo classname="ENOCollabSpace" function="getMyCollabSpaces" localInvokation="false" returnedData="idsAndData"/></ds:jpo>          
+        <ds:group><ds:style layout="vertical" />                  
+          <ds:field name="thumb">
+            <ds:url target="_blank" path="../common/emxSecurityContextSelection.jsp?appName=X3DCSMA_AP&amp;SecurityContext=%COLLAB_SECURITYCXT%" />
+            <ds:selectable type="key" format="image" expression="COLLAB_SPACE_THUMB"/>          
+            <ds:image size="small" default="../csmCentral/images/defaultThumb.png" />
+          </ds:field>
+            <ds:field name="COLLAB_SECURITYCXT" hidden="true">
+                <ds:selectable expression="COLLAB_SECURITYCXT"/>
+            </ds:field>
+        </ds:group>
+        <ds:group view="list"><ds:style layout="vertical" width="80%" />          
+          <ds:field name="name">
+            <ds:label text="emxCollabSpaceCentral.Common.Name" icon="../csmCentral/images/I_Part.png" registeredSuite="CollabSpaceCentral" show="left"/>
+            <ds:selectable expression="COLLAB_SPACE_NAME"/>
+          </ds:field>
+          <ds:field name="desc">
+            <ds:label text="emxCollabSpaceCentral.Common.Description" registeredSuite="CollabSpaceCentral" show="left"/>
+            <ds:selectable type="key" expression="COLLAB_SPACE_DESC"/>
+          </ds:field>
+          <ds:field name="owner">
+            <ds:label text="emxCollabSpaceCentral.Common.Owner" registeredSuite="CollabSpaceCentral" show="left"/>
+            <ds:selectable type="key" expression="COLLAB_SPACE_OWNER"/>
+          </ds:field>
+        </ds:group>
+        <ds:group view="channel"><ds:style layout="vertical" />          
+          <ds:field name="name">
+            <ds:label text="emxCollabSpaceCentral.Common.Name" icon="../csmCentral/images/I_Part.png" registeredSuite="CollabSpaceCentral" show="none"/>
+            <ds:selectable expression="COLLAB_SPACE_NAME"/>
+          </ds:field>
+        </ds:group>
+   </ds:list>
+</ds:experience>
+
+<ds:experience name="CSG_Experience_MyCollabSpaceContent">
+  <ds:label text="emxCollabSpaceCentral.Common.ContentOfCollabSpace" registeredSuite="CollabSpaceCentral"/>
+  <ds:availableViews>
+    <ds:view>list</ds:view>
+    <ds:view>channel</ds:view>
+  </ds:availableViews>
+  <ds:list name="List_CollabSpaceContentList"><ds:style height="300px" />
+    <ds:jpo><ds:custom-jpo classname="ENOCollabSpace" function="getCollabSpaceContent" localInvokation="false" returnedData="idsAndData"/></ds:jpo>                               
+    <ds:group><ds:style layout="vertical" />        
+      <ds:field name="thumb">
+         <ds:style align="center"/>
+         <ds:selectable expression="CONTENT_THUMB_URL"/>
+         <ds:image size="small"/>
+       </ds:field>
+    </ds:group>
+    <ds:group view="list"><ds:style layout="vertical" />
+      <ds:field name="name" >
+        <ds:label text="emxCollabSpaceCentral.Common.Name" registeredSuite="CollabSpaceCentral" show="left"/>
+        <ds:selectable expression="CONTENT_NAME"/>
+      </ds:field>
+      <ds:field name="contentType" >
+        <ds:label text="emxCollabSpaceCentral.Common.Type" registeredSuite="CollabSpaceCentral" show="left"/>
+        <ds:selectable expression="CONTENT_TYPENAME"/>
+      </ds:field>        
+      <ds:field name="contentDesc">
+        <ds:label text="emxCollabSpaceCentral.Common.Modified" registeredSuite="CollabSpaceCentral" show="left"/>
+        <ds:selectable expression="CONTENT_MODIFIED"/>
+      </ds:field>
+      <ds:field name="collabSpaceName">
+        <ds:label text="emxCollabSpaceCentral.Common.CollabSpace" registeredSuite="CollabSpaceCentral" show="left"/>
+        <ds:selectable expression="CONTENT_COLLAB_SPACE"/>
+      </ds:field>       
+    </ds:group>
+    <ds:group view="channel"><ds:style layout="vertical" />
+      <ds:field name="name" >
+        <ds:label text="emxCollabSpaceCentral.Common.Name" registeredSuite="CollabSpaceCentral" show="none"/>
+        <ds:selectable expression="CONTENT_NAME"/>
+      </ds:field>
+      <ds:field name="contentType" >
+        <ds:label text="emxCollabSpaceCentral.Common.Type" registeredSuite="CollabSpaceCentral" show="none"/>
+        <ds:selectable expression="CONTENT_TYPENAME"/>
+      </ds:field>
+    </ds:group>
+  </ds:list>
+</ds:experience>
+
+</ds:widgets>
+

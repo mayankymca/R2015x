@@ -1,0 +1,15 @@
+# Voir explications dans fichier MQL R419
+#########################################
+mod policy PLMResourceSetCBPPolicy
+state allstate
+  public key "disconnected_composee"
+    create, modify, changename, checkin, toconnect, delete, fromdisconnect
+    localfilter '!(to[PLMResourceSetComposition])'
+  public key "connected_composee_PLMResourceSetComposition_readshow"
+    read, show, checkout
+    localfilter "(to[PLMResourceSetComposition].from.current.access[checkout])"
+  public key "connected_composee_PLMResourceSetComposition"
+    modify, checkin, changename, todisconnect, delete
+    localfilter "(to[PLMResourceSetComposition].from.current.access[checkin])"
+;
+

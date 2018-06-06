@@ -1,0 +1,29 @@
+var params = proc.declareParameters(["type", "name", "revision", "vault", "select"], ["label", "where", "orderby", "limit", "dump", "notsubstitute"]);
+
+var cmd = "temp query bus" + params.addVar(type) + params.addVar(name) + params.addVar(revision);
+cmd += " vault" + params.addVar(vault);
+
+if (where)
+	cmd += " where" + params.addVar(where);
+
+if (orderby)
+	cmd += " orderby" + params.addVar(orderby);
+
+if (limit)
+	cmd += " limit" + params.addVar(limit);
+
+cmd += " select";
+if (dump || params.getBoolean("notsubstitute"))
+	cmd += " notsubstitute";
+
+cmd += params.addVars(JSON.parse(select));
+
+if (dump)
+	cmd += " dump" + params.addVar(dump);
+
+cmd += " tcl";
+
+mql.startTransaction(false);
+mql.execute(label, cmd, params);
+mql.abortTransaction();
+

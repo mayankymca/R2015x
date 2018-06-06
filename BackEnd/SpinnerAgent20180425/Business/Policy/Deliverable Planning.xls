@@ -1,0 +1,69 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Private	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Private	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Private	VPLMAdmin	TRUE	PLMAdminWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	descendant	descendant	any	any	any	any			
+Private	Grant	FALSE	GrantKey	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Private	VPLMCreator	FALSE	PLMCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	context	any	any	any			
+Private	VPLMProjectAdministrator	FALSE	PLMProjectAdministratorWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Private	VPLMCreator	FALSE	Cancelled	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Cancelled].signed==TRUE		Cancelled
+Private	VPLMCreator	FALSE	Private	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Cancelled].signed==FALSE		
+In Work	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+In Work	Public	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	any	any	any	public	any	expression[OrganizationPublicAccess]		
+In Work	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+In Work	VPLMAdmin	TRUE	PLMAdminWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	descendant	descendant	any	any	any	any			
+In Work	Grant	FALSE	GrantKey	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+In Work	VPLMCreator	FALSE	PLMCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+In Work	VPLMProjectAdministrator	FALSE	PLMProjectAdministratorWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+In Work	VPLMViewer	FALSE	Viewer	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+In Work	VPLMCreator	FALSE	Cancelled	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Cancelled].signed==TRUE		Cancelled
+In Work	VPLMCreator	FALSE	In Work	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Cancelled].signed==FALSE		
+Validated	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Validated	Public	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	any	any	any	public	any	expression[OrganizationPublicAccess]		
+Validated	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Validated	VPLMAdmin	TRUE	PLMAdminWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	descendant	descendant	any	any	any	any			
+Validated	Grant	FALSE	GrantKey	FALSE	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Validated	VPLMCreator	FALSE	PLMCreatorAccess	FALSE	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Validated	VPLMProjectAdministrator	FALSE	PLMProjectAdministratorWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Validated	VPLMViewer	FALSE	Viewer	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Validated	VPLMCreator	FALSE	Cancelled	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Cancelled].signed==TRUE		Cancelled
+Validated	VPLMCreator	FALSE	Validated	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Cancelled].signed==FALSE		
+Deployed	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Deployed	Public	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	any	any	any	notprivate	any	expression[OrganizationPublicAccess]		
+Deployed	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Deployed	VPLMAdmin	TRUE	PLMAdminWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	descendant	descendant	any	any	any	any			
+Deployed	Grant	FALSE	GrantKey	FALSE	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Deployed	VPLMCreator	FALSE	PLMCreatorAccess	FALSE	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Deployed	VPLMProjectAdministrator	FALSE	PLMProjectAdministratorWithCreatorAccess	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Deployed	VPLMViewer	FALSE	Viewer	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Deployed	VPLMCreator	FALSE	Deployed	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Terminated].signed==FALSE		
+Deployed	VPLMCreator	FALSE	Terminated	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any	current.signature[Terminated].signed==TRUE		Terminated
+Complete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Public	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	any	any	any	notprivate	any	expression[OrganizationPublicAccess]		
+Complete	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	VPLMAdmin	TRUE	PLMAdminWithCreatorAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	descendant	descendant	any	any	any	any			
+Complete	Grant	FALSE	GrantKey	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Complete	VPLMCreator	FALSE	PLMCreatorDemoteAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Complete	VPLMProjectAdministrator	FALSE	PLMProjectAdministratorWithCreatorAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Complete	VPLMViewer	FALSE	Viewer	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Terminated	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Terminated	Public	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	any	any	any	notprivate	any	expression[OrganizationPublicAccess]		
+Terminated	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Terminated	VPLMAdmin	TRUE	PLMAdminWithCreatorAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	descendant	descendant	any	any	any	any			
+Terminated	Grant	FALSE	GrantKey	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Terminated	VPLMCreator	FALSE	PLMCreatorDemoteAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Terminated	VPLMProjectAdministrator	FALSE	PLMProjectAdministratorWithCreatorAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Terminated	VPLMViewer	FALSE	Viewer	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Cancelled	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Cancelled	Public	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	any	any	any	notprivate	any	expression[OrganizationPublicAccess]		
+Cancelled	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Cancelled	VPLMAdmin	TRUE	PLMAdminWithCreatorAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	descendant	descendant	any	any	any	any			
+Cancelled	Grant	FALSE	GrantKey	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Cancelled	VPLMCreator	FALSE	PLMCreatorDemoteAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Cancelled	VPLMProjectAdministrator	FALSE	PLMProjectAdministratorWithCreatorAccess	FALSE	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Cancelled	VPLMViewer	FALSE	Viewer	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+

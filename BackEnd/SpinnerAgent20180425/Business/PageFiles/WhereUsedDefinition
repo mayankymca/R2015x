@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <type_Products>
+        <Hierarchical_Data ToolbarMenu="PLCChangeMenu" >
+            <whereUsed label="emxWhereUsed.Label.ManagedUnder" expandRel="relationship_Products" application="ProductLine" fromTypes="type_Model"/>
+            <whereUsed label="emxWhereUsed.Label.VersionOf" expandRel="relationship_ProductVersion" application="ProductLine" fromTypes="type_Products"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinLogicalStructure" expandRel="relationship_LogicalFeatures,relationship_LogicalProducts" application="ProductLine" fromTypes="type_Products"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinManufacturingStructure" expandRel="relationship_ManufacturingFeatures" application="Configuration" expandedTypes="type_Products"/>
+        </Hierarchical_Data>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Logical Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Logical Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="from[Logical Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="from[Logical Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="from[Configuration Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="from[Varies By].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="from[Mandatory Configuration Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="from[Configuration Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="from[Varies By].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="from[Mandatory Configuration Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="from[Logical Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="from[Configuration Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="from[Mandatory Configuration Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="from[Varies By].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Logical Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Configuration Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Mandatory Configuration Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Varies By].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinVariant" select="to[Logical Features].tomid[Product Feature List].from[Product Variant].id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinProductConfiguration" select="to[Logical Features].tomid[Selected Options].from.id" application="Configuration"/>
+        </Related_Data>
+    </type_Products>
+    <type_LogicalFeature>
+        <Hierarchical_Data ToolbarMenu="PLCChangeMenu">
+            <whereUsed label="emxWhereUsed.Label.UsedinLogicalStructure" expandRel="relationship_LogicalFeatures,relationship_LogicalProducts,relationship_CandidateLogicalFeatures,relationship_CommittedLogicalFeatures" application="Configuration" fromTypes="type_LogicalFeature,type_Products,type_Model"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinManufacturingStructure" expandRel="relationship_ManufacturingFeatures" application="Configuration" fromTypes="type_LogicalFeature"/>
+        </Hierarchical_Data>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinLogicalRulesAsLeftExpression" select="to[Logical Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinLogicalRulesAsRightExpression" select="to[Logical Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinLogicalRulesAsRightExpression" select="from[Logical Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinLogicalRulesAsLeftExpression" select="from[Logical Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="from[Logical Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Logical Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinProductVariant" select="to[Logical Features].tomid[Product Feature List].from[Product Variant].id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinProductConfiguration" select="to[Logical Features].tomid[Selected Options].from.id" application="Configuration"/>
+        </Related_Data>
+    </type_LogicalFeature>
+    <type_ConfigurationFeature >
+        <Hierarchical_Data ToolbarMenu="PLCChangeMenu">
+            <whereUsed label="emxWhereUsed.Label.UsedinConfigurationStructure" expandRel="relationship_ConfigurationFeatures,relationship_MandatoryConfigurationFeatures,relationship_CandidateConfigurationFeatures,relationship_CommittedConfigurationFeatures" application="Configuration" fromTypes="type_ConfigurationFeature,type_LogicalFeature,type_Products,type_Model,type_ProductLine"/>
+            <whereUsed label="emxWhereUsed.Label.UsedasDesignVariant" expandRel="relationship_VariesBy" application="Configuration" fromTypes="type_LogicalFeature,type_Products"/>
+        </Hierarchical_Data>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Configuration Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Configuration Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Configuration Options].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Configuration Options].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Mandatory Configuration Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Mandatory Configuration Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Varies By].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Varies By].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="from[Configuration Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="from[Configuration Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="from[Configuration Options].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="from[Configuration Options].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinEffectivityExpression" select="from[Configuration Options].tomid[Effectivity Usage].fromrel.from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinEffectivityExpression" select="from[Configuration Features].tomid[Effectivity Usage].fromrel.from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinEffectivityExpression" select="to[Configuration Features].tomid[Effectivity Usage].fromrel.from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="from[Configuration Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Configuration Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="from[Configuration Options].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Mandatory Configuration Features].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Varies By].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinProductConfiguration" select="to[Configuration Features].tomid[Selected Options].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinProductConfiguration" select="to[Mandatory Configuration Features].tomid[Selected Options].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinProductConfiguration" select="to[Varies By].tomid[Selected Options].from.id" application="Configuration"/>
+        </Related_Data>
+    </type_ConfigurationFeature>
+    <type_ConfigurationOption>
+        <Hierarchical_Data ToolbarMenu="PLCChangeMenu">
+            <whereUsed label="emxWhereUsed.Label.UsedinConfigurationStructure" expandRel="relationship_ConfigurationOptions" application="Configuration" fromTypes="type_ConfigurationFeature"/>>
+        </Hierarchical_Data>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Configuration Options].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Configuration Options].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinEffectivityExpression" select="to[Configuration Options].tomid[Effectivity Usage].fromrel.from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRules" select="to[Configuration Options].frommid[Resource Usage].to.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinProductConfiguration" select="to[Configuration Options].tomid[Selected Options].from.id" application="Configuration"/>
+        </Related_Data>
+    </type_ConfigurationOption>
+    <type_ManufacturingFeature>
+        <Hierarchical_Data ToolbarMenu="PLCChangeMenu">
+            <whereUsed label="emxWhereUsed.Label.UsedinManufacturingStructure" expandRel="relationship_ManufacturingFeatures,relationship_CandidateManufacturingFeatures,relationship_CommittedManufacturingFeatures" application="Configuration" fromTypes="type_ManufacturingFeature,type_LogicalFeature,type_Products,type_Model"/>
+        </Hierarchical_Data>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="toRight Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="to[Manufacturing Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="to[Manufacturing Features].tomid[Right Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsLeftExpression" select="from[Manufacturing Features].tomid[Left Expression].from.id" application="Configuration"/>
+            <whereUsed label="emxWhereUsed.Label.UsedinRulesAsRightExpression" select="from[Manufacturing Features].tomid[Right Expression].from.id" application="Configuration"/>
+        </Related_Data>
+    </type_ManufacturingFeature>
+    <type_Model>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsed.Label.ManagedUnder" expandRel="relationship_ProductLineModels" application="ProductLine" expandedTypes="type_ProductLine" fromTypes="type_ProductLine"/>
+        </Hierarchical_Data>
+    </type_Model>
+    <type_Specification>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.RelatedSpecification" select="to[Product Specification].from.id" application="ProductLine" />
+            <whereUsed label="emxWhereUsed.Label.RelatedSpecification" select="to[Features Specification].from.id" application="ProductLine" />
+            <whereUsed label="emxWhereUsed.Label.RelatedSpecification" select="to[Build Specification].from.id" application="ProductLine" />
+            <whereUsed label="emxWhereUsed.Label.RelatedDocument" select="to[Reference Document].from.id" application="ProductLine"/>
+        </Related_Data>
+    </type_Specification>
+    <type_DOCUMENTS>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.RelatedDocument" select="to[Reference Document].from.id" application="ProductLine"/>
+			<whereUsed label="emxWhereUsed.Label.RelatedDocument" select="to[Simulation Content - Owned].from.to[Simulation Category].from.id" application="ProductLine"/>
+			<whereUsed label="emxWhereUsed.Label.RelatedDocument" select="to[Simulation Content - Referenced].from.to[Simulation Category].from.id" application="ProductLine"/>
+        </Related_Data>
+		<Hierarchical_Data ToolbarMenu="TYPE_DOCUMENTS" >
+			<whereUsed label="emxWhereUsed.Label.RelatedDocument" expandRel="relationship_SimulationCategory,relationship_SimulationContent_Owned,relationship_SimulationContent_Referenced" application="ProductLine" fromTypes="type_Simulation,type_SimulationActivity,type_SimulationCategory"/>
+        </Hierarchical_Data> 
+    </type_DOCUMENTS>
+    <type_ProductConfiguration>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsed.Label.BasedOn" expandRel="relationship_ProductConfiguration" application="Configuration" fromTypes="type_Products,type_LogicalFeature"/>
+        </Hierarchical_Data>
+    </type_ProductConfiguration>
+    <type_ManufacturingPlan>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsed.Label.ManufacturingPlanFor" expandRel="relationship_AssociatedManufacturingPlans" application="DMCPlanning" fromTypes="type_Products,type_LogicalFeature"/>
+            <whereUsed label="emxWhereUsed.Label.ManufacturingPlanComposition" expandRel="relationship_ManufacturingPlanBreakdown" application="DMCPlanning" fromTypes="type_ManufacturingPlan"/>
+        </Hierarchical_Data>
+    </type_ManufacturingPlan>
+
+    <type_ProductTemplate>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinProducts" select="to[Initiating Product Template].from.id" application="ApparelAccelerator"></whereUsed>
+        </Related_Data>
+    </type_ProductTemplate>
+    
+    <type_OperationTemplate>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinProducts" select="to[Initiating Product Template].from.id" application="ApparelAccelerator"></whereUsed>
+        </Related_Data>
+    </type_OperationTemplate>
+
+    <type_Color>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinProducts" select="to[Precise Choice].fromrel[Selected Choice].fromrel[EBOM].from.to[Product EBOM].from.id" application="ApparelAccelerator"></whereUsed>
+        </Related_Data>
+    </type_Color>
+
+    <type_MeasurementChartTemplate>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinProducts" select="from[ACCCreated From].to.id" application="ApparelAccelerator"></whereUsed>
+        </Related_Data> 
+    </type_MeasurementChartTemplate>
+    
+    <type_GradeRule>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinProducts" select="to[Product Grading].from.id" application="ApparelAccelerator" />
+        </Related_Data>
+    </type_GradeRule>
+
+    <type_Graphic>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinProducts" select="from[Product EBOM].to.to[EBOM].from.to[Product EBOM].from.id" application="ApparelAccelerator"></whereUsed>
+        </Related_Data> 
+    </type_Graphic>
+
+    <type_RawMaterial>
+        <Related_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedinProducts" select="to[EBOM].to[Product EBOM].from.id" application="ApparelAccelerator"></whereUsed>
+        </Related_Data>
+    </type_RawMaterial>
+
+    <type_SubmissionTemplate>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsedemxWhereUsed.Label.UsedBySubmissions" expandRel="relationship_InitiatedTemplateProject" application="Regulatory" fromTypes="type_Submission"/>
+        </Hierarchical_Data>
+    </type_SubmissionTemplate>
+
+    <type_Contact>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedBySubmissions" expandRel="relationship_Contact" application="Regulatory" fromTypes="type_Submission"/>
+        </Hierarchical_Data>
+    </type_Contact>
+
+    <type_PartRouting>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsed.LabelUsedByParts" expandRel="relationship_PartRouting" application="LES" fromTypes="type_Part"/>
+        </Hierarchical_Data>
+    </type_PartRouting>
+
+    <type_WorkCenter>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsed.Label.UsedByPartRoutings" expandRel="relationship_WorkCenter" application="LES" fromTypes="type_PartRouting"/>
+        </Hierarchical_Data>
+    </type_WorkCenter>
+    <type_CONTROLLEDDOCUMENTS>
+        <Hierarchical_Data >
+	    <whereUsed label="enoDocumentControl.Command.WhereUsed" expandRel="relationship_ReferenceDocument" application="DocumentControl" expandedTypes="type_CONTROLLEDDOCUMENTS"/>
+	</Hierarchical_Data>
+	<Related_Data>
+		<whereUsed label="enoDocumentControl.Command.WhereUsed" select="to[Reference Document].from.id" application="DocumentControl"></whereUsed>
+	</Related_Data>
+    </type_CONTROLLEDDOCUMENTS>
+	<type_DeviceIdentification>
+        <Hierarchical_Data >
+			<whereUsed label="DEID.Command.WhereUsed" expandRel="relationship_DeviceIdentification" application="DEID"          expandedTypes="type_Product"/>
+         </Hierarchical_Data>
+	</type_DeviceIdentification>
+	<type_COMPLAINTTICKETS>
+        <Hierarchical_Data >
+			<whereUsed label="emxComponents.Common.WhereUsed" expandRel="relationship_RelatedItems" application="LQIComplaints"          expandedTypes="type_COMPLAINTTICKETS"/>
+         </Hierarchical_Data>
+	</type_COMPLAINTTICKETS>
+
+  <type_RegulatoryGuideline>
+        <Hierarchical_Data>
+            <whereUsed label="Regulatory.Label.UsedBySubmissions" expandRel="relationship_RegulatoryGuideline,relationship_InitiatedTemplateProject" application="Regulatory" fromTypes="type_Submission,type_SubmissionTemplate"/>
+			<whereUsed label="Regulatory.Label.UsedBySubmissionTemplates" expandRel="relationship_InitiatedTemplateProject" application="Regulatory" fromTypes="type_Submission"/>
+		</Hierarchical_Data>
+		<Related_Data>
+			<whereUsed label="Regulatory.Label.RelatedObjects" select="to[Regulatory Guideline].from.id" application="Regulatory"></whereUsed>
+            <whereUsed label="Regulatory.Label.RelatedRegulatoryContexts" select="from[Regulatory Context].to.id" application="Regulatory"></whereUsed>
+		</Related_Data>
+ </type_RegulatoryGuideline>
+ 
+ <type_RegulatoryCalendarTemplate>
+        <Hierarchical_Data>
+            <whereUsed label="Regulatory.Label.UsedBySubmissions" expandRel="relationship_RegulatoryCalendarTemplate" application="Regulatory" fromTypes="type_Submission"/>
+		</Hierarchical_Data>
+		<Related_Data>
+            <whereUsed label="Regulatory.Label.RelatedRegulatoryContexts" select="from[Regulatory Context].to.id" application="Regulatory"></whereUsed>
+			<whereUsed label="Regulatory.Label.RelatedGuidelines" select="from[Regulatory Guideline].to.id" application="Regulatory"></whereUsed>
+			<whereUsed label="Regulatory.Label.RelatedSubmissions" select="to[Regulatory Calendar Template].from.id" application="Regulatory"></whereUsed>
+		</Related_Data>
+    </type_RegulatoryCalendarTemplate>
+	
+<type_ProductDataPart>
+    <Hierarchical_Data ToolbarMenu="ECMChangeToolbar">
+        <whereUsed expandRel="relationship_EBOM,relationship_EBOMPending" application="CPN" />
+    </Hierarchical_Data>
+    <Related_Data>
+        <whereUsed label="emxCPN.Label.Relationship.ChangeAffectedItem" select="to[Change Affected Item].from.id" application="CPN" />
+        <whereUsed label="emxCPN.Label.Relationship.ManufacturerEquivalent" select="to[Manufacturer Equivalent].from.id" application="CPN" />
+    </Related_Data>
+</type_ProductDataPart>
+<type_Characteristic>
+    <Hierarchical_Data>
+        <whereUsed label="emxCPN.Label.Characteristics" expandRel="relationship_SharedCharacteristic,relationship_Characteristic" application="CPN" />
+    </Hierarchical_Data>
+</type_Characteristic>
+<type_TechnicalSpecification>
+    <Hierarchical_Data>
+        <whereUsed label="emxCPN.Label.Characteristics" expandRel="relationship_ReferenceDocument" application="CPN" fromTypes="type_Characteristic"/>
+    </Hierarchical_Data>
+    <Related_Data>
+        <whereUsed label="emxCPN.Label.Relationship.PartSpecification" select="to[Part Specification].from.id" application="CPN" />
+        <whereUsed label="emxCPN.Label.Relationship.ChangeAffectedItem" select="to[Change Affected Item].from.id" application="CPN" />
+        <whereUsed label="emxCPN.Label.Relationship.ReferenceDocument" select="from[Reference Document].to.id" application="CPN" />
+        <whereUsed label="emxCPN.Label.Relationship.RegionOwns" select="to[Region Owns].from.id" application="CPN" />
+    </Related_Data>
+</type_TechnicalSpecification>
+<type_ArtworkFile>
+    <Hierarchical_Data>
+        <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_PartSpecification" application="AWL" fromTypes="type_POA"/>
+    </Hierarchical_Data>
+    </type_ArtworkFile>
+    <type_POA>
+        <Hierarchical_Data>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_AssociatedPOA" application="AWL" fromTypes="type_Products,type_ProductLine"/>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_ArtworkPackageContent" application="AWL" fromTypes="type_ArtworkPackage"/>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_ComprisedOfArtwork" application="AWL" fromTypes="type_POA"/>
+        </Hierarchical_Data>
+    </type_POA>
+    <type_MasterLabelElement>
+        <Hierarchical_Data>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_ArtworkMaster" application="AWL" fromTypes="type_Products,type_ProductLine"/>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_POAArtworkMaster" application="AWL" fromTypes="type_POA"/>
+        </Hierarchical_Data>
+        <Related_Data>
+            <whereUsed label="" select="from[Artwork Element Content].to.to[Artwork Assembly].from.id" application="AWL"/>
+        </Related_Data>
+    </type_MasterLabelElement>
+    <type_LabelElement>
+        <Hierarchical_Data>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_ArtworkAssembly" application="AWL" fromTypes="type_POA,type_CopyList"/>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_ArtworkElementContent" application="AWL"/>
+        </Hierarchical_Data>
+    </type_LabelElement>
+    <type_ArtworkTemplate>
+        <Hierarchical_Data>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_AssociatedArtworkTemplate" application="AWL" fromTypes="type_POA,type_Products,type_ProductLine"/>
+        </Hierarchical_Data>
+    </type_ArtworkTemplate>
+    <type_ProductLine>
+        <Hierarchical_Data>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_SubProductLines" application="AWL" fromTypes="type_ProductLine"/>
+        </Hierarchical_Data>
+    </type_ProductLine>
+	<type_CopyList>
+        <Hierarchical_Data>
+            <whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_AssociatedCopyList,relationship_AssociatedCopyListHistory" application="AWL" fromTypes="type_Products,type_ProductLine"/>
+			<whereUsed label="emxAWL.Generic.WhereUsed" expandRel="relationship_POACopyList,relationship_POACopyListHistory" application="AWL" fromTypes="type_POA"/>
+        </Hierarchical_Data>
+    </type_CopyList>
+	<type_DOCUMENTS>
+        <Hierarchical_Data>
+            <whereUsed label="emxWhereUsed.Label.RelatedDocument" expandRel="relationship_TaskDeliverable,relationship_VaultedDocumentsRev2" application="ProgramCentral"/>
+        </Hierarchical_Data>
+    </type_DOCUMENTS>
+</root>
+

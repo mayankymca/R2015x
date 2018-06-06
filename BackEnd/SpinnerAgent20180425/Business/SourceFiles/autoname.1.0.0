@@ -1,0 +1,168 @@
+function logCmd(c, p, r) {
+	proc.log("FINE", "Autoname log:\n\tmql: " + c + 
+		"\n\tparams: [" + ((p != null) ? p.toString() : null) + "]" +
+		"\n\tsuccess:[" + r.success + "], result:[" + ((r.result != null) ? r.result.trim() : null) + "], error:[" + ((r.error != null) ? r.error.trim() : null) + "]");
+}  
+  
+var params = proc.declareParameters(["type", "discipline", "usage"], ["quantity"]);
+
+var counterName = type + "#" + discipline + "#" + usage;
+var vault = "vplm";
+var policy = "VPLMAutoNaming_Policy";
+if (!quantity) { quantity = "1"; }
+var physicalidValue;
+var cestampValue;
+var counterValue;
+var quantityValue = parseInt(quantity);
+
+var globalResult = new Object();
+globalResult.type = type;
+globalResult.discipline = discipline;
+globalResult.usage = usage;
+
+var globalError = null;
+
+try {
+	if (quantityValue < 1) {
+		globalError = {
+			errorcode: "INPUT_ERROR",
+			errormsg: "Wrong input argument - quantity: [" + quantityValue + "]"
+		};
+	}
+	else {
+		mql.startTransaction(true, mql.SILENT);
+		
+		// find the counter
+		var cmd = "print bus" + params.addVar("VPLMCounter") + params.addVar(counterName) + params.addVar("---");
+		cmd += " select" + params.addVar("exists");
+		cmd += " dump"
+	
+		var mqlResult = mql.execute(null, cmd, params, mql.RETURN_RESULT | mql.SILENT);
+		logCmd(cmd, params, mqlResult);
+		params.clear();
+	
+		if (mqlResult.success) {
+			if (mqlResult.result.trim() == "FALSE") {
+				// Counter does not exist
+				cmd = "add bus" + params.addVar("VPLMCounter") + params.addVar(counterName) + params.addVar("---");
+				cmd += " vault" + params.addVar(vault);
+				cmd += " policy" + params.addVar(policy);
+				cmd += params.addVar("VPLMsys/AutoNamingValue") + params.addVar(quantity);
+				cmd += " select" + params.addVar("physicalid") + params.addVar("cestamp");
+				cmd += " dump" + params.addVar(",");
+	
+				mqlResult = mql.execute(null, cmd, params, mql.RETURN_RESULT | mql.SILENT);
+				logCmd(cmd, params, mqlResult);
+				params.clear();
+				
+				if (mqlResult.success) {
+					var mqlResultArray = mqlResult.result.trim().split(",");
+					physicalidValue = mqlResultArray[0];
+					cestampValue = mqlResultArray[1];
+					counterValue = 0;
+				}
+				else {
+					globalError = { 
+						errorcode: "OPERATION_ERROR",
+						errormsg: mqlResult.error
+					};
+					mql.abortTransaction(mql.SILENT);
+				}
+			}
+			else {
+				// Counter already exists
+				cmd = "print bus" + params.addVar("VPLMCounter") + params.addVar(counterName) + params.addVar("---");
+				cmd += " select" + params.addVar("physicalid") + params.addVar("cestamp") + params.addVar("attribute[VPLMsys/AutoNamingValue]");
+				cmd += " dump" + params.addVar(",");
+				
+				mqlResult = mql.execute(null, cmd, params, mql.RETURN_RESULT | mql.SILENT);
+				logCmd(cmd, params, mqlResult);
+				params.clear();
+				
+				if (mqlResult.success) {
+					var mqlResultArray = mqlResult.result.trim().split(",");
+					physicalidValue = mqlResultArray[0];
+					cestampValue = mqlResultArray[1];
+					counterValue = parseInt(mqlResultArray[2]);
+	
+					cmd = "check bus cestamp ";
+					cmd += params.addVar(physicalidValue) + params.addVar(cestampValue);
+					
+					mqlResult = mql.execute(null, cmd, params, mql.RETURN_RESULT | mql.SILENT);
+					logCmd(cmd, params, mqlResult);
+					params.clear();					
+					
+					if ((mqlResult.success) && (mqlResult.result == null)) {
+						var newQuantity = quantityValue + counterValue;
+						cmd = "mod bus" + params.addVar("VPLMCounter") + params.addVar(counterName) + params.addVar("---");
+						cmd += params.addVar("VPLMsys/AutoNamingValue") + params.addVar(newQuantity);
+						
+						mqlResult = mql.execute(null, cmd, params, mql.RETURN_RESULT | mql.SILENT);
+						logCmd(cmd, params, mqlResult);
+						params.clear();
+						
+						if (!mqlResult.success) {
+							globalError = { 
+								errorcode: "OPERATION_ERROR",
+								errormsg: mqlResult.error
+							};
+							mql.abortTransaction(mql.SILENT);
+						}				
+					}
+					else {
+						globalError = {
+							errorcode: "CONCURRENT_MODIFICATION_ERROR",
+							errormsg: "Concurrent modification on object " + physicalidValue + " has occurred.\nPlease try again in a moment."
+						};
+						mql.abortTransaction(mql.SILENT);
+					}	
+				}
+				else {
+					globalError = { 
+						errorcode: "OPERATION_ERROR",
+						errormsg: mqlResult.error
+					};
+					mql.abortTransaction(mql.SILENT);
+				}
+			}
+	
+			if (mqlResult.success) {
+				mql.commitTransaction(mql.SILENT);
+				
+				globalResult.suffix = new Array(); 
+				for (var i = 1; i <= quantityValue; i++) {
+					globalResult.suffix.push( (i + counterValue) );
+				}
+			}
+			else {
+				globalError = { 
+					errorcode: "OPERATION_ERROR",
+					errormsg: mqlResult.error
+				};
+				mql.abortTransaction(mql.SILENT);
+			}	
+		}
+		else {
+			globalError = { 
+				errorcode: "OPERATION_ERROR",
+				errormsg: mqlResult.error
+			};
+			mql.abortTransaction(mql.SILENT);
+		}
+	}
+}
+catch (exception) {
+	globalError = { 
+		errorcode: "OPERATION_ERROR",
+		errormsg: exception
+	};
+	mql.abortTransaction(mql.SILENT);
+}
+
+if (null == globalError) {
+	proc.write(null, JSON.stringify(globalResult), null);
+}
+else {
+	proc.write(null, null, JSON.stringify(globalError));
+}
+

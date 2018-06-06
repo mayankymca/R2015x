@@ -1,0 +1,6 @@
+#-----------------------------------------------------------------------------------------------------------------------
+# This trigger is used to compute and apply a Deployment Extension and/or Customer Extensions when an object is created.
+# Mar 2016 R2015xHF10 (FD07) : Move back the trigger in deferred mode.
+#------------------------------------------------------------------------------------------------------------------------
+mod program emxUnifiedDicoProgram execute deferred;
+

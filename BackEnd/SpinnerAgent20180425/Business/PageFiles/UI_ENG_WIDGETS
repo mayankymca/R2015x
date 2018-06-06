@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:widgets xmlns:ds="http://www.3ds.com/enovia/bps/widgets"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xsi:schemaLocation="http://www.3ds.com/enovia/bps/widgets widgets.xsd ">
+
+	<ds:group name="ENG_Channel_MyParts">
+		<ds:style layout="vertical" width="130px" align="center" />
+		<ds:field name="image">
+			<ds:style align="center" />
+			<ds:url target="content"
+				path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=engineeringcentral&amp;suiteKey=EngineeringCentral" />
+			<ds:image source="primaryOrType" size="thumbnail" />
+			<ds:fieldjpo classname="emxECPartBase" function="getBadgeStatusForParts"
+				localInvokation="false" />
+		</ds:field>
+		<ds:group>
+			<ds:field name="Type">
+				<ds:style align="center" />
+				<ds:label text="emxEngineeringCentral.Common.Type" show="none"
+					registeredSuite="EngineeringCentral" />
+				<ds:selectable expression="type" format="type" />
+				<ds:sort order="1" sortable="true" />
+			</ds:field>
+			<ds:field name="Name">
+				<ds:style align="center" />
+				<ds:label text="emxComponents.Common.Name" show="none"
+					registeredSuite="EngineeringCentral" />
+				<ds:selectable expression="name" />
+				<ds:sort order="3" sortable="true" />
+			</ds:field>
+			<ds:field name="Revision">
+				<ds:style align="center" />
+				<ds:label text="emxEngineeringCentral.Common.Rev" show="none"
+					registeredSuite="EngineeringCentral" />
+				<ds:selectable expression="revision" />
+			</ds:field>
+			<ds:field name="Policy">
+				<ds:label text="emxEngineeringCentral.Common.Policy" show="none"
+					registeredSuite="EngineeringCentral" />
+				<ds:style align="center" />
+				<ds:selectable expression="policy" format="policy" />
+			</ds:field>
+			<ds:field name="current">
+			<ds:label text="emxEngineeringCentral.Common.State" show="none"
+							registeredSuite="EngineeringCentral" />
+				<ds:style align="center" />
+				<ds:selectable expression="current" format="state" />
+				<ds:sort order="4" sortable="true" />
+			</ds:field>
+			<ds:field name="Modified" hidden="true">
+				<ds:label text="emxEngineeringCentral.Common.Modified"
+					registeredSuite="EngineeringCentral" />
+				<ds:selectable expression="modified" format="date"
+					filterable="true" />
+				<ds:sort direction="descending" order="2" sortable="true" />
+			</ds:field>
+		</ds:group>
+	</ds:group>
+
+	<ds:experience name="ENG_Experience_Parts_ChartView">
+		<ds:label text="emxEngineeringCentral.Widget.MyEngineeringChartView"
+			registeredSuite="EngineeringCentral" />
+		<ds:license products="ENO_ENG_TP,ENO_XCE_TP,ENO_TBE_TP" />
+		<ds:availableViews>
+			<ds:view>chart</ds:view>
+		</ds:availableViews>
+		<ds:list name="ENG_MyParts_Chart">
+		<ds:style height="800px" />
+			<ds:jpo><ds:custom-jpo classname="emxECPartBase"
+					function="getPartsChartData" localInvokation="false"
+					returnedData="ids">
+				</ds:custom-jpo>
+			</ds:jpo>
+		<ds:group name="Part_Data" hidden="true">	
+				<ds:field name="Policy">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Policy"
+							registeredSuite="EngineeringCentral" show="left" />
+						<ds:selectable expression="policy" type="bus" format="policy" />
+				</ds:field>		
+				<ds:field name="current">
+					<ds:style align="left"/>
+					<ds:label text="emxEngineeringCentral.Common.State" show="left"
+						registeredSuite="EngineeringCentral" />
+					<ds:selectable expression="current" type="bus" format="state" />
+				</ds:field>									
+				<ds:field name="ResponsibleOrg">
+					<ds:style align="left"/>
+					<ds:label text="emxEngineeringCentral.Widget.ResponsibleOrganization"
+						show="left" registeredSuite="EngineeringCentral" />
+					<ds:selectable expression="altowner1" />
+				</ds:field>	
+				<ds:field name="MaterialCategory">
+					<ds:label text="emxFramework.Attribute.Material_Category"
+						 registeredSuite="Framework" />
+					<ds:selectable expression="attribute[attribute_MaterialCategory]" format="range" />
+				</ds:field>
+				<ds:field name="DesignPurchase">
+					<ds:label text="emxFramework.Attribute.Design_Purchase"
+						 registeredSuite="Framework" />
+					<ds:selectable expression="attribute[attribute_DesignPurchase]" format="range" />
+				</ds:field>
+				<ds:field name="PartClassification">
+					<ds:label text="emxFramework.Attribute.Part_Classification"
+						 registeredSuite="Framework" />
+					<ds:selectable expression="attribute[attribute_Classification]" format="range"/>
+				</ds:field>					
+		</ds:group>
+		<ds:chartgroup view="chart">
+		<ds:style layout="horizontal" height="400px" width="100%"/>
+		<ds:chart type="pie">		   
+           <ds:label text="emxEngineeringCentral.Widget.GroupByState" registeredSuite="EngineeringCentral"/>
+           <ds:groupBy>current</ds:groupBy>
+        </ds:chart>
+		<ds:chart type="column">
+           <ds:label text="emxEngineeringCentral.Widget.GroupByMaterialCategoryAndDesignPurchase" registeredSuite="EngineeringCentral"/>           
+		   <ds:groupBy>MaterialCategory</ds:groupBy>  
+		   <ds:groupBy>DesignPurchase</ds:groupBy>
+        </ds:chart>		
+		</ds:chartgroup>
+		<ds:chartgroup view="chart">
+		<ds:style layout="horizontal" height="400px" width="100%"/>
+		<ds:chart type="pie">
+		   <ds:label text="emxEngineeringCentral.Widget.GroupByOrganization" registeredSuite="EngineeringCentral"/> 
+		   <ds:groupBy>ResponsibleOrg</ds:groupBy>
+		</ds:chart>
+		<ds:chart type="column">
+           <ds:label text="emxEngineeringCentral.Widget.GroupByPartClassificationAndEffectiveDate" registeredSuite="EngineeringCentral"/>
+		   <ds:groupBy>PartClassification</ds:groupBy>
+        </ds:chart>
+		</ds:chartgroup>			
+		</ds:list>
+	</ds:experience>
+	
+
+	<ds:experience name="ENG_Experience_BOM_ChartView">
+		<ds:label text="emxEngineeringCentral.Widget.ChartView"
+			registeredSuite="EngineeringCentral" />
+		<ds:license products="ENO_ENG_TP" />
+		<ds:availableViews>
+			<ds:view>chart</ds:view>
+		</ds:availableViews>
+		<ds:list name="ENG_List_MyParts_Chart">
+		<ds:style height="800px" />
+			<ds:jpo><ds:custom-jpo classname="emxECPartBase"
+					function="getBOMChartData" localInvokation="false"
+					returnedData="ids">
+				</ds:custom-jpo>
+			</ds:jpo>
+			<ds:group name="Part_Data" hidden="true">				
+					<ds:field name="Type">
+					<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Type" 
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="type" type="bus" format="type" />
+					</ds:field>
+					<ds:field name="Policy">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Policy"
+							registeredSuite="EngineeringCentral" show="left" />
+						<ds:selectable expression="policy" type="bus" format="policy" />
+					</ds:field>
+					<ds:field name="current">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.State" show="left"
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="current" type="bus" format="state" />
+					</ds:field>									
+					<ds:field name="MaterialCategory">
+						<ds:label text="emxEngineeringCentral.Part.MaterialCategory"
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="attribute[attribute_MaterialCategory]" type="bus" format="range" />
+					</ds:field>															
+					<ds:field name="Usage">
+						<ds:label text="emxEngineeringCentral.Common.Usage"
+							 registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="attribute[attribute_Usage]" type="rel" format="range" />
+					</ds:field>
+					<ds:field name="ComponentLocation">
+						<ds:label text="emxEngineeringCentral.Common.ComponentLocation"
+							 registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="attribute[attribute_ComponentLocation]" type="rel" />
+					</ds:field>
+					<ds:field name="Quantity">
+						<ds:label text="emxEngineeringCentral.Common.Quantity"
+							 registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="attribute[attribute_Quantity]" type="rel" format="numeric" />
+					</ds:field>					
+				</ds:group>
+		<ds:chartgroup view="chart">
+		<ds:style layout="horizontal" height="400px" width="100%"/>
+			<ds:chart type="pie">		
+					<ds:label text="emxEngineeringCentral.Widget.BOMGroupByState" registeredSuite="EngineeringCentral"/>
+					<ds:groupBy>current</ds:groupBy> 
+			</ds:chart>
+			<ds:chart type="column">
+			   <ds:label text="emxEngineeringCentral.Widget.GroupByTypeAndMaterialCategory" registeredSuite="EngineeringCentral"/>  
+			   <ds:groupBy>Type</ds:groupBy>
+			   <ds:groupBy>MaterialCategory</ds:groupBy>
+			   <ds:calculation type="sum" field="Quantity"></ds:calculation>    
+			</ds:chart>
+		</ds:chartgroup>
+		</ds:list>
+	</ds:experience>	
+	
+
+	<ds:experience name="ENG_Experience_MyParts">
+		<ds:label text="emxEngineeringCentral.WidgetTitle.ENG_Experience_MyParts"
+			registeredSuite="EngineeringCentral" />
+		<ds:license products="ENO_ENG_TP,ENO_XCE_TP,ENO_TBE_TP" />
+		<ds:availableViews>
+			<ds:view>list</ds:view>
+			<ds:view>channel</ds:view>
+			<ds:view>chart</ds:view>
+		</ds:availableViews>
+		<ds:list name="ENG_List_MyParts">
+			<ds:style height="425px" />
+			<ds:jpo>
+				<ds:custom-jpo classname="emxECPartBase"
+					function="getMyEngineeringPartsForWidget" localInvokation="false"
+					returnedData="ids">
+					<ds:arg arg-name="type" arg-value="type_Part" />
+					<ds:arg arg-name="SuiteKey" arg-value="EngineeringCentral" />
+					<ds:arg arg-name="functionality" arg-value="ENG" />
+					<ds:arg arg-name="excludeTypes"
+						arg-value="type_ManufacturingPart,type_SyntheticPart,type_KitPart,type_MaterialPart,type_PhantomPart,type_SupportPart,type_ToolPart" />
+				</ds:custom-jpo>
+			</ds:jpo>
+			<ds:ref-group name="ENG_Channel_MyParts" view="channel" />
+			<ds:group view="list">
+				<ds:style layout="vertical" height="120px" />
+				<ds:field name="image">
+				<ds:style align="left"/>
+					<ds:url target="content"
+						path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=engineeringcentral&amp;suiteKey=EngineeringCentral" />
+					<ds:image source="primaryOrType" size="thumbnail" />
+					<ds:fieldjpo classname="emxECPartBase" function="getBadgeStatusForParts"
+						localInvokation="false" />
+				</ds:field>
+			</ds:group>
+			<ds:group name="Part_Data" view="list">				
+					<ds:style layout="vertical" height="120px" />
+					<ds:field name="Type">
+					<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Type" show="none"
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="type" format="type" />
+						<ds:sort order="1" sortable="true" />
+					</ds:field>
+					<ds:field name="Name">
+					<ds:style align="left"/>
+						<ds:label text="emxComponents.Common.Name" show="none"
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="name" />
+						<ds:sort order="3" sortable="true" />
+					</ds:field>
+					<ds:field name="Revision">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Rev"
+							registeredSuite="EngineeringCentral" show="left" />
+						<ds:selectable expression="revision" />
+					</ds:field>
+					<ds:field name="Policy">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Policy"
+							registeredSuite="EngineeringCentral" show="left" />
+						<ds:selectable expression="policy" format="policy" />
+					</ds:field>
+					<ds:field name="current">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.State" show="left"
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="current" format="state" />
+						<ds:sort order="4" sortable="true" />
+					</ds:field>
+				</ds:group>				
+				<ds:group view="list">
+				<ds:style layout="vertical" height="120px" />
+					<ds:field name="owner">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Owner"
+							registeredSuite="EngineeringCentral" show="left" />
+						<ds:selectable expression="owner" format="user" />
+					</ds:field>
+					<ds:field name="TargetReleaseDate">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Widget.TargetRelease"
+							show="left" registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="attribute[Effectivity Date]"
+							format="date" />
+					</ds:field>
+					<ds:field name="ResponsibleOrg">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Widget.ResponsibleOrganization"
+							show="left" registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="altowner1" />
+					</ds:field>
+					<ds:field name="Modified" hidden="true">
+						<ds:style align="left"/>
+						<ds:label text="emxEngineeringCentral.Common.Modified"
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="modified" format="date"/>
+						<ds:sort direction="descending" order="2" sortable="true" />
+					</ds:field>
+				</ds:group>
+				<ds:group view="list">
+				<ds:style layout="vertical" height="120px" />
+					<ds:field name="description">
+						<ds:style align="left"/>
+						<ds:label text="emxComponents.Common.Description" show="none"
+							registeredSuite="EngineeringCentral" />
+						<ds:selectable expression="description" />
+					</ds:field>
+				</ds:group>
+	<ds:group name="related" view="list">
+     <ds:field name="EBOM">
+      <ds:style align="center" />
+      <ds:url target="content"
+      path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;DefaultCategory=ENCEBOMPowerViewCommand&amp;emxSuiteDirectory=engineeringcentral&amp;suiteKey=EngineeringCentral" />
+      <ds:fieldjpo classname="emxECPartBase" function="getEBOMCountAndLabel"
+       localInvokation="false" />
+      <ds:selectable expression="from[EBOM,EBOM Pending].to.id" format="html" />
+     </ds:field>
+    </ds:group>
+	<ds:group name="chart_data" hidden="true">	
+		<ds:field name="MaterialCategory">
+			<ds:label text="emxFramework.Attribute.Material_Category"
+				 registeredSuite="Framework" />
+			<ds:selectable expression="attribute[attribute_MaterialCategory]" format="range" />
+		</ds:field>
+		<ds:field name="DesignPurchase">
+			<ds:label text="emxFramework.Attribute.Design_Purchase"
+				 registeredSuite="Framework" />
+			<ds:selectable expression="attribute[attribute_DesignPurchase]" format="range" />
+		</ds:field>
+		<ds:field name="PartClassification">
+			<ds:label text="emxFramework.Attribute.Part_Classification"
+				 registeredSuite="Framework" />
+			<ds:selectable expression="attribute[attribute_Classification]" format="range"/>
+		</ds:field>
+	</ds:group>
+	<ds:chartgroup view="chart">
+	<ds:style layout="horizontal" height="400px" width="100%"/>
+	  	<ds:chart type="pie">		   
+           <ds:label text="emxEngineeringCentral.Widget.GroupByState" registeredSuite="EngineeringCentral"/>
+           <ds:groupBy>current</ds:groupBy>
+        </ds:chart>
+		<ds:chart type="column">
+           <ds:label text="emxEngineeringCentral.Widget.GroupByMaterialCategoryAndDesignPurchase" registeredSuite="EngineeringCentral"/>           
+		   <ds:groupBy>MaterialCategory</ds:groupBy>  
+		   <ds:groupBy>DesignPurchase</ds:groupBy>
+        </ds:chart>
+		<ds:chart type="pie">
+		   <ds:label text="emxEngineeringCentral.Widget.GroupByOrganization" registeredSuite="EngineeringCentral"/> 
+		   <ds:groupBy>ResponsibleOrg</ds:groupBy>
+		</ds:chart>
+		<ds:chart type="column">
+           <ds:label text="emxEngineeringCentral.Widget.GroupByPartClassificationAndEffectiveDate" registeredSuite="EngineeringCentral"/>
+		   <ds:groupBy>PartClassification</ds:groupBy>
+        </ds:chart>
+		</ds:chartgroup>	
+		</ds:list>
+	</ds:experience>
+</ds:widgets>
+

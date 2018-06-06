@@ -1,0 +1,17 @@
+# File: TeamEngineering-Security-MD-R417HF6-downgrade.mql
+# Description: This file downgrades VPLM security data from R417 HF6 to R417 GA for One-Click
+#
+# MBH 15:06:19 Created file
+# MBH 15:06:19 IR-335064-3DEXPERIENCER2015x : Enable Access Rights on Designer Workspace
+# MBH 15:06:22 IR-377731-3DEXPERIENCER2015x : VPMCfgEffectivity governed by other policy
+
+# IR-335064-3DEXPERIENCER2015x 
+modify policy VPLM_SMB_DesignWS
+  state DEFAULT
+    remove user "Grant" all single project;
+
+# IR-377731-3DEXPERIENCER2015x
+# Do not remove type since BOs exist
+# modify policy VPLM_UNSECURED_CX
+#   remove type "VPMCfgEffectivity";
+

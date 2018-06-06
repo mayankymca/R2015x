@@ -1,0 +1,11 @@
+tcl;
+switch $tcl_platform(os) {
+"Windows NT" {load PLMConfigFilter.dll;}
+"Linux"      {load libPLMConfigFilter.so;}
+"AIX"        {load libPLMConfigFilter.a;}
+"SunOS"      {load libPLMConfigFilter.so;}
+}
+eval {
+ConfigFiltering ReleaseFilter [mql get env 1];
+}
+

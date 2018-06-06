@@ -1,0 +1,68 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+Draft	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Draft	Owner	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Draft	System Engineer	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Draft	Global Template Administrator	FALSE		FALSE	Y	-	-	Y	Y	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Draft	Template Administrator	FALSE		FALSE	Y	-	-	Y	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Draft	Product Manager	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Draft	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Draft	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Draft	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Draft	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Draft	Specification Manager	FALSE		FALSE	Y	-	-	Y	Y	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Draft	Specification Office Manager	FALSE		FALSE	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any	context.user ~~ to[Assigned To Specification Office].businessobject.from[Assigned Member].businessobject.name		
+Draft	Global User	FALSE		FALSE	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any	context.user ~~ to[CoOwned].businessobject.to[CoOwns].businessobject.name		
+Draft	Supplier	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.name ~~ to[Recommended Suppliers].businessobject.to[Employee].businessobject.name		
+Peer Review	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	Owner	FALSE		FALSE	Y	-	-	Y	Y	-	Y	Y	Y	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	System Engineer	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	Global Template Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	Template Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Peer Review	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Peer Review	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Peer Review	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	Product Manager	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	Specification Manager	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Peer Review	Specification Office Manager	FALSE		FALSE	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any	context.user ~~ to[Assigned To Specification Office].businessobject.from[Assigned Member].businessobject.name		
+Peer Review	Global User	FALSE		FALSE	Y	-	-	-	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[CoOwned].businessobject.to[CoOwns].businessobject.name		
+Formal Approval	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	Owner	FALSE		FALSE	Y	-	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	System Engineer	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	Global Template Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	Template Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Formal Approval	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Formal Approval	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Formal Approval	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	Employee	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	Product Manager	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	Specification Manager	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Formal Approval	Specification Office Manager	FALSE		FALSE	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any	context.user ~~ to[Assigned To Specification Office].businessobject.from[Assigned Member].businessobject.name		
+Formal Approval	Global User	FALSE		FALSE	Y	-	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[CoOwned].businessobject.to[CoOwns].businessobject.name		
+Approved	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Approved	Owner	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Approved	System Engineer	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Approved	Global Template Administrator	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Approved	Template Administrator	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Approved	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Approved	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Approved	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Approved	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Approved	Specification User	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Approved	Product Manager	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Approved	Specification Manager	FALSE		FALSE	Y	-	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Approved	Specification Office Manager	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	Y	Y	Y	-	-	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[Assigned To Specification Office].businessobject.from[Assigned Member].businessobject.name		
+Approved	Global User	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[CoOwned].businessobject.to[CoOwns].businessobject.name		
+Obsolete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	Owner	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	Global Template Administrator	FALSE		FALSE	Y	-	-	Y	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	Template Administrator	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Obsolete	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Obsolete	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Obsolete	Specification Manager	FALSE		FALSE	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	Specification Office Manager	FALSE		FALSE	Y	-	-	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[Assigned To Specification Office].businessobject.from[Assigned Member].businessobject.name		
+Obsolete	Global User	FALSE		FALSE	Y	Y	-	Y	Y	Y	Y	Y	-	Y	Y	-	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	Y	-	Y	Y	-	Y	Y	Y	Y	Y	any	any	any	any	any	any	context.user ~~ to[CoOwned].businessobject.to[CoOwns].businessobject.name		
+

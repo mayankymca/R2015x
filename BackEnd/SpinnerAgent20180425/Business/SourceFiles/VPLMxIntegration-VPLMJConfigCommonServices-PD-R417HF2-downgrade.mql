@@ -1,0 +1,36 @@
+tcl;
+
+eval {
+
+	# Load installation utilities
+	source "$env(INSTALL_TCL_PROGRAMS_DIR)/VPLMJConfigCommonServices-installation-utilities.tcl"
+
+
+	# Start
+	set isError 0
+	puts "Uninstall VPLMxIntegration-VPLMJConfigCommonServices-PD-R417HF2-downgrade.mql..."
+
+
+	# Remove triggers from attribute
+	puts "Remove trigger AttributeConfigurationSelectionTypeVPMModifyCheck from Configuration Selection Type..."
+	removeTrigger "attribute" "Configuration Selection Type" "modify" "check" "AttributeConfigurationSelectionTypeVPMModifyCheck";
+
+
+	# Delete triggers program parameters
+	# Attribute
+	puts "Delete trigger program parameters AttributeConfigurationSelectionTypeVPMModifyCheck isAttributeConfigurationSelectionTypeModifyAuthorized..."
+	if { [catch {mql delete businessobject "eService Trigger Program Parameters" "AttributeConfigurationSelectionTypeVPMModifyCheck" "isAttributeConfigurationSelectionTypeModifyAuthorized";} result] } {
+		puts "ERROR:Delete trigger program parameters AttributeConfigurationSelectionTypeVPMModifyCheck isAttributeConfigurationSelectionTypeModifyAuthorized:$result"
+		set isError 1
+	}
+
+
+	if { $isError } {
+		puts "Uninstall with errors."
+		exit 1
+	} else {
+		puts "Uninstall successful."
+		exit 0
+	}
+}
+

@@ -1,0 +1,35 @@
+#Upgrade from R417 to R418
+# Created by BMN2 14/01/15
+
+#NLS Editor Command
+
+delete command NLSEditorCmd;
+ 
+add command NLSEditorCmd
+label "NLS Editor"
+description ""
+href "${COMMON_DIR}/emxIndentedTable.jsp?table=NLSAdminObjectTable&toolbar=NLSEditorToolbar&program=emxPackagesConfigurationProgram:getAllCustoPackagesList&expandProgram=emxPackagesConfigurationProgram:getCustoTypeNamesList&freezePane=ObjectAdminName&sortColumnName=ObjectAdminName&header=emxDataSpecialization.label.PackageConfigView&showRMB=false"
+setting "Target Location" content
+setting "Access Function" accessNLSEditor
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+user "Domain Expert";
+
+
+# Add the command to the Menu ENOConfiguration: 
+mod menu ENOConfiguration add command NLSEditorCmd;
+
+#BMN2 -19/03/15- Without an access function on this command
+delete command IndexPackagesCmd;
+
+add command IndexPackagesCmd
+label emxDataSpecialization.label.IndexPackages
+href "${SUITE_DIR}/emxPackagesConfigurationIndexation.jsp"
+setting "Target Location" listHidden
+setting "Popup Modal" true
+setting "Submit" true
+setting "Row Select" multi
+setting "Registered Suite" DataSpecialization;
+
+mod menu PackagesToolsToolbar add command IndexPackagesCmd;
+

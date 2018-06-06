@@ -1,0 +1,117 @@
+tcl;
+eval {
+	proc appendTriggerProgramParameter {sTypeName sEventName sParamName} {
+		set found "false"
+		set sResult [mql print type $sTypeName select immediatetrigger dump |];
+		set lObj [split $sResult "|"]
+		foreach sObj $lObj {
+			set sCurEventName [lindex [split $sObj :] 0]
+			set sCurValue   [lindex [split $sObj :] 1]
+			if { $sEventName == $sCurEventName } {
+				set found "true"
+				set sIndex1 [string first "(" $sCurValue]
+				set sIndex2 [string first ")" $sCurValue]
+				set sExtractedValue [string range $sCurValue $sIndex1 $sIndex2]
+				set sExtractedValue [string trimleft $sExtractedValue "("]
+				set sExtractedValue [string trimright $sExtractedValue ")"]
+				set sReturnValue $sExtractedValue
+				puts "Event=$sCurEventName"
+				puts "Current trigger input=$sReturnValue"
+				append sReturnValue " "
+				#CRK 3/20/10 IR-044259V6R2011: Check if the value is already there...
+				set sIndex3 [string first $sParamName $sReturnValue]
+				if { $sIndex3 == "-1" } {
+					append sReturnValue $sParamName
+					puts "New trigger input=$sReturnValue"
+				} else {
+					puts "Trigger input already exists, no modification will be done."
+				}
+				return $sReturnValue
+			}
+		}
+		#if no existing trigger, just return the input value
+		if { $found == "false" } {
+			return $sParamName
+		}
+	}
+	proc removeTriggerProgramParameterRelationships {sRelName sEventName sEventType sEventNameCombo sParamName} {
+		set found "false"
+		set sResult [mql print relationship $sRelName select immediatetrigger dump |];
+		set lObj [split $sResult "|"]
+		foreach sObj $lObj {
+			set sCurEventName [lindex [split $sObj :] 0]
+			set sCurValue   [lindex [split $sObj :] 1]
+			if { $sEventNameCombo == $sCurEventName } {
+				set found "true"
+				set sIndex1 [string first "(" $sCurValue]
+				set sIndex2 [string first ")" $sCurValue]
+				set sExtractedValue [string range $sCurValue $sIndex1 $sIndex2];
+				set sExtractedValue [string trimleft $sExtractedValue "("]
+				set sExtractedValue [string trimright $sExtractedValue ")"]
+				set sReturnValue $sExtractedValue
+				regsub ($sParamName) $sReturnValue "" sReturnValue
+				regsub { +} $sReturnValue " " sReturnValue
+				set sReturnValue [string trim $sReturnValue]
+				puts "Event=$sCurEventName   New Value=$sReturnValue"
+				set slength [string length $sReturnValue]
+				if { $slength != "0" } {
+					puts "Modifying trigger..."
+					set sCmd "mql mod relationship \"${sRelName}\" add trigger ${sEventName} ${sEventType} emxTriggerManager input \"${sReturnValue}\""
+					eval $sCmd
+				} else {
+					puts "Removing trigger..."
+					set sCmd "mql mod relationship \"${sRelName}\" remove trigger $sEventName $sEventType"
+					eval $sCmd
+				}									
+			}
+		}
+		return 0
+	}
+	
+	puts {Executing VPLMxIntegration-PD-R417HF11-downgrade.mql...}
+	
+	# 1. Removal of Fix for IR-411666-V6R2013x Trigger to block the CAD Model as Specification When VPM Reference Specification Already Exists .
+	# Trigger to block the Removal of VPM Reference Excluding MCAD models when VPM Reference in VPM controlled
+	
+		# 1.1  the trigger deactivation 
+		set boState [mql temp query bus "eService Trigger Program Parameters" RelationshipPartSpecVPLMIntegCreateCheck MCADModelCheck select current dump;]
+		if {[regexp {.+,Active} $boState]} {
+			mql demote businessobject "eService Trigger Program Parameters" RelationshipPartSpecVPLMIntegCreateCheck MCADModelCheck
+			puts {Disabling the trigger RelationshipPartSpecVPLMIntegCreateCheck "MCADModelCheck"... - Completed}
+		}	
+		
+		# 1.2 deleting the trigger
+		set boExists [mql temp query bus "eService Trigger Program Parameters" RelationshipPartSpecVPLMIntegCreateCheck "MCADModelCheck";]
+		if {$boExists != ""} {
+			mql delete businessobject "eService Trigger Program Parameters" RelationshipPartSpecVPLMIntegCreateCheck "MCADModelCheck"	} 
+		puts {deleting trigger RelationshipPartSpecVPLMIntegCreateCheck "MCADModelCheck"... - Completed}
+		
+		# 1.3 trigger command creation
+		set progName "VPLMIntegPartSpecRelationshipTrigger"
+		set progExists [mql list program $progName]
+		if {$progExists != ""} {
+			set progCmd "mql delete program $progName"
+			eval $progCmd
+		} 
+
+		# 1.4 Remove create check trigger for "Part Specification" relationship
+		removeTriggerProgramParameterRelationships  "Part Specification"  "Create"  "check"  "CreateCheck"  "RelationshipPartSpecVPLMIntegCreateCheck";
+		
+	# 2. Removal of Fix for IR-198217 and IR-354916
+	
+		#2.1 Remove new revision of trigger parameters object
+		set boExists [mql temp query bus "eService Trigger Program Parameters" "TypeAllVPLMIntegVPLMControlTransfer" "ControlCheck";]
+		if {$boExists != ""} {
+			mql demote businessobject "eService Trigger Program Parameters" "TypeAllVPLMIntegVPLMControlTransfer" "ControlCheck";
+			mql delete businessobject "eService Trigger Program Parameters" "TypeAllVPLMIntegVPLMControlTransfer" "ControlCheck";
+		}
+		
+		#2.2 Add diconnect check trigger for type "Part"
+		set paramValue [appendTriggerProgramParameter "Part" "DisconnectCheck" "TypeAllVPLMIntegVPLMControlCheck"]
+		mql mod type "Part" add Trigger Disconnect check emxTriggerManager input "$paramValue"				
+
+	puts {VPLMxIntegration-PD-R417HF11-downgrade.mql - Completed}
+		
+	exit 0;
+}
+

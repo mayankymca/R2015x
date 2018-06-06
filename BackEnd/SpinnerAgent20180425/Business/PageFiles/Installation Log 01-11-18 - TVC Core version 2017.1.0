@@ -1,0 +1,104 @@
+Validating correctness of decimal symbol...
+--> Current decimal symbol is .
+--> Trying to add a table, to check if current decimal symbol setting is ok...
+--> Current decimal symbol setting is OK
+
+#
+# Installation of the database schema is now ready to start.
+#
+# (Info) Starting transaction (System/Vaults)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/System/Vaults/TVCAdministration.tcl
+# (Info) Committing transaction (System/Vaults)
+# (Info) Starting transaction (Formats)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Formats/TVCAnnotatedImage.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Formats/TVCAnnotatedSmallImage.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Formats/TVCAnnotatedThumbnailImage.tcl
+# (Info) Committing transaction (Formats)
+# (Info) Starting transaction (Programs)
+# Updating program TVCTriggerManager
+# Processing: program       - TVCTriggerManager                   [1.0   -->   1.0]
+# Updating program TVCUtils
+# Processing: program       - TVCUtils                            [1.0   -->   1.0]
+# Updating program TVCCheckAdminVersion
+# Processing: program       - TVCCheckAdminVersion                [1.0   -->   1.0]
+# Updating program TVCDeleteFilters
+# Processing: program       - TVCDeleteFilters                    [1.0   -->   1.0]
+# Updating program TVCDeleteInstallLogs
+# Processing: program       - TVCDeleteInstallLogs                [1.0   -->   1.0]
+# Updating program TVCInitSystemUser
+# Processing: program       - TVCInitSystemUser                   [1.0   -->   1.0]
+# Updating program TVCListAdminObjects
+# Processing: program       - TVCListAdminObjects                 [1.0   -->   1.0]
+# Updating program TVCSchemaUninstaller
+# Processing: program       - TVCSchemaUninstaller                [1.0   -->   1.0]
+# Updating program TVCUpdateSystemUser
+# Processing: program       - TVCUpdateSystemUser                 [1.0   -->   1.0]
+# (Info) Committing transaction (Programs)
+# (Info) Running post_install script (Programs)
+# (Info) Running pre_install script (Users/Roles)
+# (Info) Starting transaction (Users/Roles)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Users/Roles/TVCManager.tcl
+# (Info) Committing transaction (Users/Roles)
+# (Info) Starting transaction (Users/Persons)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Users/Persons/TVCSystemUser.tcl
+# (Info) Committing transaction (Users/Persons)
+# (Info) Running pre_install script (Attributes)
+# (Info) Starting transaction (Attributes)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCAnnotatedImage.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCAnnotationData.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCAvailableFilterNames.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCAvailableSystemTableNames.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCContextMenu.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCDefaultFilterNames.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCDefaultSystemTableName.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCDigits.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCDisplayMode.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCEditable.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCExpandMode.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCNumber.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCOrder.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCPrefix.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCRoleName.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCSuffix.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Attributes/TVCToolbar.tcl
+# (Info) Committing transaction (Attributes)
+# (Info) Starting transaction (Types)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Types/TVC.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Types/TVCImageAnnotation.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Types/TVCNumberGenSettings.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Types/TVCView.tcl
+# (Info) Committing transaction (Types)
+# (Info) Starting transaction (Relationships)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Relationships/TVCImageAnnotation.tcl
+# (Info) Committing transaction (Relationships)
+# (Info) Starting transaction (Policies)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Policies/TVCImageAnnotation.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Policies/TVCNumberGenSettings.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Policies/TVCView.tcl
+# (Info) Committing transaction (Policies)
+# (Info) Starting transaction (UI/Commands)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/About.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/ClearCache.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/CollectLogFiles.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/DebugOff.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/DebugOn.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/DebugRequest.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/LogWatcher.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/MQLClient.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/ToggleTrace.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Commands/TVCImageManager.tcl
+Processing "command" "TVC Image Manager"
+# (Info) Committing transaction (UI/Commands)
+# (Info) Starting transaction (UI/Menus)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/UI/Menus/AdminTools.tcl
+# (Info) Committing transaction (UI/Menus)
+# (Info) Running post_install script (UI/Menus)
+Resolved menu_AEFAdminToolsMenu to AdminTools
+Resolved menu_Toolbar to Toolbar
+# (Info) Starting transaction (Data)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/core/db-schema/Data/VersionNumberGenerator.tcl
+# (Info) Committing transaction (Data)
+
+# Installation successfully completed
+# Terminating installation program
+

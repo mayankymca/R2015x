@@ -1,0 +1,2 @@
+mod command PLMAddExtensionCmd href "${COMMON_DIR}/emxIndentedTable.jsp?table=ExtensionToAddListTable&toolbar=PLMExtensionsToolbar&program=emxQualificationProgram:getObjectExtensions&freezePane=extName&selection=multiple&header=Extensions List&showPageURLIcon=false&customize=false&showClipboard=false&objectCompare=false";
+

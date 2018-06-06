@@ -1,0 +1,40 @@
+tcl;
+eval {
+	puts "MyApps-R417HF2-downgrade"
+
+	mql mod type \"Computing Environment\" \
+		rem attribute \"Privacy Language\" \
+		rem attribute \"Cookies Language\" \
+		rem attribute \"Cookies Message\" \
+		rem attribute \"Privacy Message\" \
+		rem attribute \"Environment Cookies\" \
+		rem attribute \"Footer Display\" \
+		rem attribute \"Cookies Notify\" \
+		rem attribute \"Cookies Validity\" \
+		rem attribute \"Casual User\" \
+		rem attribute \"Legal Infos\";
+
+	mql del attribute \"Casual User\";
+	mql del attribute \"Legal Infos\";
+	mql del attribute \"Cookies Validity\";
+	mql del attribute \"Cookies Notify\";
+	mql del attribute \"Privacy Message\";
+	mql del attribute \"Footer Display\";
+	mql del attribute \"Environment Cookies\";
+	mql del attribute \"Cookies Message\";
+	mql del attribute \"Cookies Language\";
+	mql del attribute \"Privacy Language\";
+
+	mql mod relation \"Has Members\" \
+		rem attribute \"CEnv Cookies Acceptance\" \
+		rem attribute \"CEnv Cookies Acceptance Date\" \
+		rem attribute \"User Casual\";
+
+	mql del attribute \"CEnv Cookies Acceptance\";
+	mql del attribute \"CEnv Cookies Acceptance Date\";
+	mql del attribute \"User Casual\";
+
+	puts "MyApps-R417HF2-downgrade completed"
+	exit 0;
+}
+

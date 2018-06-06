@@ -1,0 +1,18 @@
+Name	Registry Name	Description	Pattern	Format	Argument Name (use "|" delim)	Argument Value (use "|" delim)	Code (use "<ESC>" & "<NEWLINE>")	Hidden (boolean)	Icon File
+DCObjectWhereUsed	DCObjectWhereUsed	MQL query returns all objects in which the given object is used	*|*|*|*|*|*|${OID}	${OID}	ID | Version	objectId | 9-5-2-0		FALSE
+DCAllDocumentFiles	DCAllDocumentFiles	MQL query returns all files for a document	*|*|*|*|*|*|${OID}	${OID}	ID | RELATIONSHIP_VERSION | Version	objectId | relationship_Version | 9-5-2-0		FALSE
+DCAllDocumentSheetFiles	DCAllDocumentSheetFiles	MQL query returns all files for a document sheet	*|*|*|*|*|*|${OID}	${OID}	ID | RELATIONSHIP_VERSION | Version	objectId | relationship_Version | 9-5-2-0		FALSE
+DCAllGenericDocumentDocumentSheets	DCAllGenericDocumentDocumentSheets	MQL query returns all sheets for a document	*|*|*|*|*|*|${OID}	${OID}	ID | RELATIONSHIP_DOCUMENTSHEETS | Version	objectId | relationship_DocumentSheets | 9-5-2-0		FALSE
+emxCrystalReportPartType	emxCrystalReportPartType	Sample JPO for use with crystal report to show number of different types of Parts in the system	${TYPE}|${NAME}|${REV}|${partNAME}	str=${TYPE}|str=${partNAME}				FALSE
+APPPotentialSuppliersSummary	APPPotentialSuppliersSummary	List Potential Suppliers of the Company	*|*|*|*|*|*|${OID}|${RELID}	${RELID}~${OID}	ID | REL_SUPPLIER	objectId | relationship_Supplier		FALSE
+TMCFolders	TMCFolders		*|*|*|*|*|*|${BUSID}|${RELID}	${RELID}~${BUSID}	ID | WS_VAULT	dummy | relationship_ProjectVaults		FALSE
+TMCSubFolders	TMCSubFolders		*|*|*|*|*|*|${BUSID}|${RELID}	${RELID}~${BUSID}	ID | SUB_VAULTS	dummy | relationship_SubVaults		FALSE
+SMTServiceSummary	SMTServiceSummary		*|*|*|${OID}	${OID}	type_WebService	type_WebService		FALSE
+SMTServiceDefinition	SMTServiceDefinition		*|*|*|*|*|*|${OID}	${OID}	ID | policy_ServiceDefinitionContent	dummy | policy_ServiceDefinitionContent		FALSE
+SMTAccessibleFolder	SMTAccessibleFolder		*|*|*|*|*|*|${OID}	${OID}	ID | type_ServiceFolder	dummy | type_ServiceFolder		FALSE
+SMTAccessibleService	SMTAccessibleService		*|*|*|*|*|*|${OID}	${OID}	ID | type_WebService	dummy | type_WebService		FALSE
+SMTContainerFolder	SMTContainerFolder		*|*|*|*|*|*|${OID}	${OID}	ID | type_ServiceFolder	dummy | type_ServiceFolder		FALSE
+SMTServiceKeySummary	SMTServiceKeySummary		*|*|*|${OID}	${OID}	attribute_WSKeyApplicationID | type_ServiceKey	attribute_WSKeyApplicationID | type_ServiceKey		FALSE
+PARInterfaceNameInquiry	PARInterfaceNameInquiry	An inquiry to retrieve all parameters owned by the user	${OID}	${OID}				FALSE
+RPTGetMyIssues	RPTGetMyIssues		*|*|*|${OID}	${OID}	TYPE | USER	type_Issue | foo		FALSE
+

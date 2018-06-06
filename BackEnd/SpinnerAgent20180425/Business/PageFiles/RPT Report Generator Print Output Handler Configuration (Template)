@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--+
+    | Print Output Handler Configuration File.
+    | This file contains the template for configuration of Print Output Handlers
+    +-->
+<PrintOutputHandlerConfiguration>
+	
+	<!--+
+		| A flat list of configured printers.
+		| Each printer must have a unique id
+		+-->
+	<Printers>
+		<Printer id="SE_STO_001">
+			<!-- The network path to the configured printer. This printer should be configured and connected in advance.-->
+			<Path>\\printserver01\HP-4000</Path>
+			<!-- A short description of this configuration.-->
+			<Description>Printer on Floor 1</Description>
+		</Printer>
+		<Printer id="SE_STO_002">
+			<Path>\\printserver01\Lexmark-Pro901</Path>
+			<Description>Printer on Floor 2</Description>
+		</Printer>
+		<Printer id="SE_GBG_001">
+			<Path>\\printserver02\Lexmark-Pro3500</Path>
+			<Description>Printer in Gothenburg</Description>
+		</Printer>
+		<Printer id="NO_OSL_001">
+			<Path>\\printserver03\HP-4100</Path>
+			<Description>Printer in Oslo</Description>
+		</Printer>
+	</Printers>
+	
+	<!--+
+		| Printers can also be structured in groups & sub-groups e.g. classifying the printers by location or certain printer characteristics. 
+		| This classification can be used in report pre-process pages for allowing the users to select printers used for printing the report.
+		| The printers used in the groups are referred to their printer id defined above
+		| Printer titles can also be localized by appending the locale suffix to the title attribute (e.g. title_de)
+		+-->
+	<Groups title="Printers" title_de="Drucker">
+		<Group title="Sweden" title_sv="Sverige">
+			<Group title="Stockholm">
+				<PrinterId>SE_STO_001</PrinterId>
+				<PrinterId>SE_STO_002</PrinterId>
+			</Group>
+			<Group title="Gothenburg">
+				<PrinterId>SE_GBG_001</PrinterId>
+			</Group>
+		</Group>
+		<Group title="Norway">
+			<Group title="Oslo">
+				<PrinterId>NO_OSL_001</PrinterId>
+			</Group>
+		</Group>
+	</Groups>
+	
+</PrintOutputHandlerConfiguration>
+

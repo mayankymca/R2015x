@@ -1,0 +1,6 @@
+#-----------------------------------------------------------------------------------------------------------------------
+# This trigger is used to compute and apply a Deployment Extension and/or Customer Extensions when an object is created.
+# Nov 2015 R2015xHF8 (FD05) : Move back the trigger in immediate mode.
+#------------------------------------------------------------------------------------------------------------------------
+mod program emxUnifiedDicoProgram execute immediate;
+

@@ -1,0 +1,122 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+Started	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Started	Owner	FALSE		FALSE	Y	Y	Y	-	-	-	Y	Y	-	-	-	Y	-	-	Y	-	Y	-	-	-	Y	-	Y	Y	Y	-	Y	-	Y	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Started	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Started	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Started	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Started	Route Access Grantor	FALSE		FALSE	Y	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Started	VPLMViewer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Started	VPLMCreator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Started	Route Delegation Grantor	FALSE		FALSE	Y	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Started	Workspace Access Grantor	FALSE		FALSE	Y	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Started	Workspace Lead Grantor	FALSE		FALSE	Y	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Started	Workspace Member Grantor	FALSE		FALSE	Y	Y	Y	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Started	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Started	VPLMAdmin	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Started	VPLMProjectLeader	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Started	Customer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Started	Buyer Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Started	Buyer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Started	Supplier	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Started	Sales Engineer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Initial Review	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	Owner	FALSE		FALSE	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Initial Review	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Initial Review	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Initial Review	Route Access Grantor	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	VPLMViewer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Initial Review	VPLMCreator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Initial Review	Route Delegation Grantor	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	Workspace Access Grantor	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	Workspace Lead Grantor	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	Workspace Member Grantor	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Initial Review	VPLMAdmin	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Initial Review	VPLMProjectLeader	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Initial Review	Customer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Initial Review	Buyer Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Initial Review	Buyer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Initial Review	Supplier	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Initial Review	Sales Engineer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Sent	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Sent	Owner	FALSE		FALSE	-	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Sent	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Sent	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Sent	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Sent	Route Access Grantor	FALSE		FALSE	Y	Y	-	Y	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Sent	VPLMViewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Sent	VPLMCreator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Sent	Route Delegation Grantor	FALSE		FALSE	Y	Y	-	Y	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Sent	Workspace Access Grantor	FALSE		FALSE	Y	Y	-	Y	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Sent	Workspace Lead Grantor	FALSE		FALSE	Y	Y	-	Y	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Sent	Workspace Member Grantor	FALSE		FALSE	Y	Y	-	Y	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Sent	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Sent	VPLMAdmin	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Sent	VPLMProjectLeader	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Sent	Customer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Sent	Buyer Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Sent	Buyer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Sent	Supplier	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Sent	Sales Engineer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Response Complete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	Owner	FALSE		FALSE	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Response Complete	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Response Complete	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Response Complete	Route Access Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	VPLMViewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Response Complete	VPLMCreator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Response Complete	Route Delegation Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	Workspace Access Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	Workspace Lead Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	Workspace Member Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Response Complete	VPLMAdmin	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Response Complete	VPLMProjectLeader	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Response Complete	Customer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Response Complete	Buyer Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Response Complete	Buyer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Response Complete	Supplier	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Response Complete	Sales Engineer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Final Review	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	Owner	FALSE		FALSE	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Final Review	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Final Review	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Final Review	Route Access Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	Y	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	VPLMViewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Final Review	VPLMCreator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Final Review	Route Delegation Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	Y	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	Workspace Access Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	Y	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	Workspace Lead Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	Y	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	Workspace Member Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	Y	Y	-	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Final Review	VPLMAdmin	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Final Review	VPLMProjectLeader	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Final Review	Customer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Final Review	Buyer Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Final Review	Buyer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Final Review	Supplier	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Final Review	Sales Engineer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Complete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Owner	FALSE		FALSE	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Complete	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Complete	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Complete	Route Access Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	VPLMViewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Complete	VPLMCreator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Complete	Route Delegation Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Workspace Access Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Workspace Lead Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Workspace Member Grantor	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Complete	VPLMAdmin	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Complete	VPLMProjectLeader	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Complete	Customer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Complete	Buyer Administrator	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Complete	Buyer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value == attribute[Primary Key]		
+Complete	Supplier	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+Complete	Sales Engineer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user.property[Company Key].value matchlist attribute[Secondary Keys] ,'~' || context.user.property[Company Key].value == attribute[Primary Key]		
+

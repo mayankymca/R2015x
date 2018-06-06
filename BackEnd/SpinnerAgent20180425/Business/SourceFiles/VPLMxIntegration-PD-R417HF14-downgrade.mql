@@ -1,0 +1,65 @@
+tcl;
+eval {
+	puts {Executing VPLMxIntegration-PD-R417HF14-donwgrade.mql...}
+	
+	puts {Cancel mapping parameters modifications...}
+	mql mod bus VPLMInteg-SynchParameters vplm NewTypingVPM \
+	VPLMInteg-TypeMapping "Part|Part Specification,VPMReference\nProducts|Product Specification,VPMReference\nCAD Model|,VPMReference\nViewable|,VPMReference\nLibraries|VPLMInteg-VPLMProjection,ENOCLG_LibraryReference\nClassification|VPLMInteg-VPLMProjection,ENOCLG_ClassReference\nLIN Feature|VPLM Projection,VPMReference\nEquipment Feature|VPLM Projection,VPMReference\nModel|Model Specification,VPMReference\nProduct Line|Product Line Specification,VPMReference\nHardware Product|Product Specification,VPMReference\nLogical Feature|VPLM Projection,VPMReference";
+		
+	mql mod bus VPLMInteg-SynchParameters vplm NewTypingTeam \
+	VPLMInteg-TypeMapping "Part|Part Specification,VPMReference\nProducts|Product Specification,VPMReference\nCAD Model|,VPMReference\nViewable|,VPMReference\nLibraries|VPLMInteg-VPLMProjection,ENOCLG_LibraryReference\nClassification|VPLMInteg-VPLMProjection,ENOCLG_ClassReference\nLIN Feature|VPLM Projection,VPMReference\nEquipment Feature|VPLM Projection,VPMReference\nModel|Model Specification,VPMReference\nProduct Line|Product Line Specification,VPMReference\nHardware Product|Product Specification,VPMReference\nLogical Feature|VPLM Projection,VPMReference";
+
+	set lFormCmd [list mql list table system ENCEBOMIndentedSummarySB select name dump |]
+	set mqlret [catch {eval $lFormCmd} sOut]
+	if {$mqlret == 0} {
+		set lFormCmd [split $sOut "\n"]
+		if {[llength $lFormCmd] == 1} {	
+		mql	mod table ENCEBOMIndentedSummarySB system column mod name VPMVisible \
+					add setting "Column Type" program \
+					add setting "function" getIsVPMVisible \
+					add setting "program" VPLMIntegUpdateIsVPMVisible;
+			puts "INFO: EBOM table ENCEBOMIndentedSummarySB successfuly updated"
+		} else {
+			puts "INFO: Engineering Central is not installed. The table will not be updated."
+		}
+	} else {
+		puts "Error evaluating query $lFormCmd: \n$sOut"
+	}
+
+set lFormCmd [list mql list table system ENCEBOMIndentedSummary select name dump |]
+	set mqlret [catch {eval $lFormCmd} sOut]
+	if {$mqlret == 0} {
+		set lFormCmd [split $sOut "\n"]
+		if {[llength $lFormCmd] == 1} {	
+		mql	mod table ENCEBOMIndentedSummary system column mod name VPMVisible \
+					add setting "Column Type" program \
+					add setting "function" getIsVPMVisible \
+					add setting "program" VPLMIntegUpdateIsVPMVisible;
+			puts "INFO: EBOM table ENCEBOMIndentedSummary successfuly updated"
+		} else {
+			puts "INFO: Engineering Central is not installed. The table will not be updated."
+		}
+	} else {
+		puts "Error evaluating query $lFormCmd: \n$sOut"
+	}		
+
+
+set lFormCmd [list mql list table system PUEUEBOMIndentedSummary select name dump |]
+	set mqlret [catch {eval $lFormCmd} sOut]
+	if {$mqlret == 0} {
+		set lFormCmd [split $sOut "\n"]
+		if {[llength $lFormCmd] == 1} {	
+		mql	mod table PUEUEBOMIndentedSummary system column mod name VPMVisible \
+					add setting "Column Type" program \
+					add setting "function" getIsVPMVisible \
+					add setting "program" VPLMIntegUpdateIsVPMVisible;
+			puts "INFO: EBOM table PUEUEBOMIndentedSummary successfuly updated"
+		} else {
+			puts "INFO: Engineering Central is not installed. The table will not be updated."
+		}
+	} else {
+		puts "Error evaluating query $lFormCmd: \n$sOut"
+	}			
+	puts {VPLMxIntegration-PD-R417HF14-donwgrade.mql - Completed}	
+}
+

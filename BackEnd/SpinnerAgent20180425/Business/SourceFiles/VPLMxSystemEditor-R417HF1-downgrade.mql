@@ -1,0 +1,5 @@
+modify menu type_DELLmiProductionSystemReference label "${NAME} ${REVISION}";
+modify menu type_DELLmiProductionSystemReference add setting "Registered Suite" "Framework";
+modify menu type_DELLmiOperationReference label "${NAME} ${REVISION}";
+modify menu type_DELLmiOperationReference add setting "Registered Suite" "Framework";
+

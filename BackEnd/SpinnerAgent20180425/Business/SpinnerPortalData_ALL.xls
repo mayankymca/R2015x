@@ -1,0 +1,138 @@
+Name	Registry Name	Description	Label	Href	Alt	Setting Name (use "|" delim)	Setting Value (use "|" delim)	Channels (use "," w/ "|" delims)	Hidden (boolean)	Icon File
+PLCProductEngineeringChangePortal	PLCProductEngineeringChangePortal					Registered Suite	ProductLine	PLCProductEngineeringChangeChannel	FALSE
+PLCProductLinePortal	PLCProductLinePortal	Portal to show power view on root node of Product Line and its subtypes.				Registered Suite	ProductLine	PLCProductLineDefaultChannel	FALSE
+PLCProductsPortal	PLCProductsPortal	Portal to show power view on root node of Products and its subtypes.				Registered Suite	ProductLine	PLCProductsDefaultChannel	FALSE
+PLCModelPortal	PLCModelPortal	Portal to show power view on root node of Models and its subtypes.				Registered Suite	ProductLine	PLCModelDefaultChannel	FALSE
+PLCPlanning	PLCPlanning					Registered Suite	ProductLine	PLCPlanning	FALSE
+PLCContent	PLCContent					Registered Suite	ProductLine	PLCContent	FALSE
+PLCCollaboration	PLCCollaboration					Registered Suite	ProductLine	PLCCollaboration	FALSE
+ECMRelatedDocumentsPortal	ECMRelatedDocumentsPortal					Registered Suite	EnterpriseChangeMgt	ECMReferenceDocumentsChannel | ECMSupportingDocumentsChannel	FALSE
+ECMMyChangesPortal	ECMMyChangesPortal		EnterpriseChangeMgt.Label.MyChangesPortal			Registered Suite	EnterpriseChangeMgt	ECMMyChangesTopChannel | ECMMyChangesBottomLeftChannel,ECMMyChangesBottomRightChannel	FALSE
+ECMAffectedItemsPortal	ECMAffectedItemsPortal					Registered Suite	EnterpriseChangeMgt	ECMAffectedItemsChannel | ECMCandidateItemsChannel	FALSE
+ECMChangeAffectedPortal	ECMChangeAffectedPortal					Registered Suite	EnterpriseChangeMgt	ECMChangeAffectedChannel,ECM3DLiveAffectedItemChannel	FALSE
+ECMAffectedItemPortal	ECMAffectedItemPortal					Registered Suite	EnterpriseChangeMgt	ECMAffectedItemsChannel | ECMCandidateItemsChannel	FALSE
+ECMEnterpriseChangeMgtPortal	ECMEnterpriseChangeMgtPortal					Registered Suite	EnterpriseChangeMgt	ECMEnterpriseChangeMgtChannel	FALSE
+ECMCAAffectedItemsPortal	ECMCAAffectedItemsPortal					Registered Suite	EnterpriseChangeMgt	ECMCAAffectedItemsChannel,ECMCA3DLiveAffectedItemChannel	FALSE
+ECMChangePropertyPortal	ECMChangePropertyPortal					Registered Suite	EnterpriseChangeMgt	ECMChangePropertyChannel1,ECMChangePropertyChannel2	FALSE
+ECMChangeContentPortal	ECMChangeContentPortal					Registered Suite	EnterpriseChangeMgt	ECMChangeContentChannel1,ECMChangeContentChannel2	FALSE
+ECMChangeCollaberationPortal	ECMChangeCollaberationPortal					Registered Suite	EnterpriseChangeMgt	ECMChangeCollaberationChannel	FALSE
+ENCECOSummaryView	ENCECOSummaryView					Registered Suite	EngineeringCentral	ENCECOSummaryViewChannel1 | ENCECOSummaryViewChannel2 | ENCECOSummaryViewChannel3	FALSE
+ENCECRSummaryView	ENCECRSummaryView					Registered Suite	EngineeringCentral	ENCECRSummaryViewChannel1 | ENCECRSummaryViewChannel2 | ENCECRSummaryViewChannel3	FALSE
+ENCPartEBOMPortal	ENCPartEBOMPortal					Registered Suite	EngineeringCentral	ENCPartEBOMChannel,APP3DLiveChannel	FALSE
+ENCPartChangeMgtPortal	ENCPartChangeMgtPortal					Registered Suite	EngineeringCentral	ENCPartChangeMgtChannel	FALSE
+ENCPartAltsSubsEquisPortal	ENCPartAltsSubsEquisPortal					Registered Suite	EngineeringCentral	ENCPartAltsSubsEquisChannel	FALSE
+ENCSpecificationChangeMgtPortal	ENCSpecificationChangeMgtPortal					Registered Suite	EngineeringCentral	ENCSpecPortalChangeMgtChannel	FALSE
+ENCSpecificationLifecyclePortal	ENCSpecificationLifecyclePortal					Registered Suite	EngineeringCentral	ENCSpecPortalLifecycleChannel	FALSE
+ENCDerivedView	ENCDerivedView					Registered Suite	EngineeringCentral	ENCDerivedPartsChannel1 | ENCDerivedPartsChannel2	FALSE
+ENCMyENGView	ENCMyENGView	My engineering view portal	My Engineering View					ENCMyENGViewChannel1 | ENCMyENGViewChannel2	FALSE
+ENCAffectedItemPortal	ENCAffectedItemPortal	Engineering Affected Items portal	My Engineering View					ENCAffectedItemsChannel,ENC3DLiveAffectedItemChannel	FALSE
+ENCPartPropertyPortal	ENCPartPropertyPortal					Registered Suite	EngineeringCentral	ENCPartPropertyChannel1,ENCPartPropertyChannel2	FALSE
+ENCSpecsAndDocsPortal	ENCSpecsAndDocsPortal					Registered Suite	EngineeringCentral	ENCSpecsAndDocsChannel	FALSE
+ENCRelatedPartPortal	ENCRelatedPartPortal					Registered Suite	EngineeringCentral	ENCRelatedPartChannel1 | ENCRelatedPartChannel2	FALSE
+ENCPartCollaborationPortal	ENCPartCollaborationPortal					Registered Suite	EngineeringCentral	ENCPartCollaborationChannel	FALSE
+ENCPartEquivalents	ENCPartEquivalents	Part Equivalents View Portal				Registered Suite	EngineeringCentral	ENCPartEquivalentChannel	FALSE
+CPCEquivsPortalforPart	CPCEquivsPortalforPart					Registered Suite	ComponentCentral	CPCEquivsChannelforPart	FALSE
+CPCSEPAltsSubsEquisPortal	CPCSEPAltsSubsEquisPortal					Registered Suite	ComponentCentral	CPCSEPAltsSubsEquisChannel	FALSE
+CPCAVLPortal	CPCAVLPortal					Registered Suite	ComponentCentral	CPCAVLChannel	FALSE
+LBCClassificationPowerView	LBCClassificationPowerView	LBC Classification Power View portal						LBCObjectClassificationBOM | LBCObjectClassificationDetails	FALSE
+ECHDecisionApplicableItems	ECHDecisionApplicableItems					Registered Suite	EnterpriseChange	ECHAppliesToChannel | ECHApplicableItemsChannel	FALSE
+FTRSystemArchitecture	FTRSystemArchitecture					Registered Suite	Configuration	FTRSystemArchitectureChannel	FALSE
+FTRConfigurationRulesPortal	FTRConfigurationRulesPortal					Registered Suite	Configuration	FTRConfigurationRulesChannel	FALSE
+FTRContextViewGBOMPartTablePortal	FTRContextViewGBOMPartTablePortal					Registered Suite	Configuration	FTRContextViewGBOMPartTableChannel	FALSE
+FTRConfigFeatureSplitViewPortal	FTRConfigFeatureSplitViewPortal							FTRConfigFeaturesSplitViewChannel | FTRConfigOptionsSplitViewChannel	FALSE
+FTRProductContextViewGBOMPartTablePortal	FTRProductContextViewGBOMPartTablePortal					Registered Suite	Configuration	FTRProductContextViewGBOMPartTableChannel	FALSE
+FTRModelLogicalViewPortal	FTRModelLogicalViewPortal					Registered Suite	Configuration	FTRModelLogicalViewChannel	FALSE
+FTRModelConfigurationViewPortal	FTRModelConfigurationViewPortal					Registered Suite	Configuration	FTRModelConfigurationViewChannel	FALSE
+FTRModelManufacturingViewPortal	FTRModelManufacturingViewPortal					Registered Suite	Configuration	FTRModelManufacturingViewChannel	FALSE
+FTRConfigurationContextDesignVariantPortal	FTRConfigurationContextDesignVariantPortal					Registered Suite	Configuration	FTRDVConfigurationFeatureContextChannel | FTRDVConfigurationOptionContextChannel	FALSE
+FTRMFSystemArchitecture	FTRMFSystemArchitecture					Registered Suite	Configuration	FTRMFSystemArchitectureChannel	FALSE
+FTRConfigurationDesignVariantPortal	FTRConfigurationDesignVariantPortal					Registered Suite	Configuration	FTRLogicalFeatureWithDVChannel,FTRPVLogicalFeatureWithDVChannel | FTRDVConfigurationFeatureChannel,FTRDVConfigurationOptionChannel	FALSE
+FTRConfigurationFeatureCopyFromPortal	FTRConfigurationFeatureCopyFromPortal					Registered Suite	Configuration	FTRConfigurationFeatureCopyFromFirstStep | FTRConfigurationFeatureCopySecondStep	FALSE
+FTRLogicalFeatureCopyFromPortal	FTRLogicalFeatureCopyFromPortal					Registered Suite	Configuration	FTRLogicalFeatureCopyFromFirstStep | FTRLogicalFeatureCopySecondStep	FALSE
+FTRConfigurationFeatureCopyToPortal	FTRConfigurationFeatureCopyToPortal					Registered Suite	Configuration	FTRConfigurationFeatureCopyToFirstStep | FTRConfigurationFeatureCopySecondStep	FALSE
+FTRLogicalFeatureCopyToPortal	FTRLogicalFeatureCopyToPortal					Registered Suite	Configuration	FTRLogicalFeatureCopyToFirstStep | FTRLogicalFeatureCopySecondStep	FALSE
+CFPManufacturingPlanPortal	CFPManufacturingPlanPortal	Portal to Display all the Manufacturing Plans				Registered Suite	DMCPlanning	CFPManufacturingPlanChannel	FALSE
+CFPModelManufacturingPlanPortal	CFPModelManufacturingPlanPortal	Portal to Display all the Manufacturing Plans In model Context				Registered Suite	DMCPlanning	CFPModelManufacturingPlanChannel	FALSE
+CFPProductManufacturingPlanPortal	CFPProductManufacturingPlanPortal	Portal to Display all the Manufacturing Plans in Product Context				Registered Suite	DMCPlanning	CFPProductManufacturingPlanChannel	FALSE
+PUEECOPortal	PUEECOPortal					Registered Suite	UnresolvedEBOM	PUEECOModBuildChannel	FALSE
+ECCModelEngineeringChangePortal	ECCModelEngineeringChangePortal					Registered Suite	ProductLine	ECCModelEngineeringChangeChannel	FALSE
+DeploymentConfigurationPortal		Deployment Package Portal	emxDataSpecialization.label.DeployPackagePortal			Registered Suite	DataSpecialization	DeploymentExtensionsChannel | DeploymentAttributesChannel	FALSE
+DeploymentUKConfigurationPortal		Deployment Uniqueness Keys Portal	emxDataSpecialization.label.DeployUniquenessKeysPortal			Registered Suite	DataSpecialization	DeploymentUniquenessKeysChannel | DeploymentConstrainedAttributesChannel	FALSE
+ManageUKConfigurationPortal		Manage Uniqueness Keys Portal	emxDataSpecialization.label.ManageUniquenessKeysPortal			Registered Suite	DataSpecialization	ManageUniquenessKeysChannel	FALSE
+ScopesSelectionPortal		Edit Scopes Portal				Registered Suite	DataSpecialization	EditScopesChannel	FALSE
+AEFPowerView	AEFPowerView					Registered Suite	Framework	AEFPowerViewChannel	FALSE
+AEFLifecyclePowerView	AEFLifecyclePowerView	Advance Lifecycle View Portal				Registered Suite	Framework	AEFLifecycleState | AEFLifecycleTaskSignaturesApprovals	FALSE
+AEFStructureComparePortal	AEFStructureComparePortal	Structure Compare Portal	emxFramework.Common.StructureCompare			Registered Suite | Submit	Framework | true	AEFStructureCompareCriteria | AEFStructureCompareResults	FALSE
+IssuePortal	IssuePortal	Issue Portal Menu				Registered Suite	Components	IssueChannel1,IssueChannel2 | IssueChannel3	FALSE
+APPLifecycleReviewPortal	APPLifecycleReviewPortal					Registered Suite	Components	APPLifecycleReviewChannel	FALSE
+APPDecisionWhereUsedPowerView	APPDecisionWhereUsedPowerView					Registered Suite	Components	APPDecisionWhereUsedChannel | APPDecisionWhereUsedRelChannel	FALSE
+APPRoutePowerView	APPRoutePowerView					Registered Suite	Components	APPRouteChannel1 | APPRouteChannel2	FALSE
+APPInboxTaskPowerView	APPInboxTaskPowerView					Registered Suite	Components	APPInboxTaskChannel1 | APPInboxTaskChannel2	FALSE
+TMCMyViewPortal	TMCMyViewPortal					Registered Suite	TeamCentral	TMCMyViewWorkspaceMeetingsChannel | TMCMyViewTasksRoutesChannel	FALSE
+SMTWebServiceSummaryPortal	SMTWebServiceSummaryPortal	Service & Folder Summary Portal	emxWSManagement.Portal.WebServiceSummary.Header			Registered Suite	ServiceManagement	SMTWebServiceSummaryChannel	FALSE
+APPXPPersonAdminPortal		Person Administration	emxPlmOnline.label.Person			Registered Suite	VPLMAdministration	PersonXPChannel	FALSE
+APPXPProjectAdminPortal		Project Administration portal	emxPlmOnline.label.Project			Registered Suite	VPLMAdministration	ProjectXPChannel	FALSE
+APPXPOrganizationAdminPortal		Organization Administration portal	emxPlmOnline.label.Organization			Registered Suite	VPLMAdministration	OrganizationXPChannel	FALSE
+APPXPLocalAdministrationPortal								LocalAdministrationXPChannel	FALSE
+APPVPLMProjectAdminPortal								ProjectVPLMChannel	FALSE
+APPXPRoleAdminPortal								RoleXPChannel	FALSE
+APPXPSecurityContextAdminPortal								SecurityContextXPChannel	FALSE
+APPVPLMPersonAdminPortal								PersonVPLMChannel	FALSE
+APPXPParametrizationPortal		Portal Parametrization	Parametrization			Registered Suite	VPLMAdministration	ParametrizationXPChannel	FALSE
+APPVPLMPeopleAdminPortal		People Administration portal	emxPlmOnline.label.PeopleViewToolbar			Registered Suite	VPLMAdministration	PeopleChannel	FALSE
+APPVPLMResourcesAdminPortal		Resources Administration portal	emxPlmOnline.label.ResourcesViewToolbar			Registered Suite	VPLMAdministration	ResourcesChannel	FALSE
+APPVPLMAccessesAdminPortal		Accesses Administration portal	emxPlmOnline.label.AccessesViewToolbar			Registered Suite	VPLMAdministration	AccessesChannel	FALSE
+APPVPLMModelAdminPortal		Model Administration portal	emxPlmOnline.Portal.ModelAdmin			Registered Suite	Framework	ModelChannel	FALSE
+APPXPPreferencesAdminPortal		Preferences Administration	Manage Options			Registered Suite	Framework	AdminPreferencesXPChannel	FALSE
+ENCMEPEquivalents	ENCMEPEquivalents	MEP Equivalents View Portal				Registered Suite	ManufacturerEquivalentPart	ENCMEPEquivalentChannel	FALSE
+CFFConfigurationCriteria	CFFConfigurationCriteria					Registered Suite	Effectivity	CFFConfigurationContext	FALSE
+PMCProjectSummaryPortal	PMCProjectSummaryPortal					Registered Suite	ProgramCentral	PMCProjectSummaryPortalChannel1 | PMCProjectSummaryPortalChannel2,PMCProjectSummaryPortalChannel3	FALSE
+PMCCalendarView	PMCCalendarView					Registered Suite	ProgramCentral	PMCCalendarViewChannel1	FALSE
+PMCDecisionPowerView	PMCDecisionPowerView	Decision Power View	emxProgramCentral.Common.Decision			Registered Suite	ProgramCentral	PMCDecisions | PMCDecisionsRelatedDecisions	FALSE
+PMCProjectPropertiesPortal	PMCProjectPropertiesPortal	Properties Portal				Registered Suite	ProgramCentral	PMCProjectPropertiesChannel	FALSE
+PMCProjectCollaborationPortal	PMCProjectCollaborationPortal	Collaboration Portal				Registered Suite	ProgramCentral	PMCProjectCollaborationChannel	FALSE
+PMCProjectIssuesRisksPortal	PMCProjectIssuesRisksPortal	Issues&Risks Portal				Registered Suite	ProgramCentral	PMCProjectIssuesRisksChannel	FALSE
+PMCProjectApprovalsRoutesPortal	PMCProjectApprovalsRoutesPortal	Project Approvals & Routes Portal				Registered Suite	ProgramCentral	PMCProjectApprovalsRoutesChannel	FALSE
+PMCWeeklyTimeSheet	PMCWeeklyTimeSheet	My Weekly TimeSheet	emxProgramCentral.WeeklyTimesheet.WeeklyTimeSheet			Registered Suite	ProgramCentral	PMCWeeklyTimeSheet | PMCWeeklyTimeSheetTaskDetails	FALSE
+PMCCollaborationPortal	PMCCollaborationPortal	Collaboration Portal in Gate View	emxFramework.Command.PMCCollaborationPortal			Registered Suite	ProgramCentral	PMCGateCollaborationChannel	FALSE
+PMCDashboardPortal	PMCDashboardPortal	Opens Dashboard Portal	emxFramework.Command.PMCDashboardPortal			Registered Suite	ProgramCentral	PMCDashboardChannel	FALSE
+PMCGateDashboardPortal	PMCGateDashboardPortal	PMCGateDashboardPortal	emxFramework.Command.PMCGateDashboardPortal			Registered Suite	ProgramCentral	PMCGateDashboardChannel1 | PMCGateDashboardChannel2	FALSE
+PMCPropertiesPortal	PMCPropertiesPortal	Properties Portal for Gate View	emxFramework.Command.PMCPropertiesPortal			Registered Suite	ProgramCentral	PMCPropertiesChannel	FALSE
+PMCDefaultGatePortal	PMCDefaultGatePortal	Default Portal for Gate View	PMCDefaultGatePortal			Registered Suite	ProgramCentral	PMCGateDefaultChannel	FALSE
+PMCProjectBudgetPortal	PMCProjectBudgetPortal					Registered Suite	ProgramCentral	PMCProjectBudgetChannel1	FALSE
+PMCGateAndTaskRouteAndApprovalsPortal	PMCGateAndTaskRouteAndApprovalsPortal					Registered Suite	ProgramCentral	PMCGateAndTaskRouteAndApprovalsChannel	FALSE
+PMCProjectFinancialPortal	PMCProjectFinancialPortal	Financial Forecast Portal for Project Benefit and Sale Forecast				Registered Suite	ProgramCentral	PMCProjectFinancialChannel	FALSE
+PMCSCProjectMembersAccessPortal	PMCSCProjectMembersAccessPortal	Project Member Power View	emxProgramCentral.Common.Decision			Registered Suite	ProgramCentral	PMCSCProjectMembersAccessChannel	FALSE
+PMCWBSPortal	PMCWBSPortal	Project WBS Portal with Gantt Chart				Registered Suite	ProgramCentral	PMCWBSChannel	FALSE
+PMCMyCalendar	PMCMyCalendar					Registered Suite	ProgramCentral	PMCMyCalendarChannel	FALSE
+PMCWBSTaskDependencyPortal	PMCWBSTaskDependencyPortal	Task Dependencies PowerView	emxProgramCentral.Common.DependenciesPortal			Registered Suite	ProgramCentral	PMCTaskDependenciesChannel | PMCAddTaskDependenciesChannel	FALSE
+PMCWhatIfPortal	PMCWhatIfPortal							PMCWhatIfProjectChanges,PMCWhatIfExperimentsChannel | PMCWhatIfExperimentsUpdateChannel	FALSE
+PMCObjectives	PMCObjectives	PMCObjectives				Registered Suite	ProgramCentral	PMCObjectives	FALSE
+PMCSchedule	PMCSchedule					Registered Suite	ProgramCentral	PMCSchedule	FALSE
+PMCAccess_ResourcePlan	PMCAccess_ResourcePlan	PMCAccess_ResourcePlan				Registered Suite	ProgramCentral	PMCAccess_ResourcePlan	FALSE
+PMCFinancials	PMCFinancials	PMCFinancials				Registered Suite	ProgramCentral	PMCProjectFinancialChannel	FALSE
+PMCExecution	PMCExecution	PMCExecution				Registered Suite	ProgramCentral	PMCExecution	FALSE
+PMCRiskAssigneeTab	PMCRiskAssigneeTab	PMCRiskAssigneeTab				Registered Suite	ProgramCentral	PMCRiskAssigneeTab	FALSE
+PMCResourcePoolReport	PMCResourcePoolReport	PMCResourcePoolReport				Registered Suite	ProgramCentral	PMCResourcePoolReportData | PMCResourcePoolReportChart	FALSE
+RMTExchangeTracking	RMTExchangeTracking					Registered Suite	Requirements	RMTExchangeTracking	FALSE
+RMTChangeControl	RMTChangeControl					Registered Suite	Requirements	RMTChangeControl	FALSE
+RMTTraceability	RMTTraceability					Registered Suite	Requirements	RMTTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTProperties	RMTProperties					Registered Suite	Requirements	RMTProperties	FALSE
+RMTRelatedObjetcs	RMTRelatedObjetcs					Registered Suite	Requirements	RMTRelatedObjects	FALSE
+RMTSpecificationsExchangeTracking	RMTSpecificationsExchangeTracking					Registered Suite	Requirements	RMTSpecificationsExchangeTracking	FALSE
+RMTSpecificationsChangeControl	RMTSpecificationsChangeControl					Registered Suite	Requirements	RMTSpecificationsChangeControl	FALSE
+RMTSpecificationsTraceability	RMTSpecificationsTraceability					Registered Suite	Requirements	RMTSpecificationsTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTSpecificationsProperties	RMTSpecificationsProperties					Registered Suite	Requirements	RMTSpecificationsProperties	FALSE
+RMTSpecificationRelatedObjetcs	RMTSpecificationRelatedObjetcs					Registered Suite	Requirements	RMTSpecificationRelatedObjects	FALSE
+RMTSpecificationsReqTraceability	RMTSpecificationsReqTraceability					Registered Suite	Requirements	RMTSpecificationsReqTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTSpecificationsFeatureTraceability	RMTSpecificationsFeatureTraceability					Registered Suite	Requirements	RMTSpecificationsFeatureTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTSpecificationsTestCaseTraceability	RMTSpecificationsTestCaseTraceability					Registered Suite	Requirements	RMTSpecificationsTestCaseTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTSpecificationsFunctionalTraceability	RMTSpecificationsFunctionalTraceability					Registered Suite	Requirements	RMTSpecificationsFunctionalTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTSpecificationsLogicalTraceability	RMTSpecificationsLogicalTraceability					Registered Suite	Requirements	RMTSpecificationsLogicalTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTSpecificationsPhysicalTraceability	RMTSpecificationsPhysicalTraceability					Registered Suite	Requirements	RMTSpecificationsPhysicalTraceability | RMTSpecificationsTraceabilityReport	FALSE
+RMTParameterTraceability	RMTParameterTraceability					Registered Suite	Requirements	RMTParameterTraceability | RMTSpecificationsTraceabilityReport	FALSE
+APPWhereUsedPortal	APPWhereUsedPortal					Registered Suite	WhereUsed	APPWhereUsedChannel	FALSE
+PackageConfigurationPortal		Package Configuration portal	emxDataSpecialization.label.PackageConfigPortal			Registered Suite	DataSpecialization	PackageConfigChannel | PackageConfigAttributesChannel	FALSE
+QCCProfilePortal			emxProfile.Common.Profile			Registered Suite	PLMProfile	QCCProfileChannel	FALSE
+QCCPGPortal			emxProfile.Common.PG			Registered Suite	PLMProfile	QCCPGChannel	FALSE
+

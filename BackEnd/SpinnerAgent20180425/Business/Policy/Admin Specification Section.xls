@@ -1,0 +1,26 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+Inactive	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Inactive	Owner	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Inactive	Specification Restricted User	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Inactive	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Inactive	Global Template Administrator	FALSE		FALSE	Y	-	-	Y	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Inactive	Template Header Administrator	FALSE		FALSE	Y	-	-	Y	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Inactive	Template Administrator	FALSE		FALSE	Y	-	-	Y	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Inactive	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Inactive	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Inactive	Specification Manager	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Inactive	Specification Office Manager	FALSE		FALSE	Y	-	-	Y	Y	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[Assigned To Specification Office].businessobject.from[Assigned Member].businessobject.name		
+Inactive	Global User	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	Y	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[CoOwned].businessobject.to[CoOwns].businessobject.name		
+Active	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Active	Owner	FALSE		FALSE	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Active	Specification Restricted User	FALSE		FALSE	Y	Y	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	Y	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Active	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Active	Global Template Administrator	FALSE		FALSE	Y	Y	-	Y	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Active	Template Header Administrator	FALSE		FALSE	Y	Y	-	Y	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Active	Template Administrator	FALSE		FALSE	Y	Y	-	Y	-	-	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Active	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Active	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Active	Specification Manager	FALSE		FALSE	Y	Y	-	-	-	-	-	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	Y	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Active	Specification Office Manager	FALSE		FALSE	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any	context.user ~~ to[Assigned To Specification Office].businessobject.from[Assigned Member].businessobject.name		
+Active	Global User	FALSE		FALSE	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	Y	Y	-	Y	-	-	-	-	-	any	any	any	any	any	any	context.user ~~ to[CoOwned].businessobject.to[CoOwns].businessobject.name		
+

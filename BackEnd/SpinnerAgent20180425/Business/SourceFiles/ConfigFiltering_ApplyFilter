@@ -1,0 +1,11 @@
+tcl;
+eval {
+switch $tcl_platform(os) {
+"Windows NT" {load PLMConfigFilter.dll;}
+"Linux"      {load libPLMConfigFilter.so;}
+"AIX"        {load libPLMConfigFilter.a;}
+"SunOS"      {load libPLMConfigFilter.so;}
+}
+return [ConfigFiltering ApplyFilter ${1} ${2}];
+}
+

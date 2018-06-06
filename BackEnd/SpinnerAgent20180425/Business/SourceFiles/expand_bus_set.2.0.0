@@ -1,0 +1,69 @@
+var params = proc.declareParameters(["setname", "rootids", "relpattern", "typepattern", "recurselevel", "selectbo", "selectrel"],
+	["label", "from", "to", "withroots", "preventduplicates", "fixedpointsids", "size", "terse", "wherebo", "whererel", "dump", "notsubstitute"]);
+
+if ((from && to && !params.getBoolean("from") && !params.getBoolean("to"))
+		|| (from && !to && !params.getBoolean("from"))
+		|| (to && !from && !params.getBoolean("to")))
+{
+	proc.write(label, "Incompatible values for 'to' and 'from': to=" + to + ", from=" + from);
+}
+else
+{	
+	mql.startTransaction(true);
+
+	mql.execute(null, "mod set $1 add bus $2", [setname, JSON.parse(rootids).join()]);
+
+	var cmd = "expand set ";
+	cmd += params.addVar(setname);
+
+	if (params.getBoolean("from"))
+		cmd += " from";
+		
+	if (params.getBoolean("to"))
+		cmd += " to";
+
+	cmd += " relationship" + params.addVar(relpattern);
+	cmd += " type" + params.addVar(typepattern);
+
+	if (fixedpointsids)
+		cmd += " fixedpoints" + params.addVars(JSON.parse(fixedpointsids), ',');
+
+	if (params.getBoolean("withroots"))
+		cmd += " withroots";
+		
+	if (params.getBoolean("preventduplicates"))
+		cmd += " preventduplicates";
+
+	cmd += " recurse to" + params.addVar(recurselevel);
+
+	if (size)
+		cmd += " size" + params.addVar(size);
+
+	if (params.getBoolean("terse"))
+		cmd += " terse";
+
+	cmd += " select businessobject";
+	if (dump || params.getBoolean("notsubstitute"))
+		cmd += " notsubstitute";
+	cmd += params.addVars(JSON.parse(selectbo));
+
+	if (wherebo)
+		cmd += " where" + params.addVar(wherebo);
+
+	cmd += " select relationship";
+	if (dump || params.getBoolean("notsubstitute"))
+		cmd += " notsubstitute";
+	cmd += params.addVars(JSON.parse(selectrel));
+
+	if (whererel)
+		cmd += " where" + params.addVar(whererel);
+
+	if (dump)
+		cmd += " dump" + params.addVar(dump);
+	
+	cmd += " tcl";
+
+	mql.execute(label, cmd, params);
+	mql.abortTransaction();
+}
+

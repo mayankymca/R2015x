@@ -1,0 +1,34 @@
+tcl;
+
+eval {
+    set iFilterRemovedCounter 0
+    set iPersonsProcessedCounter 0
+
+    puts "======================================"
+    puts "About to remove TVC filters from users"
+    puts "======================================"
+
+    set lPersons [split [mql list person] \n]
+    foreach sPerson $lPersons {
+        incr iPersonsProcessedCounter
+        puts "Processing user: '${sPerson}'"
+        mql set workspace user $sPerson
+        set lFilters [split [mql list filter] \n]
+        foreach sFilter $lFilters {
+            if {[string first "\[TVC." $sFilter] == 0} {
+                incr iFilterRemovedCounter
+                puts "\tRemoving filter: '${sFilter}'"
+                mql delete filter $sFilter
+            }
+        }
+    }
+
+    if { $iFilterRemovedCounter > 0 } {
+        puts "Removed ${iFilterRemovedCounter} filters totally, from ${iPersonsProcessedCounter} users"
+        puts "The filters will be updated automatically next time the users uses them from the TVC Structure browser GUI"
+    } else {
+        puts "No filters removed."
+    }
+    puts "Done."
+}
+

@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:widgets xmlns:ds="http://www.3ds.com/enovia/bps/widgets"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xsi:schemaLocation="http://www.3ds.com/enovia/bps/widgets widgets.xsd ">
+
+	<ds:group name="ECM_Channel_MyChangeRequestsAndChangeOrders">
+		<ds:style layout="vertical" width="120px" align="center" />
+		<ds:field name="isHavingReportedAgainstImage" hidden="true">
+			<ds:selectable
+				expression="from[Reported Against Change].to.to[Image Holder].from.id" />
+		</ds:field>
+		<ds:iftrue field="isHavingReportedAgainstImage">
+			<ds:field name="image">
+				<ds:style align="center" />
+				<ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+				<ds:image expression="from[Reported Against Change].to.id"
+					source="primaryImage" size="thumbnail" />
+				<ds:fieldjpo classname="enoECMChangeUtil" function="getBadgeStatusForWidgets"
+					localInvokation="false" />
+			</ds:field>
+		</ds:iftrue>
+		<ds:iffalse field="isHavingReportedAgainstImage">
+			<ds:field name="image2">
+				<ds:style align="center" />
+				<ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+				<ds:image source="primaryOrType" size="thumbnail" />
+				<ds:fieldjpo classname="enoECMChangeUtil" function="getBadgeStatusForWidgets"
+					localInvokation="false" />
+			</ds:field>
+		</ds:iffalse>
+		<ds:group name="Data">
+			<ds:field name="Type">
+				<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="type" format="type" />
+				<ds:sort order="1" sortable="true" />
+			</ds:field>
+			<ds:field name="Name">
+				<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="name" />
+				<ds:sort order="3" sortable="true" />
+			</ds:field>
+			<ds:field name="modified" hidden="true">
+				<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="modified" format="date" />
+				<ds:sort direction="descending" order="2" sortable="true" />
+			</ds:field>
+			<ds:field name="current">
+				<ds:label text="EnterpriseChangeMgt.Common.State" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="current" format="state" />
+				<ds:sort order="4" sortable="true" />
+			</ds:field>
+			<ds:field name="percentComplete">
+				<ds:ui type="progressbar" />
+				<ds:fieldjpo classname="enoECMChangeUtil" function="getProgressStatusForWidgets"
+					localInvokation="false" />
+			</ds:field>
+		</ds:group>
+	</ds:group>
+
+
+	<ds:experience name="ECM_Experience_MyChangeRequestsAndChangeOrders">
+		<ds:label
+			text="emxEnterpriseChangeMgt.WidgetTitle.ECM_Experience_MyChangeRequestsAndChangeOrders"
+			registeredSuite="EnterpriseChangeMgt" />
+		<ds:license products="ENO_ECM_TP" />
+		<ds:availableViews>
+			<ds:view>list</ds:view>
+			<ds:view>channel</ds:view>
+		</ds:availableViews>
+		<ds:list name="ECM_List_MyChangeRequestsAndChangeOrders">
+			<ds:style height="390px" />
+			<ds:jpo>
+				<ds:custom-jpo classname="enoECMChangeUtil"
+					function="getMyChangesForWidget" localInvokation="false"
+					returnedData="ids">
+					<ds:arg arg-name="type" arg-value="type_ChangeRequest,type_ChangeOrder" />
+					<ds:arg arg-name="widgetName" arg-value="CRCOs" />
+				</ds:custom-jpo>
+			</ds:jpo>
+			<ds:ref-group name="ECM_Channel_MyChangeRequestsAndChangeOrders"
+				view="channel" />
+			<ds:group name="Image" view="list">
+				<ds:style layout="vertical" width="16%" />
+				<ds:field name="isHavingReportedAgainstImage" hidden="true">
+					<ds:selectable
+						expression="from[Reported Against Change].to.to[Image Holder].from.id" />
+				</ds:field>
+				<ds:iftrue field="isHavingReportedAgainstImage">
+					<ds:field name="image">
+						<ds:style align="left" />
+						<ds:url target="content"
+							path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+						<ds:image expression="from[Reported Against Change].to.id"
+							source="primaryImage" size="thumbnail" />
+						<ds:fieldjpo classname="enoECMChangeUtil"
+							function="getBadgeStatusForWidgets" localInvokation="false" />
+					</ds:field>
+				</ds:iftrue>
+				<ds:iffalse field="isHavingReportedAgainstImage">
+					<ds:field name="image2">
+						<ds:style align="left" />
+						<ds:url target="content"
+							path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+						<ds:image source="primaryOrType" size="thumbnail" />
+						<ds:fieldjpo classname="enoECMChangeUtil"
+							function="getBadgeStatusForWidgets" localInvokation="false" />
+					</ds:field>
+				</ds:iffalse>
+			</ds:group>
+			<ds:group view="list">
+				<ds:style layout="vertical" height="130px" />
+				<ds:group name="Change_Data">
+					<ds:style layout="horizontal" height="100px" />
+					<ds:group name="MetaData">
+						<ds:style layout="vertical" width="35%" />
+						<ds:field name="Type">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+								registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="type" format="type" />
+							<ds:sort order="1" sortable="true" />
+						</ds:field>
+						<ds:field name="Name">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+								registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="name" />
+							<ds:sort order="3" sortable="true" />
+						</ds:field>
+						<ds:field name="current">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Common.State"
+								registeredSuite="EnterpriseChangeMgt" show="left" />
+							<ds:selectable expression="current" format="state" />
+							<ds:sort order="4" sortable="true" />
+						</ds:field>
+						<ds:field name="EstimatedCompletionDate">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.widget.EstPlannedDate"
+								registeredSuite="EnterpriseChangeMgt" show="left" />
+							<ds:selectable expression="attribute[attribute_EstimatedCompletionDate]"
+								format="date" />
+						</ds:field>
+						<ds:field name="modified" hidden="true">
+							<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+								registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="modified" format="date" />
+							<ds:sort direction="descending" order="2" sortable="true" />
+						</ds:field>
+					</ds:group>
+					<ds:group name="Description">
+						<ds:style align="left" />
+						<ds:style layout="vertical" width="45%" />
+						<ds:field name="owner">
+							<ds:label text="EnterpriseChangeMgt.Common.Owner"
+								registeredSuite="EnterpriseChangeMgt" show="left" />
+							<ds:selectable expression="owner" format="user" />
+						</ds:field>
+						<ds:field name="description">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.Description"
+								show="none" registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="description" />
+						</ds:field>
+					</ds:group>
+					<ds:group>
+						<ds:style layout="vertical" width="20%" />
+						<ds:field name="ChangeActions">
+							<ds:style align="center" />
+                                                                                                                 <ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?DefaultCategory=ECMChangeContent&amp;targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+							<ds:selectable expression="from[Change Action].to.id"
+								format="html" />
+							<ds:fieldjpo classname="enoECMChangeUtil"
+								function="getChangeActionsCountAndLabel" localInvokation="false" />
+						</ds:field>
+					</ds:group>
+				</ds:group>
+				<ds:group name="progress_Bar">
+					<ds:style layout="vertical" width="100%" />
+					<ds:field name="percentComplete">
+						<ds:ui type="progressbar" />
+						<ds:fieldjpo classname="enoECMChangeUtil"
+							function="getProgressStatusForWidgets" localInvokation="false" />
+					</ds:field>
+				</ds:group>
+			</ds:group>
+		</ds:list>
+	</ds:experience>
+
+	<ds:experience name="ECM_Experience_MyChangeActions">
+		<ds:label
+			text="emxEnterpriseChangeMgt.WidgetTitle.ECM_Experience_MyChangeActions"
+			registeredSuite="EnterpriseChangeMgt" />
+		<ds:license products="ENO_ECM_TP" />
+		<ds:availableViews>
+			<ds:view>list</ds:view>
+			<ds:view>channel</ds:view>
+		</ds:availableViews>
+
+		<ds:list name="ECM_List_MyChangeActions">
+			<ds:style height="390px" />
+			<ds:jpo>
+				<ds:custom-jpo classname="enoECMChangeUtil"
+					function="getMyChangesForWidget" localInvokation="false"
+					returnedData="ids">
+					<ds:arg arg-name="type" arg-value="type_ChangeAction" />
+					<ds:arg arg-name="widgetName" arg-value="CAs" />
+				</ds:custom-jpo>
+			</ds:jpo>
+			<ds:ref-group name="ECM_Channel_MyChangeActions" view="channel" />
+			<ds:group name="Image" view="list">
+				<ds:style layout="vertical" width="16%" />
+				<ds:field name="image">
+				<ds:style align="left" />
+					<ds:url target="content"
+						path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+					<ds:image source="primaryOrType" size="thumbnail" />
+					<ds:fieldjpo classname="enoECMChangeUtil"
+						function="getBadgeStatusForChangeActionWidgets" localInvokation="false" />
+				</ds:field>
+			</ds:group>
+			<ds:group view="list">
+				<ds:style layout="vertical" height="130px" />
+				<ds:group name="Change_Data">
+					<ds:style layout="horizontal" height="100px" />
+					<ds:group name="MetaData">
+						<ds:style layout="vertical" width="35%" />
+						<ds:field name="Type">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+								registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="type" format="type" />
+							<ds:sort order="1" sortable="true" />
+						</ds:field>
+						<ds:field name="Name">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+								registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="name" />
+							<ds:sort order="3" sortable="true" />
+						</ds:field>
+						<ds:field name="current">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Common.State"
+								registeredSuite="EnterpriseChangeMgt" show="left" />
+							<ds:selectable expression="current" format="state" />
+							<ds:sort order="4" sortable="true" />
+						</ds:field>
+						<ds:field name="EstimatedCompletionDate">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.widget.EstPlannedDate"
+								registeredSuite="EnterpriseChangeMgt" show="left" />
+							<ds:selectable expression="attribute[attribute_EstimatedCompletionDate]"
+								format="date" />
+						</ds:field>
+						<ds:field name="modified" hidden="true">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+								registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="modified" format="date" />
+							<ds:sort direction="descending" order="2" sortable="true" />
+						</ds:field>
+					</ds:group>
+					<ds:group name="Description">
+					<ds:style align="left" />
+						<ds:style layout="vertical" width="45%" />
+						<ds:field name="owner">
+							<ds:label text="EnterpriseChangeMgt.Common.Owner"
+								registeredSuite="EnterpriseChangeMgt" show="left" />
+							<ds:selectable expression="owner" format="user" />
+						</ds:field>						
+						<ds:field name="description">
+						<ds:style align="left" />
+							<ds:label text="EnterpriseChangeMgt.Label.Description"
+								show="none" registeredSuite="EnterpriseChangeMgt" />
+							<ds:selectable expression="description" />
+						</ds:field>
+					</ds:group>
+					<ds:group>
+						<ds:style layout="vertical" width="20%" />
+						<ds:field name="AffectedItems">
+							<ds:style align="center" />
+                                                                                                                 <ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?DefaultCategory=ECMCAAffectedItems&amp;targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+							<ds:selectable expression="from[Change Affected Item].to.id"
+								format="html" />
+							<ds:fieldjpo classname="enoECMChangeUtil"
+								function="getAffectedItemsCountAndLabel" localInvokation="false" />
+						</ds:field>
+					</ds:group>
+				</ds:group>
+				<ds:group name="progress_Bar">
+					<ds:style layout="vertical" width="100%" />
+					<ds:field name="percentComplete">
+						<ds:ui type="progressbar" />
+						<ds:fieldjpo classname="enoECMChangeUtil"
+							function="getProgressStatusForChangeActionWidgets"
+							localInvokation="false" />
+					</ds:field>
+				</ds:group>
+			</ds:group>
+		</ds:list>
+	</ds:experience>
+
+
+	<ds:group name="ECM_Channel_MyChangeActions">
+		<ds:style layout="vertical" width="120px" align="center" />
+		<ds:field name="image">
+			<ds:style align="center" />
+			<ds:url target="content"
+				path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt" />
+			<ds:image source="primaryOrType" size="thumbnail" />
+			<ds:fieldjpo classname="enoECMChangeUtil"
+				function="getBadgeStatusForChangeActionWidgets" localInvokation="false" />
+		</ds:field>
+		<ds:group name="Data">
+			<ds:field name="Type">
+				<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="type" format="type" />
+				<ds:sort order="1" sortable="true" />
+			</ds:field>
+			<ds:field name="Name">
+				<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="name" />
+				<ds:sort order="3" sortable="true" />
+			</ds:field>
+			<ds:field name="modified" hidden="true">
+				<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:selectable expression="modified" format="date" />
+				<ds:sort direction="descending" order="2" sortable="true" />
+			</ds:field>
+			<ds:field name="current">
+				<ds:label text="EnterpriseChangeMgt.Common.State" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="current" format="state" />
+				<ds:sort order="4" sortable="true" />
+			</ds:field>
+			<ds:field name="percentComplete">
+				<ds:ui type="progressbar" />
+				<ds:fieldjpo classname="enoECMChangeUtil"
+					function="getProgressStatusForChangeActionWidgets" localInvokation="false" />
+			</ds:field>
+		</ds:group>
+	</ds:group>
+
+	<ds:group name="ECM_Channel_MyLegacyChanges">
+		<ds:style layout="vertical" width="120px" align="center" />
+		<ds:field name="isHavingReportedAgainstImage" hidden="true">
+			<ds:selectable
+				expression="from[Reported Against Change].to.to[Image Holder].from.id" />
+		</ds:field>
+		<ds:iftrue field="isHavingReportedAgainstImage">
+			<ds:field name="image">
+				<ds:style align="center" />
+				<ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?targetLocation=content" />
+				<ds:image expression="from[Reported Against Change].to.id"
+					source="primaryImage" size="thumbnail" />
+			</ds:field>
+		</ds:iftrue>
+		<ds:iffalse field="isHavingReportedAgainstImage">
+			<ds:field name="image2">
+				<ds:style layout="vertical" align="center" />
+				<ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?targetLocation=content" />
+				<ds:image source="primaryOrType" size="thumbnail" />
+			</ds:field>
+		</ds:iffalse>
+		<ds:group name="Data">
+			<ds:field name="Type">
+				<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="type" format="type" />
+				<ds:sort order="1" sortable="true" />
+			</ds:field>
+			<ds:field name="Name">
+				<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="name" />
+				<ds:sort order="3" sortable="true" />
+			</ds:field>
+			<ds:field name="modified" hidden="true">
+				<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:selectable expression="modified" format="date" />
+				<ds:sort direction="descending" order="2" sortable="true" />
+			</ds:field>
+			<ds:field name="current">
+				<ds:label text="EnterpriseChangeMgt.Common.State" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="current" format="state" />
+				<ds:sort order="4" sortable="true" />
+			</ds:field>
+		</ds:group>
+	</ds:group>
+
+	<ds:experience name="ECM_Experience_MyLegacyChanges">
+		<ds:label
+			text="emxEnterpriseChangeMgt.WidgetTitle.ECM_Experience_MyLegacyChanges"
+			registeredSuite="EnterpriseChangeMgt" />
+		<ds:license products="ENO_ENG_TP,ENO_XCE_TP,ENO_TBE_TP" />
+		<ds:availableViews>
+			<ds:view>list</ds:view>
+			<ds:view>channel</ds:view>
+		</ds:availableViews>
+
+		<ds:list name="ECM_List_MyLegacyChanges">
+			<ds:style height="360px" />
+			<ds:jpo>
+				<ds:custom-jpo classname="enoECMChangeUtil"
+					function="getMyChangesForWidget" localInvokation="false"
+					returnedData="ids">
+					<ds:arg arg-name="type"
+						arg-value="type_ECR,type_ECO,type_DECO,type_PUEECO,type_ConfiguredChangeAction" />
+					<ds:arg arg-name="widgetName" arg-value="legacyChanges" />
+				</ds:custom-jpo>
+			</ds:jpo>
+			<ds:ref-group name="ECM_Channel_MyLegacyChanges" view="channel" />
+			<ds:group name="Image" view="list">
+				<ds:style layout="vertical" height="120px" />
+				<ds:field name="isHavingReportedAgainstImage" hidden="true">
+					<ds:selectable
+						expression="from[Reported Against Change].to.to[Image Holder].from.id" />
+				</ds:field>
+				<ds:iftrue field="isHavingReportedAgainstImage">
+					<ds:field name="image">
+					<ds:style align="left" />
+						<ds:url target="content"
+							path="../common/emxSecurityContextSelection.jsp?targetLocation=content" />
+						<ds:image expression="from[Reported Against Change].to.id"
+							source="primaryImage" size="thumbnail" />
+					</ds:field>
+				</ds:iftrue>
+				<ds:iffalse field="isHavingReportedAgainstImage">
+					<ds:field name="image2">
+					<ds:style align="left" />
+						<ds:url target="content"
+							path="../common/emxSecurityContextSelection.jsp?targetLocation=content" />
+						<ds:image source="primaryOrType" size="thumbnail" />
+					</ds:field>
+				</ds:iffalse>
+			</ds:group>
+			<ds:group name="MetaData" view="list">
+				<ds:style layout="vertical" height="120px" />
+					<ds:field name="Type">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+							registeredSuite="EnterpriseChangeMgt" />
+						<ds:selectable expression="type" format="type" />
+						<ds:sort order="1" sortable="true" />
+					</ds:field>
+					<ds:field name="Name">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+							registeredSuite="EnterpriseChangeMgt" />
+						<ds:selectable expression="name" />
+						<ds:sort order="3" sortable="true" />
+					</ds:field>
+					<ds:field name="current">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Common.State"
+							registeredSuite="EnterpriseChangeMgt" show="left" />
+						<ds:selectable expression="current" format="state" />
+						<ds:sort order="4" sortable="true" />
+					</ds:field>
+					</ds:group>
+				<ds:group view="list">>
+				<ds:style layout="vertical" height="120px" />
+					<ds:field name="owner">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Common.Owner"
+							registeredSuite="EnterpriseChangeMgt" show="left" />
+						<ds:selectable expression="owner" format="user" />
+					</ds:field>
+					<ds:field name="modified">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+							registeredSuite="EnterpriseChangeMgt" show="left" />
+						<ds:selectable expression="modified" format="date" />
+						<ds:sort direction="descending" order="2" sortable="true" />
+					</ds:field>
+				</ds:group>
+				<ds:group view="list">
+					<ds:field name="description">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.Description"
+							show="none" registeredSuite="EnterpriseChangeMgt" />
+						<ds:selectable expression="description" />
+					</ds:field>
+					<ds:field name="category" hidden="true">
+							<ds:fieldjpo classname="enoECMChangeUtil"
+								function="getAffectedItemsDefaultCommandForLegacyAndMFGChanges"
+								localInvokation="false" />
+						</ds:field>
+				</ds:group>
+				<ds:group view="list">
+				<ds:style layout="vertical" height="120px" />
+					<ds:field name="AffectedItems">
+						<ds:style align="center" />
+						<ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt&amp;DefaultCategory=%category%" />
+						<ds:selectable expression="from[Affected Item].to.id"
+							format="html" />
+						<ds:fieldjpo classname="enoECMChangeUtil"
+							function="getAffectedItemsCountAndLabelForLegacyAndMFGChanges"
+							localInvokation="false" />
+					</ds:field>
+				</ds:group>
+		</ds:list>
+	</ds:experience>
+
+
+	<ds:experience name="ECM_Experience_MyManufacturingChanges">
+		<ds:label
+			text="emxEnterpriseChangeMgt.WidgetTitle.ECM_Experience_MyManufacturingChanges"
+			registeredSuite="EnterpriseChangeMgt" />
+		<ds:license products="ENO_MFG_TP" />
+		<ds:availableViews>
+			<ds:view>list</ds:view>
+			<ds:view>channel</ds:view>
+		</ds:availableViews>
+
+		<ds:list name="ECM_List_MyManufacturingChanges">
+			<ds:style height="360px" />
+			<ds:jpo>
+				<ds:custom-jpo classname="enoECMChangeUtil"
+					function="getMyChangesForWidget" localInvokation="false"
+					returnedData="ids">
+					<ds:arg arg-name="type" arg-value="type_MCO,type_MECO,type_DCR" />
+					<ds:arg arg-name="widgetName" arg-value="manufacturingChanges" />
+				</ds:custom-jpo>
+			</ds:jpo>
+			<ds:ref-group name="ECM_Channel_MyManufacturingChanges"
+				view="channel" />
+			<ds:group name="Image" view="list">
+				<ds:style layout="vertical" height="120px" />
+				<ds:field name="image">
+					<ds:style align="left" />
+					<ds:url target="content"
+						path="../common/emxSecurityContextSelection.jsp?targetLocation=content" />
+					<ds:image source="primaryOrType" size="thumbnail" />
+				</ds:field>
+			</ds:group>
+				<ds:group name="MetaData" view="list">
+					<ds:style layout="vertical" height="120px" />
+					<ds:field name="Type">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+							registeredSuite="EnterpriseChangeMgt" />
+						<ds:selectable expression="type" format="type" />
+						<ds:sort order="1" sortable="true" />
+					</ds:field>
+					<ds:field name="Name">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+							registeredSuite="EnterpriseChangeMgt" />
+						<ds:selectable expression="name" />
+						<ds:sort order="3" sortable="true" />
+					</ds:field>
+					<ds:field name="current">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Common.State"
+							registeredSuite="EnterpriseChangeMgt" show="left" />
+						<ds:selectable expression="current" format="state" />
+						<ds:sort order="4" sortable="true" />
+					</ds:field>
+				</ds:group>
+				<ds:group view="list">
+					<ds:style layout="vertical" height="120px" />				
+					<ds:field name="owner">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Common.Owner"
+							registeredSuite="EnterpriseChangeMgt" show="left" />
+						<ds:selectable expression="owner" format="user" />
+					</ds:field>
+					<ds:field name="modifiedDate">
+					<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+							registeredSuite="EnterpriseChangeMgt" show="left" />
+						<ds:selectable expression="modified" format="date" />
+						<ds:sort direction="descending" order="2" sortable="true" />
+					</ds:field>
+				</ds:group>
+				<ds:group view="list">
+					<ds:field name="description">
+						<ds:style align="left" />
+						<ds:label text="EnterpriseChangeMgt.Label.Description"
+							show="none" registeredSuite="EnterpriseChangeMgt" />
+						<ds:style layout="vertical" height="40px" />
+						<ds:selectable expression="description" />
+					</ds:field>
+					<ds:field name="category" hidden="true">
+							<ds:fieldjpo classname="enoECMChangeUtil"
+								function="getAffectedItemsDefaultCommandForLegacyAndMFGChanges"
+								localInvokation="false" />
+						</ds:field>
+				</ds:group>
+				<ds:group name="AffectedItems" view="list">
+					<ds:iftrue field="Type" value="MCO">
+						<ds:field name="AffectedItems1">
+							<ds:style align="center" />
+							<ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt&amp;DefaultCategory=%category%" />
+							<ds:selectable expression="from[MBOM Change].to.id"
+								format="html" />
+							<ds:fieldjpo classname="enoECMChangeUtil"
+								function="getAffectedItemsCountAndLabelForLegacyAndMFGChanges"
+								localInvokation="false" />
+						</ds:field>
+					</ds:iftrue>
+					<ds:iffalse field="Type" value="MCO">
+						<ds:field name="AffectedItems2">
+							<ds:style align="center" />
+							<ds:url target="content"
+					path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=enterprisechangemgt&amp;suiteKey=EnterpriseChangeMgt&amp;DefaultCategory=%category%" />
+							<ds:selectable expression="from[Affected Item].to.id"
+								format="html" />
+							<ds:fieldjpo classname="enoECMChangeUtil"
+								function="getAffectedItemsCountAndLabelForLegacyAndMFGChanges"
+								localInvokation="false" />
+						</ds:field>
+					</ds:iffalse>
+			</ds:group>
+		</ds:list>
+	</ds:experience>
+
+
+	<ds:group name="ECM_Channel_MyManufacturingChanges">
+		<ds:style layout="vertical" width="120px" align="center" />
+		<ds:field name="image">
+			<ds:style align="center" />
+			<ds:url target="content"
+				path="../common/emxSecurityContextSelection.jsp?targetLocation=content" />
+			<ds:image source="primaryOrType" size="thumbnail" />
+		</ds:field>
+		<ds:group name="Data">
+			<ds:field name="Type">
+				<ds:label text="EnterpriseChangeMgt.Label.Type" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="type" format="type" />
+				<ds:sort order="1" sortable="true" />
+			</ds:field>
+			<ds:field name="Name">
+				<ds:label text="EnterpriseChangeMgt.Label.NAME" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="name" />
+				<ds:sort order="3" sortable="true" />
+			</ds:field>
+			<ds:field name="modifiedDate" hidden="true">
+				<ds:label text="EnterpriseChangeMgt.Label.MODIFIED"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:selectable expression="modified" format="date" />
+				<ds:sort direction="descending" order="2" sortable="true" />
+			</ds:field>
+			<ds:field name="current">
+				<ds:label text="EnterpriseChangeMgt.Common.State" show="none"
+					registeredSuite="EnterpriseChangeMgt" />
+				<ds:style align="center" />
+				<ds:selectable expression="current" format="state" />
+				<ds:sort order="4" sortable="true" />
+			</ds:field>
+		</ds:group>
+	</ds:group>
+
+</ds:widgets>
+

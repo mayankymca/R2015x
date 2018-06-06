@@ -1,0 +1,44 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	VPLMAdmin	TRUE	ExtendedModifyAccessForPLMAdmin	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	VPLMAdmin	TRUE	ExtendedPromoteAccessForPLMAdmin	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	VPLMAdmin	TRUE	ExtendedReadAccessForPLMAdmin	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+allstate	System Transition Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	System Conversion Manager	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	Shadow Agent	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+allstate	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedOwnerReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	context	any	any	any			
+allstate	Global User	FALSE	SecuredGlobalUser	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	ancestor	ancestor	any	any	any	any			
+Exists	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Exists	Public	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	ancestor	any	any	any	public	any	expression[OrganizationPublicAccess]		
+Exists	Public	FALSE	ExtendedShowAccessToPublicUser	FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	last.to[Latest Version].from.current.access[read]~~ true		
+Exists	Owner	TRUE	VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Exists	Owner	TRUE	VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Exists	Owner	FALSE		FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Exists	VPLMCreator	TRUE	CollaborativeAuthoring_VPLMStrictOrgOwnershipIsTRUE2	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+Exists	VPLMAdmin	TRUE	ExtendedCreateAccessForPLMAdmin	FALSE	-	-	Y	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Exists	VPLMCreator	TRUE	ExtendedCreateAccessForPrivateAuthoring	FALSE	-	-	Y	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+Exists	VPLMProjectLeader	TRUE	ExtendedCreateAccessForTechnicalLeader	FALSE	-	-	Y	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Exists	VPLMProjectAdministrator	TRUE	ExtendedModifyAccessForPrjAdmin	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any			
+Exists	VPLMProjectLeader	TRUE	TechnicalLeader_VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Exists	VPLMProjectLeader	TRUE	VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Exists	VPLMCreator	TRUE	CollaborativeAuthoring_VPLMStrictOrgOwnershipIsFALSE1	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any	(!expression[VPLMStrictOwnership_Definition]) && (!expression[VPLMStrictOrgOwnership])		
+Exists	VPLMCreator	TRUE	CollaborativeAuthoring_VPLMStrictOrgOwnershipIsFALSE2	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Exists	VPLMCreator	TRUE	CollaborativeAuthoring_VPLMStrictOrgOwnershipIsTRUE1	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any	(!expression[VPLMStrictOwnership_Definition])		
+Exists	VPLMProjectLeader	TRUE	TechnicalLeader_VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Exists	VPLMProjectLeader	TRUE	VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	any	any	any	(!expression[VPLMStrictOrgOwnership])		
+Exists	Access Grantor	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	Y	-	-	-	Y	-	-	-	-	-	-	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+Exists	VPLMCreator	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Exists	VPLMViewer	FALSE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Exists	VPLMProjectLeader	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Exists	VPLMAdmin	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	-	-	-	Y	Y	-	-	-	-	-	-	-	Y	Y	Y	Y	-	Y	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Exists	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedContextualPrivateReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Exists	VPLMSecuredCrossAccess	FALSE	ExtendedReadAccessForPublicGuest	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	any	any	public	any			
+Exists	Grant	FALSE	grant_key	FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	single	any	any	any	any			
+Exists	Global User	FALSE	owner	FALSE	Y	Y	Y	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	single	single	context	any	any	any			
+Exists	Public Read	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	last.to[Latest Version].from.current.access[checkout] ~~ true		
+Exists	Public Delete	FALSE		FALSE	Y	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	last.to[Latest Version].from.current.access[delete] ~~ true		
+Exists	Public Unlock	FALSE		FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any	locker == context.user		
+Exists	Public Modify	FALSE		FALSE	Y	Y	-	Y	Y	-	Y	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	any	any	any	any	any	(last.to[Latest Version].from.current.access[checkout] ~~ true) && (last.to[Latest Version].from.current.access[checkin] ~~ true)		
+Exists	VPLMLocalCrossPrjContextAccess	FALSE	ExtendedPublicReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	ancestor	any	any	any	public	any	expression[OrganizationPublicAccess]		
+

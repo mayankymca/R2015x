@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:services xmlns:ds="http://www.3ds.com/enovia/e6w"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.3ds.com/enovia/e6w services.xsd ">
+	<ds:field name="FTRModelConfigurationFeatures">
+		<ds:label text="emxProduct.Tree.ConfigurationFeatures" registeredSuite="Configuration" />
+		<ds:url target="popup"
+			path="../common/emxTree.jsp?DefaultCategory=%FTRModelConfigurationView%" />
+		<ds:sort order="1" sortable="true" />
+		<ds:fieldjpo classname="FTRWidgets" function="hasConfigurationFeatures"
+			localInvokation="false" />
+	</ds:field>
+</ds:services>
+

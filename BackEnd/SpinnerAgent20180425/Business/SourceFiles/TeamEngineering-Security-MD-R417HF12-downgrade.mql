@@ -1,0 +1,21 @@
+# File: TeamEngineering-Security-MD-R417HF12-downgrade.mql
+# Description: This file downgrades VPLM security data from R417 HF12 to R417 GA for One-Click
+#
+# MBH 16:06:10 Created file
+# MBH 16:06:10 IR-431646-3DEXPERIENCER2015x : Owner role to assign security context in his CS 
+# MBH 16:06:17 IR-449894-3DEXPERIENCER2015x : demote from the WebUI
+
+# IR-431646-3DEXPERIENCER2015x
+modify policy VPLM_PosResourceRef
+   state DEFAULT
+      remove login VPLMTeamManager key PersonalSettingsAuthorAccess all localfilter "type == 'PLMPosSettingsRef'";
+
+# IR-449894-3DEXPERIENCER2015x
+modify policy VPLM_SMB_Definition allstate remove revoke public key PublicRevokeDemoteAccess demote;
+modify policy VPLM_SMB_Definition_Document allstate remove revoke public key PublicRevokeDemoteAccess demote;
+modify policy VPLM_SMB_Evaluation allstate remove revoke public key PublicRevokeDemoteAccess demote;
+modify policy VPLM_SMB_Resource allstate remove revoke public key PublicRevokeDemoteAccess demote;
+modify policy VPLM_SMB_Task_Management allstate remove revoke public key PublicRevokeDemoteAccess demote;
+modify policy VPLM_SMB_PostIt_Management allstate remove revoke public key PublicRevokeDemoteAccess demote;
+modify policy VPLM_SMB_Action allstate remove revoke public key PublicRevokeDemoteAccess demote;
+

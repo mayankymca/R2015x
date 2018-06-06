@@ -1,0 +1,61 @@
+Format Name	Registry Name	Description	Version	File Suffix	File Creator	File Type	Mime	Hidden (boolean)	Icon File
+mxThumbnail Image	mxThumbnail Image	mxThumbnail Image format.						FALSE
+mxSmall Image	mxSmall Image	mxSmall Image format.						FALSE
+mxMedium Image	mxMedium Image	mxMedium Image format.						FALSE
+mxLarge Image	mxLarge Image	mxLarge Image format.						FALSE
+mxImage	mxImage	mxImage format.						FALSE
+Input	Input	Input format.						FALSE
+Output	Output	Output format.						FALSE
+Log	Log	format used to store log files.						FALSE
+3DXML	3DXML	This saves a 3DXML file which is used in 3DXML player to show a 3D image						FALSE
+generic	generic	this format launches an application using file suffix mapping						FALSE
+prt	prt	Component file format		.prt,.sldprt				FALSE
+asm	asm	Assembly file format		.asm,.sldasm				FALSE
+drw	drw	Drawing file format		.drw				FALSE
+zip	zip	Zip file format		.zip				FALSE
+bom	bom	BOM file format		.zip				FALSE
+Mill	Mill	Milling data file format						FALSE
+Drill	Drill	Drilling data file format						FALSE
+Artwork	Artwork	Artwork data file format						FALSE
+idf	idf	idf file format		.idf				FALSE
+Assembly Placement	Assembly Placement	Assembly Placement data file format						FALSE
+doc	doc	MS Word major type file format		.doc				FALSE
+dot	dot	MS Word minor type file format		.dot				FALSE
+msg	msg	MS Outlook major type file format		.msg				FALSE
+ppa	ppa	MS PPt minor type file format		.ppa				FALSE
+ppt	ppt	MS Powerpoint major type file format		.ppt				FALSE
+xla	xla	MS Excel minor type file format		.xla				FALSE
+xls	xls	MS Excel major type file format		.xls				FALSE
+HPGL	HPGL	HPGL markup format.						FALSE
+IGES	IGES	IGES markup format.						FALSE
+Image	Image	Image format.						FALSE
+Markup	Markup	Brava markup file.		*.mrk				FALSE
+PDF	PDF	PDF markup format.						FALSE
+TIF	TIF	TIF markup format.						FALSE
+TXT	TXT	TXT markup format.						FALSE
+XML	XML	XML markup format.						FALSE
+JT	JT	JT Format						FALSE
+MSDS	MSDS	MSDS Format						FALSE
+Test Method	Test Method	Test Method Format						FALSE
+JView	JView	JView Format						FALSE
+Supplier PDF Content	Supplier PDF Content	Supplier PDF Content Format						FALSE
+THUMBNAIL	THUMBNAIL	This saves a THUMBNAIL						FALSE
+3DXMLCGR	3DXMLCGR	This saves a 3DXMLCGR file						FALSE
+CGR	CGR	This saves a CGR file						FALSE
+PNG	PNG	This saves a PNG file						FALSE
+CGM	CGM	Derived Output format for CGM files						FALSE
+0								FALSE
+1								FALSE
+2								FALSE
+3								FALSE
+4								FALSE
+5								FALSE
+6								FALSE
+7								FALSE
+8								FALSE
+9								FALSE
+TVC Annotated Image	TVC Annotated Image							FALSE
+TVC Annotated Small Image	TVC Annotated Small Image							FALSE
+TVC Annotated Thumbnail Image	TVC Annotated Thumbnail Image							FALSE
+RPT Job	TVCJob							FALSE
+

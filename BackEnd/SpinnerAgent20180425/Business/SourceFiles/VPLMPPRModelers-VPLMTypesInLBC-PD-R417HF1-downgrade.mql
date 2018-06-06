@@ -1,0 +1,29 @@
+tcl;
+eval {
+    puts {VPLMPPRModelers-VPLMTypesInLBC-PD-R417HF1-downgrade.mql - Start}	
+	set mqlret [catch {mql list relationship "Classified Item" select name dump} sOut]
+      puts "Modifying $sOut ..."
+	if {$sOut == "Classified Item"} {
+		set lTypeCmd [list mql list type CATMatReference select name dump |]		
+		set mqlret [catch {eval $lTypeCmd} sOut]
+   		if {$mqlret == 0} {
+        		set lAttr [split $sOut "\n"]
+        		foreach sAttr $lAttr {
+            		set sAttrName [lindex [split $sAttr |] 0]
+				set mqlret [catch {mql modify relationship "Classified Item" to remove type '$sAttrName'} sOut]
+      			if {$mqlret != 0} {
+      				puts "Error modifying relationship Classified Item : \n$sOut "
+      			} else {
+      				puts "Relationship Classified Item successfully updated. \n$sOut "
+      			}
+			}
+		} else {
+        		puts "Error evaluating query $lTypeCmd : \n$sOut"
+    		}        
+	}	
+	puts {VPLMPPRModelers-VPLMTypesInLBC-PD-R417HF1-downgrade.mql - Completed}
+exit 0
+}
+
+
+

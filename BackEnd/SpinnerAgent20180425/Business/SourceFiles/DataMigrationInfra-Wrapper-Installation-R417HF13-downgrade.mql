@@ -1,0 +1,7 @@
+tcl;
+eval {
+    puts {DataMigrationInfra-Wrapper-Installation-R417HF13-downgrade.mql executed}
+ exit 0;
+}
+
+

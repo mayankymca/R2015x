@@ -1,0 +1,8 @@
+# File: CollaborativeDesign-Security-R417HF12-downgrade.mql
+#
+# JIC 16:07:11 Created file
+# JIC 16:07:11 IR IR-456664-3DEXPERIENCER2015x: Unassigned command "APPXPAdministration" from role "Local Administrator"
+
+modify command "APPXPAdministration" 
+    remove user "Local Administrator";
+

@@ -1,0 +1,8 @@
+name	Registry Name	description	attribute	enable	unique	hidden	icon
+Effectivity Report	Effectivity Report	This indexes the start and end effectivity dates	Start Effectivity Date | End Effectivity Date	FALSE	FALSE	FALSE
+CAS Number	CAS Number	Index for ensuring Substance uniqueness in the system	CAS Number	FALSE	FALSE	FALSE
+Description	Description	This indexes the basic field Description		FALSE	FALSE	FALSE
+Is Version Object	Is Version Object	This indexes the Is Version Object Attribute	Is Version Object	FALSE	FALSE	FALSE
+Route Status	Route Status	This indexes the Route Status Attribute	Route Status	FALSE	FALSE	FALSE
+SRIdx1			VPLMatt/VPMPathElement/C_TargetOid | VPLMatt/VPMPathElement/C_TargetType | VPLMatt/VPMPathElement/C_TargetLogicalID | VPLMatt/VPMPathElement/C_HashPrev2 | VPLMatt/VPMPathElement/C_HashPrev1 | VPLMatt/VPMSemanticRelation/C_Semantics	TRUE	FALSE	FALSE
+

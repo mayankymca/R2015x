@@ -1,0 +1,9 @@
+#@ version 1.0 name TVCInitSystemUser symname program_TVCInitSystemUser
+tcl;
+eval {
+    set sProgName [mql get env 0] 
+    set sUserName [mql pri program $sProgName select property\[USER_NAME\].value dump |]
+    set sUserPass [mql pri program $sProgName select property\[USER_PASS\].value dump |]
+    return "$sUserName|$sUserPass"
+}
+

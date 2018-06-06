@@ -1,0 +1,312 @@
+tcl;
+eval {
+	puts {Executing VPLMxIntegration-PD-R417HF15-donwgrade.mql...}
+	puts {Adding programs...}
+     # Get the programs
+	 set lProgs [split "VPLMIntegCfgProductConfigDeleteCheckTrigger,VPLMIntegCfgProductLineDeleteCheckTrigger,VPLMIntegCfgProductLineModelsDeleteCheckTrigger,VPLMIntegCfgProductLineModelsCreateCheckTrigger,VPLMIntegCfgProductBuildDeleteCheckTrigger,VPLMIntegCfgModelTemplateDeleteCheckTrigger,VPLMIntegCfgRelLogicalFeaturesModifyAttributeCheckTrigger,VPLMIntegCfgRelLogicalFeaturesDeleteCheckTrigger" ","] 
+     foreach sProg $lProgs {
+          set progExists [list mql list program $sProg]
+		  set mqlret 0
+          set mqlret [catch {eval $progExists} sOut]
+          if {$mqlret == 0} {
+		  if {$sOut == ""} {
+			set lCmd [list mql add program '$sProg' java]
+			set mqlret 0
+            set mqlret [catch {eval $lCmd} sOut]
+            if {$mqlret != 0} {
+                puts "Error adding program $sProg: \n$sOut"
+            } else {
+                puts "Program $sProg added"
+            }
+		} else {
+				puts "INFO: $sProg already exists"
+			}
+		  }  else {
+			puts "Error evaluating query $progExists: \n$sOut"
+		}
+      }
+	puts {Creating trigger parameter objects...}
+            set boExists [mql temp query bus "eService Trigger Program Parameters" TypeProductConfigVPLMIntegDeleteCheck -;]
+			if {$boExists == ""} {
+            set lCmd [list mql add businessobject 'eService Trigger Program Parameters' TypeProductConfigVPLMIntegDeleteCheck -    \
+                policy 'eService Trigger Program Policy'                                                            \
+                vault 'eService Administration'                                                                     \
+                'eService Program Name' 'VPLMIntegCfgProductConfigDeleteCheckTrigger'                                 \
+                'eService Sequence Number' 1                                                                        \
+                'eService Program Argument 1' "\${OBJECTID}" ;]     
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: TypeProductConfigVPLMIntegDeleteCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  TypeProductConfigVPLMIntegDeleteCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: TypeProductConfigVPLMIntegDeleteCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: TypeProductConfigVPLMIntegDeleteCheck - already exists"
+			}
+
+			set boExists [mql temp query bus "eService Trigger Program Parameters" TypeProductLineVPLMIntegDeleteCheck -;]
+			if {$boExists == ""} {
+            set lCmd [list mql add businessobject 'eService Trigger Program Parameters' TypeProductLineVPLMIntegDeleteCheck -  \
+                policy 'eService Trigger Program Policy'                                                    	\
+                vault 'eService Administration'                                                             	\
+                'eService Program Name' 'VPLMIntegCfgProductLineDeleteCheckTrigger'                               \
+                'eService Sequence Number' 1                                                                	\
+                'eService Program Argument 1' "\${OBJECTID}" ;]
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: TypeProductLineVPLMIntegDeleteCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  TypeProductLineVPLMIntegDeleteCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: TypeProductLineVPLMIntegDeleteCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: TypeProductLineVPLMIntegDeleteCheck - already exists"
+			}
+			
+			set boExists [mql temp query bus "eService Trigger Program Parameters" RelationshipProductLineModelsVPLMIntegDeleteCheck -;]
+			if {$boExists == ""} {
+			set lCmd [list mql add businessobject 'eService Trigger Program Parameters' RelationshipProductLineModelsVPLMIntegDeleteCheck -	\
+                policy 'eService Trigger Program Policy'                                                    					\
+                vault 'eService Administration'                                                             					\
+                'eService Program Name' 'VPLMIntegCfgProductLineModelsDeleteCheckTrigger'                                 		\
+                'eService Sequence Number' 1                                                                					\
+                'eService Program Argument 1' "\${RELID}" ;]
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: RelationshipProductLineModelsVPLMIntegDeleteCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  RelationshipProductLineModelsVPLMIntegDeleteCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: RelationshipProductLineModelsVPLMIntegDeleteCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: RelationshipProductLineModelsVPLMIntegDeleteCheck - already exists"
+			}
+			
+			set boExists [mql temp query bus "eService Trigger Program Parameters" RelationshipProductLineModelsVPLMIntegCreateCheck -;]
+			if {$boExists == ""} {
+            set lCmd [list mql add businessobject 'eService Trigger Program Parameters' RelationshipProductLineModelsVPLMIntegCreateCheck -	\
+                policy 'eService Trigger Program Policy'                                                    					\
+                vault 'eService Administration'                                                             					\
+                'eService Program Name' 'VPLMIntegCfgProductLineModelsCreateCheckTrigger'                                 		\
+                'eService Sequence Number' 3                                                                					\
+                'eService Program Argument 1' "\${RELID}" ;]
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: RelationshipProductLineModelsVPLMIntegCreateCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  RelationshipProductLineModelsVPLMIntegCreateCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: RelationshipProductLineModelsVPLMIntegCreateCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: RelationshipProductLineModelsVPLMIntegCreateCheck - already exists"
+			}
+				
+			set boExists [mql temp query bus "eService Trigger Program Parameters" RelationshipProductBuildVPLMIntegDeleteCheck -;]
+			if {$boExists == ""} {
+			set lCmd [list mql add businessobject 'eService Trigger Program Parameters' RelationshipProductBuildVPLMIntegDeleteCheck -  \
+				policy 'eService Trigger Program Policy'                                                        \
+				vault 'eService Administration'                                                                 \
+				'eService Program Name' 'VPLMIntegCfgProductBuildDeleteCheckTrigger'                               \
+				'eService Sequence Number' 1                                                                    \
+				'eService Program Argument 1' "\${RELID}";]
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: RelationshipProductBuildVPLMIntegDeleteCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  RelationshipProductBuildVPLMIntegDeleteCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: RelationshipProductBuildVPLMIntegDeleteCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: RelationshipProductBuildVPLMIntegDeleteCheck - already exists"
+			}
+			
+			set boExists [mql temp query bus "eService Trigger Program Parameters" RelationshipModelTemplateVPLMIntegDeleteCheck -;]
+			if {$boExists == ""} {
+            set lCmd [list mql add businessobject 'eService Trigger Program Parameters' RelationshipModelTemplateVPLMIntegDeleteCheck -  \
+                policy 'eService Trigger Program Policy'                                                          \
+                vault 'eService Administration'                                                                   \
+                'eService Program Name' 'VPLMIntegCfgModelTemplateDeleteCheckTrigger'                               \
+                'eService Sequence Number' 1                                                                      \
+                'eService Program Argument 1' "\${RELID}" ;]
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: RelationshipModelTemplateVPLMIntegDeleteCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  RelationshipModelTemplateVPLMIntegDeleteCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: RelationshipModelTemplateVPLMIntegDeleteCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: RelationshipModelTemplateVPLMIntegDeleteCheck - already exists"
+			}
+			
+			set boExists [mql temp query bus "eService Trigger Program Parameters" RelationshipLogicalFeaturesVPLMIntegModifyAttributeCheck -;]
+			if {$boExists == ""} {
+			set lCmd [list mql add businessobject 'eService Trigger Program Parameters' RelationshipLogicalFeaturesVPLMIntegModifyAttributeCheck - \
+				policy 'eService Trigger Program Policy'                                                                \
+				vault 'eService Administration'                                                                         \
+				'eService Program Name' 'VPLMIntegCfgRelLogicalFeaturesModifyAttributeCheckTrigger'                              \
+				'eService Sequence Number' 1                                                                            \
+				'eService Program Argument 1' "\${OBJECTID}"                                                            \
+				'eService Program Argument 2' "\${ATTRNAME}";]
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: RelationshipLogicalFeaturesVPLMIntegModifyAttributeCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  RelationshipLogicalFeaturesVPLMIntegModifyAttributeCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: RelationshipLogicalFeaturesVPLMIntegModifyAttributeCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: RelationshipLogicalFeaturesVPLMIntegModifyAttributeCheck - already exists"
+			}
+			
+			set boExists [mql temp query bus "eService Trigger Program Parameters" RelationshipLogicalFeaturesVPLMIntegDeleteCheck -;]
+			if {$boExists == ""} {
+			set lCmd [list mql add businessobject 'eService Trigger Program Parameters' RelationshipLogicalFeaturesVPLMIntegDeleteCheck -  \
+				policy 'eService Trigger Program Policy'                                                        \
+				vault 'eService Administration'                                                                 \
+				'eService Program Name' 'VPLMIntegCfgRelLogicalFeaturesDeleteCheckTrigger'                               \
+				'eService Sequence Number' 1                                                                    \
+				'eService Program Argument 1' "\${OBJECTID}";]
+				set mqlret 0
+				set mqlret [catch {eval $lCmd} sOut]
+				if {$mqlret == 0} {
+					puts "INFO: RelationshipLogicalFeaturesVPLMIntegDeleteCheck - created"
+					set lCmd [list mql promote businessobject 'eService Trigger Program Parameters'  RelationshipLogicalFeaturesVPLMIntegDeleteCheck -;]
+					set mqlret [catch {eval $lCmd} sOut]
+					if {$mqlret == 0} {
+						puts "INFO: RelationshipLogicalFeaturesVPLMIntegDeleteCheck - enabled"
+					} else {
+						puts "Error evaluating query $lCmd: \n$sOut"
+					}
+				} else {
+					puts "Error evaluating query $lCmd: \n$sOut"
+				}
+			} else {
+				puts "INFO: RelationshipLogicalFeaturesVPLMIntegDeleteCheck - already exists"
+			}
+			
+# Retrieve the string list of existing triggers with the specified trigger type and for the same event type of the specified object
+proc getExistingTriggers { objectType objectName eventType triggerType } {
+
+	#puts "DEBUG:getExistingTriggers $objectType $objectName $eventType $triggerType"
+	set outTriggerList []
+	set triggerQueryRes [mql list $objectType $objectName select trigger dump |]
+	set triggerList [split $triggerQueryRes "|"]
+	#puts "DEBUG:getExistingTriggers:triggerList=$triggerList"
+		
+	# Loop on all retrieved triggers
+	foreach triggerLine $triggerList {
+			
+		set curEventTriggerType [lindex [split $triggerLine :] 0]
+		#puts "DEBUG:getExistingTriggers:curEventTriggerType=$curEventTriggerType"
+			
+		# Only retrieve trigger of same type and same event
+		if { [string equal -nocase $curEventTriggerType $eventType$triggerType] == 1 } {	
+			set curProgName [lindex [split $triggerLine :] 1]
+			#puts "DEBUG:getExistingTriggers:curProgName=$curProgName"
+				
+			# Triggers are the inputs of global trigger "emxTriggerManager"
+			set triggerListStartIdx [string first "(" $curProgName]
+			set triggerListEndIdx [string first ")" $curProgName]
+				
+			# Set triggers into a list
+			set outTriggerList [split [string range $curProgName $triggerListStartIdx+1 $triggerListEndIdx-1] " "]
+				
+			# Remove duplicated elements from list
+			set outTriggerList [lsort -ascii -unique $outTriggerList]
+			break
+		}
+	}
+		
+	#puts "DEBUG:getExistingTriggers:outTriggerList=$outTriggerList"
+	return $outTriggerList
+}
+#Append trigger utilities	
+# Append the specified trigger name (if not already existing) to the list of existing trigger with the same trigger type and for the same event type to the specified object
+proc appendTrigger { objectType objectName eventType triggerType triggerName } {
+
+	set objectExists [mql list $objectType $objectName select id dump |]
+	if {$objectExists != ""} {
+		#puts "DEBUG:appendTrigger $objectType $objectName $eventType $triggerType $triggerName"
+		# Retrieve existing triggers for the same event type and same trigger type
+		set existingTriggerList [getExistingTriggers $objectType $objectName $eventType $triggerType];
+		#puts "DEBUG:appendTrigger:existingTriggerList=$existingTriggerList"
+		
+		# Add trigger only if not already defined on object
+		if { [lsearch -ascii -exact $existingTriggerList $triggerName] == -1 } {
+			# Add trigger
+			lappend existingTriggerList $triggerName
+			#puts "DEBUG:appendTrigger:mqlcmd=mql modify $objectType $objectName add trigger $eventType $triggerType \"emxTriggerManager\" input \"$existingTriggerList\";"
+			mql modify $objectType $objectName add trigger $eventType $triggerType "emxTriggerManager" input "$existingTriggerList";
+		} else {
+			puts "INFO:Trigger $triggerName of type $triggerType already set on $objectType $objectName for event $eventType"
+		}
+	} else {
+		puts "INFO: $objectType $objectName does not exist"
+	}
+}
+
+puts {Adding  trigger references from bus types and relationship types}
+	 appendTrigger "type" "Product Configuration" "delete" "check" "TypeProductConfigVPLMIntegDeleteCheck";
+	 appendTrigger "type" "Product Configuration" "delete" "check" "TypeProductLineVPLMIntegDeleteCheck";
+	 appendTrigger "relationship" "Product Configuration" "delete" "check" "RelationshipProductLineModelsVPLMIntegDeleteCheck";
+	 appendTrigger "relationship" "Product Configuration" "delete" "check" "RelationshipProductLineModelsVPLMIntegCreateCheck";
+	 appendTrigger "relationship" "Product Configuration" "delete" "check" "RelationshipProductBuildVPLMIntegDeleteCheck";
+	 appendTrigger "relationship" "Product Configuration" "delete" "check" "RelationshipModelTemplateVPLMIntegDeleteCheck";
+	 appendTrigger "relationship" "Product Configuration" "delete" "check" "RelationshipLogicalFeaturesVPLMIntegModifyAttributeCheck";
+	 appendTrigger "relationship" "Product Configuration" "delete" "check" "RelationshipLogicalFeaturesVPLMIntegDeleteCheck";
+	 appendTrigger "relationship" "Model Template" "delete" "check" "RelationshipModelTemplateVPLMIntegDeleteCheck";
+	 
+	puts {VPLMxIntegration-PD-R417HF15-donwgrade.mql - Completed}	
+}
+

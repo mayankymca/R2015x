@@ -1,0 +1,222 @@
+# *** Copyright Dassault Systemes 2014 ***
+# OWX-2014       - Creation for R2015x Mapping Policy update
+# YWE-2015.05.23 - Switch to Verbose=OFF
+# YWE-2015.10.09 - Process commit by packages of 5000 objects
+
+tcl;
+
+###############################################################
+############## proc checkMarkerStatus #########################
+###############################################################
+proc checkMarkerStatus {sImplementationName bPrint} {
+# return code = 0 => migration already executed
+	set sReturnCode 0
+	set sResult [mql temp query bus VPLMDataMigration $sImplementationName ---]
+	if {$sResult == ""} {
+		set sReturnCode 1
+	} else {
+		set sStatus [mql print bus VPLMDataMigration $sImplementationName --- select attribute\[VPLMsys/MigrationStatus\] dump;];
+		if {$sStatus == "FINISHED"} {
+			set sReturnCode 0
+		} else {
+			set sReturnCode 2
+		}
+	}
+	return $sReturnCode
+}
+
+###############################################################
+############## proc addMarker #################################
+###############################################################
+proc addMarker {sImplementationName state} {
+
+	puts "R2015x_CoexMapping_MigratePolicy - Adding marker $sImplementationName with state $state"
+	
+	set status [checkMarkerStatus $sImplementationName "true"]
+	
+	# 0 BO exists and in FINISHED state
+	# 1 BO doesn't exist
+	# 2 BO exists but not in FINISHED state
+	if {$status == "1"} {
+		set sStatus [mql add bus VPLMDataMigration $sImplementationName --- policy VPLMDataMigration_Policy vault vplm VPLMsys/MigrationStatus $state ;];
+	}
+	
+	if {$status == "2" && $state == "FINISHED"} {
+		set sStatus [mql mod bus VPLMDataMigration $sImplementationName --- VPLMsys/MigrationStatus $state ;];
+	}
+	
+	return 0
+}
+
+###############################################################
+############## MAIN ###########################################
+###############################################################
+eval {
+
+	#necessaire pour avoir un context Matrix ad-hoc pour pouvoir faire des modifications
+	mql push context user creator vault vplm;
+		
+	#Forcer les droits pour traiter les objets VPLM
+	mql mod person creator application VPLM;
+
+	#Desactivation des triggers pour les operations  suivre.
+	mql trigger off;
+
+	mql verbose on;
+	
+	
+###############################################################
+############## proc mqlMigrateMappingReferencePolicy ##########
+###############################################################
+	proc mqlMigrateMappingReferencePolicy {}  {
+		# format attendu {{CATMpgReference} {name} {revision} {{V_SourceIdentifier}} {{V_TargetIdentifier}} {{V_ContextName}} {{id}}}
+		puts "1.0 / R2015x_CoexMapping_MigratePolicy - Initialize transaction"
+		mql start transaction;
+		puts "1.1 / R2015x_CoexMapping_MigratePolicy - Search all CATMpgReference objects"
+		set MappingReferenceList [mql temp query bus CATMpgReference * *  where policy!=VPLM_Replication select attribute\[CATMpgReference.V_SourceIdentifier\] attribute\[CATMpgReference.V_TargetIdentifier\] attribute\[CATMpgReference.V_ContextName\] id dump tcl];
+		
+		set MpgRefDicoSrc [dict create];
+		set MpgRefDicoTgt [dict create];
+		set MpgRefDicoExcluded [dict create];
+		
+## 1/ Loop on all MpgReference to check if any doublon		
+		puts "1.2 / R2015x_CoexMapping_MigratePolicy - Loop on all CATMpgReference to identify doubly objects"
+		foreach mpgRef ${MappingReferenceList} {
+			set SourceId [ join [lindex ${mpgRef} 3] ];
+			set TargetId [ join [lindex ${mpgRef} 4] ]
+			set ContextName [ join [lindex ${mpgRef} 5] ];
+			
+			set Id [ join [lindex ${mpgRef} 6] ];
+			
+			set KeySrc [concat $SourceId $ContextName];
+			set KeyTgt [concat $TargetId $ContextName];
+			
+			puts "1.2.x Check Reference Id  $Id - Src $KeySrc - Tgt $KeyTgt"
+			
+			if {[dict exists $MpgRefDicoSrc $KeySrc]} {
+				set DupId [dict get $MpgRefDicoSrc $KeySrc]
+				# add in excluded dict
+				dict set MpgRefDicoExcluded $DupId $DupId
+				dict set MpgRefDicoExcluded $Id $Id
+				puts "         - *** WNG *** doubly Source object $Id - $ContextName"
+			} else {
+				dict set MpgRefDicoSrc $KeySrc $Id;
+			}					
+			
+			if {[dict exists $MpgRefDicoTgt $KeyTgt]} {
+				set DupId [dict get $MpgRefDicoTgt $KeyTgt]
+				# add in excluded dict
+				dict set MpgRefDicoExcluded $DupId $DupId
+				dict set MpgRefDicoExcluded $Id $Id
+				puts "         - *** WNG *** doubly Target object $Id - $ContextName" ;
+			} else {
+				dict set MpgRefDicoTgt $KeyTgt $Id;
+			}
+			
+		}
+		
+## 2/ Update for all MpgReference which are not doublon	
+		puts "1.3 / R2015x_CoexMapping_MigratePolicy - V1-5 Update CATMpgReference which are not doubly object"
+#		commit done every ProcessedNb=5000 objects	
+		set ProcessedNb 0;
+		foreach mpgRef ${MappingReferenceList} {
+			set ID [ join [lindex ${mpgRef} 6] ];
+			
+			if {[dict exists $MpgRefDicoExcluded $ID]} {
+	 		puts "         - *** WNG *** No Migration on doubly object $ID - Excluded object"
+			} else {
+				mql mod bus $ID policy "VPLM_Replication" ;
+		#		puts "1.3.1 / Migration on Reference $ID" ;
+				set ProcessedNb [expr $ProcessedNb + 1];
+				if { [expr $ProcessedNb] == 5000} {
+					puts "1.3.2 / R2015x_CoexMapping_MigratePolicy - Commit package of 5000 References" ;
+					set ProcessedNb 0;		# initialize a new package
+					# We reach 5000 objects ... commit current transaction/package
+					mql commit transaction;
+					puts "1.3.3 / R2015x_CoexMapping_MigratePolicy - Open a new transaction" ;
+		 			mql start transaction; 
+				}
+			}
+		}
+		# Commit the last package
+		puts "1.4 / R2015x_CoexMapping_MigratePolicy - Commit final package of Reference" ;
+		mql commit transaction;
+	}
+	
+###############################################################
+############## proc mqlMigrateMappingRepresentationPolicy #####
+###############################################################
+	proc mqlMigrateMappingRepresentationPolicy {} {
+		puts "2.0 / R2015x_CoexMapping_MigratePolicy - Initialize transaction"
+		mql start transaction;
+		puts "2.1 / R2015x_CoexMapping_MigratePolicy - Search all CATMpgRepresentation objects"
+
+		# format attendu {{CATMpgRepresentation} {name} {revision} {{id}}}
+		set MappingRepresentationList [mql temp query bus CATMpgRepresentation * *  where policy!=VPLM_Replication select id dump tcl];
+		
+		puts "2.2 / R2015x_CoexMapping_MigratePolicy - Update all CATMpgRepresentation objects"
+#		commit done every ProcessedNb=5000 objects	
+		set ProcessedNb 0;
+		foreach mpgRep ${MappingRepresentationList} {
+			set ID [ join [lindex ${mpgRep} 3] ];
+	#	 	puts "2.2.1 / Migrate Policy on Rep $ID"
+			mql mod bus $ID policy "VPLM_Replication"
+			set ProcessedNb [expr $ProcessedNb + 1];
+			if { [expr $ProcessedNb] == 5000} {
+				puts "2.2.2 / R2015x_CoexMapping_MigratePolicy - Commit package of 5000 Representations"
+				set ProcessedNb 0;		# initialize a new package
+				# We reach 5000 objects ... commit current transaction/package
+				mql commit transaction;
+				puts "2.2.3 / R2015x_CoexMapping_MigratePolicy - Open a new transaction"
+			 	mql start transaction; 
+			}
+		}
+		# Commit the last package
+		puts "2.3 / R2015x_CoexMapping_MigratePolicy - Commit final package of Representation" ;
+		mql commit transaction;
+	}
+###############################################################
+
+	
+	puts "0.1 / R2015x_CoexMapping_MigratePolicy - Start migrating Policy of Coexistence Mapping Table"
+	set ret [addMarker "CoexMappingTablePolicyMigration" "ON_GOING"]
+	set bError 0 ;
+	
+	puts "0.2 / R2015x_CoexMapping_MigratePolicy - Migrate Policy on Reference object"
+	set mqlret [catch { 
+			mqlMigrateMappingReferencePolicy 
+		} sOut ]
+		
+	if {$mqlret == 0}  {
+		puts "ooo ooo ooo  Migration Process successful for Reference objects ... Committing." ;
+	} else {
+		mql abort transaction;
+		puts "*** ERR *** Error Migration Process failed for Reference objects: \n$sOut" ;
+		set bError 1 ;
+	}
+	
+	puts "0.2 / R2015x_CoexMapping_MigratePolicy - Migrate Policy on Representation object"
+	set mqlret [catch { mqlMigrateMappingRepresentationPolicy } sOut ] ;
+	if {$mqlret == 0}  	{
+		puts "Migration Process Successful for Representation objects ... Committing."
+	} else {
+		mql abort transaction;
+		puts "*** ERR *** Error Migration Process failed for Representation objects: \n$sOut" ;
+		set bError 1 ;
+	}
+	
+	if {$bError == 0} {
+		puts "ooo R2015x_CoexMapping_MigratePolicy Successfully end migrating Policy of Coexistence Mapping Table" ;
+		set ret [addMarker "CoexMappingTablePolicyMigration" "FINISHED"] ;
+	} else {
+		puts "*** R2015x_CoexMapping_MigratePolicy Failed migrating Policy of Coexistence Mapping Table" ;
+	}
+	
+	puts "----------------------------------------------------------"
+
+	mql mod person creator application '';
+	mql trigger on;
+	mql verbose off;
+}
+exit;
+

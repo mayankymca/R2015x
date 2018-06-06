@@ -1,0 +1,699 @@
+# VPLM Data migration execution
+
+tcl;
+eval {
+
+proc checkMarkerStatus {sImplementationName bPrint} {
+# return code = 0 => migration already executed
+	set sReturnCode 0
+	set sResult [mql temp query bus VPLMDataMigration $sImplementationName ---]
+	if {$sResult == ""} {
+		set sReturnCode 1
+	} else {
+		set sStatus [mql print bus VPLMDataMigration $sImplementationName --- select attribute\[VPLMsys/MigrationStatus\] dump;];
+		if {$sStatus == "FINISHED"} {
+			if {$bPrint=="true"} {
+				puts "*******************************************************************"
+				puts "Data Migration: $sImplementationName already executed ..."
+			}
+			set sReturnCode 0
+		} else {
+		    if {$bPrint=="true"} {
+				puts "Data Migration: $sImplementationName not complete - Continuing..."
+			}
+			set sReturnCode 2
+		}
+	}
+	return $sReturnCode
+}
+
+proc getHostCompanyName {} {
+    set sMyCompany "MyCompany"
+    set sMyCompanyValues [lindex [mql temporary query businessobject "Company" "$sMyCompany" - select "current" dump | tcl] 0]
+    set sHostCompanyName [lindex $sMyCompanyValues 1]
+    set sHostCompanyStatus [join [lindex $sMyCompanyValues 3]]
+    if { "$sHostCompanyName" != "$sMyCompany" || "$sHostCompanyStatus" == "Inactive" } {
+        set sHostCompanyName [lindex [lindex [lindex [mql print program "eServiceSchemaVariableMapping.tcl" select property\[role_CompanyName\].to dump | tcl] 0] 0] 0]
+        set sHostCompanyName [string range "$sHostCompanyName" 5 [expr [string length "$sHostCompanyName"] - 1]]
+    }    
+    return "$sHostCompanyName"
+}
+
+proc getInstallationType {} {
+	set sInstallType [mql print prog eServiceSystemInformation.tcl select property\[Installation Mode ENOVIA VPM Multi-discipline Collaboration Platform\].value dump]
+	puts "Installation Mode: $sInstallType"
+    return "$sInstallType"
+}
+
+proc getGAVersion {} {
+	set sVersion [mql print prog eServiceSystemInformation.tcl select property\[appVersionENOVIA VPM Multi-discipline Collaboration Platform\].value dump]
+	if {$sVersion ==""} {
+		set sVersion [mql print prog eServiceSystemInformation.tcl select property\[appVersionENOVIA VPM Team Multi-discipline Collaboration Platform\].value dump]
+	}
+	set result ""
+	if {[string match -nocase "*.HF*" $sVersion]} {
+		set fields [split $sVersion "."]
+		set result [lindex $fields 0]
+	} else {
+		set result $sVersion
+	}
+	return $result
+}
+
+
+set EVT_previous_version [mql print program eServiceSystemInformation.tcl select property\[appVersionENOVIA VPM Team Multi-discipline Collaboration Platform\].value dump]
+
+if { "$EVT_previous_version" != ""} {
+	set previous_version $EVT_previous_version
+} else {
+	set previous_version [mql print program eServiceSystemInformation.tcl select property\[appVersionENOVIA VPM Multi-discipline Collaboration Platform\].value dump]
+}
+
+# utilities for MX_CLASSPATH modification "on the fly"  to be able to load dictionary
+proc getSystemParameter {param} {
+	set sResult [mql print system inivar $param]
+	set lValues [split $sResult "="]
+	set sValue [lindex $lValues 1]
+	return [string trim $sValue]
+}
+
+proc change_MXCLASSPATH {} {
+	set currentMxCP [getSystemParameter "MX_CLASSPATH"]
+	set matrixinstall [getSystemParameter "MATRIXINSTALL"]
+	set mxarch [getSystemParameter "MX_ARCH"]
+ 
+	# default : UNIX
+	set OS "UNIX"
+	set classPathdelimiter ":"
+
+	# if Win
+	if {$mxarch=="intel_a" || $mxarch=="win_b64"} {
+		set OS "WIN"
+		set classPathdelimiter ";"
+	}
+
+	#build new MX_CLASSPATH
+	# default: UNIX
+	set CPsuffix "/STAGING/ematrix/WEB-INF/classes"
+	
+	# replaces / by \ on WIN
+	if {"$OS"=="WIN"} {
+	    set CPsuffix [string map {"/" "\x5C"} "$CPsuffix"]
+	}
+
+	# new CP element
+	# remove slash / backslash if exists & Classpath separators
+	if {"$OS"=="WIN"} {
+		set matrixinstall [string trimright $matrixinstall "\x5C"]
+		set currentMxCP [string trimright $currentMxCP $classPathdelimiter]
+		
+	} else {
+		set matrixinstall [string trimright $matrixinstall "/"]
+		set currentMxCP [string trimright $currentMxCP $classPathdelimiter]
+	}
+	
+	# element to be added to current classpath
+	set newCPelement $matrixinstall$CPsuffix
+	
+	# check if current classpath already contains the new elt
+	set lElts [split $currentMxCP $classPathdelimiter]
+	set eltExist 1
+	foreach sElt $lElts {
+		if {$sElt == "$newCPelement"} {
+			set eltExist 0
+			puts "$sElt already exists"
+			break;
+		}
+	}
+
+	if {$eltExist != 0} {
+		set newMxCP $currentMxCP$classPathdelimiter$newCPelement
+		puts "Changing MX_CLASSPATH to: $newMxCP"
+		set ret [mql set system inivar set MX_CLASSPATH $newMxCP]
+	}
+}
+
+# Changing MX_CLASSPATH
+set ret [change_MXCLASSPATH]
+
+# Global RC
+set GlobalRC 0
+
+# list of procedures in error if any
+set error_msg ""
+
+# V6R2012 CATIASystemDisciplines
+if {[checkMarkerStatus "CATIASystemDisciplines" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of CATIASystemDisciplines"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl CATIASystemDisciplines -commit;
+	mql trigger on;
+	puts "Data Migration: CATIASystemDisciplines ended"
+}
+
+if {[checkMarkerStatus "CATIASystemDisciplines" "no"] !=0} {
+	puts "CATIASystemDisciplines migration failed !"
+	append error_msg "CATIASystemDisciplines"
+	incr GlobalRC
+}
+
+# V6R2012 VPLMPosMigrateCompany
+if {[checkMarkerStatus "MigrateCompany" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of VPLMPosMigrateCompany"
+	mql trigger off;
+	mql execute program VPLMPosMigrateCompany;
+	mql trigger on;
+	puts "Data Migration: VPLMPosMigrateCompany ended"
+}
+
+if {[checkMarkerStatus "MigrateCompany" "no"] !=0} {
+	puts "MigrateCompany migration failed !"
+	append error_msg " MigrateCompany"
+	incr GlobalRC
+}
+
+# V6R2014 VPLMPosMigrateCompany2
+if {[checkMarkerStatus "MigrateCompany2" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of VPLMPosMigrateCompany2"
+	mql trigger off;
+	mql execute program VPLMPosMigrateCompany2;
+	mql trigger on;
+	puts "Data Migration: VPLMPosMigrateCompany2 ended"
+}
+
+if {[checkMarkerStatus "MigrateCompany2" "no"] !=0} {
+	puts "MigrateCompany2 migration failed !"
+	append error_msg " MigrateCompany2"
+	incr GlobalRC
+}
+
+# V6R2012x VPLMPosMigrateBO
+if {[checkMarkerStatus "MigrateBO" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of VPLMPosMigrateBO"
+	set sHostCompanyName [getHostCompanyName]
+	mql trigger off;
+	mql execute program VPLMPosMigrateBO admin_platform Welcome1 "VPLMAdmin.$sHostCompanyName.Default";
+	mql trigger on;
+	puts "Data Migration: VPLMPosMigrateBO ended"
+}
+
+if {[checkMarkerStatus "MigrateBO" "no"] !=0} {
+	puts "VPLMPosMigrateBO migration failed !"
+	append error_msg " VPLMPosMigrateBO"
+	incr GlobalRC
+}
+
+# V6R2012x DELMIAPPRDisciplinesMigration
+if {[checkMarkerStatus "DELMIAPPRDisciplinesMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of DELMIAPPRDisciplinesMigration"
+	mql trigger off;
+	mql execute program DataMigration -impl DELMIAPPRDisciplinesMigration -commit;
+	mql trigger on;
+	puts "Data Migration: DELMIAPPRDisciplinesMigration ended"
+}
+
+if {[checkMarkerStatus "DELMIAPPRDisciplinesMigration" "no"] !=0} {
+	puts "DELMIAPPRDisciplines migration failed !"
+	append error_msg " DELMIAPPRDisciplines"
+	incr GlobalRC
+}
+
+# V6R2012 HF2 CATIAFastenerMagnitudeReference
+if {[checkMarkerStatus "CATIAFastenerMagnitudeReference" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of CATIAFastenerMagnitudeReference"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl CATIAFastenerMagnitudeReference -commit;
+	mql trigger on;
+	puts "Data Migration: CATIAFastenerMagnitudeReference ended"
+}
+
+if {[checkMarkerStatus "CATIAFastenerMagnitudeReference" "no"] !=0} {
+	puts "CATIAFastenerMagnitudeReference migration failed !"
+	append error_msg " CATIAFastenerMagnitudeReference"
+	incr GlobalRC
+}
+
+# V6R2012 HF2 CATIAFastenerMagnitudeBeadInstance
+if {[checkMarkerStatus "CATIAFastenerMagnitudeBeadInstance" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of CATIAFastenerMagnitudeBeadInstance"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl CATIAFastenerMagnitudeBeadInstance -commit;
+	mql trigger on;
+	puts "Data Migration: CATIAFastenerMagnitudeBeadInstance ended"
+}
+
+if {[checkMarkerStatus "CATIAFastenerMagnitudeBeadInstance" "no"] !=0} {
+	puts "CATIAFastenerMagnitudeBeadInstance migration failed !"
+	append error_msg " CATIAFastenerMagnitudeBeadInstance"
+	incr GlobalRC
+}
+
+
+# V6R2012x CATIASystemBehaviorDisciplines
+if {[checkMarkerStatus "CATIASystemBehaviorDisciplines" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of CATIASystemBehaviorDisciplines"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl CATIASystemBehaviorDisciplines -commit;
+	mql trigger on;
+	puts "Data Migration: CATIASystemBehaviorDisciplines ended"
+}
+
+if {[checkMarkerStatus "CATIASystemBehaviorDisciplines" "no"] !=0} {
+	puts "CATIASystemBehaviorDisciplines migration failed !"
+	append error_msg " CATIASystemBehaviorDisciplines"
+	incr GlobalRC
+}
+
+# V6R2012x Report from V6R2011x emxPubSubNewRelMigration
+if {([checkMarkerStatus "emxPubSubNewRelMigration" "true"] !=0) && ([getInstallationType] == "VPM")} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of emxPubSubNewRelMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program emxPubSubNewRelMigration -method dataMigration;
+	mql trigger on;
+	puts "Data Migration: emxPubSubNewRelMigration ended"
+}
+
+if {([checkMarkerStatus "emxPubSubNewRelMigration" "no"] !=0) && ([getInstallationType] == "VPM")} {
+	puts "emxPubSubNewRelMigration failed !"
+	append error_msg " emxPubSubNewRelMigration"
+	incr GlobalRC
+}
+
+
+# V6R2012x DocumentUnicornMigration
+if {[checkMarkerStatus "DocumentUnicornMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of DocumentUnicornMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl DocumentUnicornMigration -commit;
+	mql trigger on;
+	puts "Data Migration: DocumentUnicornMigration ended"
+}
+
+if {[checkMarkerStatus "DocumentUnicornMigration" "no"] !=0} {
+	puts "DocumentUnicornMigration failed !"
+	append error_msg " DocumentUnicornMigration"
+	incr GlobalRC
+}
+
+# V6R2013 RMTSRMigration (Requirement Management)
+if {[checkMarkerStatus "RMTSRMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of RMTSRMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl RMTSRMigration -commit;
+	mql trigger on;
+	puts "Data Migration: RMTSRMigration ended"
+}
+
+if {[checkMarkerStatus "RMTSRMigration" "no"] !=0} {
+	puts "RMTSRMigration failed !"
+	append error_msg " RMTSRMigration"
+	incr GlobalRC
+}
+
+# V6R2013x DELMIAManufacturingSetupMigration (VPLMJResourceMigration)
+if {[checkMarkerStatus "DELMIAManufacturingSetupMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of DELMIAManufacturingSetupMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl DELMIAManufacturingSetupMigration -commit;
+	mql trigger on;
+	puts "Data Migration: DELMIAManufacturingSetupMigration ended"
+}
+
+if {[checkMarkerStatus "DELMIAManufacturingSetupMigration" "no"] !=0} {
+	puts "DELMIAManufacturingSetupMigration failed !"
+	append error_msg " DELMIAManufacturingSetupMigration"
+	incr GlobalRC
+}
+
+# V6R2013x PLMExchangeStatusDSNewType (SRM Migration with new typing)
+if {[checkMarkerStatus "PLMExchangeStatusDSNewType" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of PLMExchangeStatusDSNewType"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl PLMExchangeStatusDSNewType -commit;
+	mql trigger on;
+	puts "Data Migration: PLMExchangeStatusDSNewType ended"
+}
+
+if {[checkMarkerStatus "PLMExchangeStatusDSNewType" "no"] !=0} {
+	puts "PLMExchangeStatusDSNewType failed !"
+	append error_msg " PLMExchangeStatusDSNewType"
+	incr GlobalRC
+}
+
+# V6R2014 migration of reference of CATMpgReference mapping
+if {[checkMarkerStatus "CATCoexMappingDBDI_Versions" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of CATCoexMappingDBDI_Versions"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl CATCoexMappingDBDI_Versions -commit;
+	mql trigger on;
+	puts "Data Migration: CATCoexMappingDBDI_Versions ended"
+}
+
+if {[checkMarkerStatus "CATCoexMappingDBDI_Versions" "no"] !=0} {
+	puts "CATCoexMappingDBDI_Versions failed !"
+	append error_msg " CATCoexMappingDBDI_Versions"
+	incr GlobalRC
+}
+
+# V6R2014 migration of project applicability to new persistence pattern
+if {[checkMarkerStatus "MigratePrjApp" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of VPLMPosMigratePrjApp"
+	set sHostCompanyName [getHostCompanyName]
+	mql trigger off;
+	mql execute program VPLMPosMigratePrjApp admin_platform Welcome1 "VPLMAdmin.$sHostCompanyName.Default";
+	mql trigger on;
+	puts "Data Migration: VPLMPosMigratePrjApp ended"
+}
+
+if {[checkMarkerStatus "MigratePrjApp" "no"] !=0} {
+	puts "VPLMPosMigratePrjApp migration failed !"
+	append error_msg " VPLMPosMigratePrjApp"
+	incr GlobalRC
+}
+
+# V6R2014 Support of multi ownership on PnO objects for new security feature
+if {[checkMarkerStatus "MigratePnOOwnership" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of VPLMPosMigratePnOOwnership"
+	mql trigger off;
+	mql execute program VPLMPosMigratePnOOwnership;
+	mql trigger on;
+	puts "Data Migration: VPLMPosMigratePnOOwnership ended"
+}
+
+if {[checkMarkerStatus "MigratePnOOwnership" "no"] !=0} {
+	puts "VPLMPosMigratePnOOwnership failed !"
+	append error_msg " VPLMPosMigratePnOOwnership"
+	incr GlobalRC
+}
+
+# V6R2014 Fastener connections
+if {[checkMarkerStatus "FstMCXMigrationBatch" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of FstMCXMigrationBatch"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl FstMCXMigrationBatch -commit;
+	mql trigger on;
+	puts "Data Migration: FstMCXMigrationBatch ended"
+}
+
+if {[checkMarkerStatus "FstMCXMigrationBatch" "no"] !=0} {
+	puts "FstMCXMigrationBatch failed !"
+	append error_msg " FstMCXMigrationBatch"
+	incr GlobalRC
+}
+
+# V6R2014 Fastener bis
+if {[checkMarkerStatus "FstSpotV2TypeMigrationBatch" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of FstSpotV2TypeMigrationBatch"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl FstSpotV2TypeMigrationBatch -commit;
+	mql trigger on;
+	puts "Data Migration: FstSpotV2TypeMigrationBatch ended"
+}
+
+if {[checkMarkerStatus "FstSpotV2TypeMigrationBatch" "no"] !=0} {
+	puts "FstSpotV2TypeMigrationBatch failed !"
+	append error_msg " FstSpotV2TypeMigrationBatch"
+	incr GlobalRC
+}
+
+# V6R2014 DWS ownership
+if {[checkMarkerStatus "WorkspaceOwnershipMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of WorkspaceOwnershipMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl WorkspaceOwnershipMigration -commit;
+	mql trigger on;
+	puts "Data Migration: WorkspaceOwnershipMigration ended"
+}
+
+if {[checkMarkerStatus "WorkspaceOwnershipMigration" "no"] !=0} {
+	puts "WorkspaceOwnershipMigration failed !"
+	append error_msg " WorkspaceOwnershipMigration"
+	incr GlobalRC
+}
+
+# V6R2014 Semantic Relation on PATH new data model
+if {[checkMarkerStatus "SRonPathNewDataModel" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of SRonPathNewDataModel migration"
+	mql trigger off;
+	mql execute program migration_SRonPath;
+	mql trigger on;
+	puts "Data Migration: SRonPathNewDataModel ended"
+}
+
+if {[checkMarkerStatus "SRonPathNewDataModel" "no"] !=0} {
+	puts "SRonPathNewDataModel migration failed !"
+	append error_msg " SRonPathNewDataModel"
+	incr GlobalRC
+}
+
+# V6R2014x Project Applicability + Multi valuated attributes
+if {[checkMarkerStatus "MigrateCleanPrjApp" "true"] !=0 || [checkMarkerStatus "MigratePrjApp" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of VPLMPosCleanPrjApp migration"
+	set sHostCompanyName [getHostCompanyName]
+	mql trigger off;
+	mql execute program VPLMPosCleanPrjApp "admin_platform" "Welcome1" "VPLMAdmin.$sHostCompanyName.Default";
+	mql trigger on;
+	puts "Data Migration: VPLMPosCleanPrjApp ended"
+}
+
+if {[checkMarkerStatus "MigrateCleanPrjApp" "no"] !=0 || [checkMarkerStatus "MigratePrjApp" "no"] !=0} {
+	puts "VPLMPosCleanPrjApp migration failed !"
+	append error_msg " VPLMPosCleanPrjApp"
+	incr GlobalRC
+}
+
+# V6R2014x DELMIAPPRPortHeadMigration
+if {[checkMarkerStatus "DELMIAPPRPortHeadMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of DELMIAPPRPortHeadMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl DELMIAPPRPortHeadMigration -commit;
+	mql trigger on;
+	puts "Data Migration: DELMIAPPRPortHeadMigration ended"
+}
+
+if {[checkMarkerStatus "DELMIAPPRPortHeadMigration" "no"] !=0} {
+	puts "DELMIAPPRPortHeadMigration failed !"
+	append error_msg " DELMIAPPRPortHeadMigration"
+	incr GlobalRC
+}
+
+# V6R2014x LPABSTRACTFixedInstanceMigration
+if {[checkMarkerStatus "LPABSTRACTFixedInstanceMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of LPABSTRACTFixedInstanceMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl LPABSTRACTFixedInstanceMigration -commit;
+	mql trigger on;
+	puts "Data Migration: LPABSTRACTFixedInstanceMigration ended"
+}
+
+if {[checkMarkerStatus "LPABSTRACTFixedInstanceMigration" "no"] !=0} {
+	puts "LPABSTRACTFixedInstanceMigration failed !"
+	append error_msg " LPABSTRACTFixedInstanceMigration"
+	incr GlobalRC
+}
+
+# V6R2014x Support of multi ownership on PnO objects for new security feature
+if {[checkMarkerStatus "MigratePnOOwnership2" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of VPLMPosMigratePnOOwnership2"
+	mql trigger off;
+	mql execute program VPLMPosMigratePnOOwnership2;
+	mql trigger on;
+	puts "Data Migration: VPLMPosMigratePnOOwnership2 ended"
+}
+
+if {[checkMarkerStatus "MigratePnOOwnership2" "no"] !=0} {
+	puts "VPLMPosMigratePnOOwnership2 failed !"
+	append error_msg " VPLMPosMigratePnOOwnership2"
+	incr GlobalRC
+}
+
+# V6R2014x Multi-valuated attributes migration DMA/KWD
+if {[checkMarkerStatus "KWDDMAMValAttributes" "true"] !=0} {
+	puts "Data Migration: starting execution of migrMValAttributes"
+	mql trigger off;
+	mql exec program emxPLMDictionaryProgram -method migrMValAttributes ;
+	mql trigger on;
+	puts "Data Migration: migrMValAttributes ended"
+}
+
+if {[checkMarkerStatus "KWDDMAMValAttributes" "no"] !=0} {
+	puts "migrMValAttributes failed !"
+	append error_msg " migrMValAttributes"
+	incr GlobalRC
+}
+
+# V6R2014x emxDictionaryAuthorUpdateProgram - TO BE EXECUTED ON EACH VERSION
+set currentVersion [getGAVersion]
+set marker emxDictionaryAuthorUpdateProgram_$currentVersion
+
+if {[checkMarkerStatus $marker "true"] !=0} {
+	puts "Data Migration: starting execution of emxDictionaryAuthorUpdateProgram"
+	mql trigger off;
+	mql exec program emxDictionaryAuthorUpdateProgram -version $currentVersion;
+	mql trigger on;
+	puts "Data Migration: emxDictionaryAuthorUpdateProgram ended"
+}
+
+if {[checkMarkerStatus $marker "no"] !=0} {
+	puts "emxDictionaryAuthorUpdateProgram failed !"
+	append error_msg " emxDictionaryAuthorUpdateProgram"
+	incr GlobalRC
+}
+
+# V6R2014x HF1 VPLMPosMigratePnODiscipline;
+if {[checkMarkerStatus "MigratePnODiscipline" "true"] !=0} {
+	puts "Data Migration: starting execution of VPLMPosMigratePnODiscipline"
+	mql trigger off;
+	mql exec program VPLMPosMigratePnODiscipline ;
+	mql trigger on;
+	puts "Data Migration: VPLMPosMigratePnODiscipline ended"
+}
+
+if {[checkMarkerStatus "MigratePnODiscipline" "no"] !=0} {
+	puts "VPLMPosMigratePnODiscipline failed !"
+	append error_msg " VPLMPosMigratePnODiscipline"
+	incr GlobalRC
+}
+
+# V6R2015x Coexistence Mapping Policy migration
+if {[checkMarkerStatus "CoexMappingTablePolicyMigration" "true"] !=0} {
+    puts "*******************************************************************"
+	puts "Data Migration: starting execution of CoexMapping_MigrationPolicy migration"
+	mql trigger off;
+	mql execute program CoexMapping_MigrationPolicy;
+	mql trigger on;
+	puts "Data Migration: CoexMapping_MigrationPolicy ended"
+}
+
+if {[checkMarkerStatus "CoexMappingTablePolicyMigration" "no"] !=0} {
+	puts "CoexMapping_MigrationPolicy migration failed !"
+	append error_msg " CoexMapping_MigrationPolicy"
+	incr GlobalRC
+}
+
+# V6R2015x NoNameMapping migration DMA/KWD
+  if {[checkMarkerStatus "KWDDMANoNameMapping" "true"] !=0} {
+        puts "Data Migration: starting execution of migrNoNameMapping"
+        mql trigger off;
+        mql exec program emxPLMDictionaryProgram -method migrNoNameMapping;
+        mql trigger on;
+        puts "Data Migration: migrNoNameMapping ended"
+  }
+  
+  if {[checkMarkerStatus "KWDDMANoNameMapping" "no"] !=0} {
+	puts "migrNoNameMapping failed !"
+	append error_msg " migrNoNameMapping"
+	incr GlobalRC
+  }
+  
+ # V6R2015x NoBasicMapping Dataproperties migration for DMA/KWD
+  if {[checkMarkerStatus "DMAKWDDataPropertiesMigration_R417" "true"] !=0} {
+        puts "Data Migration: starting execution of migrBasicsDataProperties "
+        mql trigger off;
+        mql exec prog emxDictionaryAuthorUpdateProgram -method migrBasicsDataProperties;
+        mql trigger on;
+        puts "Data Migration: migrBasicsDataProperties ended"
+  }
+  
+  if {[checkMarkerStatus "DMAKWDDataPropertiesMigration_R417" "no"] !=0} {
+	puts "migrBasicsDataProperties failed !"
+	append error_msg " migrBasicsDataProperties"
+	incr GlobalRC
+  }
+  
+ # V6R2015x FEM discipline migration (for new typing)
+  if {[checkMarkerStatus "FEMDisciplineMigration" "true"] !=0} {
+        puts "Data Migration: starting execution of FEMDisciplineMigration "
+        mql trigger off;
+        mql exec prog FEMDisciplineMigration;
+        mql trigger on;
+        puts "Data Migration: FEMDisciplineMigration ended"
+  }
+  
+  if {[checkMarkerStatus "FEMDisciplineMigration" "no"] !=0} {
+	puts "FEMDisciplineMigration failed !"
+	append error_msg " FEMDisciplineMigration"
+	incr GlobalRC
+  }
+  
+
+  # V6R2015x DELMIAPPRSROnInstanceMigration
+  if {[checkMarkerStatus "DELMIAPPRSROnInstanceMigration" "true"] !=0} {
+	puts "*******************************************************************"
+	puts "Data Migration: starting execution of DELMIAPPRSROnInstanceMigration"
+	mql verbose on;
+	mql trigger off;
+	mql execute program DataMigration -impl DELMIAPPRSROnInstanceMigration -commit;
+	mql trigger on;
+	puts "Data Migration: DELMIAPPRSROnInstanceMigration ended"
+  }
+
+  if {[checkMarkerStatus "DELMIAPPRSROnInstanceMigration" "no"] !=0} {
+	puts "DELMIAPPRSROnInstanceMigration failed !"
+	append error_msg " DELMIAPPRSROnInstanceMigration"
+	incr GlobalRC
+  }
+
+
+
+# Summary
+if {$GlobalRC != 0} {
+    puts ""
+	puts ""
+	puts "*******************************************************************"
+	puts "          VPLM Data Migration failed with $GlobalRC error(s)"
+	puts " Run MQL>exec prog VPLMDataMigration; again to get more information"
+	puts "*******************************************************************"
+	puts ""	
+	return -code error "\nVPLM Data Migration failed with $GlobalRC error(s).\nPlease consult installVPMMultiDiscipline<version>.log for more details.\nProcedure(s) in error: $error_msg"
+
+} else {
+    puts ""
+	puts ""
+	puts "*******************************************************************"
+	puts "               VPLM Data Migration ended successfully"
+	puts "*******************************************************************"
+	puts ""
+	exit 0
+}
+}
+

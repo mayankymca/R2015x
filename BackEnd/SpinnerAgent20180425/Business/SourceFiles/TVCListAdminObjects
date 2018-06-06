@@ -1,0 +1,14 @@
+#@ version 1.0 name TVCListAdminObjects symname program_TVCListAdminObjects
+
+tcl;
+
+eval {
+    set sEvent [mql get env EVENT]
+    set sWhat [mql get env 1]
+    if { $sEvent == "attribute choices" && $sWhat != "" } {
+        set sResult [eval "mql list $sWhat"]
+        mql set env global [mql get env 0] [split $sResult \n]
+    }
+    exit 0
+}
+

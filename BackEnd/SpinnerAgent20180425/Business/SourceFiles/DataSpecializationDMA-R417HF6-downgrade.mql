@@ -1,0 +1,6 @@
+# modify the command of download catnls to remove access function
+
+mod command PackagesConfigurationDownloadNLSCmd
+remove setting "Access Function"
+remove setting "Access Program";
+

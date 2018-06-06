@@ -1,0 +1,23 @@
+# File: TeamEngineering-Security-MD-R417HF9-downgrade.mql
+# Description: This file downgrades VPLM security data from R417 HF9 to R417 GA for One-Click
+#
+# MBH 16:01:04 Created file
+# MBH 16:01:04 IR-401423-3DEXPERIENCER2015x : Personnal settings management
+# MBH 16:02:01 IR-401423-3DEXPERIENCER2015x : Personnal settings management - tuning
+
+# IR-401423-3DEXPERIENCER2015x
+modify policy VPLM_PosResourceRef
+   state DEFAULT
+      remove login owner key PersonalSettingsAccess all single project localfilter "type == 'PLMPosSettingsRef'";
+
+modify policy VPLM_PosResourceRep
+   state DEFAULT
+      login VPLMViewer all related organization;
+
+modify policy VPLM_PosDeliverableCnx
+  state DEFAULT
+   remove login owner key PersonalSettingsAccess all single project localfilter "to[VPLMrel/PLMConnection/V_Owner].from.type == 'PLMPosSettingsRef'";
+
+modify rule VPLM_UNSECURED_REL
+  remove login owner key PersonalSettingsAccess all single project localfilter "from.type == 'PLMPosSettingsRef'";
+

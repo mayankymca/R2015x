@@ -1,0 +1,28 @@
+var params = proc.declareParameters(["mcsurl", "bops"], ["label", "zip"]);
+
+if (params.getBoolean("zip"))
+	cmd = "get checkout ticket zip mcsurl" + params.addVar(mcsurl);
+else
+	cmd = "get checkout ticket nozip mcsurl" + params.addVar(mcsurl);
+
+var allBops = JSON.parse(bops);
+for (var i=0; i<allBops.length; i++)
+{
+	var storeBops = allBops[i];
+	cmd += " store" + params.addVar(storeBops.store);
+	var localBops = storeBops.bops;
+	for (var j=0; j<localBops.length; j++)
+	{
+		var localBop = localBops[j];
+		cmd += " businessobjectproxy physicalid" + params.addVar(localBop.physicalid);
+		cmd += " format" + params.addVar(localBop.format);
+		cmd += " filename" + params.addVar(localBop.filename);
+	}
+}
+
+cmd += " tcl";
+
+mql.startTransaction(true);
+mql.execute(label, cmd, params);
+mql.commitTransaction();
+

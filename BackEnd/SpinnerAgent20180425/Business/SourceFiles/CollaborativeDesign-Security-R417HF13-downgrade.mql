@@ -1,0 +1,9 @@
+# File: CollaborativeDesign-Security-R417HF-upgrade.mql
+#
+# LFE 16:09:20 Created file
+# LFE 16:09:20 IR IR-446798-3DEXPERIENCER2015x: Modify policy VPLM_PosResourceRef for VPMCorporate
+
+modify policy "VPLM_PosResourceRef"
+    state "DEFAULT"
+        remove public key VPMCorporateResourcePublicReadAccess read,show localfilter "name == 'VPMCorporate'" ;
+

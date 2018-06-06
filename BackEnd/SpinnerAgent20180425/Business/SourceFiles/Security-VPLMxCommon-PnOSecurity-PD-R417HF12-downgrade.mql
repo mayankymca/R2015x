@@ -1,0 +1,22 @@
+# File: Security-VPLMxCommon-PnOSecurity-PD-R417HF12-downgrade.mql
+# Description: This file downgrades VPLM security data from R417 HF12 to R417 GA
+#
+# LFE 16:06:01 Created file
+# LFE 16:06:03 IR-446798-3DEXPERIENCER2015x
+
+##
+# IR-446798-3DEXPERIENCER2015x
+##
+modify policy VPLM_PosResourceRef
+    state DEFAULT
+        remove public key ProjectResourcePublicReadAccess read,show localfilter "name == context.role.parent" ;
+
+modify policy VPLM_PosResourceRef
+    state DEFAULT
+        remove public key CorporateResourcePublicReadAccess read,show localfilter "name == 'TeamCorporate'" ;
+
+modify rule VPLM_UNSECURED_REL
+    remove public key PublicReadAccess read,show filter "(from.current.access[$ACCESS])" ;
+#
+##
+

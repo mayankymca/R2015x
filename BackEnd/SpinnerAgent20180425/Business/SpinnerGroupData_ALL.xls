@@ -1,0 +1,23 @@
+Group Name	Registry Name	Description	Parent Groups (use "|" delim)	Child Groups (use "|" delim)	Assignments (use "|" delim)	Site	Hidden (boolean)	Icon File
+Company Name_Supplier		Company Name_Supplier					TRUE
+Company Name_Supplier Representative		Company Name_Supplier Representative					TRUE
+Shadow Agent	Shadow Agent	one shadow agent with ALL permissions exists for every user in the system					TRUE
+Accounts Receivable Department	Accounts Receivable Department	this is the parent group for all Accounting Clerks who promote the Sales orders to the Payment Received state					FALSE
+Build Management	Build Management	They are responsible for managing the Software Build objects					FALSE
+Change Boards	Change Boards	this is the parent group for all change boards that review ECRs					FALSE
+Design Engineering	Design Engineering	Group created for Design Engineers					FALSE
+Distribution Groups	Distribution Groups	this is the parent group for all distribution groups that are notified when an ECO is released					FALSE
+Documentation	Documentation	They are in charge of documenting the Software					FALSE
+Order Entry	Order Entry	Group created for Order Entry Clerks					FALSE
+Product Management	Product Management	Group created for Product Managers					FALSE
+Production Support	Production Support	this is the parent group for all Production Support Clearks that monitor the order as it moves through the manufacturing system					FALSE
+Shipping Department	Shipping Department	this is the parent group for all Shipping Clerks who promote the Sales orders to the Shipped state					FALSE
+Software Change Board	Software Change Board	All Change boards are part of this group, including the CCB					FALSE
+Software Engineering	Software Engineering	They are involved with the entire development process of the Software.					FALSE
+Software Quality Engineering	Software Quality Engineering	They are involved with the entire quality development process of the Software.					FALSE
+Software Release Engineering	Software Release Engineering	They are entirely involved process of Release of the Software.					FALSE
+Project Users	Project Users	Project Users		Project Originators			TRUE
+Project Originators	Project Originators	Project Originators	Project Users				TRUE
+CES_ADMIN	CES_ADMIN	CES Admin User					FALSE
+CES_DESIGN_ADMIN	CES_DESIGN_ADMIN	CES Design User					FALSE
+

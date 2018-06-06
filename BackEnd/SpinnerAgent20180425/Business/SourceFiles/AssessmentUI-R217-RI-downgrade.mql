@@ -1,0 +1,50 @@
+modify table QCCProfileTable system
+column modify 1 name Name label Name;
+
+modify table QCCProfileTable system
+column modify 2 name Description label Description;
+
+modify table QCCProfileTable system
+column modify 3 name Owner label Owner;
+
+modify table QCCProfileTable system
+column modify 4 name "Total KO" label "Total KO";
+modify table QCCProfileTable system
+column modify 4 name "Total KO" setting "Registered Suite" Components;
+
+modify table QCCProfileTable system
+column modify 5 name "TotalOKKO" label "Total";
+modify table QCCProfileTable system
+column modify 5 name "Total" setting "Registered Suite" Components;
+
+modify table QCCProfileTable system
+column modify 6 name "Context" label "Context";
+modify table QCCProfileTable system
+column modify 6 name "Context" setting "Registered Suite" Components;
+
+modify table QCCProfileTable system
+column modify 7 name "Date" label "Date";
+modify table QCCProfileTable system
+column modify 7 name "Date" setting "Registered Suite" Components;
+
+modify table QCCProfileTable system
+column modify 8 name "Validation" label "Validation";
+modify table QCCProfileTable system
+column modify 8 name "Validation" setting "Registered Suite" Components;
+
+modify table QCCProfileTable system
+column modify 9 name State label State;
+modify table QCCProfileTable system
+column modify 9 name State setting "Registered Suite" Components;
+
+modify table QCCSearchChecksTable system
+column modify 1 name Name label Name;
+modify table QCCSearchChecksTable system
+column modify 2 name Description label Description;
+modify table QCCSearchChecksTable system
+column modify 3 name Owner label Owner;
+
+modify command QCCProfileAddPLMCheckCommand label Add;
+
+modify command QCCProfileClosePLMCheckCommand label Cancel;
+

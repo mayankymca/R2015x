@@ -1,0 +1,139 @@
+Rel Name	from.type	from.name	from.revision	to.type	to.name	to.revision	Override Settings	Create Trigger	Modify Trigger	Delete Trigger
+eService Number Generator	eService Object Generator	type_AccessRequest		eService Number Generator	type_AccessRequest	
+eService Number Generator	eService Object Generator	type_Decision		eService Number Generator	type_Decision	
+eService Number Generator	eService Object Generator	type_Meeting		eService Number Generator	type_Meeting	
+eService Number Generator	eService Object Generator	type_Job		eService Number Generator	type_Job	
+eService Number Generator	eService Object Generator	type_PublishSubscribe		eService Number Generator	type_PublishSubscribe	
+eService Number Generator	eService Object Generator	type_Event		eService Number Generator	type_Event	
+eService Number Generator	eService Object Generator	type_InboxTask		eService Number Generator	type_InboxTask	
+eService Number Generator	eService Object Generator	type_Route		eService Number Generator	type_Route	
+eService Number Generator	eService Object Generator	type_RouteTemplate	1	eService Number Generator	type_RouteTemplate	1
+eService Number Generator	eService Object Generator	type_Issue		eService Number Generator	type_Issue	
+eService Number Generator	eService Object Generator	type_DOCUMENTS		eService Number Generator	type_DOCUMENTS	
+eService Number Generator	eService Object Generator	type_MemberList	-	eService Number Generator	type_MemberList	-
+eService Number Generator	eService Object Generator	type_EngineeringChange		eService Number Generator	type_EngineeringChange	
+eService Number Generator	eService Object Generator	type_ImpactAnalysis		eService Number Generator	type_ImpactAnalysis	
+eService Number Generator	eService Object Generator	type_OntoOntology		eService Number Generator	type_OntoOntology	
+eService Number Generator	eService Object Generator	type_OntoNamedConcept		eService Number Generator	type_OntoNamedConcept	
+eService Number Generator	eService Object Generator	type_OntoDataProperty		eService Number Generator	type_OntoDataProperty	
+eService Number Generator	eService Object Generator	type_OntoObjectProperty		eService Number Generator	type_OntoObjectProperty	
+eService Number Generator	eService Object Generator	type_OntoIndividual		eService Number Generator	type_OntoIndividual	
+eService Number Generator	eService Object Generator	type_PlmParameter		eService Number Generator	type_PlmParameter	
+eService Number Generator	eService Object Generator	type_ProjectMember		eService Number Generator	type_ProjectMember	
+eService Number Generator	eService Object Generator	type_ProjectFolder		eService Number Generator	type_ProjectFolder	
+eService Number Generator	eService Object Generator	type_Message		eService Number Generator	type_Message	
+eService Number Generator	eService Object Generator	type_ChangeOrder		eService Number Generator	type_ChangeOrder	
+eService Number Generator	eService Object Generator	type_ChangeAction		eService Number Generator	type_ChangeAction	
+eService Number Generator	eService Object Generator	type_ChangeRequest		eService Number Generator	type_ChangeRequest	
+eService Number Generator	eService Object Generator	type_ChangeTemplate		eService Number Generator	type_ChangeTemplate	
+eService Number Generator	eService Object Generator	type_ComputedParameter		eService Number Generator	type_ComputedParameter	
+eService Number Generator	eService Object Generator	type_PLMResourceSetSubItem		eService Number Generator	type_PLMResourceSetSubItem	
+eService Number Generator	eService Object Generator	type_PLMResourceSetSubItemCriterionValue		eService Number Generator	type_PLMResourceSetSubItemCriterionValue	
+eService Number Generator	eService Object Generator	type_LocationEquivalentObject		eService Number Generator	type_LocationEquivalentObject	
+eService Number Generator	eService Object Generator	type_ApplicationPart	A Size	eService Number Generator	type_ApplicationPart	A Size
+eService Number Generator	eService Object Generator	type_ApplicationPart	B Size	eService Number Generator	type_ApplicationPart	B Size
+eService Number Generator	eService Object Generator	type_ApplicationPart	C Size	eService Number Generator	type_ApplicationPart	C Size
+eService Number Generator	eService Object Generator	type_ApplicationPart	D Size	eService Number Generator	type_ApplicationPart	D Size
+eService Number Generator	eService Object Generator	type_MPN	-	eService Number Generator	type_MPN	-
+eService Number Generator	eService Object Generator	type_DECO		eService Number Generator	type_DECO	
+eService Number Generator	eService Object Generator	type_Part	General Size	eService Number Generator	type_Part	General Size
+eService Number Generator	eService Object Generator	type_ItemMarkup		eService Number Generator	type_ItemMarkup	
+eService Number Generator	eService Object Generator	type_BOMMarkup		eService Number Generator	type_BOMMarkup	
+eService Number Generator	eService Object Generator	type_ECO		eService Number Generator	type_ECO	
+eService Number Generator	eService Object Generator	type_ECR		eService Number Generator	type_ECR	
+eService Number Generator	eService Object Generator	type_Sketch		eService Number Generator	type_Sketch	
+eService Number Generator	eService Object Generator	type_Markup		eService Number Generator	type_Markup	
+eService Number Generator	eService Object Generator	type_EBOMMarkup		eService Number Generator	type_EBOMMarkup	
+eService Number Generator	eService Object Generator	type_Substitute		eService Number Generator	type_Substitute	
+eService Number Generator	eService Object Generator	type_Part	A Size	eService Number Generator	type_Part	A Size
+eService Number Generator	eService Object Generator	type_Part	B Size	eService Number Generator	type_Part	B Size
+eService Number Generator	eService Object Generator	type_Part	C Size	eService Number Generator	type_Part	C Size
+eService Number Generator	eService Object Generator	type_Part	D Size	eService Number Generator	type_Part	D Size
+eService Number Generator	eService Object Generator	type_DrawingPrint	A Size	eService Number Generator	type_Part	A Size
+eService Number Generator	eService Object Generator	type_DrawingPrint	B Size	eService Number Generator	type_Part	B Size
+eService Number Generator	eService Object Generator	type_DrawingPrint	C Size	eService Number Generator	type_Part	C Size
+eService Number Generator	eService Object Generator	type_DrawingPrint	D Size	eService Number Generator	type_Part	D Size
+eService Number Generator	eService Object Generator	type_CADModel	A Size	eService Number Generator	type_Part	A Size
+eService Number Generator	eService Object Generator	type_CADModel	B Size	eService Number Generator	type_Part	B Size
+eService Number Generator	eService Object Generator	type_CADModel	C Size	eService Number Generator	type_Part	C Size
+eService Number Generator	eService Object Generator	type_CADModel	D Size	eService Number Generator	type_Part	D Size
+eService Number Generator	eService Object Generator	type_CADDrawing	A Size	eService Number Generator	type_Part	A Size
+eService Number Generator	eService Object Generator	type_CADDrawing	B Size	eService Number Generator	type_Part	B Size
+eService Number Generator	eService Object Generator	type_CADDrawing	C Size	eService Number Generator	type_Part	C Size
+eService Number Generator	eService Object Generator	type_CADDrawing	D Size	eService Number Generator	type_Part	D Size
+eService Number Generator	eService Object Generator	type_Image		eService Number Generator	type_Image	
+eService Number Generator	eService Object Generator	type_Model		eService Number Generator	type_Model	
+eService Number Generator	eService Object Generator	type_TestCase		eService Number Generator	type_TestCase	
+eService Number Generator	eService Object Generator	type_ProductLine		eService Number Generator	type_ProductLine	
+eService Number Generator	eService Object Generator	type_Products		eService Number Generator	type_Products	
+eService Number Generator	eService Object Generator	type_SoftwareBuild		eService Number Generator	type_SoftwareBuild	
+eService Number Generator	eService Object Generator	type_HardwareBuild		eService Number Generator	type_HardwareBuild	
+eService Number Generator	eService Object Generator	type_Document		eService Number Generator	type_Document	
+eService Number Generator	eService Object Generator	type_Specification		eService Number Generator	type_Specification	
+eService Number Generator	eService Object Generator	type_HardwareProduct		eService Number Generator	type_HardwareProduct	
+eService Number Generator	eService Object Generator	type_SoftwareProduct		eService Number Generator	type_SoftwareProduct	
+eService Number Generator	eService Object Generator	type_ServiceProduct		eService Number Generator	type_ServiceProduct	
+eService Number Generator	eService Object Generator	type_DesignSpecification		eService Number Generator	type_DesignSpecification	
+eService Number Generator	eService Object Generator	type_FunctionalSpecification		eService Number Generator	type_FunctionalSpecification	
+eService Number Generator	eService Object Generator	type_RequirementSpecification		eService Number Generator	type_RequirementSpecification	
+eService Number Generator	eService Object Generator	type_TestSpecification		eService Number Generator	type_TestSpecification	
+eService Number Generator	eService Object Generator	type_CustomerSpecification		eService Number Generator	type_CustomerSpecification	
+eService Number Generator	eService Object Generator	type_CustomerRequirementSpecification		eService Number Generator	type_CustomerRequirementSpecification	
+eService Number Generator	eService Object Generator	type_CustomerResponseRequirementSpecification		eService Number Generator	type_CustomerResponseRequirementSpecification	
+eService Number Generator	eService Object Generator	type_ProductRequirementSpecification		eService Number Generator	type_ProductRequirementSpecification	
+eService Number Generator	eService Object Generator	type_FeatureRequirementSpecification		eService Number Generator	type_FeatureRequirementSpecification	
+eService Number Generator	eService Object Generator	type_SystemRequirementSpecification		eService Number Generator	type_SystemRequirementSpecification	
+eService Number Generator	eService Object Generator	type_ProductSpecification		eService Number Generator	type_ProductSpecification	
+eService Number Generator	eService Object Generator	type_SystemSpecification		eService Number Generator	type_SystemSpecification	
+eService Number Generator	eService Object Generator	type_FeatureSpecification		eService Number Generator	type_FeatureSpecification	
+eService Number Generator	eService Object Generator	type_SoftwareSpecification		eService Number Generator	type_SoftwareSpecification	
+eService Number Generator	eService Object Generator	type_BuildSpecification		eService Number Generator	type_BuildSpecification	
+eService Number Generator	eService Object Generator	type_UseCaseSpecification		eService Number Generator	type_UseCaseSpecification	
+eService Number Generator	eService Object Generator	type_SoftwareRequirementSpecification		eService Number Generator	type_SoftwareRequirementSpecification	
+eService Number Generator	eService Object Generator	type_ConfigurableProduct		eService Number Generator	type_ConfigurableProduct	
+eService Number Generator	eService Object Generator	type_Portfolio		eService Number Generator	type_Portfolio	
+eService Number Generator	eService Object Generator	type_TestExecution		eService Number Generator	type_TestExecution	
+eService Number Generator	eService Object Generator	type_MilestoneHolder		eService Number Generator	type_MilestoneHolder	
+eService Number Generator	eService Object Generator	type_RetentionRecord		eService Number Generator	type_RetentionRecord	
+eService Number Generator	eService Object Generator	type_RetentionHold		eService Number Generator	type_RetentionHold	
+eService Number Generator	eService Object Generator	type_Budget		eService Number Generator	type_Budget	
+eService Number Generator	eService Object Generator	type_Benefit		eService Number Generator	type_Benefit	
+eService Number Generator	eService Object Generator	type_MasterFeature		eService Number Generator	type_MasterFeature	
+eService Number Generator	eService Object Generator	type_EquipmentFeature		eService Number Generator	type_EquipmentFeature	
+eService Number Generator	eService Object Generator	type_Quality		eService Number Generator	type_Quality	
+eService Number Generator	eService Object Generator	type_UseCase		eService Number Generator	type_UseCase	
+eService Number Generator	eService Object Generator	type_Requirement		eService Number Generator	type_Requirement	
+eService Number Generator	eService Object Generator	type_UserRequirement		eService Number Generator	type_UserRequirement	
+eService Number Generator	eService Object Generator	type_Chapter		eService Number Generator	type_Chapter	
+eService Number Generator	eService Object Generator	type_Comment		eService Number Generator	type_Comment	
+eService Number Generator	eService Object Generator	type_CustomerRequirement		eService Number Generator	type_CustomerRequirement	
+eService Number Generator	eService Object Generator	type_SubSystemRequirementSpecification		eService Number Generator	type_SubSystemRequirementSpecification	
+eService Number Generator	eService Object Generator	type_RequirementGroup		eService Number Generator	type_RequirementGroup	
+eService Number Generator	eService Object Generator	type_RVD		eService Number Generator	type_RVD	
+eService Number Generator	eService Object Generator	type_BooleanCompatibilityRule		eService Number Generator	type_BooleanCompatibilityRule	
+eService Number Generator	eService Object Generator	type_RuleExtension		eService Number Generator	type_RuleExtension	
+eService Number Generator	eService Object Generator	type_FixedResource		eService Number Generator	type_FixedResource	
+eService Number Generator	eService Object Generator	type_ProductConfiguration		eService Number Generator	type_ProductConfiguration	
+eService Number Generator	eService Object Generator	type_ConfigurableFeature		eService Number Generator	type_ConfigurableFeature	
+eService Number Generator	eService Object Generator	type_FeatureList		eService Number Generator	type_FeatureList	
+eService Number Generator	eService Object Generator	type_SoftwareFeature		eService Number Generator	type_SoftwareFeature	
+eService Number Generator	eService Object Generator	type_InclusionRule		eService Number Generator	type_InclusionRule	
+eService Number Generator	eService Object Generator	type_ProductCompatibilityRule		eService Number Generator	type_ProductCompatibilityRule	
+eService Number Generator	eService Object Generator	type_QuantityRule		eService Number Generator	type_QuantityRule	
+eService Number Generator	eService Object Generator	type_MarketingPreference		eService Number Generator	type_MarketingPreference	
+eService Number Generator	eService Object Generator	type_Effort		eService Number Generator	type_Effort	
+eService Number Generator	eService Object Generator	type_ProjectSpace		eService Number Generator	type_ProjectSpace	
+eService Number Generator	eService Object Generator	type_TaskManagement		eService Number Generator	type_TaskManagement	
+eService Number Generator	eService Object Generator	type_ResourceRequest		eService Number Generator	type_ResourceRequest	
+eService Number Generator	eService Object Generator	type_Checklist		eService Number Generator	type_Checklist	
+eService Number Generator	eService Object Generator	type_ChecklistItem		eService Number Generator	type_ChecklistItem	
+eService Number Generator	eService Object Generator	type_LogicalFeature		eService Number Generator	type_LogicalFeature	
+eService Number Generator	eService Object Generator	type_ManufacturingFeature		eService Number Generator	type_ManufacturingFeature	
+eService Number Generator	eService Object Generator	type_ConfigurationFeature		eService Number Generator	type_ConfigurationFeature	
+eService Number Generator	eService Object Generator	type_ConfigurationOption		eService Number Generator	type_ConfigurationOption	
+eService Number Generator	eService Object Generator	type_ManufacturingPlan		eService Number Generator	type_ManufacturingPlan	
+eService Number Generator	eService Object Generator	type_ManufacturingPlanMaster		eService Number Generator	type_ManufacturingPlanMaster	
+eService Number Generator	eService Object Generator	type_PUEECO		eService Number Generator	type_PUEECO	
+eService Number Generator	eService Object Generator	type_ConfiguredECO		eService Number Generator	type_ConfiguredECO	
+eService Number Generator	eService Object Generator	type_UKUniquenessKey		eService Number Generator	type_UKUniquenessKey	
+

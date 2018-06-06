@@ -1,0 +1,7 @@
+tcl;
+eval {
+    
+  puts "VPLMCentralCore-R417HF16-downgrade.mql executed."
+   
+}
+

@@ -1,0 +1,1 @@
+expand bus "${ID}" from relationship "${WS_VAULT}" select relationship id select businessobject id dump | where '( (owner == "${USER}") || (current.access[read] == true))'

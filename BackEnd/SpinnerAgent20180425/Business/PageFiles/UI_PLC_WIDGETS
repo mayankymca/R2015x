@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:services xmlns:ds="http://www.3ds.com/enovia/e6w"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.3ds.com/enovia/e6w services.xsd ">
+
+
+	<ds:experience name="PLC_Experience_MyModels">
+		<ds:label text="emxProductLine.lable.MyModels"
+			registeredSuite="ProductLine" />
+		<ds:license products="ENO_PLC_TP" />
+		<ds:availableViews>
+			<ds:view>list</ds:view>
+		</ds:availableViews>
+		<ds:list name="PLC_Channel_MyModels">
+			<ds:data>
+				<ds:query typePattern="type_Model" namePattern="*" whereExpression="current!=Inactive"
+					limit="10" />
+			</ds:data>
+
+			<ds:group  view="list">
+				<ds:style layout="vertical"/>
+				<ds:field name="image">
+					<ds:style align="center" />
+					<ds:url target="popup"
+						path="../components/emxImageManager.jsp?emxSuiteDirectory=components&amp;suiteKey=Components" />
+					<ds:image plc="true" source="primaryImage" size="medium" />
+				</ds:field>
+			</ds:group>
+
+			<ds:group name="Basics_1">
+				<ds:style layout="vertical"  />
+				<ds:field name="Name">
+					<ds:label text="emxFramework.Basic.Name" registeredSuite="ProductLine" />
+					<ds:selectable expression="name" />
+					<ds:sort order="2" sortable="true" />
+				</ds:field>
+				<ds:field name="ModelPrefix">
+					<ds:label text="emxProductLine.Model.ModelPrefix"
+						registeredSuite="ProductLine" />
+					<ds:selectable expression="attribute[attribute_Prefix].value" />
+					<ds:sort order="3" sortable="true" />
+				</ds:field>
+				<ds:field name="Description">
+					<ds:label text="emxFramework.Basic.Description"
+						registeredSuite="ProductLine" />
+					<ds:selectable expression="description" />
+				</ds:field>
+				<ds:field name="ProductLineId" hidden="true">
+					<ds:label text="emxProduct.Form.Label.ProductLine"
+						registeredSuite="ProductLine" />
+					<ds:selectable expression="to[Product Line Models].from.id" />
+				</ds:field>
+
+			</ds:group>
+			<ds:group name="Basics_2" >
+				<ds:style layout="vertical" />
+				<ds:field name="current">
+					<ds:label text="emxFramework.Basic.State" registeredSuite="ProductLine" />
+					<ds:url target="popup"
+						path="../common/emxLifecycle.jsp?emxSuiteDirectory=productline&amp;suiteKey=ProductLine&amp;toolbar=AEFLifecycleMenuToolBar" />
+					<ds:selectable expression="current" />
+					<ds:sort direction="descending" order="1" sortable="true" />
+				</ds:field>
+				<ds:field name="owner">
+					<ds:label text="emxFramework.Basic.Owner" registeredSuite="ProductLine" />
+					<ds:selectable expression="owner" format="user" />
+					<ds:sort direction="descending" order="2" sortable="true" />
+				</ds:field>
+				<ds:field name="Marketing_Name">
+					<ds:label text="emxFramework.Attribute.Marketing_Name"
+						registeredSuite="ProductLine" />
+					<ds:selectable expression="attribute[attribute_MarketingName].value" />
+					<ds:sort direction="descending" order="3" sortable="true" />
+				</ds:field>
+				<ds:field name="Marketing_Text">
+					<ds:label text="emxFramework.Attribute.Marketing_Text"
+						registeredSuite="ProductLine" />
+					<ds:selectable expression="attribute[attribute_DisplayText].value" />
+					<ds:sort direction="descending" order="4" sortable="true" />
+				</ds:field>
+			</ds:group>
+			<ds:group name="Other_Apps">
+				<ds:style layout="vertical" width="15%"/>
+				<ds:field name="ProductLine">
+					<ds:label text="emxProduct.Form.Label.ProductLine"
+						registeredSuite="ProductLine" />
+					<ds:url target="popup"
+						path="../common/emxTree.jsp?objectId=%ProductLineId%" />
+					<ds:selectable expression="to[Product Line Models].from.name" />
+					<ds:sort direction="descending" order="1" sortable="true" />
+				</ds:field>
+				<ds:ref-field name="ECCModelTopLevelPart" />
+				<ds:ref-field name="VPMModelPhyscialPart" />
+				<ds:ref-field name="FTRModelConfigurationFeatures" />
+			</ds:group>
+			<ds:group>
+				<ds:style layout="horizontal" align="center"  width="10%"/>
+				<ds:url target="popup"
+					path="../common/emxTree.jsp?DefaultCategory=%PLCModelDerivationsTreeCategory%" />
+				<ds:group name="Evolutions" >
+					<ds:style layout="vertical" align="center"/>	
+					<ds:field name="Evolutions_Count">
+						<ds:style align="center"/>
+						<ds:fieldjpo classname="PLCWidgets" function="getEvolutionCount"
+							localInvokation="false" />
+					</ds:field>
+					<ds:field name="Evolutions_Label">
+						<ds:label text="emxProductLine.lable.Evolutions"
+							registeredSuite="ProductLine" />
+						<ds:style align="center"/>
+					</ds:field>
+				</ds:group>
+				<ds:group name="Evolutions_Image">
+					<ds:style layout="vertical" align="center"/>
+					<ds:field name="Evolutions_Image">
+						<ds:style align="center" />
+						<ds:url target="content"
+							path="../common/emxTree.jsp?DefaultCategory=%PLCModelDerivationsTreeCategory%" />
+						<ds:image size="small" default="/common/images/iconBigDiamondGrayRight.png" />
+					</ds:field>
+				</ds:group>
+
+			</ds:group>
+		</ds:list>
+	</ds:experience>
+
+</ds:services>
+

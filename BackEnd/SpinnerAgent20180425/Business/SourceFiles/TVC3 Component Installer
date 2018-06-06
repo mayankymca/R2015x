@@ -1,0 +1,947 @@
+###############################################################################
+#
+# Global variables
+#
+###############################################################################
+
+set sDate       [clock format [clock seconds] -format %m-%d-%y]
+set sAEFRegProg "eServiceSchemaVariableMapping.tcl"
+
+###############################################################################
+#
+# Defines matrix core functions
+#
+###############################################################################
+namespace eval MX {
+    #
+    # Loads another script
+    #
+    proc utLoad { sProg } {
+        return [mql pri program $sProg select code dump] 
+    }
+
+    #
+    # Returns 1 if the given businessobject exists, otherwise 0
+    #
+    proc busExists { sType sName sRev } {
+        if { [mql pri bus $sType $sName $sRev select exists dump] == "TRUE" } {
+            return 1
+        } else {
+            return 0
+        }
+    }
+
+    #
+    # Returns 1 if IEF is available
+    #
+    proc isIEFAvailable {} {
+        if {[getIEFVersion] == "" } {
+            return 0
+        }
+        return 1
+    }
+
+    #
+    # Returns the IEF Version
+    #
+    proc getIEFVersion {} {
+        set sProgName "eServiceSystemInformation.tcl"
+        if { [mql list program $sProgName] != "" } {
+            set sIEFVersion [mql print prog $sProgName select property\[appVersionIntegrationFramework\].value dump]
+            if { $sIEFVersion == "" } {
+                set sIEFVersion [mql print prog $sProgName select property\[appVersionIEFDesignCenter\].value dump]
+            }
+            if { $sIEFVersion != "" } {
+                set sRet [_fixVersion $sIEFVersion]
+                #puts "IEF Version Detected: $sRet ($sIEFVersion)"
+                return $sRet
+            }
+        }
+        return "";
+    }
+
+    proc _fixVersion { v } {
+        if { [string range $v 0 0] == "V" } {
+            regsub -all {V} $v "100." v
+            regsub -all {R} $v "." v
+            regsub -all {[-.]} $v "." v
+        }
+        regsub -all {[SP]+} $v "" v
+        regsub -all {[-.]+} $v "." v
+        return $v
+    }
+
+    #
+    # Returns 1 if the ief version is higher or equal to the specified version
+    #
+    proc isIEFVersionAfter { sVersionArg } {
+        set ver [getIEFVersion]
+        if { $ver != "" } {
+            set actual [split $ver "."]
+            set test [split [_fixVersion $sVersionArg] "."]
+            while {[llength $actual] < [llength $test]} {
+                lappend actual 0
+            }
+            for { set i 0 } { $i < [llength $test] } { incr i } {
+                if { [expr [lindex $test $i] < [lindex $actual $i]] } {
+                    return 1
+                } elseif { [expr [lindex $test $i] > [lindex $actual $i]] } {
+                    return 0
+                }
+            }
+            return 1
+        }
+        return 0
+    }
+
+
+    proc isIEFVersionExactly { sVersionArg} {
+        set ver [getIEFVersion]
+        if { $ver != "" } {
+            set actual [split $ver "."]
+            set test [split [_fixVersion $sVersionArg] "."]
+            while {[llength $actual] < [llength $test]} {
+                lappend actual 0
+            }
+            for { set i 0 } { $i < [llength $test] } { incr i } {
+                if { [lindex $test $i] != [lindex $actual $i] } {
+                    return 0
+                }
+            }
+            return 1
+        }
+        return 0
+    }
+
+    proc isVersionAtLeast { sMajor { sMinor 0 } { sPatch 0 }} {
+        set sVersion [mql version]
+        set lParts [split $sVersion .-]
+        while {[llength $lParts] < 3} {
+            lappend lParts 0
+        }
+        if { [lindex $lParts 0] > $sMajor } {
+            return 1
+        } elseif { [lindex $lParts 0] == $sMajor } {
+            if { [lindex $lParts 1] > $sMinor } {
+                return 1
+            } elseif { [lindex $lParts 1] == $sMinor } {
+                if { [lindex $lParts 2] >= $sPatch } {
+                    return 1
+                }
+            }
+        }
+        return 0
+    }
+
+    proc isItemInMenu { menu command } {
+        if { $menu == "" } {
+            return 1
+        }
+        if {[adminExists menu $menu] != 1} {
+            return 1
+        }
+        if { [lsearch [split [mql pri menu $menu select child dump |] |] $command] == -1 } {
+           return 0
+        }
+        return 1
+    }
+
+
+    #
+    # Returns 1 if the given administrative bject exists, otherwise 0
+    #
+    proc adminExists { sAdminType sName } {
+        if { $sName == "" } {
+            return 1
+        }
+        if { $sAdminType == "systable" } {
+            if { [lsearch [split [mql list table system] "\n"] $sName] == -1} {
+                return 0
+            }
+            return 1
+        }
+        if { [lsearch [split [mql list $sAdminType] "\n"] $sName] == -1 } {
+            return 0
+        } else {
+            return 1
+        }
+    }
+}
+
+###############################################################################
+#
+# TVC Installer functions
+#
+###############################################################################
+namespace eval TVCInstaller {
+
+    variable bUseTransactions      1
+    variable sInstallBase          [pwd]
+    variable sVersionInfoProgram   "TVC Version Info Tracker"
+    variable bIsAEFPresent         0
+    variable sLogPagePrefix        ""
+    variable sLogPageName          ""
+    variable sLogBuffer            ""
+    variable sUser                 ""
+    variable LOG_LEVEL             1
+    variable bDecimalSymbolIsDot   0
+    variable bDecimalSymbolChanged 0
+
+    variable sRegProg              ""
+    variable sServletMapping       "/tvc-action/"
+    variable bInstallSampleData    1
+    variable sComponentName        ""
+    variable iComponentVersion     -1
+
+    #
+    # Returns the name of the component
+    #
+    proc getComponentName {} {
+        variable sComponentName
+        return $sComponentName
+    }
+
+    #
+    # Returns the version of the component
+    #
+    proc getComponentVersion {} {
+        variable iComponentVersion
+        return $iComponentVersion
+    }
+
+    #
+    # Returns 1 if sample data should be installed
+    #
+    proc installSampleData {} {
+        variable bInstallSampleData
+        return  $bInstallSampleData
+    }
+
+    #
+    # Returns the name of the registration program being used.
+    #
+    proc getRegistrationProgram {} {
+        variable sRegProg
+        return $sRegProg
+    }
+
+    #
+    # Checks whether the current decimal symbol can be used
+    # to create a system table or not. If not, then we try
+    # to change the decimal symbol. NB: Sometimes, it doesnt
+    # matter which decimal symbol that are in use, but also
+    # the MX_TCL_ANSI_NUMERIC and MX_DECIMAL_SYMBOL parameters
+    # must be defined.
+    #
+    proc ensureCorrectDecimalSymbol {} {
+        variable bDecimalSymbolIsDot
+        variable bDecimalSymbolChanged
+
+        log 5 "Validating correctness of decimal symbol..."
+        set sDecimalSymbol [mql pri system decimal]
+        if { $sDecimalSymbol == "DecimalSymbol=." } {
+            log 5 "--> Current decimal symbol is '.'"
+            set bDecimalSymbolIsDot 1
+        } else {
+            log 5 "--> Current decimal symbol is ','"
+            set bDecimalSymbolIsDot 0
+        }
+
+        set sTableName "tvc_check_table"
+        log 5 "--> Trying to add a table, to check if current decimal symbol setting is ok..."
+        set iFailCount 0
+        while {$iFailCount < 2} {
+            if [ catch {
+                set lTables [split [mql list table system] \n]
+                if { [lsearch $lTables $sTableName] != -1 } {
+                    mql delete table $sTableName system
+                }
+                mql add table $sTableName system column label test businessobject name name test
+                mql delete table $sTableName system
+                log 5 "--> Current decimal symbol setting is OK"
+            } sMesg ] {
+                log 5 "--> Could not add a table, with current decimal symbol settings. ($sMesg)"
+                incr iFailCount
+                set bDecimalSymbolChanged 1
+                if { $bDecimalSymbolIsDot } {
+                    set bDecimalSymbolIsDot 0
+                    log 1 "--> Setting decimal symbol to ','"
+                    mql set system decimal ","
+                } else {
+                    set bDecimalSymbolIsDot 1
+                    log 1 "--> Setting decimal symbol to '.'"
+                    mql set system decimal "."
+                }
+                continue
+            }
+            break
+        }
+        if { $iFailCount >= 2 } {
+            log 1 "--> Unable to set a correct decimal symbol. Probably you must add"
+            log 1 "--> MX_TCL_ANSI_NUMERIC as ENV variable before starting the installation."
+            return 0
+        } else {
+            if { $bDecimalSymbolChanged } {
+                log 1 "--> The system decimal symbol has been changed!"
+            }
+            return 1
+        }
+    }
+
+    #
+    # Performs initialization
+    #
+    proc init {} {
+        variable bIsAEFPresent
+        variable sLogPageName
+        variable sLogPagePrefix
+        variable bInstallSampleData
+        variable LOG_LEVEL
+        variable sUser
+        variable sInstallBase
+        variable sVersionInfoProgram
+        variable sRegProg
+
+        global sAEFRegProg
+        global sDate
+
+        #
+        # Turn quote off
+        #
+        mql quote off
+
+        #
+        # Turn verbose off, otherwise installation will break
+        #
+        mql verbose off
+
+        #
+        # Get user name from context
+        #
+        set sCtx [mql pri context]
+        set sUser [string range $sCtx [expr [string first person $sCtx] + 7] end]
+
+        #
+        # Check user privileges
+        #
+        if {[mql pri person $sUser select system dump] != "TRUE"} {
+            puts "Current user, $sUser, is not a system administrator."
+            puts "Please set context to a system user and re-run the installation script."
+            puts "Aborting!"
+            return 1
+        }
+
+        if {![file exists "$sInstallBase/Install.tcl"]} { 
+            puts "Can not find Install.tcl. (Install.tcl were not found under the directory '$sInstallBase')"
+            puts "Aborting !"
+            return 2
+        }
+
+        mql set env global INSTALLDIR $sInstallBase
+        mql set env global DATE $sDate
+
+        #
+        # Initialize sample data installation parameter
+        #
+        if {[mql get env global INSTALL_SAMPLE_DATA] != ""} {
+            if { [string compare "TRUE" [mql get env global INSTALL_SAMPLE_DATA]] == 0 } {
+                set bInstallSampleData 1
+            } else {
+                set bInstallSampleData 0
+            }
+        }
+
+        #
+        # Initialize the log level
+        #
+        if {[mql get env global LOG_LEVEL] != ""} {
+            set LOG_LEVEL [mql get env global LOG_LEVEL]
+        }
+
+        #
+        # Check if AEF is present
+        #
+        #set bIsAEFPresent [expr [llength [split [mql list program $sAEFRegProg] \n]] > 0 ? 1 : 0]
+        set bIsAEFPresent [MX::adminExists program $sAEFRegProg]
+        if { $bIsAEFPresent == 0 } {
+            puts "!!!!!!!!!!!!!"
+            puts "!!! NOTE !!!!"
+            puts "!!!!!!!!!!!!!"
+            puts "\tAEF is not present!"
+            puts "\tRegistration of symbolic schema names will be"
+            puts "\tmade to this program: '$sVersionInfoProgram'"
+            set sRegProg $sVersionInfoProgram
+            #set sChoice [getInput "?? Do you still want me to install the database schema? (Y)es, (N)o" "Y" { "Y" "N" }]
+            #if { $sChoice == "N" } { 
+            #    return 1
+            #}
+        } else {
+            set sRegProg $sAEFRegProg
+        }
+
+        #
+        # Create page object, where logging goes to
+        #
+        set sLogPagePrefix "Installation Log $sDate - [TVCInstaller::getComponentName] version [TVCInstaller::getComponentVersion]"
+        set lPageObjects [split [mql list page "${sLogPagePrefix}*"] \n]
+        if { [llength $lPageObjects] > 0 } {
+            set sLogPageName "${sLogPagePrefix} ([llength $lPageObjects])"
+        } else {
+            set sLogPageName "${sLogPagePrefix}"
+        }
+        mql add page $sLogPageName hidden description "Installation information"
+
+        #
+        # Check if current decimal symbol is OK
+        #
+        if {[TVCInstaller::ensureCorrectDecimalSymbol] != 1} {
+            puts "Aborting installation due to problems with decimal symbol settings."
+            return 3
+        }
+
+        #
+        # Create our own registration program
+        #
+        if { [lsearch [split [mql list program] "\n"] $sVersionInfoProgram] == -1 } {
+            mql add program $sVersionInfoProgram hidden code "# DO NOT DELETE!" \
+                property "installed date" value $sDate
+        }
+
+        return 0
+    }
+
+    #
+    # Writes a message to the log
+    #
+    proc log { iLogLevel sMessage {bFlush 0}} {
+        variable sLogBuffer
+        variable sLogPageName
+        variable LOG_LEVEL
+
+        regsub -all ' $sMessage "" sMessage
+        if { $iLogLevel <= $LOG_LEVEL } {
+            puts $sMessage
+        }
+        append sLogBuffer $sMessage "\n"
+        if { $bFlush } {
+            mql mod page $sLogPageName content $sLogBuffer 
+        }
+    }
+
+    #
+    # Executes a MQL command. The command may start with "mql" or not.
+    #
+    proc execute { sMQLCommand } {
+        if { [string first "mql" $sMQLCommand] != 0 } {
+            set sMQLCommand "mql $sMQLCommand"
+        }
+        regsub -all "\\\[" $sMQLCommand "\\\[" sMQLCommand
+        regsub -all "\\\]" $sMQLCommand "\\\]" sMQLCommand
+        regsub -all "\\\$" $sMQLCommand "\\\$" sMQLCommand
+        regsub -all "\\\n" $sMQLCommand "\\n" sMQLCommand
+        regsub -all "\#" $sMQLCommand "\\#" sMQLCommand
+        regsub -all "\"" $sMQLCommand "\\\"" sMQLCommand
+        regsub -all ' $sMQLCommand "\"" sMQLCommand
+        regsub -all " ( )+" $sMQLCommand " " sLogString
+        if { [string first "property" $sMQLCommand] != -1 } {
+            #log 2 "$sLogString"
+        } else {
+            #log 1 "$sLogString"
+        }
+        eval $sMQLCommand
+    }
+
+    proc getInput { sQuestion sDefault lChoices } {
+        set uEntered ""
+        while { 1 } {
+            puts stdout $sQuestion
+            gets stdin uEntered
+            if { [llength $lChoices] > 0 } {
+                if { [lsearch $lChoices $uEntered] == -1 } {
+                    if { $uEntered == "" && $sDefault != "" } {
+                        return $sDefault 
+                    }
+                    continue;
+                }
+                return $uEntered
+            } else {
+                if { $uEntered == "" } {
+                    return $sDefault
+                } else {
+                    return $uEntered
+                }
+            }
+        }
+    }
+
+    #
+    # Returns 1 if the specified version is installed, otherwise 0
+    #
+    proc isInstalled { sSymbolicName iVersion } {
+        variable sVersionInfoProgram
+        set currentVersion [mql pri program \
+                                ${sVersionInfoProgram} \
+                                select property\[${sSymbolicName}_version\].value dump]
+        if { $currentVersion == "" } {
+            set currentVersion -1
+        }
+        return [expr $iVersion > $currentVersion ? 0 : 1]
+    }
+
+    #
+    # Unregisters a symbolic name from the TVC version tracker
+    #
+    proc unregister { sSymbolicName } {
+        variable sVersionInfoProgram
+        if {[mql pri program $sVersionInfoProgram select property\[${sSymbolicName}_version\].value dump] == ""} {
+            execute "delete property '${sSymbolicName}_version' on program '$sVersionInfoProgram'"
+        }
+    }
+
+    #
+    # Registers the type
+    #
+    proc register { sType sName sSymbolicName iVersion } {
+        variable sVersionInfoProgram
+        #variable bIsAEFPresent
+        set currentVersion [mql pri program \
+                                $sVersionInfoProgram \
+                                select property\[${sSymbolicName}_version\].value dump]
+        set bIsNew 0
+        if { $currentVersion == "" } {
+            log 1 "# [format "Processing: %-13s - %-35s \[%-5s --> %5s\]" $sType $sName "N/A" $iVersion]"
+            execute "add property '${sSymbolicName}_version' on program '$sVersionInfoProgram' value $iVersion"
+            set bIsNew 1
+        } else {
+            log 1 "# [format "Processing: %-13s - %-35s \[%-5s --> %5s\]" $sType $sName $currentVersion $iVersion]"
+            execute "mod property '${sSymbolicName}_version' on program '$sVersionInfoProgram' value $iVersion"
+        }
+
+        set lNonRegisteredTypes { "bus" "filter" "table" "view" "tool" }
+        if { [lsearch $lNonRegisteredTypes $sType] == -1 } {
+            #if { $bIsAEFPresent } {
+                AEF::register $sType $sName $sSymbolicName $iVersion
+            #}
+        } else {
+            log 2 "# Skipping AEF registration of $sType $sName"
+        }
+    }
+
+    #
+    # Updates all access for policies given as tab separated input
+    # Example:
+    # set sAccessTable "Policy  State   Access right    all show    read    create  modify  delete  revise  fromconnect fromdisconnect  toconnect   todisconnect    checkout    checkin lock    unlock  promote demote  changevault changename  changeowner changepolicy    changetype  thaw    freeze  grant   revoke  enable  disable schedule    override    execute viewform    modifyform  filter
+    #   jstTest    exists  owner       x   x   x   x   x       x   x   x   x   x   x   x   x           x   x   x   x   x                                   x   x   x   -"
+    #
+    proc updateAccess { sFileName } {
+        set fFile           [open $sFileName r]
+        set sAccessTableAll [read $fFile]
+        close $fFile
+
+        set lAccessTableAll [split $sAccessTableAll \n]
+        #Get all access privileges except
+        set lAccessName [lrange [split [lindex $lAccessTableAll 0] \t] 4 35]
+        set lAccessTable [lrange $lAccessTableAll 1 end]
+        #puts "lAccessName: $lAccessName"
+
+        #Iterate through all rows of the access table
+        foreach sAccessTableRow $lAccessTable {
+
+            set lUserAccess [split $sAccessTableRow \t]
+            set sPolicy [lindex $lUserAccess 0]
+            if { $sPolicy == "" } {
+                break
+            }
+
+            # added to be able to use symbolic names on policy
+            if { [string match "policy_*" $sPolicy] } {
+                set sPolicy [AEF::aefResolveName $sPolicy]
+            }
+
+            set sState [lindex $lUserAccess 1]
+            set sUser [lindex $lUserAccess 2]
+
+            # added to be able to use symbolic name on roles
+            if { [string match "role_*" $sUser] } {
+                set sUser [AEF::aefResolveName $sUser]
+            }
+
+            #puts "Access for user \"$sUser\" in state \"$sState\" of Policy \"$sPolicy\""
+
+            #Get values for all access privileges
+            set lAccessValues [lrange $lUserAccess 4 35]
+            #Get the value of the All Access coloumn
+            set sAllAccess [lindex $lUserAccess 3]
+            #Get filter, if any
+            set sFilter [lindex $lUserAccess 36]
+
+            if { $sAllAccess == "x"} {
+                #Check if creator/public or real user
+                if { $sUser == "owner" || $sUser == "public" } {
+                    mql modify policy $sPolicy state $sState add $sUser all
+                } else {
+                    mql modify policy $sPolicy state $sState add user $sUser all
+                }
+            } else {
+                foreach sAccessName $lAccessName sAccessValue $lAccessValues {
+                    #puts "$sAccessName=($sAccessValue)"
+                    set sAccess $sAccessName
+                    if { $sAccessValue == "x"} {
+                        #Check if creator/public or real user
+                        if { $sUser == "owner" || $sUser == "public" } {
+                            #puts "owner or public"
+                            mql modify policy $sPolicy state $sState add $sUser $sAccess
+                        } else {
+                            mql modify policy $sPolicy state $sState add user $sUser $sAccess
+                        }
+                    } else {
+                        set sAccessValue "-"
+                        #Check if creator/public or real user
+                        if { $sUser == "owner" || $sUser == "public" } {
+                            mql modify policy $sPolicy state $sState remove $sUser $sAccess
+                        } else {
+                            mql modify policy $sPolicy state $sState remove user $sUser $sAccess
+                        }
+                    }
+                }
+            }
+            #Add filter(s)
+            if { $sFilter != "-"} {
+                mql modify policy $sPolicy state $sState user $sUser filter $sFilter
+            }
+        }
+    }
+
+
+    #
+    # MAIN Entry for installation
+    #
+    proc doInstall { sComponent iVersion} {
+        variable sUser
+        variable sInstallBase
+        variable bUseTransactions
+        variable sDate
+        variable sVersionInfoProgram
+        variable iComponentVersion
+        variable sComponentName
+        variable sServletMapping
+        variable bInstallSampleData
+
+        set sComponentName $sComponent
+        set iComponentVersion $iVersion
+
+        puts "+-------------------------+"
+        puts "| TVC Datamodel installer |"
+        puts "+-------------------------+ "
+        puts "Component           --> '$sComponent'"
+        puts "Version             --> '$iVersion'"
+        if { $bInstallSampleData } {
+            puts "Install sample data --> Yes"
+        } else {
+            puts "Install sample data --> No"
+        }
+        puts "\n"
+        
+        ## FIX MCAD Optimizer problem
+        if { $sComponent == "mcadoptimizer" && ![MX::isIEFAvailable] } {
+            puts "!!!! Skipping installation of $sComponent since the IEF is unavailable !!!!"
+            return 0
+        }
+
+        set sChoice ""
+        if {[mql get env global CONFIGURE_FROM_RPE] == "TRUE"} {
+            set sChoice "Y"
+        } else {
+            set sChoice [getInput "?? Do you want to install the component '$sComponent' (Version: $iComponentVersion) (Y)es, (N)o" "Y" { "Y" "N" }]
+        }
+        if { $sChoice == "N" } { 
+            puts "!!! Installation cancelled by user."
+            return 0
+        } elseif { [TVCInstaller::init] != 0 } {
+            puts "Installation aborted."
+            return 1
+        }
+
+        log 0 "\n#\n# Installation of the database schema is now ready to start.\n#"
+
+        eval [MX::utLoad [TVCInstaller::getRegistrationProgram]]
+
+        # Add version info for actual component on version info program
+        mql mod program "$sVersionInfoProgram" property "Version of $sComponent" value $iVersion
+
+        set lsAdminType { "System/Servers"       \
+                          "System/Vaults"        \
+                          "System/Sites"         \
+                          "System/Stores"        \
+                          "System/Locations"     \
+                          "Formats"              \
+                          "Programs"             \
+                          "Pages"                \
+                          "Users/Roles"          \
+                          "Users/Groups"         \
+                          "Users/Persons"        \
+                          "Users/Association"    \
+                          "Attributes"           \
+                          "Types"                \
+                          "Relationships"        \
+                          "Policies"             \
+                          "Visuals/SystemTables" \
+                          "Visuals/UserTables"   \
+                          "Visuals/Filters"      \
+                          "Visuals/Cues"         \
+                          "Visuals/Tips"         \
+                          "Visuals/Views"        \
+                          "UI/Commands"          \
+                          "UI/Menus"             \
+                          "UI/Inquiries"         \
+                          "UI/WebForms"          \
+                          "Data"                 \
+                          "Custom"               }
+
+        if [ catch {
+            foreach adminType $lsAdminType {
+                set sDir "$sInstallBase/$adminType"
+                if {[file isdirectory $sDir]} {
+                    cd $sDir
+                    if {[file exists "pre_install"]} {
+                        log 2 "# (Info) Running pre_install script (${adminType})"
+                        source "pre_install"
+                    }
+                    set lsFiles [glob -nocomplain "$sDir/*.tcl"]
+                    if { [llength $lsFiles] > 0 || $adminType == "Programs" } {
+                        if { $bUseTransactions } {
+                            log 3 "# (Info) Starting transaction (${adminType})"
+                            mql start transaction update
+                        }
+                        foreach sFile $lsFiles {
+                            log 4 "# (Info) Sourcing $sFile"
+                            source $sFile
+                        }
+                        if { $adminType == "Programs" } {
+                            ProgramInstaller::installProgramFiles
+                        }
+                        if { $bUseTransactions } {
+                            log 3 "# (Info) Committing transaction (${adminType})"
+                            mql commit transaction
+                        }
+                    }
+                    if {[file exists "post_install"]} {
+                        log 2 "# (Info) Running post_install script (${adminType})"
+                        source "post_install"
+                    }
+                }
+            }
+            log 0 "\n# Installation successfully completed"
+        } sMesg ] {
+            if { $bUseTransactions && [string first inactive [mql pri transaction]] == -1} {
+                log 0 "!Aborting transaction!"
+                mql abort transaction
+            }
+            regsub -all ' $sMesg "" sMesg
+            set sMesg [format %s%s "Patch failure Error: " "$sMesg" ]
+            log 0 "(ERROR) $sMesg"
+            cd $sInstallBase
+            return 1
+        }
+        cd $sInstallBase
+        log 0 "# Terminating installation program" 1
+        return 0
+    }
+}
+
+###############################################################################
+#
+# Contains AEF related functions
+#
+###############################################################################
+namespace eval AEF {
+
+    #
+    # Resolves the real name for the given symbolic name
+    #
+    proc aefResolveName { symName {defaultValue ""}} {
+        set sRegProgram [TVCInstaller::getRegistrationProgram]
+        set sProp [mql escape pri program $sRegProgram select property\[$symName\].to dump]
+        set sProp [string range $sProp [expr [string first " " $sProp] + 1] end]
+        if { [string length $sProp] == 0 } {
+            TVCInstaller::log 2 "The symbolic name '$symName' could not be resolved, will use the default value '$defaultValue'"
+            return $defaultValue
+        }
+        TVCInstaller::log 10 "Resolved $symName to $sProp"
+        return $sProp
+    }
+
+    proc register { sType sName sSymbolicName iVersion} {
+        global sDate
+        set sRegProgram [TVCInstaller::getRegistrationProgram]
+        set sComponent [TVCInstaller::getComponentName]
+
+        # Register AEF
+        if { $sType == "person" || $sType == "page" } {
+            return
+        }
+
+        set sPropTarget ""
+        if { $sType == "systable" } { 
+            set sType "table"
+            set sPropTarget "$sType '$sName' system"
+        } else {
+            set sPropTarget "$sType '$sName'"
+
+            set sCheckCmd "mql list $sPropTarget"
+            if { [eval $sCheckCmd] == "" && $sType != "vault" } {
+                # This can happen if we remove something from the DB.
+                TVCInstaller::log 0 "# AEF registration aborted. $sPropTarget is unavailable."
+                return
+            }
+        }
+
+        set bIsNew 0
+        set sCheckCmd "mql list property on program \"$sRegProgram\" to $sPropTarget"
+        if { [catch {
+            if {[eval $sCheckCmd] == ""} { set bIsNew 1 }
+        } sResult] } {
+            set bIsNew 1
+        }
+
+        if { $bIsNew } {
+            set lCmd [list "mql add property '$sSymbolicName'  on program '$sRegProgram' to $sPropTarget" \
+                           "mql add property 'application'     on $sPropTarget value 'TVC $sComponent'"   \
+                           "mql add property 'version'         on $sPropTarget value '$iVersion'"         \
+                           "mql add property 'original name'   on $sPropTarget value '$sName'"            \
+                           "mql add property 'installer'       on $sPropTarget value 'Technia AB'"        \
+                           "mql add property 'installed date'  on $sPropTarget value '$sDate'" ]
+        } else {
+            set sCheckVersionCmd [eval "mql print $sPropTarget select property\\\[version\\\] dump"]
+            if { $sCheckVersionCmd == ""} { 
+                set lCmd [list [eval "mql add property 'version' on $sPropTarget value '$iVersion'" ] ]
+            } else { 
+                set lCmd [list [eval "mql modify property 'version' on $sPropTarget value '$iVersion'" ] ]
+            } 
+        }
+
+        foreach cmd $lCmd { 
+            TVCInstaller::execute $cmd
+        }
+
+        if { $sType == "policy" } {
+            AEF::registerPolicyStates $sName
+        }
+    }
+
+    proc registerPolicyStates { sPolicyName } {
+         # get the names of all the states on the policy
+         set outStr [mql print policy $sPolicyName select state]
+
+         # the first line gives the admin type & name, so pick from line 2
+         set lStateList [split $outStr \n]
+         set lStateList [lrange $lStateList 1 end]
+
+         # get all the properties on the policy given by sPolicyName
+         set outStr [mql list property on policy $sPolicyName]
+         set lPropertyList [split $outStr \n]
+
+         foreach lStateElement $lStateList {
+            # if this variable is set then the property is on the policy
+            set PropertyFound 0
+            set lStateName [string trim [lindex [ split $lStateElement "="] 1]]
+            regsub -all " " $lStateName {} StateProperty
+            set StateProperty "state_${StateProperty}"
+
+            # check whether this property is already on the policy
+            foreach lPropertyElement $lPropertyList {
+                if {[lsearch -exact $lPropertyElement $StateProperty] >= 0} {
+                   set PropertyFound 1
+                   break
+                }
+            }
+
+            if {$PropertyFound == 0} {
+                   mql add property "$StateProperty" \
+                       on policy "$sPolicyName" \
+                       value "$lStateName" \
+            }
+         }
+    }
+}
+
+###############################################################################
+#
+# Handles the installation of programs
+#
+###############################################################################
+namespace eval ProgramInstaller {
+    proc installProgramFiles {} {
+        set sJavaExtention "java"
+        set sTclExtention "tcl"
+        set lsProgramType { "JPO" "TCL" }
+        set cwd [pwd]
+        foreach programType $lsProgramType {
+            set sDir "${cwd}/$programType"
+            set lsFiles [glob -nocomplain "$sDir/*"]
+            if { [llength $lsFiles] > 0 } {
+                cd $sDir
+                #
+                # If this is the JPO directory treat files as Java
+                #
+                if { $programType == "JPO" } {
+                    foreach sFile $lsFiles {
+                        set sFileName [lindex [split [lindex [split $sFile /] end] .] 0]
+                        # Check that the file really exists and is a .java file
+                        if { [file exists $sFile] && [string match "*.$sJavaExtention" $sFile] } {
+                            ProgramInstaller::addOrModifyProgram $sFileName $sFile java
+                       }
+                    }
+                } else {
+                    foreach sFile $lsFiles {
+                        set sFileName [lindex [split [lindex [split $sFile /] end] .] 0]
+                        # Check that the file really exists and is a .TCL file
+                        if { [file exists $sFile] && [string match "*.$sTclExtention" $sFile] } {
+                            ProgramInstaller::addOrModifyProgram $sFileName $sFile mql
+                        }
+                    }
+                }
+            }
+        }
+        cd $cwd
+    }
+
+    proc addOrModifyProgram { sFileName sFile programType} {
+        set fp [open $sFile r]
+        fconfigure $fp -buffering line
+        gets $fp data
+        close $fp
+        if { $programType == "mql" && [string first "\#@" $data] != -1 } {
+            array set aFileData [split [string range $data 3 end] " "]
+        } elseif { $programType == "java" && [string first "//@" $data] != -1 } {
+            array set aFileData [split [string range $data 4 end] " "]
+        } else {
+            set aFileData(name) $sFileName
+            set aFileData(version) 1.0
+            set aFileData(symname) program_[join [split $sFileName " "] "_"]
+        }
+        
+        if { [array names aFileData version] == "" } {
+            set aFileData(version) 1.0
+        }
+
+        if { [array names aFileData name] == "" } {
+            set aFileData(name) $sFileName
+        }
+
+        if { [array names aFileData symname] == "" } {
+            set aFileData(symname) program_[join [split $aFileData(name) " "] "_"]
+        }
+
+        if { [mql list program $aFileData(name)] == "" } {
+            TVCInstaller::log 3 "# Adding program $aFileData(name)"
+            TVCInstaller::execute "add program '$aFileData(name)' $programType file '$sFile'"
+            TVCInstaller::register program $aFileData(name) $aFileData(symname) $aFileData(version)
+        } else {
+            TVCInstaller::log 3 "# Updating program $aFileData(name)"
+            TVCInstaller::execute "modify program '$aFileData(name)' $programType file '$sFile'"
+            TVCInstaller::register program $aFileData(name) $aFileData(symname) $aFileData(version)
+        }
+    }
+}
+

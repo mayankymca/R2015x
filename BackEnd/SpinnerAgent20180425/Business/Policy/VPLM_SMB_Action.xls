@@ -1,0 +1,38 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE	PublicRevokeDemoteAccess	TRUE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Public	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Public	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Owner	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Owner	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Create	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Create	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Create	VPLMCreator	TRUE	ExtendedAccessesForAuthor	FALSE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	Y	single	single	context	any	any	any			
+Create	VPLMProjectLeader	TRUE	ExtendedAccessesForLeader	FALSE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	Y	single	single	any	any	any	any			
+Create	VPLMCreator	TRUE	ExtendedCreateAccess	FALSE	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any			
+Create	VPLMProjectLeader	FALSE	ExtendedReadAccessForLeader	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Create	VPLMCreator	FALSE	ExtendedReadAccessForOwner	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	context	any	any	any			
+Create	VPLMCreator	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			DesignWork
+DesignWork	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+DesignWork	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+DesignWork	VPLMCreator	TRUE	ExtendedAccessForAuthor	FALSE	-	Y	-	-	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	Y	single	single	context	any	any	any			
+DesignWork	VPLMProjectLeader	TRUE	ExtendedAccessForLeader	FALSE	-	Y	-	-	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	Y	single	single	any	any	any	any			
+DesignWork	VPLMCreator	FALSE	ExtendedReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+DesignWork	VPLMCreator	FALSE	Propose	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Review
+DesignWork	VPLMProjectLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Rejected
+DesignWork	VPLMProjectLeader	FALSE	Stop	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Create
+Review	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Review	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Review	VPLMProjectLeader	TRUE	ExtendedAccessForLeader	FALSE	-	Y	-	-	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	Y	single	single	any	any	any	any			
+Review	VPLMProjectLeader	FALSE	Complete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+Review	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Review	VPLMProjectLeader	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			DesignWork
+Review	VPLMProjectLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Rejected
+Completed	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Completed	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Completed	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Rejected	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Rejected	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Rejected	VPLMLocalCrossOrgContextAccess	FALSE	ExtendedReadAccess	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+

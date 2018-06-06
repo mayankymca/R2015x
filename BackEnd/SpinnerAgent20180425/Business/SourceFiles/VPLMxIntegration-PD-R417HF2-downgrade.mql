@@ -1,0 +1,19 @@
+tcl;
+eval {
+	puts "{Running VPLMxIntegration-R417HF2-downgrade.mql...}"
+	
+	set lAttrCmd [list mql print relationship "EBOM History" select attribute\[isVPMVisible\] dump]
+	set mqlret [catch {eval $lAttrCmd} sOut]
+	puts $sOut
+	if {$sOut} {
+		puts "INFO: 'EBOM History' Relationship contains attribute isVPMVisible"
+		mql mod relationship "EBOM History" remove attribute isVPMVisible
+		puts "INFO: attribute isVPMVisible successfuly removed from EBOM History' Relationship "
+	} else {
+		puts "INFO: 'EBOM History' Relationship does not contain attribute isVPMVisible"
+	}
+	
+	puts "{VPLMxIntegration-R417HF2-downgrade.mql - Completed}"
+    exit 0;
+}
+

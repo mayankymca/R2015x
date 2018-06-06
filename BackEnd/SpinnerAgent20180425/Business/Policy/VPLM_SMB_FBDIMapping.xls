@@ -1,0 +1,27 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Public	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Owner	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Owner	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+DEFAULT	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+DEFAULT	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+DEFAULT	VPLMAdmin	TRUE		FALSE	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any			
+DEFAULT	VPLMProjectLeader	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+DEFAULT	VPLMCreator	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+DEFAULT	VPLMProjectAdministrator	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+DEFAULT	VPLMCreator	TRUE	k3	FALSE	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+DEFAULT	VPLMProjectAdministrator	TRUE	k3	FALSE	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	any	any	any			
+DEFAULT	VPLMProjectLeader	TRUE	k3	FALSE	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+DEFAULT	VPLMProjectAdministrator	TRUE	k4	FALSE	-	Y	-	-	Y	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	any	single	any	any	any	any			
+DEFAULT	VPLMProjectLeader	TRUE	k4	FALSE	-	Y	-	-	Y	-	Y	-	-	-	-	Y	-	-	-	-	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	single	single	any	inclusive	any	any			
+DEFAULT	VPLMCreator	TRUE	k4	FALSE	-	Y	-	-	Y	-	Y	-	-	-	-	Y	-	-	-	-	-	-	-	-	Y	Y	Y	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	single	single	any	inclusive	any	any			
+DEFAULT	VPLMProjectAdministrator	TRUE	k5	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+DEFAULT	VPLMProjectLeader	TRUE	k5	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+DEFAULT	VPLMCreator	TRUE	k5	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+DEFAULT	VPLMProjectLeader	TRUE	k6	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+DEFAULT	VPLMProjectLeader	TRUE	k2	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any		((project.property[FAMILY].value == 'StandardTeam') || (context.role.parent.property[FAMILY].value == 'StandardTeam'))	
+DEFAULT	VPLMCreator	TRUE	k2	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any		((project.property[FAMILY].value == 'StandardTeam') || (context.role.parent.property[FAMILY].value == 'StandardTeam'))	
+DEFAULT	VPLMProjectAdministrator	TRUE	k2	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	any	any	any	any	any	any		((project.property[FAMILY].value == 'StandardTeam') || (context.role.parent.property[FAMILY].value == 'StandardTeam'))	
+

@@ -1,0 +1,56 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Public	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Owner	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Owner	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Grant	FALSE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	single	any	any	any	any			
+Preliminary	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Preliminary	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Preliminary	VPLMReviewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	descendant	single	any	any	any	any			
+Preliminary	VPLMDesigner	FALSE		FALSE	-	Y	Y	-	Y	-	Y	Y	-	-	-	Y	-	-	Y	-	Y	-	-	-	Y	Y	Y	-	Y	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	descendant	single	any	any	any	any			
+Preliminary	VPLMLeader	FALSE	Propose	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Draft
+Preliminary	VPLMDesigner	FALSE	Propose	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Draft
+Preliminary	VPLMAdmin	FALSE	Propose	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Draft
+Draft	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Draft	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Draft	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Draft	VPLMReviewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	descendant	single	any	any	any	any			
+Draft	VPLMDesigner	FALSE		FALSE	-	Y	Y	-	Y	-	Y	Y	-	-	-	Y	-	-	Y	-	Y	-	-	-	Y	Y	Y	-	Y	-	Y	Y	Y	Y	-	-	-	-	-	-	-	-	descendant	single	any	any	any	any			
+Draft	VPLMDesigner	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Preliminary
+Draft	VPLMLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Preliminary
+Draft	VPLMAdmin	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Preliminary
+Draft	VPLMAdmin	FALSE	Review	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Review
+Draft	VPLMDesigner	FALSE	Review	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Review
+Draft	VPLMLeader	FALSE	Review	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Review
+Review	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Review	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Review	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Review	VPLMReviewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	descendant	single	any	any	any	any			
+Review	VPLMLeader	FALSE		FALSE	-	Y	-	-	Y	-	Y	Y	-	-	-	Y	Y	Y	Y	-	Y	-	-	-	Y	Y	-	-	Y	-	Y	-	-	-	-	-	-	-	-	-	-	-	descendant	single	any	any	any	any			
+Review	VPLMDesigner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	descendant	single	any	any	any	any			
+Review	VPLMAdmin	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Draft
+Review	VPLMLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Draft
+Review	VPLMAdmin	FALSE	Release	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Release
+Review	VPLMLeader	FALSE	Release	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Release
+Release	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Release	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Release	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Release	VPLMReviewer	FALSE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	descendant	any	any	any	any	any			
+Release	VPLMLeader	FALSE		FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	Y	Y	Y	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	descendant	single	any	any	any	any			
+Release	VPLMDesigner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	-	descendant	any	any	any	any	any			
+Release	VPLMLeader	FALSE	Obsolete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+Release	VPLMAdmin	FALSE	Obsolete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+Release	VPLMAdmin	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Review
+Release	VPLMLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Review
+Obsolete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	-	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Obsolete	VPLMLeader	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	Y	Y	Y	Y	-	Y	-	-	-	Y	Y	Y	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	descendant	single	any	any	any	any			
+Obsolete	VPLMDesigner	FALSE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	Y	Y	Y	Y	-	Y	-	-	-	Y	Y	Y	-	Y	-	Y	Y	Y	Y	-	-	Y	-	-	-	-	-	descendant	single	context	any	any	any			
+Obsolete	VPLMLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Release
+Obsolete	VPLMDesigner	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Release
+Obsolete	VPLMAdmin	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Release
+

@@ -1,0 +1,188 @@
+Name	Registry Name	Description	Label	Href	Alt	Setting Name (use "|" delim)	Setting Value (use "|" delim)	Commands (use "|" delim)	Height	Hidden (boolean)	Icon File
+PLCProductEngineeringChangeChannel	PLCProductEngineeringChangeChannel							CommonEngineeringChangeTreeCategory|ContextIssueListPage	630	FALSE
+PLCProductLineDefaultChannel	PLCProductLineDefaultChannel					Registered Suite	ProductLine	PLCProductLineProperties	500	FALSE
+PLCProductsDefaultChannel	PLCProductsDefaultChannel					Registered Suite	ProductLine	PLCProductsProperties|PLCProductImageTreeCategory|AEFLifecycle|APPRoutes|AEFHistory	500	FALSE
+PLCModelDefaultChannel	PLCModelDefaultChannel					Registered Suite	ProductLine	PLCModelProperties	500	FALSE
+PLCPlanning	PLCPlanning					Registered Suite	ProductLine	PLCProductDerivationsTreeCategory|PLCProductRoadmapProjectsTreeCategory|PLCProductTaskTreeCategory|PLCProductMilestones|PLCProductBuildTreeCategory|PLCProductTaskTreeCategoryRWA	260	FALSE
+PLCContent	PLCContent					Registered Suite	ProductLine	PLCProductSpecifications|PLCProductReferenceDocumentTreeCategory	260	FALSE
+PLCCollaboration	PLCCollaboration					Registered Suite	ProductLine	APPWhereUsedHData|APPWhereUsedRData	260	FALSE
+ECMReferenceDocumentsChannel	ECMReferenceDocumentsChannel					ChannelID | Registered Suite	1 | EnterpriseChangeMgt	ECMCOReferenceDocs	0	FALSE
+ECMSupportingDocumentsChannel	ECMSupportingDocumentsChannel					ChannelID | Registered Suite	2 | EnterpriseChangeMgt	ECMSupportingDocs	0	FALSE
+ECMMyChangesTopChannel	ECMMyChangesTopChannel		EnterpriseChangeMgt.Label.TopChannel			ChannelID | Registered Suite	1 | EnterpriseChangeMgt	ECMMyChangeOrders|ECMMyChangeRequests|ECMMyChangeTemplates|ECMChangeLegacy|IssueListPage	260	FALSE
+ECMMyChangesBottomLeftChannel	ECMMyChangesBottomLeftChannel		EnterpriseChangeMgt.Label.LeftChannel			ChannelID | Registered Suite	2 | EnterpriseChangeMgt	ECMMyChangeActions	260	FALSE
+ECMMyChangesBottomRightChannel	ECMMyChangesBottomRightChannel		EnterpriseChangeMgt.Label.RightChannel			ChannelID | Registered Suite	3 | EnterpriseChangeMgt	ECMChangeSubscriptions	260	FALSE
+ECMAffectedItemsChannel	ECMAffectedItemsChannel					ChannelID | Registered Suite	1 | EnterpriseChangeMgt	ECMCRAffectedItems	0	FALSE
+ECMCandidateItemsChannel	ECMCandidateItemsChannel					Access Expression | ChannelID | Registered Suite	(type=="\$<type_ChangeOrder>\") | 2 | EnterpriseChangeMgt	ECMCandidateItems	0	FALSE
+ECMEnterpriseChangeMgtChannel	ECMEnterpriseChangeMgtChannel					Registered Suite	EnterpriseChangeMgt	ECMCOs|ECMCRs|ECMChangeLegacy	0	FALSE
+ECMChangeAffectedChannel	ECMChangeAffectedChannel					ChannelID | Registered Suite	1 | EnterpriseChangeMgt	ECM3DAffectedItemsCOCR	0	FALSE
+ECM3DLiveAffectedItemChannel	ECM3DLiveAffectedItemChannel					ChannelID | Registered Suite	2 | EnterpriseChangeMgt	ECM3DliveLaunchCOCR	0	FALSE
+ECMCAAffectedItemsChannel	ECMCAAffectedItemsChannel					ChannelID | Registered Suite	1 | EnterpriseChangeMgt	ECM3DAffectedItemsCA|ECMCAImplementedItems|ECMCARelatedItems|ECMCOReferenceDocs|ENCECBOMMarkupsForCA	0	FALSE
+ECMCA3DLiveAffectedItemChannel	ECMCA3DLiveAffectedItemChannel					ChannelID | Registered Suite	2 | EnterpriseChangeMgt	ECM3DliveLaunchCA	0	FALSE
+ECMChangePropertyChannel1	ECMChangePropertyChannel1	Property Channel1				Registered Suite	EnterpriseChangeMgt	ECMCRProperties|ECMCOProperties|ECMCAProperties|ECMCASummaryView|ECMCOPrerequisites|ECMCAPrerequisites|ECMSummaryReport|AEFHistory|APPImageManager|PLMAddExtensionCmd	0	FALSE
+ECMChangePropertyChannel2	ECMChangePropertyChannel2	LifeCycle and Route Channel				Registered Suite	EnterpriseChangeMgt	ECMLifecycle|APPRoutes	0	FALSE
+ECMChangeContentChannel1	ECMChangeContentChannel1	CO CR CA Affected Items and Reference documents channel				Registered Suite	EnterpriseChangeMgt	ECMCRCOAffectedItems|ECMCandidateItems|ECMCOResolvedItems|ECMCOReferenceDocs|ECMCRSupportingDocs	0	FALSE
+ECMChangeContentChannel2	ECMChangeContentChannel2	CO CR Affected Change Actions				Registered Suite	EnterpriseChangeMgt	ECMCRCOAffectedChangeActions|ECM3DliveLaunchCOCR	0	FALSE
+ECMChangeCollaberationChannel	ECMChangeCollaberationChannel	CO CR CA Routes, subscriptions and Discussion commands				Registered Suite	EnterpriseChangeMgt	APPRoutes|APPDiscussionCommand|APPPushSubscribe	0	FALSE
+ENCECOSummaryViewChannel1	ENCECOSummaryViewChannel1					ChannelID | Registered Suite	1 | EngineeringCentral	ENCECOBasicAttributes|ENCApprovals|ENCRoute|ENCRouteInstructions	0	FALSE
+ENCECOSummaryViewChannel2	ENCECOSummaryViewChannel2					ChannelID | Registered Suite	2 | EngineeringCentral	ENCECORelatedECRs|ENCECONewParts|ENCECORevisedParts|ENCECOObsoleteParts	0	FALSE
+ENCECOSummaryViewChannel3	ENCECOSummaryViewChannel3					ChannelID | Registered Suite	3 | EngineeringCentral	ENCECORevisedSpecs|ENCECOEBOMComparison	0	FALSE
+ENCECRSummaryViewChannel1	ENCECRSummaryViewChannel1					ChannelID | Registered Suite	1 | EngineeringCentral	ENCECRBasicAttributes|ENCApprovals|ENCRoute|ENCRouteInstructions	0	FALSE
+ENCECRSummaryViewChannel2	ENCECRSummaryViewChannel2					ChannelID | Registered Suite	2 | EngineeringCentral	ENCECRRevisedParts|ENCECRObsoleteParts	0	FALSE
+ENCECRSummaryViewChannel3	ENCECRSummaryViewChannel3					ChannelID | Registered Suite	3 | EngineeringCentral	ENCSupportingDocs|ENCECRECOs	0	FALSE
+ENCPartEBOMChannel	ENCPartEBOMChannel					ChannelID | Registered Suite	1 | EngineeringCentral	PUEUEBOM|ENCBOM|ENCEBOM|ENCWhereUsed|ENCECBOMMarkups|ENCDevBOMMarkups	700	FALSE
+ENCPartChangeMgtChannel	ENCPartChangeMgtChannel					ChannelID | Registered Suite	1 | EngineeringCentral	ENCECRs|ENCECOs|PUEECOs	700	FALSE
+ENCPartAltsSubsEquisChannel	ENCPartAltsSubsEquisChannel					ChannelID | Registered Suite	1 | EngineeringCentral	ENCAlternateParts|ENCSubstitutePartsIn	700	FALSE
+ENCSpecPortalChangeMgtChannel	ENCSpecPortalChangeMgtChannel					ChannelID | Registered Suite	1 | EngineeringCentral	ENCSpecRelatedECRs|ENCSpecRelatedECOs	400	FALSE
+ENCSpecPortalLifecycleChannel	ENCSpecPortalLifecycleChannel					ChannelID | Registered Suite	1 | EngineeringCentral	AEFLifecycle|ENCApprovals|ENCDocumentRoute	400	FALSE
+ENCDerivedPartsChannel1	ENCDerivedPartsChannel1					ChannelID | Registered Suite	1 | EngineeringCentral	ENCDerivedFrom	0	FALSE
+ENCDerivedPartsChannel2	ENCDerivedPartsChannel2					ChannelID | Registered Suite	2 | EngineeringCentral	ENCDerivedTo	0	FALSE
+ENCMyENGViewChannel1	ENCMyENGViewChannel1					Registered Suite	EngineeringCentral	MyENGView_Parts|MyENGView_Specifications|MyENGView_Changes|AEFCollections	260	FALSE
+ENCMyENGViewChannel2	ENCMyENGViewChannel2					Registered Suite	EngineeringCentral	APPMyTask|APPMyRoute|IssueListPage	260	FALSE
+ENC3DLiveAffectedItemChannel	ENC3DLiveAffectedItemChannel	ENC3DLive window in channel				Registered Suite	EngineeringCentral	ENCLaunchAffectedItem3DLiveChannel	0	FALSE
+ENCAffectedItemsChannel	ENCAffectedItemsChannel	ENC3DLive window in channel				Registered Suite	Components	ENCECOAffectedItemsTreeCategory|ENCECRAffectedItemsTreeCategory	0	FALSE
+ENCPartPropertyChannel1	ENCPartPropertyChannel1	Property Channel				Registered Suite	EngineeringCentral	ENCPartProperty|APPImageManager|ENCWhereUsed|ENCRevisions|AEFHistory	0	FALSE
+ENCPartPropertyChannel2	ENCPartPropertyChannel2	LifeCycle and Route Channel				Registered Suite	EngineeringCentral	ENGLifecycle|ENCRoute	0	FALSE
+ENCSpecsAndDocsChannel	ENCSpecsAndDocsChannel	Specification And Document Channel				Registered Suite	EngineeringCentral	ENCSpecifications|ENCReferenceDocuments	0	FALSE
+ENCRelatedPartChannel1	ENCRelatedPartChannel1	Related Parts Channel 1				Registered Suite	EngineeringCentral	ENCAlternateParts|ENCSubstitutePartsIn|ENCSpareParts	0	FALSE
+ENCRelatedPartChannel2	ENCRelatedPartChannel2	Related Parts Channel 2				Registered Suite	EngineeringCentral	ENCDerivedFrom|ENCDerivedTo	0	FALSE
+ENCPartCollaborationChannel	ENCPartCollaborationChannel	Collaboration Channel				Registered Suite	EngineeringCentral	ENCRoute|APPDiscussionCommand|ContextIssueListPage|APPPushSubscribe	0	FALSE
+ENCPartEquivalentChannel	ENCPartEquivalentChannel					Registered Suite	EngineeringCentral	ENCEquivalents	700	FALSE
+CPCEquivsChannelforPart	CPCEquivsChannelforPart					Registered Suite	ComponentCentral	CPCMEPEquivalents|CPCSEPEquivalentsforPart|CPCEPEquivalents	400	FALSE
+CPCSEPAltsSubsEquisChannel	CPCSEPAltsSubsEquisChannel					Registered Suite	ComponentCentral	CPCMEPEquivalents|CPCEPEquivalents	400	FALSE
+CPCAVLChannel	CPCAVLChannel					Registered Suite	ComponentCentral	CPCApprovedSupplierPartList|CPCApprovedManufacturerPartList	400	FALSE
+LBCObjectClassificationBOM	LBCObjectClassificationBOM					Registered Suite	LibraryCentral	LBCBOMClassificationView	60	FALSE
+LBCObjectClassificationDetails	LBCObjectClassificationDetails					Registered Suite	LibraryCentral	LBCObjectClassificationList	40	FALSE
+ECHApplicableItemsChannel	ECHApplicableItemsChannel					Access Function | Access Program | ChannelID | Registered Suite	isApplicabilityManagementEnabled | emxEnterpriseChange | 2 | EnterpriseChange	ECHDecisionApplicabilityTreeCategory|ECHDecisionManufacturingIntentsTreeCategory	400	FALSE
+ECHAppliesToChannel	ECHAppliesToChannel					ChannelID | Registered Suite	1 | EnterpriseChange	ECHDecisionAppliesTo	0	FALSE
+FTRSystemArchitectureChannel	FTRSystemArchitectureChannel							FTRSystemArchitectureLogicalFeatures|FTRSystemArchitectureManufacturingFeatures|FTRContextLFLogicalFeatures|FTRContextLFManufacturingFeatures	630	FALSE
+FTRConfigurationRulesChannel	FTRConfigurationRulesChannel							FTRBooleanCompatibilityRulesCommand|FTRMarketingPreferenceRulesCommand|FTRResourceRulesCommand|FTRProductCompatibilityRulesCommand|FTRRuleExtensionRulesCommand|FTRProductVariantBooleanCompatibilityRulesCommand|FTRProductVariantMarketingPreferencesRulesCommand|FTRProductVariantResourceRulesCommand|FTRProductVariantRuleExtensionCommand|FTRMatrixRulesCommand	630	FALSE
+FTRContextViewGBOMPartTableChannel	FTRContextViewGBOMPartTableChannel					ChannelID | Registered Suite	1 | Configuration	FTRContextGBOMPartTable|FTRContextInactiveVariants|FTRContextInactiveParts	500	FALSE
+FTRConfigFeaturesSplitViewChannel	FTRConfigFeaturesSplitViewChannel							FTRConfigurationFeaturesSplitViewCommand	260	FALSE
+FTRConfigOptionsSplitViewChannel	FTRConfigOptionsSplitViewChannel							FTRConfigurationOptionsSplitViewCommand	260	FALSE
+FTRProductContextViewGBOMPartTableChannel	FTRProductContextViewGBOMPartTableChannel					ChannelID | Registered Suite	1 | Configuration	FTRProductContextGBOMPartTable|FTRContextInactiveVariants|FTRContextInactiveParts	500	FALSE
+FTRModelLogicalViewChannel	FTRModelLogicalViewChannel					ChannelID | Registered Suite	2 | Configuration	CFPModelMasterCompositionTreeCategory|FTRModelCandidateLogicalFeatures|FTRModelCandidateLogicalFeaturesRWA|FTRModelCommittedLogicalFeatures|FTRModelCommittedLogicalFeaturesRWA|CFPModelMasterCompositionTreeCategoryRWA	500	FALSE
+FTRModelConfigurationViewChannel	FTRModelConfigurationViewChannel					ChannelID | Registered Suite	3 | Configuration	FTRModelCandidateConfigurationFeatures|FTRModelMandatoryConfigurationFeatures|FTRModelCommittedConfigurationFeatures	500	FALSE
+FTRDVConfigurationFeatureChannel	FTRDVConfigurationFeatureChannel					ChannelID | Registered Suite	3 | Configuration	FTRDVConfigurationFeatureCommand	260	FALSE
+FTRDVConfigurationOptionChannel	FTRDVConfigurationOptionChannel					ChannelID | Registered Suite	4 | Configuration	FTRDVConfigurationOptionCommand	260	FALSE
+FTRModelManufacturingViewChannel	FTRModelManufacturingViewChannel					ChannelID | Registered Suite	3 | Configuration	FTRModelCandidateManufacturingFeatures|FTRModelCommittedManufacturingFeatures	500	FALSE
+FTRDVConfigurationFeatureContextChannel	FTRDVConfigurationFeatureContextChannel					ChannelID | Registered Suite	1 | Configuration	FTRDVConfigurationFeatureContextCommand	260	FALSE
+FTRDVConfigurationOptionContextChannel	FTRDVConfigurationOptionContextChannel					ChannelID | Registered Suite	2 | Configuration	FTRDVConfigurationOptionContextCommand	260	FALSE
+FTRMFSystemArchitectureChannel	FTRMFSystemArchitectureChannel							FTRMFContextManufacturingFeatures	630	FALSE
+FTRLogicalFeatureWithDVChannel	FTRLogicalFeatureWithDVChannel					ChannelID | Registered Suite	1 | Configuration	FTRLogicalFeaturesWithDV	0	FALSE
+FTRPVLogicalFeatureWithDVChannel	FTRPVLogicalFeatureWithDVChannel					ChannelID | Registered Suite	2 | Configuration	FTRPVLogicalFeaturesWithDV	0	FALSE
+FTRConfigurationFeatureCopyFromFirstStep	FTRConfigurationFeatureCopyFromFirstStep					ChannelID | Height | Registered Suite	1 | 20 | Configuration	FTRConfigurationFeatureCopyFromFirstStep	0	FALSE
+FTRConfigurationFeatureCopySecondStep	FTRConfigurationFeatureCopySecondStep					ChannelID | Height | Registered Suite	2 | 34 | Configuration	FTRConfigurationFeatureCopySecondStep	0	FALSE
+FTRLogicalFeatureCopyFromFirstStep	FTRLogicalFeatureCopyFromFirstStep					ChannelID | Height | Registered Suite	1 | 20 | Configuration	FTRLogicalFeatureCopyFromFirstStep	0	FALSE
+FTRLogicalFeatureCopySecondStep	FTRLogicalFeatureCopySecondStep					ChannelID | Height | Registered Suite	2 | 34 | Configuration	FTRLogicalFeatureCopySecondStep	0	FALSE
+FTRConfigurationFeatureCopyToFirstStep	FTRConfigurationFeatureCopyToFirstStep					ChannelID | Height | Registered Suite	1 | 20 | Configuration	FTRConfigurationFeatureCopyToFirstStep	0	FALSE
+FTRLogicalFeatureCopyToFirstStep	FTRLogicalFeatureCopyToFirstStep					ChannelID | Height | Registered Suite	1 | 20 | Configuration	FTRLogicalFeatureCopyToFirstStep	0	FALSE
+CFPManufacturingPlanChannel	CFPManufacturingPlanChannel	Channels to Display all the Manufacturing Plans				Registered Suite	DMCPlanning	CFPContextActiveManufacturingPlans|CFPContextArchivedManufacturingPlans	630	FALSE
+CFPModelManufacturingPlanChannel	CFPModelManufacturingPlanChannel	Channels to Display Manufacturing Plans Derivation in Model				Registered Suite	DMCPlanning	CFPModelManufacturingPlanDerivation|CFPModelManufacturingPlanDerivationRWA	630	FALSE
+CFPProductManufacturingPlanChannel	CFPProductManufacturingPlanChannel	Channels to Display Manufacturing Plan Composition in Product				Registered Suite	DMCPlanning	CFPProductManufacturingPlanComposition|CFPProductManufacturingPlanCompositionRWA	630	FALSE
+PUEECOModBuildChannel	PUEECOModBuildChannel					ChannelID | Registered Suite	1 | UnresolvedEBOM	PUEMODCommand|PUEBuildCommandforApplicability|PUEManualCommand	400	FALSE
+ECCModelEngineeringChangeChannel	ECCModelEngineeringChangeChannel							PUEUnitChanges|PUEMODStacksCommand	0	FALSE
+DeploymentExtensionsChannel		Deployment Extensions Channel	emxDataSpecialization.label.DeployExtensionsChannel			Registered Suite	DataSpecialization	DeploymentExtensionsCmd	620	FALSE
+DeploymentAttributesChannel		Deployment Extensions Attributes Channel	emxDataSpecialization.label.DeployExtensionsAttributesChannel			Registered Suite	DataSpecialization	DeploymentAttributesCmd|DeploymentExtensionScopesCmd	620	FALSE
+DeploymentUniquenessKeysChannel		Deployment Uniqueness Keys Channel	emxDataSpecialization.label.DeployUniquenessKeysChannel			Registered Suite	DataSpecialization	DeploymentUniquenessKeysCmd	620	FALSE
+ManageUniquenessKeysChannel		Manage Deployment Uniqueness Keys Channel	emxDataSpecialization.label.DeploymentConstrainedAttributesChannel			Registered Suite	DataSpecialization	CustoActivationUniquenessKeyCmd|ManageMxTNRTypesCmd	0	FALSE
+DeploymentConstrainedAttributesChannel		Constrained Attributes for Deployment Uniqueness Keys Channel	emxDataSpecialization.label.DeploymentConstrainedAttributesChannel			Registered Suite	DataSpecialization	DeploymentConstrainedAttributesCmd	620	FALSE
+EditScopesChannel		Edit Scopes Channel	emxDataSpecialization.label.Scopes			Registered Suite	DataSpecialization	ScopesSelectionCmd	0	FALSE
+AEFPowerViewChannel	AEFPowerViewChannel					ChannelID | Registered Suite	1 | Framework	APPDashboardUserNewDocs|APPDashboardUserChangedDocs|APPDashboardUserRecentDocs|AEFCollections|PMCProjectSpaceMyDesk	0	FALSE
+AEFLifecycleState	AEFLifecycleState	Shows basic lifecycle of object				Height | Registered Suite	20% | Framework	AEFLifecycleBasic	100	FALSE
+AEFLifecycleTaskSignaturesApprovals	AEFLifecycleTaskSignaturesApprovals	For current signatures/tasks and approvals				Height | Registered Suite	80% | Framework	AEFLifecycleTaskSignatures|AEFLifecycleApprovals	400	FALSE
+AEFStructureCompareCriteria	AEFStructureCompareCriteria	BOM Compare Criteria				Height | Registered Suite	40% | Framework	AEFStructureCompareCriteria|APPLaunch3DLiveCompare	0	FALSE
+AEFStructureCompareResults	AEFStructureCompareResults	Channel for BOM Compare Selection Criteria				Height | Registered Suite	60% | Framework	AEFSCCompleteSummaryResults|AEFSCDifferenceOnlyReport|AEFSCCompareCommonComponents|AEFSCBOM1UniqueComponentsReport|AEFSCBOM2UniqueComponentsReport	0	FALSE
+IssueChannel1	IssueChannel1	IssueChannel1 which shows Issue Details				Registered Suite	Components	IssueDetails	0	FALSE
+IssueChannel2	IssueChannel2	IssueChannel2 which shows Assignee list				Registered Suite	Components	IssueAssigneeTreeCategory	0	FALSE
+IssueChannel3	IssueChannel3	IssueChannel3 which shows Resolved To and reported Against List				Registered Suite	Components	IssueReportedAgainstTreeCategory|IssueResolvedToTreeCategory|IssueReferenceDocumentsTreeCategory	0	FALSE
+APPLifecycleReviewChannel	APPLifecycleReviewChannel					ChannelID | Registered Suite	1 | Components	ENCLifeCycle|AEFLifecycleTaskSignatures|APPRoutes|ENCApprovals	700	FALSE
+APPDecisionWhereUsedChannel	APPDecisionWhereUsedChannel					Registered Suite | RowID	Components | 1	APPDecisionWhereUsed	400	FALSE
+APPDecisionWhereUsedRelChannel	APPDecisionWhereUsedRelChannel					Registered Suite | RowID	Components | 2	APPDecisionWhereUsedRel	400	FALSE
+APP3DLiveChannel	APP3DLiveChannel	APP3DLive window in channel				Registered Suite	Components	APPLaunch3DLiveChannel	0	FALSE
+APPRouteChannel1	APPRouteChannel1	First Route Channel for Route content, Proeprties, Access, Discussion, History				Registered Suite	Components	APPRouteDetails|APPContent|APPAccess|APPDiscussionCommand|AEFHistory	0	FALSE
+APPRouteChannel2	APPRouteChannel2	Second Route Channel for Route Task Info				Registered Suite	Components	APPTasksGraphical|APPTask	0	FALSE
+APPInboxTaskChannel1	APPInboxTaskChannel1	InboxTask Channel 1 for InboxTask Proeprties				Registered Suite	Components	APPInboxTaskProperties	0	FALSE
+APPInboxTaskChannel2	APPInboxTaskChannel2	InboxTask Channel 2 for InboxTask content				Registered Suite	Components	AppInboxTaskContent	0	FALSE
+TMCMyViewWorkspaceMeetingsChannel	TMCMyViewWorkspaceMeetingsChannel					Registered Suite	TeamCentral	TMCWorkspacesMyDesk|APPMeetingMyDesk	0	FALSE
+TMCMyViewTasksRoutesChannel	TMCMyViewTasksRoutesChannel					Registered Suite	TeamCentral	APPMyTask|APPRouteSummary	0	FALSE
+SMTWebServiceSummaryChannel	SMTWebServiceSummaryChannel							SMTServiceSummary|SMTFolderSummary	500	FALSE
+PersonXPChannel		Person express view Administration	emxPlmOnline.label.PeopleViewToolbar			Registered Suite	VPLMAdministration	APPXPPersonSearch|APPXPPerson	650	FALSE
+OrganizationXPChannel		Organization express view Administration	emxPlmOnline.label.Organization			Registered Suite	VPLMAdministration	APPXPOrganization|APPXPCreateOrganization	650	FALSE
+ProjectXPChannel		Project express view Administration	emxPlmOnline.label.Project			Registered Suite	VPLMAdministration	APPXPProjectSearch|APPXPProject	650	FALSE
+LocalAdministrationXPChannel								APPXPLocalAdministration	0	FALSE
+ProjectVPLMChannel								APPVPLMProjectSearch|APPVPLMProjectCreate	0	FALSE
+RoleXPChannel								APPXPRole|APPXPCreateRole	0	FALSE
+SecurityContextXPChannel								APPXPSecurityContext|APPXPCreateSecurityContext	0	FALSE
+PersonVPLMChannel								APPVPLMPersonSearch|APPVPLMPersonCreate	0	FALSE
+ParametrizationXPChannel		param channel	Parametrization			Registered Suite	VPLMAdministration	APPXPParametrizationDMBase|Parameterization_ObjectIdentification|APPXPParametrizationLCBase|Parameterization_DataAccessRight|Parameterization_EngineeringCentral|Parameterization_Iteration|APPXPParamImportExport	650	FALSE
+PeopleChannel		People view Administration	emxPlmOnline.label.PeopleViewToolbar			Registered Suite	VPLMAdministration	APPVPLMPerson|APPVPLMContext|APPVPLMOrganization|APPVPLMProject|APPVPLMRole|APPVPLMLocalAdministration	620	FALSE
+ResourcesChannel		Resources view Administration	emxPlmOnline.label.ResourcesViewToolbar			Registered Suite	VPLMAdministration	APPVPLMSettings|APPVPLMPRM|APPVPLMConfidentiality|APPVPLMDiscipline|APPVPLMFamily	620	FALSE
+AccessesChannel		Accesses View Administration	emxPlmOnline.label.AccessesViewToolbar			Registered Suite	VPLMAdministration	APPVPLMPolicies|APPVPLMRules|APPVPLMCommands|APPVPLMMasks|APPVPLMCheckAccess	620	FALSE
+ModelChannel		Model view Administration	emxPlmOnline.label.model			Registered Suite	Framework	APPVPLMType|APPVPLMRelationship	620	FALSE
+AdminPreferencesXPChannel		Express Administration Preferences	Manage Preferences			Registered Suite	Framework	APPXPManagePreferences	650	FALSE
+ENCMEPEquivalentChannel	ENCMEPEquivalentChannel					Registered Suite	ManufacturerEquivalentPart	MEPEnterpriseParts	700	FALSE
+CFFConfigurationContext	CFFConfigurationContext					ChannelID | Registered Suite	1 | Effectivity	CFFConfigurationContext	0	FALSE
+PMCProjectSummaryPortalChannel1	PMCProjectSummaryPortalChannel1					Registered Suite	ProgramCentral	PMCWBS|PMCQuality|PMCProjectBudget	400	FALSE
+PMCProjectSummaryPortalChannel2	PMCProjectSummaryPortalChannel2					Registered Suite	ProgramCentral	PMCRisk	0	FALSE
+PMCProjectSummaryPortalChannel3	PMCProjectSummaryPortalChannel3					Registered Suite	ProgramCentral	PMCAssessment|PMCProjectMember	0	FALSE
+PMCPowerViewChannel	PMCPowerViewChannel					Registered Suite	ProgramCentral	PMCRiskMyDesk	0	FALSE
+PMCCalendarViewChannel1	PMCCalendarViewChannel1					ChannelID | Registered Suite	1 | ProgramCentral	PMCListCalendarEvents|PMCCalendarProperties|PMCListCalendarLocations	520	FALSE
+PMCDecisions	PMCDecisions	PMC Decisions	emxProgramCentral.Common.Decisions			Registered Suite	ProgramCentral	PMCDecisionsTreeCategory	300	FALSE
+PMCDecisionsRelatedDecisions	PMCDecisionsRelatedDecisions	Related Decisions	emxProgramCentral.Common.RelatedDecisions			Registered Suite	ProgramCentral	PMCDecisionsRelatedDecisions	300	FALSE
+PMCProjectCollaborationChannel	PMCProjectCollaborationChannel	ProjectCollaboration Channel				Registered Suite	ProgramCentral	PMCBookmark|PMCDecisionsPowerView|APPDiscussionCommand|APPMeeting	650	FALSE
+PMCProjectIssuesRisksChannel	PMCProjectIssuesRisksChannel	Issues&Risks Channel				Registered Suite	ProgramCentral	PMCProjectRisk|ContextIssueListPage	650	FALSE
+PMCProjectApprovalsRoutesChannel	PMCProjectApprovalsRoutesChannel	Approvals&Routes Channel				Registered Suite	ProgramCentral	APPRoutes|PMCApproval	650	FALSE
+PMCWeeklyTimeSheet	PMCWeeklyTimeSheet	Weekly Timesheet	emxProgramCentral.WeeklyTimesheet.WeeklyTimeSheet			Registered Suite	ProgramCentral	PMCMyWeeklyTimeSheet|PMCWeeklyTimeSheetApprove	680	FALSE
+PMCWeeklyTimeSheetApproval	PMCWeeklyTimeSheetApproval	Weekly Timesheet Approval	emxProgramCentral.WeeklyTimesheet.WeeklyTimeSheetApproval			Registered Suite	ProgramCentral	PMCWeeklyTimeSheetApprove	300	FALSE
+PMCGateCollaborationChannel	PMCGateCollaborationChannel	Channel for Collaboration Portal	emxFramework.Common.PMCGateCollaborationChannel			Registered Suite	ProgramCentral	PMCBookmark|PMCDecisionsPowerView|APPDiscussionCommand|APPMeeting	700	FALSE
+PMCDashboardChannel	PMCDashboardChannel	For Project DashBoard	emxFramework.Common.PMCDashboardChannel			Registered Suite	ProgramCentral	PMCGateDashboardDetails|PMCDashboardDetail	700	FALSE
+PMCGateDashboardChannel1	PMCGateDashboardChannel1	To be shown in Gate Dashboard Portal	emxFramework.Common.PMCGateDashboardChannel1			Registered Suite	ProgramCentral	PMCExecutionStatusReportCommand|PMCBusinessStatusReportCommand|PMCDashboardDetail	375	FALSE
+PMCGateDashboardChannel2	PMCGateDashboardChannel2	To be shown in Gate Dashboard	emxFramework.Common.PMCGateDashboardChannel2			Registered Suite	ProgramCentral	PMCProjectBudgetInDashboard|PMCProjectBenefitInDashboard|PMCProjectMemberInDashboard|PMCProjectSpacePropertiesInDashboard	375	FALSE
+PMCPropertiesChannel	PMCPropertiesChannel	Channel for Properties Portal	emxFramework.Command.PMCPropertiesChannel			Registered Suite	ProgramCentral	PMCTaskManagementProperties|PMCLifecycle|PMCHistory	600	FALSE
+PMCGateDefaultChannel	PMCGateDefaultChannel	Channel for Default Gate Portal View	emxFramework.Common.PMCGateDefaultChannel			Registered Suite	ProgramCentral	PMCDeliverable|PMCChecklist	700	FALSE
+PMCGateAndTaskRouteAndApprovalsChannel	PMCGateAndTaskRouteAndApprovalsChannel	Channel to Show Routes and Approval commands in Task or Gate	emxFramework.Common.PMCGateAndTaskRouteAndApprovalsChannel			Registered Suite	ProgramCentral	PMCApproval|PMCRoutes	700	FALSE
+PMCProjectBudgetChannel1	PMCProjectBudgetChannel1					Registered Suite	ProgramCentral	PMCProjectBudget|PMCBudgetActualTransactions|PMCBaseCurrencyModifyMessageCommand	650	FALSE
+PMCProjectFinancialChannel	PMCProjectFinancialChannel					Registered Suite	ProgramCentral	PMCProjectBudget|PMCBudgetActualTransactions|PMCMultipleOwnershipAccessCommandForBudget|PMCProjectBenefit|PMCBaseCurrencyModifyMessageCommand|PMCProjectBenefitMultipleOwnershipAccessCommand	800	FALSE
+PMCSCProjectMembersAccessChannel	PMCSCProjectMembersAccessChannel	Members and Access Channel				Registered Suite	ProgramCentral	PMCProjectMember|DomainAccessTreeCategory	650	FALSE
+PMCWBSChannel	PMCWBSChannel	WBS and Gantt Chart Channel				Registered Suite	ProgramCentral	PMCWBS|PMCGantt	650	FALSE
+PMCMyCalendarChannel	PMCMyCalendarChannel					ChannelID | Registered Suite	1 | ProgramCentral	PMCMyCalendarDay|PMCMyCalendarWeek|PMCMyCalendarMonth	520	FALSE
+PMCAddTaskDependenciesChannel	PMCAddTaskDependenciesChannel	Channel to add Task Dependency	emxProgramCentral.Common.AddDependency			Registered Suite	ProgramCentral	PMCAddInternalTaskDependencies|PMCAddExternalProjectTaskDependencies	260	FALSE
+PMCTaskDependenciesChannel	PMCTaskDependenciesChannel	Channel for Dependent Task	emxProgramCentral.Common.DependentTask			Registered Suite	ProgramCentral	PMCWBSManageDependencies	260	FALSE
+PMCWeeklyTimeSheetTaskDetails	PMCWeeklyTimeSheetTaskDetails					Registered Suite	ProgramCentral	PMCWeeklyTimeSheetBlank	260	FALSE
+PMCWhatIfExperimentsChannel	PMCWhatIfExperimentsChannel					ChannelID | Registered Suite	1 | ProgramCentral	PMCWhatIfProjectExperimentsList|PMCProjectSnapshots	800	FALSE
+PMCWhatIfExperimentsUpdateChannel	PMCWhatIfExperimentsUpdateChannel					ChannelID | Registered Suite	1 | ProgramCentral	PMCWhatIfExperimentStructure|PMCGantt	800	FALSE
+PMCWhatIfProjectChanges	PMCWhatIfProjectChanges					Registered Suite	ProgramCentral	PMCWhatIfProjectChangeList	800	FALSE
+PMCProjectPropertiesChannel	PMCProjectPropertiesChannel							PMCProjectSpaceProperties|PMCProjectDetailsPropertiesAlertPreferences|PMCKeywordDuration|PMCLifecycle|PMCHistory|PMCRelatedProjects|APPImageManager	0	FALSE
+PMCObjectives	PMCObjectives					Registered Suite	ProgramCentral	PMCBusinessGoal|PMCQuality|PMCProjectGovernedItems	260	FALSE
+PMCSchedule	PMCSchedule					Registered Suite	ProgramCentral	PMCWBS|PMCGantt|PMCMilestones|PMCGateDashboardReport	260	FALSE
+PMCAccess_ResourcePlan	PMCAccess_ResourcePlan					Registered Suite	ProgramCentral	PMCProjectMember|PMCResourcePlan|PMCProjectMemberTimesheet	260	FALSE
+PMCFinancials	PMCFinancials					Registered Suite	ProgramCentral	PMCProjectBudget|PMCBudgetActualTransactions|PMCBaseCurrencyModifyMessageCommand|PMCProjectBenefit	260	FALSE
+PMCExecution	PMCExecution					Registered Suite	ProgramCentral	PMCAssessment|ContextIssueListPage|PMCProjectRisk|APPRoutes|PMCApproval	260	FALSE
+PMCRiskAssigneeTab	PMCRiskAssigneeTab					Registered Suite	ProgramCentral	PMCAssignee|PMCRiskMultipleOwnershipCommand	260	FALSE
+PMCResourcePoolReportData	PMCResourcePoolReportData					Registered Suite	ProgramCentral	PMCReportResourceDemandSummary|PMCReportResourceDemandVersusCapacity|PMCReportResourceUtilization|PMCReportProjectAssignment|PMCReportResourceDemandBySkill	0	FALSE
+PMCResourcePoolReportChart	PMCResourcePoolReportChart					Registered Suite	ProgramCentral	PMCResourcePoolReportChart	0	FALSE
+RMTExchangeTracking	RMTExchangeTracking	Channel to Exchanges Tracking	emxRequirements.Common.ExchangeTracking			ChannelID | Registered Suite	1 | Requirements	APPDiscussionCommand|ContextIssueListPage|APPDecisionsTreeCategory	800	FALSE
+RMTChangeControl	RMTChangeControl	Channel to Change Control	emxRequirements.Common.RMTChangeControl			ChannelID | Registered Suite	1 | Requirements	AEFLifecycle|APPRoutes|RMTRevisionsTreeCategory|RMTRequirementVersionsTreeCategory|CFFConfigurationCriteria|CommonEngineeringChangeTreeCategory	800	FALSE
+RMTTraceability	RMTTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTDisplayGraphUtil|RMTTraceabilityRequirementReport|RMTTraceabilityFeatureReport|RMTTraceabilityTestCaseReport|RMTTraceabilityParameterReport	0	FALSE
+RMTProperties	RMTProperties	Channel to Properties	emxRequirements.Common.RMTProperties			ChannelID | Registered Suite	1 | Requirements	RMTRequirementProperties|PLMAddExtensionCmd|PARParametersTreeCategory|RMTRequirementReferenceDocumentTreeCategory|DomainAccessTreeCategory|AEFHistory	800	FALSE
+RMTSpecificationsExchangeTracking	RMTSpecificationsExchangeTracking	Channel to Exchanges Tracking	emxRequirements.Common.ExchangeTracking			ChannelID | Registered Suite	1 | Requirements	APPDocumentDiscussions|ContextIssueListPage	800	FALSE
+RMTSpecificationsChangeControl	RMTSpecificationsChangeControl	Channel to Change Control	emxRequirements.Common.RMTChangeControl			ChannelID | Registered Suite	1 | Requirements	CommonEngineeringChangeTreeCategory|APPDocumentRoutes|CFFConfigurationCriteria|AEFLifecycle|RMTRevisions	800	FALSE
+RMTSpecificationsTraceability	RMTSpecificationsTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTDisplayGraphUtil|RMTTraceabilityRequirementReport|RMTTraceabilityFeatureReport|RMTTraceabilityTestCaseReport|RMTTraceabilityFunctionalReport|RMTTraceabilityLogicalReport|RMTTraceabilityPhysicalReport	0	FALSE
+RMTSpecificationsTraceabilityReport	RMTSpecificationsTraceabilityReport	Channel to Traceability Report	emxRequirements.Common.RMTTraceabilityReport			Height | Registered Suite	60% | Requirements	RMTSpecificationsBlankTraceabilityCommandForPowerView	0	FALSE
+RMTSpecificationsProperties	RMTSpecificationsProperties	Channel to Properties	emxRequirements.Common.RMTProperties			ChannelID | Registered Suite	1 | Requirements	RMTSpecificationProperties|PLMAddExtensionCmd|APPDocumentFiles|APPDocumentFileVersions|AEFHistory|APPDocumentVCFileVersions|APPDocumentVCFolderContents|APPDocumentVCFolderConfigurations|APPFileVersions	800	FALSE
+RMTSpecificationRelatedObjects	RMTSpecificationRelatedObjects	Channel for Specification related Objects	emxRequirements.Common.RMTRelatedObjects			ChannelID | Registered Suite	1 | Requirements	RMTFullTraceabilityReport|PLCSpecificationWhereUsedTreeCategory|RMTCloneInfo	800	FALSE
+RMTSpecificationsReqTraceability	RMTSpecificationsReqTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTTraceabilityRequirementReport	0	FALSE
+RMTSpecificationsFeatureTraceability	RMTSpecificationsFeatureTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTTraceabilityFeatureReport	0	FALSE
+RMTSpecificationsTestCaseTraceability	RMTSpecificationsTestCaseTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTTraceabilityTestCaseReport	0	FALSE
+RMTSpecificationsFunctionalTraceability	RMTSpecificationsFunctionalTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTTraceabilityFunctionalReport	0	FALSE
+RMTSpecificationsLogicalTraceability	RMTSpecificationsLogicalTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTTraceabilityLogicalReport	0	FALSE
+RMTSpecificationsPhysicalTraceability	RMTSpecificationsPhysicalTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTTraceabilityPhysicalReport	0	FALSE
+RMTParameterTraceability	RMTParameterTraceability	Channel to Traceability	emxRequirements.Common.RMTTraceability			Height | Registered Suite	40% | Requirements	RMTTraceabilityParameterReport	0	FALSE
+RMTRelatedObjects	RMTRelatedObjects	Channel for related Objects	emxRequirements.Common.RMTRelatedObjects			ChannelID | Registered Suite	1 | Requirements	RMTFullTraceabilityReport|RMTCloneInfo|RMTRequirementSpecifications|RMTRequirementWhereUsedTreeCategory|RMTRequirementUseCaseTreeCategory|RMTRequirementTestCaseTreeCategory|FTRRequirementSatisfiedByTreeCategory	800	FALSE
+RMTSpecificationsGraph	RMTSpecificationsGraph	Channel to Traceability	emxRequirements.Label.DisplayGraph			Height | Registered Suite	40% | Requirements	RMTDisplayGraph	0	FALSE
+APPWhereUsedChannel	APPWhereUsedChannel							APPWhereUsedHData|APPWhereUsedRData	0	FALSE
+PackageConfigChannel		Package Config channel	emxDataSpecialization.label.PackageConfigChannel			Registered Suite	DataSpecialization	PackageConfigTypesCmd|PackageConfigExtsCmd|UniquenessKeysViewCmd	620	FALSE
+PackageConfigAttributesChannel		Package Config Channel for Attributes	emxDataSpecialization.label.PackageAttrChannel			Registered Suite	DataSpecialization	PackageConfigAttributesCmd|PackageConfigScopesCmd	620	FALSE
+QCCProfileChannel			emxProfile.Common.Profile			Default Category | Registered Suite	QCCPLMProfileCommand | PLMProfile	QCCPLMProfileCommand|AEFLifecycle	0	FALSE
+QCCPGChannel			emxProfile.Common.PG			Registered Suite	PLMProfile	QCCPGCheckInstancesReadOnlyAccessCommand|QCCPGCheckInstancesReadWriteAccessCommand|QCCPGPropertiesCommand	0	FALSE
+

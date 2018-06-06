@@ -1,0 +1,38 @@
+var params = proc.declareParameters(["setname", "rootids", "vault", "select"], ["label", "where", "dump", "notsubstitute"]);
+
+// test to prevent injection in setname
+if (!(/^[\w\+-:]+$/.test(setname)))
+{
+	proc.write(label, null, "Invalid set name");
+}
+// test to prevent injection in where
+else if (where && !params.isWhereClauseValid(where))
+{
+	proc.write(label, null, "Invalid where clause");
+}
+else
+{
+	var fullwhere = "(member[" + setname + "] == TRUE)";
+	if (where)
+		fullwhere += " AND (" + where + ")";
+	
+	var cmd = "query connection where $1 vault $2";
+	params.addVars([fullwhere, vault]);
+
+	cmd += " select";
+	if (dump || params.getBoolean("notsubstitute"))
+		cmd += " notsubstitute";
+	
+	cmd += params.addVars(JSON.parse(select));
+	
+	if (dump)
+		cmd += " dump" + params.addVar(dump);
+	
+	cmd += " tcl";
+	
+	mql.startTransaction(true);
+	mql.execute(null, "mod set $1 add connection $2", [setname, JSON.parse(rootids).join()]);
+	mql.execute(label, cmd, params);
+	mql.abortTransaction();
+}
+

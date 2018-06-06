@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:widgets xmlns:ds="http://www.3ds.com/enovia/bps/widgets"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+            xsi:schemaLocation="http://www.3ds.com/enovia/bps/widgets widgets.xsd ">
+
+  <ds:view name="BPS_View_PlayButtonSummary">
+    <ds:group name="TNR Label">
+      <ds:style layout="horizontal" width="100%" align="center"/>
+      <ds:jpo><ds:bps-getInfo /></ds:jpo>
+      <ds:field name="name">
+        <ds:selectable expression="name"/>
+        <ds:ui type="title"/>
+      </ds:field>
+      <ds:field name="revision" >
+        <ds:selectable expression="revision"/>
+        <ds:ui type="title"/>
+      </ds:field>
+    </ds:group>
+    <ds:view>
+      <ds:style layout="horizontal" />
+      <ds:view>
+        <ds:style layout="vertical" width="50%" />
+        <ds:view>
+          <ds:ref-experience name="BPS_Experience_ObjectDetails" />
+        </ds:view>
+        <ds:view>
+          <ds:ref-experience name="BPS_Experience_ObjectHistory" />
+        </ds:view>
+      </ds:view>
+      <ds:view>
+        <ds:style layout="vertical" width="50%" />
+        <ds:view>
+          <ds:style height="800px" />
+          <ds:ref-experience name="BPS_Experience_ObjectLifecycle" />
+        </ds:view>
+        <ds:view>
+          <ds:ref-experience name="BPS_Experience_ObjectDocuments" />
+        </ds:view>
+      </ds:view>
+    </ds:view>
+  </ds:view>
+
+<ds:experience name="BPS_Experience_MyInboxTasks">
+  <ds:label text="emxTeamCentral.Channel.Tasks" registeredSuite="TeamCentral"/>
+  <ds:url target="content" path="./emxTable.jsp?program=emxInboxTask:getMyDeskTasks,emxInboxTask:getActiveTasks,emxInboxTask:getCompletedTasks,emxInboxTask:getTasksToBeAccepted&amp;table=APPTaskSummary&amp;programLabel=emxComponents.Filter.AllTasks,emxComponents.Filter.Active,emxComponents.Filter.Complete,emxComponents.Filter.TasksToBeAccepted&amp;header=emxComponents.Common.Tasks&amp;toolbar=APPTaskSummaryToolBar&amp;sortColumnName=Name&amp;sortDirection=ascending&amp;selection=multiple&amp;HelpMarker=emxhelptasks&amp;selectedFilter=emxInboxTask:getActiveTasks"/>
+    <ds:channel name="Channel_MyInboxTasks">
+    <ds:jpo><ds:bps-query typePattern="type_InboxTask" whereExpression="owner == context.user AND current != 'Complete'" expandType="false" /></ds:jpo>
+    <ds:group><ds:style layout="vertical"/>
+      <ds:group>
+        <ds:style layout="vertical"/>
+        <ds:field name="image">
+          <ds:style align="center" />
+          <ds:url target="content" path="../common/emxSecurityContextSelection.jsp"/>
+          <ds:image source="primaryOrType" size="thumbnail"/>
+          <ds:fieldjpo classname="com.dassault_systemes.enovia.webapps.common.rest.channel.TaskChannel" function="getDueDateStatus" localInvokation="false"/>
+        </ds:field>
+      </ds:group>
+      <ds:group>
+        <ds:style layout="vertical"/>
+        <ds:field name="routeAction">
+          <ds:style align="center" />
+          <ds:selectable expression="attribute[attribute_RouteAction]" format="range"/>
+        </ds:field>
+        <ds:field name="name">
+          <ds:style align="center" />
+          <ds:selectable expression="name" />
+        </ds:field>
+        <ds:field name="dueDate" hidden="true">
+          <ds:label text="emxTeamCentral.Channel.Tasks.DueDate" registeredSuite="TeamCentral"/>
+          <ds:selectable expression="attribute[attribute_ScheduledCompletionDate]" format="datetime"/>
+          <ds:sort direction="ascending" type="date" order="1" sortable="true" />
+          <ds:fieldjpo classname="com.dassault_systemes.enovia.webapps.common.rest.channel.TaskChannel" function="getDueDate" localInvokation="false"/>
+        </ds:field>
+        <ds:field name="status" hidden="true">
+          <ds:label text="emxTeamCentral.Channel.Tasks.Status" registeredSuite="TeamCentral"/>
+          <ds:selectable filterable="true" sixw="ds6w:what/ds6w:status" />
+          <ds:fieldjpo classname="com.dassault_systemes.enovia.webapps.common.rest.channel.TaskChannel" function="getDueDateStatus" localInvokation="false"/>
+        </ds:field>
+      </ds:group>
+    </ds:group>
+  </ds:channel>
+</ds:experience>
+
+<ds:experience name="BPS_Experience_MyIssues">
+  <ds:label text="emxTeamCentral.Channel.Issues" registeredSuite="TeamCentral"/>
+  <ds:url target="content" path="./emxTable.jsp?program=emxInboxTask:getMyDeskTasks,emxInboxTask:getActiveTasks,emxInboxTask:getCompletedTasks,emxInboxTask:getTasksToBeAccepted&amp;table=APPTaskSummary&amp;programLabel=emxComponents.Filter.AllTasks,emxComponents.Filter.Active,emxComponents.Filter.Complete,emxComponents.Filter.TasksToBeAccepted&amp;header=emxComponents.Common.Tasks&amp;toolbar=APPTaskSummaryToolBar&amp;sortColumnName=Name&amp;sortDirection=ascending&amp;selection=multiple&amp;HelpMarker=emxhelptasks&amp;selectedFilter=emxInboxTask:getActiveTasks"/>
+    <ds:channel name="Channel_MyIssues">
+    <ds:jpo><ds:bps-query typePattern="type_Issue" whereExpression="owner == context.user AND current != 'Closed'" expandType="false" /></ds:jpo>
+    <ds:group><ds:style layout="vertical"/>
+      <ds:group>
+        <ds:style layout="vertical"/>
+        <ds:field name="image">
+          <ds:style align="center" />
+          <ds:url target="content" path="../common/emxSecurityContextSelection.jsp"/>
+          <ds:image source="primaryOrType" size="thumbnail"/>
+        </ds:field>
+      </ds:group>
+      <ds:group>
+        <ds:style layout="vertical"/>
+        <ds:field name="routeAction">
+          <ds:style align="center" />
+          <ds:selectable expression="attribute[attribute_ProblemType]" format="range"/>
+        </ds:field>
+        <ds:field name="name">
+          <ds:style align="center" />
+          <ds:selectable expression="name" />
+        </ds:field>
+      </ds:group>
+    </ds:group>
+  </ds:channel>
+</ds:experience>
+
+<ds:experience name="BPS_Experience_ObjectDetails">
+  <ds:label text="emxFramework.PlayButtonSummary.Details" registeredSuite="Framework"/>
+  <ds:form name="abc">
+    <ds:jpo><ds:bps-getInfo /></ds:jpo>
+    <ds:group>
+      <ds:style layout="horizontal" />
+      <ds:group>
+        <ds:style layout="vertical" width="50%"/>
+        <ds:field name="image">
+          <ds:style align="center" />
+          <ds:image source="primaryOrType" size="medium"/>
+        </ds:field>
+      </ds:group>
+      <ds:group>
+        <ds:style layout="vertical" align="left" width="50%"/>
+        <ds:field name="name">
+          <ds:label text="emxFramework.Basic.Name" registeredSuite="Framework"/>
+          <ds:selectable expression="name"/>
+        </ds:field>
+        <ds:field name="type">
+          <ds:label text="emxFramework.Basic.Type" registeredSuite="Framework"/>
+          <ds:selectable expression="type" format="type"/>
+        </ds:field>
+        <ds:field name="description">
+          <ds:label text="emxFramework.Basic.Description" registeredSuite="Framework"/>
+          <ds:selectable expression="description" />
+        </ds:field>
+        <ds:field name="state">
+          <ds:label text="emxFramework.Basic.Current" registeredSuite="Framework"/>
+          <ds:selectable expression="current" format="state"/>
+        </ds:field>
+        <ds:field name="owner">
+          <ds:label text="emxFramework.Basic.Owner" registeredSuite="Framework"/>
+          <ds:selectable expression="owner" format="user" />
+        </ds:field>
+        <ds:field name="originator">
+          <ds:label text="emxFramework.Attribute.Originator" registeredSuite="Framework"/>
+          <ds:selectable expression="attribute[attribute_Originator]" format="user" />
+        </ds:field>
+        <ds:field name="originated">
+          <ds:label text="emxFramework.Basic.Originated" registeredSuite="Framework"/>
+          <ds:selectable expression="originated" format="datetime" />
+        </ds:field>
+        <ds:field name="policy" hidden="true">
+          <ds:selectable expression="policy" format="policy"/>
+        </ds:field>
+      </ds:group>
+    </ds:group>
+  </ds:form>
+</ds:experience>
+
+<ds:experience name="BPS_Experience_ObjectLifecycle">
+  <ds:label text="emxFramework.PlayButtonSummary.Lifecycle" registeredSuite="Framework"/>
+  <ds:location><ds:url path="../common/emxLifecycleDialog.jsp" /></ds:location>
+</ds:experience>
+
+<ds:experience name="BPS_Experience_ObjectHistory">
+  <ds:label text="emxFramework.PlayButtonSummary.History" registeredSuite="Framework"/>
+  <ds:table>
+    <ds:style height="150px" />
+    <ds:jpo><ds:custom-jpo classname="emxPlayButtonSummary" function="getHistory" localInvokation="false" returnedData="idsAndData" /></ds:jpo>
+    <ds:field name="date">
+      <ds:label text="emxFramework.History.Date" registeredSuite="Framework"/>
+      <ds:style align="left" />
+      <ds:selectable expression="date" format="date" />
+    </ds:field>
+    <ds:field name="user">
+      <ds:label text="emxFramework.History.User" registeredSuite="Framework"/>
+      <ds:style align="left" />
+      <ds:selectable expression="user" format="user" />
+    </ds:field>
+    <ds:field name="action">
+      <ds:label text="emxFramework.History.Action" registeredSuite="Framework"/>
+      <ds:style align="left" />
+      <ds:selectable expression="action" />
+    </ds:field>
+    <ds:field name="state">
+      <ds:label text="emxFramework.History.State" registeredSuite="Framework"/>
+      <ds:style align="left" />
+      <ds:selectable expression="state" format="state"/>
+    </ds:field>
+    <ds:field name="description">
+      <ds:label text="emxFramework.History.ActionDetails" registeredSuite="Framework"/>
+      <ds:style align="left" />
+      <ds:selectable expression="description" />
+    </ds:field>
+  </ds:table>
+</ds:experience>
+
+<ds:experience name="BPS_Experience_ObjectDocuments">
+  <ds:label text="emxFramework.PlayButtonSummary.Documents" registeredSuite="Framework"/>
+  <ds:url target="content" path="./emxTable.jsp?program=emxCommonDocumentUI:getDocuments&amp;table=APPDocumentSummary&amp;selection=multiple&amp;sortColumnName=Name&amp;sortDirection=ascending&amp;toolbar=APPDocumentSummaryToolBar&amp;header=emxComponents.Menu.Documents&amp;HelpMarker=emxhelpbooktreecategorydocuments" />
+  <ds:channel name="BPS_Channel_ObjectDocuments">
+    <ds:jpo><ds:custom-jpo classname="emxPlayButtonSummary" function="getDocuments" localInvokation="false" returnedData="ids" /></ds:jpo>
+    <ds:group>
+      <ds:style layout="vertical"/>
+      <ds:group>
+        <ds:style layout="vertical"/>
+        <ds:field name="image">
+          <ds:style align="center" />
+          <ds:url target="content" path="../common/emxSecurityContextSelection.jsp"/>
+          <ds:image source="primaryOrType" size="thumbnail"/>
+        </ds:field>
+      </ds:group>
+      <ds:group>
+        <ds:style layout="vertical"/>
+        <ds:field name="name">
+          <ds:style align="center" />
+          <ds:selectable expression="name" />
+        </ds:field>
+        <ds:field name="modified">
+          <ds:style align="center" />
+          <ds:selectable expression="modified" format="date"/>
+        </ds:field>
+        <ds:field name="modified-sort" hidden="true">
+          <ds:label text="emxFramework.Basic.Modified" registeredSuite="Framework"/>
+          <ds:selectable expression="modified" format="datetime"/>
+          <ds:sort direction="descending" type="date" order="1" sortable="true" />
+        </ds:field>
+      </ds:group>
+    </ds:group>
+  </ds:channel>
+</ds:experience>
+
+<ds:group name="ChannelGroup_BPSUIIssues" >
+    <ds:style layout="vertical"/>
+    <ds:group>
+        <ds:field name="image">
+            <ds:style align="center" />
+            <ds:url target="content"
+            path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=components&amp;suiteKey=Components"/>
+            <ds:image source="primaryOrType" size="thumbnail"/>
+        </ds:field>
+    </ds:group>
+
+    <ds:group>
+        <ds:field name="name">
+            <ds:style align="center" />
+            <ds:selectable expression="name"/>
+        </ds:field>
+        <ds:field name="SlipDaysIcon">
+            <ds:style align="center" />
+            <ds:selectable expression="status" format="html"/>
+            <ds:fieldjpo classname="emxCommonIssue" function="getSlipDaysIconForWidgets" localInvokation="false"/>
+        </ds:field>
+        <ds:field name="State">
+            <ds:style align="center" />
+            <ds:selectable expression="current"/>
+        </ds:field>
+        <ds:field name="EstimatedStartDate">
+            <ds:style align="center" />
+            <ds:selectable expression="attribute[attribute_EstimatedStartDate]" format="date"/>
+        </ds:field>
+
+        <ds:field name="EstimatedEndDate" hidden="true">
+            <ds:selectable expression="attribute[attribute_EstimatedEndDate]" format="date"/>
+        </ds:field>
+        <ds:field name="ActualStartDate" hidden="true">
+            <ds:selectable expression="attribute[attribute_ActualStartDate]" format="date"/>
+        </ds:field>
+        <ds:field name="ActualEndDate" hidden="true">
+            <ds:selectable expression="attribute[attribute_ActualEndDate]" format="date"/>
+        </ds:field>
+    </ds:group>
+</ds:group>
+
+<ds:experience name="Exp_BPSUICollections">
+    <ds:label text="emxFramework.Widgets.Collections"  registeredSuite="Framework" />
+    <ds:availableViews>
+        <ds:view>list</ds:view>
+        <ds:view>channel</ds:view>
+    </ds:availableViews>
+    <ds:list name="List_BPSUICollections">
+        <ds:jpo>
+            <ds:custom-jpo classname="emxAEFCollection" function="getCollectionsForWidgets" localInvokation="false" returnedData="idsAndData"/>
+        </ds:jpo>
+
+        <ds:group>
+            <ds:field name="id" hidden="true">
+                <ds:selectable expression="id[connection]" type="key"/>
+            </ds:field>
+            <ds:field name="image">
+                <ds:style align="center" />
+                <ds:url target="content" path="../common/emxTree.jsp?targetLocation=content&amp;treeMenu=AEFCollectionsMenu&amp;AppendParameters=True&amp;DefaultCategory=AEFCollectionItems&amp;emxSuiteDirectory=common&amp;relId=%id%&amp;suiteKey=Framework&amp;treeLabel=%name"/>
+                <ds:image default="common/images/iconSmallCollection.gif" size="thumbnail"/>
+                </ds:field>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:field name="name">
+                <ds:selectable expression="name" type="key"/>
+                <ds:sort order="1" sortable="true" />
+            </ds:field>
+            <ds:field name="count">
+                <ds:label text="emxFramework.Widgets.Count"  registeredSuite="Framework" show="none"/>
+                <ds:selectable expression="count" type="key"/>
+                <ds:sort order="2" sortable="true" />
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:field name="description">
+                <ds:label text="emxFramework.Widgets.Description"  registeredSuite="Framework" show="top" />
+                <ds:selectable expression="description" type="key"/>
+                <ds:sort order="3" sortable="true" />
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="channel">
+            <ds:field name="name">
+                <ds:style align="center" />
+                <ds:selectable expression="name" type="key"/>
+            </ds:field>
+            <ds:field name="count">
+                <ds:style align="center" />
+                <ds:selectable expression="count" type="key"/>
+            </ds:field>
+            <ds:field name="description">
+                <ds:style align="center" />
+                <ds:selectable expression="description" type="key"/>
+            </ds:field>
+        </ds:group>
+    </ds:list>
+</ds:experience>
+
+<ds:experience name="Exp_BPSUIIssues">
+    <ds:label text="emxComponents.Widget.Issues" registeredSuite="Components" />
+    <ds:availableViews>
+        <ds:view>list</ds:view>
+        <ds:view>channel</ds:view>
+    </ds:availableViews>
+    <ds:list name="List_BPSUIIssues">
+        <ds:jpo>
+            <ds:bps-query typePattern="type_Issue" whereExpression="owner == context.user AND current != 'Closed'" expandType="false"/>
+        </ds:jpo>
+
+        <ds:group view="list">
+            <ds:field name="image">
+                <ds:style align="center" />
+                <ds:url target="content"
+                path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=components&amp;suiteKey=Components"/>
+                <ds:image source="primaryOrType" size="thumbnail" />
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:field name="name">
+                <ds:selectable expression="name"/>
+                <ds:sort order="1" sortable="true" />
+            </ds:field>
+            <ds:field name="EscalationRequired">
+                <ds:label text="emxComponents.Widget.EscalationRequired"   registeredSuite="Components" />
+                <ds:selectable expression="attribute[attribute_EscalationRequired]" format="range"/>
+                <ds:sort order="2" sortable="true" />
+            </ds:field>
+            <ds:field name="Originator">
+                <ds:label text="emxComponents.Widget.Owner"   registeredSuite="Components" />
+                <ds:selectable expression="attribute[attribute_Originator]" format="user"/>
+                <ds:sort order="3" sortable="true" />
+            </ds:field>
+            <ds:field name="Priority">
+                <ds:label text="emxComponents.Widget.Priority"   registeredSuite="Components" />
+                <ds:selectable expression="attribute[attribute_Priority]" format="range"/>
+                <ds:sort order="4" sortable="true" />
+            </ds:field>
+            <ds:field name="SlipDaysIcon">
+                <ds:label text="emxComponents.Widget.Status"   registeredSuite="Components" />
+                <ds:selectable expression="status" format="html"/>
+                <ds:fieldjpo classname="emxCommonIssue" function="getSlipDaysIconForWidgets" localInvokation="false"/>
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:field name="Description">
+                <ds:label text="emxComponents.Widget.Description"  registeredSuite="Components" show="top" />
+                <ds:selectable expression="description"/>
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:field name="policy" hidden="true">
+                <ds:selectable expression="policy"/>
+            </ds:field>
+            <ds:field name="State">
+                <ds:label text="emxComponents.Widget.State"   registeredSuite="Components" />
+                <ds:selectable expression="current" format="state"/>
+                <ds:sort order="5" sortable="true" />
+            </ds:field>
+            <ds:field name="EstimatedStartDate">
+                <ds:label text="emxComponents.Widget.EstimatedStartDate"   registeredSuite="Components" />
+                <ds:selectable expression="attribute[attribute_EstimatedStartDate]" format="date"/>
+                <ds:sort order="6" sortable="true" />
+            </ds:field>
+            <ds:field name="EstimatedEndDate">
+                <ds:label text="emxComponents.Widget.EstimatedEndDate"   registeredSuite="Components" />
+                <ds:selectable expression="attribute[attribute_EstimatedEndDate]" format="date"/>
+                <ds:sort order="7" sortable="true" />
+            </ds:field>
+            <ds:field name="ActualStartDate">
+                <ds:label text="emxComponents.Widget.ActualStartDate"   registeredSuite="Components" />
+                <ds:selectable expression="attribute[attribute_ActualStartDate]" format="date"/>
+                <ds:sort order="8" sortable="true" />
+            </ds:field>
+            <ds:field name="ActualEndDate">
+                <ds:label text="emxComponents.Widget.ActualEndDate"   registeredSuite="Components" />
+                <ds:selectable expression="attribute[attribute_ActualEndDate]" format="date"/>
+                <ds:sort order="9" sortable="true" />
+            </ds:field>
+        </ds:group>
+        <ds:ref-group name="ChannelGroup_BPSUIIssues" view="channel" />
+    </ds:list>
+</ds:experience>
+
+<ds:experience name="Exp_BPSUITasks">
+    <ds:label text="emxComponents.Widget.Tasks"  registeredSuite="Components" />
+    <ds:availableViews>
+        <ds:view>list</ds:view>
+        <ds:view>channel</ds:view>
+    </ds:availableViews>
+    <ds:list name="List_BPSUITasks">
+        <ds:jpo>
+            <ds:custom-jpo classname="emxInboxTask" function="getUserTaskForWidgets" localInvokation="false" returnedData="ids"/>
+        </ds:jpo>
+
+        <ds:group>
+            <ds:field name="image">
+                <ds:style align="center" />
+                <ds:url target="content" path="../common/emxSecurityContextSelection.jsp?targetLocation=content&amp;emxSuiteDirectory=components&amp;suiteKey=Components"/>
+                <ds:image source="primaryOrType" size="thumbnail"/>
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:field name="name">
+                <ds:selectable expression="name"/>
+                <ds:sort order="1" sortable="true" />
+            </ds:field>
+            <ds:field name="Type">
+                <ds:label text="emxComponents.Widget.Type"  registeredSuite="Components"/>
+                <ds:selectable expression="type" format="type"/>
+                <ds:sort order="3" sortable="true" />
+            </ds:field>
+            <ds:field name="State">
+                <ds:label text="emxComponents.Widget.State"  registeredSuite="Components"/>
+                <ds:selectable expression="current" format="state"/>
+                <ds:sort order="4" sortable="true" />
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:iftrue field="Type" value="Inbox Task">
+                <ds:field name="Title">
+                    <ds:label text="emxComponents.Widget.Title"  registeredSuite="Components"/>
+                    <ds:selectable expression="attribute[attribute_Title]"/>
+                    <ds:sort order="2" sortable="true" />
+                </ds:field>
+                <ds:field name="Instructions">
+                    <ds:label text="emxComponents.Widget.Instructions"  registeredSuite="Components" />
+                    <ds:selectable expression="attribute[attribute_RouteInstructions]"/>
+                    <ds:sort order="5" sortable="true" />
+                </ds:field>
+            </ds:iftrue>
+            <ds:iffalse field="Type" value="Inbox Task">
+                <ds:field name="Description">
+                    <ds:label text="emxComponents.Widget.Description"  registeredSuite="Components" />
+                    <ds:selectable expression="description"/>
+                    <ds:sort order="6" sortable="true" />
+                </ds:field>
+            </ds:iffalse>
+        </ds:group>
+
+        <ds:group view="list">
+            <ds:field name="StatusIconPercentComplete">
+                <ds:label text="emxComponents.Widget.Status" registeredSuite="Components" show="none"/>
+                <ds:selectable expression="attribute[attribute_PercentComplete]" format="html"/>
+                <ds:ui type="progressbar"/>
+                <ds:fieldjpo classname="emxInboxTask" function="getTaskStatusForWidget" localInvokation="false" />
+            </ds:field>
+            <ds:iftrue field="Type" value="Inbox Task">
+                <ds:field name="DueDate">
+                    <ds:label text="emxComponents.Widget.Due"  registeredSuite="Components" />
+                    <ds:selectable expression="attribute[attribute_ScheduledCompletionDate]" format="date"/>
+                    <ds:sort order="7" sortable="true" />
+                </ds:field>
+            </ds:iftrue>
+            <ds:iffalse field="Type" value="Inbox Task">
+                <ds:field name="TaskDueDate">
+                    <ds:label text="emxComponents.Widget.Due"  registeredSuite="Components" />
+                    <ds:selectable expression="attribute[attribute_TaskEstimatedFinishDate]" format="date"/>
+                    <ds:sort order="7" sortable="true" />
+                </ds:field>
+            </ds:iffalse>
+            <ds:iftrue field="Type" value="Inbox Task">
+                <ds:field name="ContextIT">
+                    <ds:label text="emxComponents.Widget.Context"  registeredSuite="Components" />
+                    <ds:selectable expression="relationship[Route Task].to.name"/>
+                    <ds:sort order="8" sortable="true" />
+                </ds:field>
+            </ds:iftrue>
+            <ds:iffalse field="Type" value="Inbox Task">
+                <ds:field name="ContextT">
+                    <ds:label text="emxComponents.Widget.Context"  registeredSuite="Components" />
+                    <ds:selectable expression="to[Project Access Key].from.from[Project Access List].to.name"/>
+                </ds:field>
+            </ds:iffalse>
+            <ds:field name="Owner">
+                <ds:label text="emxComponents.Widget.Owner"  registeredSuite="Components" />
+                <ds:selectable expression="owner" format="user"/>
+                <ds:sort order="9" sortable="true" />
+            </ds:field>
+        </ds:group>
+
+        <ds:group view="channel">
+            <ds:field name="name">
+                <ds:style align="center" />
+                <ds:selectable expression="name"/>
+            </ds:field>
+            <ds:field name="StatusIconPercentComplete">
+                <ds:style align="center" />
+                <ds:selectable expression="attribute[attribute_PercentComplete]" format="html"/>
+                <ds:ui type="progressbar" />
+                <ds:fieldjpo classname="emxInboxTask" function="getTaskStatusForWidget" localInvokation="false" />
+            </ds:field>
+            <ds:field name="State">
+                <ds:style align="center" />
+                <ds:selectable expression="current"/>
+            </ds:field>
+            <ds:iftrue field="Type" value="Inbox Task">
+                <ds:field name="DueDate">
+                    <ds:selectable expression="attribute[attribute_ScheduledCompletionDate]" format="date"/>
+                    <ds:sort order="7" sortable="true" />
+                </ds:field>
+            </ds:iftrue>
+            <ds:iffalse field="Type" value="Inbox Task">
+                <ds:field name="TaskDueDate">
+                    <ds:selectable expression="attribute[attribute_TaskEstimatedFinishDate]" format="date"/>
+                    <ds:sort order="7" sortable="true" />
+                </ds:field>
+            </ds:iffalse>
+            <ds:iftrue field="Type" value="Inbox Task">
+                <ds:field name="ContextIT">
+                    <ds:style align="center" />
+                    <ds:selectable expression="relationship[Route Task].to.name"/>
+                </ds:field>
+            </ds:iftrue>
+            <ds:iffalse field="Type" value="Inbox Task">
+                <ds:field name="ContextT">
+                    <ds:style align="center" />
+                    <ds:selectable expression="to[Project Access Key].from.from[Project Access List].to.name"/>
+                </ds:field>
+            </ds:iffalse>
+        </ds:group>
+
+        <ds:group hidden="true">
+            <ds:field name="policy">
+                <ds:selectable expression="policy"/>
+            </ds:field>
+            <ds:field name="AssigneeSetDueDate">
+                <ds:selectable expression="attribute[attribute_AssigneeSetDueDate]"/>
+            </ds:field>
+            <ds:field name="ScheduledCompletionDate">
+                <ds:selectable expression="attribute[attribute_ScheduledCompletionDate]"/>
+            </ds:field>
+            <ds:field name="ActualCompletionDate">
+                <ds:selectable expression="attribute[attribute_ActualCompletionDate]"/>
+            </ds:field>
+            <ds:field name="TaskEstimatedFinishDate">
+                <ds:selectable expression="attribute[attribute_TaskEstimatedFinishDate]"/>
+            </ds:field>
+            <ds:field name="TaskActualFinishDate">
+                <ds:selectable expression="attribute[attribute_TaskActualFinishDate]"/>
+            </ds:field>
+            <ds:field name="TaskEstimatedDuration">
+                <ds:selectable expression="attribute[attribute_TaskEstimatedDuration]" />
+            </ds:field>
+        </ds:group>
+    </ds:list>
+</ds:experience>
+
+</ds:widgets>
+

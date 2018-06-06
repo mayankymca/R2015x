@@ -1,0 +1,18 @@
+#NLS Editor Command
+
+delete command NLSEditorCmd;
+ 
+add command NLSEditorCmd
+label "NLS Editor"
+description ""
+href "${COMMON_DIR}/emxIndentedTable.jsp?table=NLSAdminObjectTable&toolbar=NLSEditorToolbar&program=emxPackagesConfigurationProgram:getAllCustoPackagesList&expandProgram=emxPackagesConfigurationProgram:getCustoTypeNamesList&freezePane=ObjectAdminName&sortColumnName=ObjectAdminName&header=emxDataSpecialization.label.PackageConfigView&showRMB=false"
+setting "Target Location" content
+setting "Access Function" accessNLSEditor
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+user VPLMAdmin
+user "Domain Expert";
+
+# Add the command to the Menu ENOConfiguration: 
+mod menu ENOConfiguration add command NLSEditorCmd;
+

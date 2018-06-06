@@ -1,0 +1,86 @@
+# Created by BMN2 17/04/15
+
+# Modify the deployment extension edit form to permit the user to modify comment on depolyment extension.
+
+delete form EditDeploymentExtensionForm;
+
+add form EditDeploymentExtensionForm web
+description "Edit Deployment Extension Form"
+#YI3 08dec11
+field name "deployExtName" label emxDataSpecialization.label.Name
+setting "Required" true
+setting Editable false
+setting "Field Type" program
+setting function getEditExtensionName
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+#field name "deployTypes" label emxDataSpecialization.label.DeployExtensionTypes
+#setting Editable false
+#etting "Field Type" textbox
+#setting Default "To Edit Scopes Use the command Modify Scopes in the lower channel"
+#setting "Registered Suite" DataSpecialization
+field name "staticAssociation" label emxDataSpecialization.label.StaticAssociation
+setting Editable true
+setting "Field Type" program
+setting "Registered Suite" DataSpecialization
+setting "Input Type" combobox
+setting "Range Program" emxPackagesConfigurationProgram
+setting "Range Function" getTrueFalse
+setting "Remove Range Blank" true
+setting "Sort Range Values" disable
+setting function getEditDeploymentExtensionAssociation
+setting program emxPackagesConfigurationProgram
+setting "Update Function" setExtensionStaticAssociation
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+#setting "Access Program" emxPackagesConfigurationProgram
+#setting "Access Function" accessFunctionBasicAttr
+field name "userComment" label emxDataSpecialization.label.Comment
+setting "Required" false
+setting Editable true
+setting "Input Type" textarea
+setting "Registered Suite" DataSpecialization;
+
+# Modify the Deployment extension table to open the edit form in edit mode if the deployement extension is created by the user, and on read mode if it is a DS deployment extension.
+
+delete table DeploymentExtensionsTable system;
+
+add table DeploymentExtensionsTable system
+column name "deploymentExtName" label emxDataSpecialization.label.Name
+href "${COMMON_DIR}/emxRefreshChannel.jsp?channel=DeploymentAttributesChannel"
+businessobject "$<attribute[OntoName].value>"
+setting "Registered Suite" DataSpecialization
+column name "deploymentExtStatic" label emxDataSpecialization.label.StaticAssociation
+setting "Column Type" program
+setting program emxPackagesConfigurationProgram
+setting function getDeploymentExtensionStaticAssociation
+setting "Registered Suite" DataSpecialization
+column name "scope" label emxDataSpecialization.label.DeployExtensionScope
+setting "Column Type" program
+setting program emxPackagesConfigurationProgram
+setting function getDeploymentExtensionScope
+setting "Registered Suite" DataSpecialization
+column name "publication" label emxDataSpecialization.label.PublicationStatus
+setting "Column Type" program
+setting program emxPackagesConfigurationProgram
+setting function getDeploymentExtensionPublicationStatus
+setting "Registered Suite" DataSpecialization
+column name "attributes" label emxDataSpecialization.label.Attributes
+setting "Column Type" program
+setting program emxPackagesConfigurationProgram
+setting function getDeploymentExtensionAttributes
+setting "Registered Suite" DataSpecialization
+column name "ExtComment" label emxDataSpecialization.label.Comment
+setting "Column Type" program
+setting function getExtensionComment
+setting program emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+column name "attrLaunchDetails"
+setting "Column Type" icon
+setting "Column Icon" ${COMMON_DIR}/images/iconActionNewWindow.gif
+setting "Target Location" slidein
+#setting "Access Function" accessEditTypes
+#setting "Access Program" emxPackagesConfigurationProgram
+href "${COMMON_DIR}/emxForm.jsp?mode=edit&form=EditDeploymentExtensionForm&toolbar=none&preProcessJPO=emxPackagesConfigurationProgram:isPackageEditable&formHeader=emxDataSpecialization.label.ExtensionEdit&launched=true&findMxLink=false&showPageURLIcon=false"
+setting "Registered Suite" DataSpecialization;
+

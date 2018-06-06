@@ -1,0 +1,23 @@
+var params = proc.declareParameters(["setname"], ["label","TTLValue"]);
+
+var valOfTTL = 0;
+if (TTLValue)
+{	
+	valOfTTL = TTLValue;
+}
+else
+{
+	valOfTTL = 259200;
+}
+
+if ( valOfTTL > 259200 )
+{
+	proc.write(label, null, "Invalid TTL set parameters");
+}
+else
+{
+	mql.startTransaction(true);
+	mql.execute(label, "add set $1 type temporary hidden property $2 value $3", [setname, "TTL", TTLValue]);
+	mql.commitTransaction();
+}
+

@@ -1,0 +1,5 @@
+name	Registry Name	description	type	filename	permission	protocol	port	host	path	user	password	location	fcs	hidden	multipledirectories	lock	icon
+Image Store	Image Store	this store is created for Image purposes	captured	hashed	RW,RW,RW	file		localhost	D:\R2015x\3DSpaceData\ImageStore				http://localhost:8070/internal	nothidden	N/A	unlocked
+STORE	STORE	this store is created for DEMO purposes	captured	hashed	RW,RW,RW	file		localhost	D:\R2015x\3DSpaceData\STORE				http://localhost:8070/internal	nothidden	N/A	unlocked
+plmx			captured	hashed	RW,RW,RW	file		localhost	D:\R2015x\3DSpaceData\plmx				http://localhost:8070/internal	nothidden	N/A	unlocked
+

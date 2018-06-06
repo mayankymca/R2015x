@@ -1,0 +1,17 @@
+Rule Name	Registry Name	Description	Programs (use "|" delim)	Attributes (use "|" delim)	Relationships (use "|" delim)	Forms (use "|" delim)	Hidden (boolean)	Enforce Reserve Access (boolean)	Icon File
+ComponentMaterialRule	ComponentMaterialRule	Rule to govern access on component material relationship			Component Material		FALSE	FALSE
+ReleasedGBOM	ReleasedGBOM	Rule to govern access on GBOM relationship			GBOM | Custom GBOM		FALSE	FALSE
+SourcingBuyerRule	SourcingBuyerRule	rule for sourcing buyer data		RFQ Header XML | Line Item XML			FALSE	FALSE
+VPLM_SMB_INSTANCE	VPLM_SMB_INSTANCE	Describes the security of VPLM instances for Team Engineering applications			PLMInstance		FALSE	TRUE
+VPLM_UNSECURED_REL	VPLM_UNSECURED_REL				VPLMrel/VPMSemanticRelation | VPLMrel/PLMConnection/V_Owner | VPLMrel/PLMPort/V_Owner		FALSE	FALSE
+VPLM_SMB_DocumentCheck	VPLM_SMB_DocumentCheck	Describes the security of VPLM document check-in/check-out for Team Engineering applications		V_CheckedOutUser			FALSE	FALSE
+VPLM_SMB_UNSECURED_INSTANCE		Describes the security of VPLM unsecured instances for all applications			PLMRETokenTransferItem | LPPrivateRepInstance | PLMPosResourceInst		FALSE	FALSE
+VPLM_SMB_ENOSTTaskChildAction	VPLM_SMB_ENOSTTaskChildAction	Describes the security of VPLM Task instances			PLMTaskChildAction | ENOSTTaskChildAction		FALSE	FALSE
+VPLM_SMB_CATMpgRepInstance		Describes the security of VPLM mapping representation instances for all applications			CATMpgRepInstance		FALSE	TRUE
+VPLM_SMB_PLMCCDBriefcaseRepInst		Describes the security of VPLM briefcase representation instances for all applications			PLMCCDBriefcaseRepInst		FALSE	TRUE
+VPLM_SMB_RFLPLMReqInstance		Describes the security of VPLM requirement instances for all applications			RFLPLMReqChapterInstance | RFLPLMReqCommentInstance | RFLPLMReqSpecificationInstance | RFLPLMRequirementInstance		FALSE	FALSE
+WSLocalReserveRule					WSLocalReserve		FALSE	FALSE
+WSParentReserveRule					WSParentReserve		FALSE	FALSE
+SPPRelationRule		Rule needed for SPP Relation			SPPRelation		FALSE	FALSE
+VPLM_SMB_ENOWSP_WorkspaceInst		Describes the security of Design Workspace instances for all applications			ENOWSP_WorkspaceInst		FALSE	FALSE
+

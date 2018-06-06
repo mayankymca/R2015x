@@ -1,0 +1,116 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE	PublicRevokeDemoteAccess	TRUE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Public	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Public	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Owner	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Owner	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Unspecified	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Unspecified	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Unspecified	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Unspecified	VPLMViewer	TRUE	k1	FALSE	Y	Y	Y	Y	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	-	single	single	context	any	any	any			
+Unspecified	VPLMProjectAdministrator	TRUE	k1	FALSE	Y	Y	Y	Y	Y	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	-	single	single	any	any	any	any			
+Unspecified	VPLMProjectLeader	TRUE	k1	FALSE	Y	Y	Y	Y	Y	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	-	single	single	any	any	any	any			
+Unspecified	VPLMProjectAdministrator	TRUE	k2	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+Unspecified	VPLMViewer	TRUE	k2	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+Unspecified	VPLMProjectLeader	TRUE	k2	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+Unspecified	VPLMViewer	TRUE	ExtendCreateAccess	FALSE	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	any	any	any	any	type != 'PLMTaskCollab'		
+Unspecified	VPLMProjectAdministrator	FALSE	Launch	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+Unspecified	VPLMProjectLeader	FALSE	Launch	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+Unspecified	VPLMViewer	FALSE	Launch	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+Unspecified	VPLMExperimenter	FALSE	Launch	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+Unspecified	VPLMCreator	FALSE	Launch	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+Unspecified	VPLMAdmin	FALSE	Launch	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+WIP_Active	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WIP_Active	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WIP_Active	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP_Active	VPLMProjectLeader	TRUE	k1	FALSE	Y	Y	-	Y	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	-	single	single	any	any	any	any			
+WIP_Active	VPLMProjectAdministrator	TRUE	k1	FALSE	Y	Y	-	Y	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	-	single	single	any	any	any	any			
+WIP_Active	VPLMViewer	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+WIP_Active	VPLMViewer	TRUE	k2	FALSE	-	Y	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	single	single	context	any	any	any			
+WIP_Active	VPLMProjectLeader	TRUE	k2	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+WIP_Active	VPLMProjectAdministrator	TRUE	k2	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+WIP_Active	VPLMViewer	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+WIP_Active	VPLMProjectAdministrator	FALSE	Approve	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+WIP_Active	VPLMProjectLeader	FALSE	Approve	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+WIP_Active	VPLMAdmin	FALSE	Approve	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+WIP_Active	VPLMProjectAdministrator	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Active	VPLMViewer	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Active	VPLMExperimenter	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Active	VPLMCreator	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Active	VPLMProjectLeader	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Active	VPLMAdmin	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Active	VPLMViewer	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Active	VPLMExperimenter	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Active	VPLMCreator	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Active	VPLMProjectLeader	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Active	VPLMProjectAdministrator	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Active	VPLMAdmin	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+Completed	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Completed	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Completed	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+Completed	VPLMViewer	TRUE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Completed	VPLMProjectAdministrator	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+Completed	VPLMProjectLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+Completed	VPLMAdmin	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+Obsolete	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Obsolete	VPLMViewer	TRUE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+Obsolete	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP_Suspended	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WIP_Suspended	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WIP_Suspended	VPLMProjectAdministrator	TRUE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+WIP_Suspended	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP_Suspended	VPLMProjectLeader	TRUE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+WIP_Suspended	VPLMViewer	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	any	any	any	any			
+WIP_Suspended	VPLMViewer	TRUE	k2	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	any	any	any			
+WIP_Suspended	VPLMCreator	FALSE	Cancel	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Suspended	VPLMAdmin	FALSE	Cancel	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Suspended	VPLMExperimenter	FALSE	Cancel	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Suspended	VPLMViewer	FALSE	Cancel	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Suspended	VPLMProjectLeader	FALSE	Cancel	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Suspended	VPLMProjectAdministrator	FALSE	Cancel	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspecified
+WIP_Suspended	VPLMProjectLeader	FALSE	Continue	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Suspended	VPLMExperimenter	FALSE	Continue	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Suspended	VPLMViewer	FALSE	Continue	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Suspended	VPLMAdmin	FALSE	Continue	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Suspended	VPLMCreator	FALSE	Continue	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Suspended	VPLMProjectAdministrator	FALSE	Continue	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Run
+WIP_Run	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WIP_Run	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WIP_Run	VPLMProjectAdministrator	TRUE		FALSE	Y	Y	-	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	single	single	any	any	any	any			
+WIP_Run	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WIP_Run	VPLMViewer	TRUE		FALSE	Y	Y	-	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	single	single	context	any	any	any			
+WIP_Run	VPLMProjectLeader	TRUE		FALSE	Y	Y	-	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	single	single	any	any	any	any			
+WIP_Run	VPLMAdmin	FALSE	Done	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WaitApproval
+WIP_Run	VPLMViewer	FALSE	Done	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WaitApproval
+WIP_Run	VPLMExperimenter	FALSE	Done	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WaitApproval
+WIP_Run	VPLMCreator	FALSE	Done	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WaitApproval
+WIP_Run	VPLMProjectLeader	FALSE	Done	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WaitApproval
+WIP_Run	VPLMProjectAdministrator	FALSE	Done	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WaitApproval
+WIP_Run	VPLMProjectLeader	FALSE	Suspend	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Suspended
+WIP_Run	VPLMCreator	FALSE	Suspend	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Suspended
+WIP_Run	VPLMExperimenter	FALSE	Suspend	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Suspended
+WIP_Run	VPLMViewer	FALSE	Suspend	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Suspended
+WIP_Run	VPLMAdmin	FALSE	Suspend	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Suspended
+WIP_Run	VPLMProjectAdministrator	FALSE	Suspend	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Suspended
+WaitApproval	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WaitApproval	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+WaitApproval	VPLMProjectLeader	TRUE		FALSE	Y	Y	-	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	single	single	any	any	any	any			
+WaitApproval	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	Y	any	any	any	any	any	any			
+WaitApproval	VPLMViewer	TRUE		FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	single	single	context	any	any	any			
+WaitApproval	VPLMProjectAdministrator	TRUE		FALSE	Y	Y	-	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	single	single	any	any	any	any			
+WaitApproval	VPLMAdmin	FALSE	Approve	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+WaitApproval	VPLMProjectLeader	FALSE	Approve	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+WaitApproval	VPLMProjectAdministrator	FALSE	Approve	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+WaitApproval	VPLMProjectAdministrator	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+WaitApproval	VPLMCreator	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+WaitApproval	VPLMExperimenter	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+WaitApproval	VPLMViewer	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+WaitApproval	VPLMProjectLeader	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+WaitApproval	VPLMAdmin	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			WIP_Active
+WaitApproval	VPLMProjectLeader	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+WaitApproval	VPLMAdmin	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+WaitApproval	VPLMProjectAdministrator	FALSE	Reject	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Obsolete
+

@@ -1,0 +1,25 @@
+# File: TeamEngineering-Security-MD-R417HF16-downgrade.mql
+# Description: This file downgrades VPLM security data from R417 HF16 to R417 GA for One-Click
+#
+# MBH 17:01:30 Created file
+# MBH 17:01:30 IR-478490-3DEXPERIENCER2015x : Public ResourceSet not visible
+
+# IR-478490-3DEXPERIENCER2015x
+modify policy "VPLM_SMB_Resource"
+  state IN_WORK
+    remove public key ProjectResourcePublicReadAccess
+    read,show,checkout,toconnect,todisconnect
+    localfilter "(project == const 'Default') && ((type == 'PLMBusinessRule') || (type == 'PLMResourceSetRepReference') || (type.derived == 'PLMResourceSetRepReference'))"
+  state FROZEN
+    remove public key ProjectResourcePublicReadAccess
+    read,show,checkout,toconnect,todisconnect
+    localfilter "(project == const 'Default') && ((type == 'PLMBusinessRule') || (type == 'PLMResourceSetRepReference') || (type.derived == 'PLMResourceSetRepReference'))"
+  state RELEASED
+    remove public key ProjectResourcePublicReadAccess
+    read,show,checkout,toconnect,todisconnect
+    localfilter "(project == const 'Default') && ((type == 'PLMBusinessRule') || (type == 'PLMResourceSetRepReference') || (type.derived == 'PLMResourceSetRepReference'))"
+  state OBSOLETE
+    remove public key ProjectResourcePublicReadAccess
+    read,show,checkout,toconnect,todisconnect
+    localfilter "(project == const 'Default') && ((type == 'PLMBusinessRule') || (type == 'PLMResourceSetRepReference') || (type.derived == 'PLMResourceSetRepReference'))";
+

@@ -1,0 +1,5 @@
+var params = proc.declareParameters(["setname"], ["label"]);
+mql.startTransaction(true);
+mql.execute(label, "add set $1 type temporary hidden", [setname]);
+mql.commitTransaction();
+

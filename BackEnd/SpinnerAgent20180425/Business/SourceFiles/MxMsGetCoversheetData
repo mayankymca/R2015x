@@ -1,0 +1,38 @@
+#**********************************************************************************************
+# @progdoc      MxMsGetCoversheetData
+#
+# @Brief: This program lets you define what data will be sent to the coversheet used in the Office
+# Integration.  The coversheet is a Word table that usually contains version information.  Which actual table
+# is updated is controlled by the matrix program MxMsGetCoversheetTableHeader. Business Objects
+# get sent to the autoClau process by submitting them to the ClauSetCoversheet set of a particular user.
+# Which the autoClau process will act upon. 
+# @Description:      
+#
+# @Parameters:   Business Object id     
+#                     
+#
+# @Exit:        
+#
+# @Usage: The string of data must be delimited with the pipe char | and then separated with ~MxMs~
+# DO NOT PUT ~MxMs~ on the last entry.
+#
+# @progdoc      Copyright (c) 2001, MatrixOne
+#**********************************************************************************************
+
+tcl;
+
+eval {
+
+# get the Business Object ID that is passed in as argument 1
+set boid [ mql get env 1 ]
+
+# now build a pipe delimited, ~MxMs~ separated string which will
+# represent the rows that will appear in the coversheet table
+
+#set sTable ""
+#append sTable "data1|data2|data3|data4|data5~MxMs~data6|data7|data8|data9|data10"
+return "data1|data2|data3|data4|data5~MxMs~data6|data7|data8|data9|data10"
+}
+# end of eval
+
+

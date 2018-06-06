@@ -1,0 +1,81 @@
+#@ version 1.0 name TVCCheckAdminVersion symname program_TVCCheckAdminVersion
+
+tcl;
+
+eval {
+    set out stdout
+    set sVersionInfoProgram "TVC Version Info Tracker"
+    set sRegProgName "eServiceSchemaVariableMapping.tcl"
+    if {[mql list program $sRegProgName] == ""} {
+        set sRegProgName "TVC Version Info Tracker"
+    }
+
+    mql quote on
+    set lProperties [split [mql list property on program $sVersionInfoProgram] \n]
+    mql quote off
+
+    if {[array exists result]} {
+        unset result
+    }
+
+    proc resolveRealName { sSymname } {
+        global sRegProgName
+        set sProperty [mql pri program $sRegProgName select property\[$sSymname\].to dump]
+        return [string range $sProperty [expr [string first " " $sProperty] + 1] end]
+    }
+
+    puts $out "+-----------------------------------+"
+    puts $out "|                                   |"
+    puts $out "| TVC Datamodel Version Information |"
+    puts $out "|                                   |"
+    puts $out "+-----------------------------------+"
+
+    puts $out "\n\nComponent Versions:\n"
+    puts $out "\t[format "%-40s  %-30s" "Component name" "Component Version"]"
+    puts $out "\t[format "%-40s  %-30s" "==============" "================="]"
+
+    foreach line $lProperties {
+        if { [string range $line 0 15] == "'installed date'" } {
+            continue
+        }
+
+        if { [string range $line 0 10] == "'Version of" } {
+            set name [string range [string range $line 12 end] 0 [expr [string first "'" [string range $line 12 end]] - 1]]
+            set version [string range $line [string last " " $line] end]
+            puts $out "\t[format "%-40s - %-30s" $name $version]"
+            continue
+        }
+
+        set sProperty [string range $line 0 [expr [string first " " $line] - 1]]
+        set sSymname [string range $sProperty 0 [expr [string last "_" $sProperty] -1]]
+        set sVersion [string range $line [expr [string last " " $line] + 1] end]
+        set sType [string range $line 0 [expr [string first "_" $line] -1]]
+
+        if {! [array exists result]} {
+            set result($sType) [list [list $sSymname $sVersion [resolveRealName $sSymname]]]
+        } else {
+            if {[array names result $sType] == "" } {
+                set result($sType) {}
+            }
+            set aList $result($sType)
+            set result($sType) [lappend aList [list $sSymname $sVersion [resolveRealName $sSymname]]]
+        }
+    }
+
+    puts "\n+---------------------------+"
+    puts "| Datamodel entity versions |"
+    puts "+---------------------------+"
+
+    foreach resultItem [array names result] {
+        puts "\n$resultItem\n"
+        puts "\t[format "%-70s  %-5s  %40s" "Symbolic Name" "Version" "Real Name"]"
+        puts "\t[format "%-70s  %-5s  %40s" "=============" "=======" "========="]"
+        foreach item $result($resultItem) {
+            set sSymname [lindex $item 0]
+            set sVersion [lindex $item 1]
+            set sRealName [lindex $item 2]
+            puts $out "\t[format "%-70s - %-5s - %40s" $sSymname $sVersion $sRealName]"
+        }
+    }
+}
+

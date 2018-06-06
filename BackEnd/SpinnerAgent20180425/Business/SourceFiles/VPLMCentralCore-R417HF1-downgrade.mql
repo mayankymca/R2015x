@@ -1,0 +1,15 @@
+tcl;
+eval {
+    
+   set exists [mql list prog DWSMonitor]
+   if { $exists == "DWSMonitor" } {
+	mql del program DWSMonitor ;
+   }
+  
+   set exists [mql list prog CleanObsoleteObjectsOfType]
+   if { $exists == "CleanObsoleteObjectsOfType" } {
+	mql del program CleanObsoleteObjectsOfType ;
+   }
+   
+}
+

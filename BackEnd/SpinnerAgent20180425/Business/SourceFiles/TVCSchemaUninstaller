@@ -1,0 +1,306 @@
+tcl;
+
+eval {
+    #
+    # Confirm Un-install
+    #
+    puts "\nWARNING !\n"
+    puts "Do you really want to uninstall"
+    puts "the TVC schema (Y/N) ?\n"
+    puts "(Business objects from TVC Admin"
+    puts "vault will be exported before removal)\n"
+    puts "!!! This is an unsupported operation !!"
+
+    gets stdin uConfirm
+    if { $uConfirm != "Y" && $uConfirm != "y" } {
+        puts "Uninstall cancelled by user. Exiting..."
+        return
+    }
+
+    #
+    # Initialize global variables
+    #
+    set sDate [clock format [clock seconds] -format %Y%m%d_%H%M%S]
+    set sTVCRegProg "TVC Version Info Tracker"
+    set sRegProgName "eServiceSchemaVariableMapping.tcl"
+    if {[mql list program $sRegProgName] == ""} {
+        set sRegProgName "TVC Version Info Tracker"
+    }
+
+    #
+    # Resolves the symname for the given admintype/name
+    #
+    proc aefResolveSymName { sAdminType sRealName } {
+        global sRegProgName
+
+        set sProp [mql list property on program $sRegProgName to $sAdminType $sRealName]
+        set sProp [string range $sProp 0 [expr [string first " " $sProp] - 1]]
+        return $sProp
+    }
+
+    #
+    # Resolves the real name for the given symbolic name
+    #
+    proc aefResolveName { symName } {
+        global sRegProgName
+
+        set sProp [mql escape pri program $sRegProgName select property\[$symName\].to dump]
+        set sProp [string range $sProp [expr [string first " " $sProp] + 1] end]
+        return $sProp
+    }
+
+    #
+    # Resolves the admin type for the given symbolic name
+    #
+    proc aefResolveType { symName } {
+        global sRegProgName
+
+        set sProp [mql escape pri program $sRegProgName select property\[$symName\].to dump]
+        set sProp [string range $sProp 0 [expr [string first " " $sProp] - 1]]
+        return $sProp
+    }
+
+    #
+    # TVC unregistration of an admin object
+    #
+    proc tvcUnregister { symName } {
+        global sTVCRegProg
+
+        puts "mql delete property ${symName}_version on program $sTVCRegProg"
+        mql delete property "${symName}_version" on program $sTVCRegProg
+    }
+
+    #
+    # AEF unregistration of an admin object
+    #
+    proc aefUnregister { symName } {
+        global sRegProgName
+
+        set type [aefResolveType $symName]
+        set realName [aefResolveName $symName]
+
+        puts "mql delete property $symName on program $sRegProgName to $type $realName"
+        mql delete property $symName on program $sRegProgName to $type $realName
+    }
+
+    #
+    # Removes an admin object
+    #
+    proc adminDelete { sAdminType sName } {
+        set sSymName [aefResolveSymName $sAdminType $sName]
+        if { $sSymName != "" } {
+            aefUnregister $sSymName
+            tvcUnregister $sSymName
+        }
+        puts "mql delete $sAdminType $sName"
+        mql delete $sAdminType $sName
+    }
+
+    #
+    # Uninstalls the TVC admin vault
+    #
+    proc tvcUninstallVault { sVaultSymName } {
+        global sDate
+        set sVault [aefResolveName "$sVaultSymName"]
+        set file "${sVaultSymName}_${sDate}.xml"
+        if { [mql list vault $sVault] != "" } {
+            puts "mql export bus * * * from vault $sVault xml into file $file"
+            mql export bus * * * from vault $sVault xml into file $file
+            puts "mql clear vault $sVault"
+            mql clear vault $sVault
+            adminDelete vault $sVault
+        }
+    }
+
+
+    #
+    # Uninstalls the specified admin type
+    #
+    proc tvcUninstall { sAdminType } {
+        global sTVCRegProg
+        mql quote off
+        set lNames [split [mql list $sAdminType] \n]
+        foreach sName $lNames {
+            set sApplication [mql pri $sAdminType $sName select property\[application\].value dump]
+            if { [string range $sApplication 0 2] != "TVC" } {
+                continue
+            } else {
+                if { $sAdminType == "program" && 
+                        ($sName == "TVCSchemaUninstaller" || 
+                         $sName == $sTVCRegProg)} {
+                    puts "Skipping removal of program $sName"
+                } else {
+                    if [ catch {
+                        adminDelete $sAdminType $sName
+                    } sMesg ] { 
+                        puts "Problem do delete $sAdminType $sName !! (${sMesg})"
+                    }
+                }
+            }
+        }
+    }
+
+    #
+    # Uninstalls the visuals.
+    #
+    proc tvcUninstallVisuals {} {
+        mql quote off
+        set sRoleName [aefResolveName role_GlobalUser]
+
+        foreach sWorkSpace [list "" $sRoleName] {
+            if { $sWorkSpace != "" } {
+                mql set workspace user $sWorkSpace
+            }
+
+            foreach sAdminType [list table filter tip view] {
+                set lVisuals [split [mql list $sAdminType] \n]
+                foreach sVisual $lVisuals {
+                    if { [string range $sVisual 0 2] != "TVC" && [string range $sVisual 0 3] != "XBOM" } {
+                        continue
+                    } else {
+                        puts "mql delete $sAdminType $sVisual"
+                        mql delete $sAdminType $sVisual
+                    }
+                }
+            }
+        }
+
+
+        set lSpecialTables { "EBL" \
+                             "MBL" \
+                             "MBL Detailed" \
+                             "XBOM Baseline Part" \
+                             "XBOM Baseline Doc" \
+                             "XBOM Default EBOM Compare Table" \
+                             "XBOM Default MBOM Compare Table" \
+                             "XBOM Engineering Baseline" \
+                             "XBOM Manufacturing Baseline" \
+                             "XBOM Used In Configuration" }
+        set lSysTables [split [mql list table system] \n]
+        foreach sSysTable $lSysTables {
+            set sApplication [mql pri table $sSysTable system select property\[application\].value dump]
+            if { [lsearch $lSpecialTables $sSysTable] == -1 && [string range $sApplication 0 2] != "TVC" && [string range $sApplication 0 3] != "XBOM" } {
+                continue
+            } else {
+                puts "mql delete table $sSysTable system"
+                mql delete table $sSysTable system
+            }
+        }
+    }
+
+    #
+    # Uninstalls the types. Takes care of inheritance
+    #
+    proc tvcUninstallTypes {} {
+        set lNames [split [mql list type] \n]
+        while { [llength $lNames] > 0 } {
+            foreach sName $lNames {
+                set iIndex [lsearch $lNames $sName]
+                set sApplication [mql pri type $sName select property\[application\].value dump]
+
+                if { [string range $sApplication 0 2] != "TVC" && [string range $sApplication 0 3] != "XBOM" } {
+                    set lNames [lreplace $lNames $iIndex $iIndex]
+                    break
+                } else {
+                    if { [mql pri type $sName select immediatederivative dump] == "" } {
+                        set lNames [lreplace $lNames $iIndex $iIndex]
+
+                        set lOids [split [mql temp query bus $sName * * select id dump |] \n]
+                        foreach oid $lOids {
+                            set data [split $oid |]
+                            puts "Deleting object [lindex $data 0] [lindex $data 1] [lindex $data 2]"
+                            mql delete bus [lindex $data 3]
+                        }
+
+                        adminDelete type $sName
+                        break
+                    }
+                }
+            }
+        }
+    }
+
+    proc tvcUninstallMisc {} {
+        global sTVCRegProg
+        mql set workspace user [aefResolveName role_GlobalUser]
+
+        if {[lsearch [split [mql list filter] \n] From] != -1} {
+            puts "mql delete filter From"
+            mql delete filter From
+        }
+
+        if {[lsearch [split [mql list filter] \n] "EBOM From"] != -1} {
+            puts "mql delete filter 'EBOM From'"
+            mql delete filter "EBOM From"
+        }
+
+        set lPages [split [mql list page] \n]
+        foreach sPage $lPages {
+            if { [string first "TVC" $sPage] != -1 } {
+                puts "mql delete page $sPage"
+                mql delete page $sPage
+            }
+        }
+
+        if { [lsearch [split [mql list person] \n] "TVC Shadow Agent"] != -1 } {
+            puts "mql delete person 'TVC Shadow Agent'"
+            mql delete person "TVC Shadow Agent"
+        }
+
+        if { [lsearch [split [mql list person] \n] "TVC Report Agent"] != -1 } {
+            puts "mql delete person 'TVC Report Agent'"
+            mql delete person "TVC Report Agent"
+        }
+
+        if { [mql list menu "TVC Navigate EBOM Bottom Actionbar"] != "" } {
+            puts "mql delete menu 'TVC Navigate EBOM Bottom Actionbar'"
+            mql delete menu "TVC Navigate EBOM Bottom Actionbar"
+        }
+
+        if { [mql list menu "TVC Navigate EBOM Toolbar Menu"] != "" } {
+            puts "mql delete menu 'TVC Navigate EBOM Toolbar Menu'"
+            mql delete menu "TVC Navigate EBOM Toolbar Menu"
+        }
+
+        mql delete program $sTVCRegProg
+        mql delete program "TVC3 Component Installer"
+        mql delete program "TVCSchemaUninstaller"
+    }
+
+    #
+    # Start entry
+    #
+    if { [mql list program $sTVCRegProg] == "" } {
+        puts "TVC does not seem to exist. Aborting."
+        return
+    }
+
+    puts "Uninstallation of the TVC schema in progress. Please wait............"
+    mql verbose off
+    mql trigger off
+    if [ catch {
+        tvcUninstallVault "vault_TVCAdministration"
+        tvcUninstallVault "vault_XBOMBaseline"
+        tvcUninstallVault "vault_TVCWiki"
+        tvcUninstall form
+        tvcUninstall inquiry
+        tvcUninstall menu
+        tvcUninstall command
+        tvcUninstall attribute
+        tvcUninstall association
+        tvcUninstall person
+        tvcUninstall group
+        tvcUninstall role
+        tvcUninstallVisuals
+        tvcUninstallTypes
+        tvcUninstall policy
+        tvcUninstall relationship
+        tvcUninstall program
+        tvcUninstallMisc
+    } sMesg ] {
+        regsub -all ' $sMesg "" sMesg
+        puts [format %s%s "Patch failure Error: " "$sMesg" ]
+    }
+    mql trigger on
+}
+

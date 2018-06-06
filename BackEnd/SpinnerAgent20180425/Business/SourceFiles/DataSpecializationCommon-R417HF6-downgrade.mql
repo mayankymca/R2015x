@@ -1,0 +1,168 @@
+
+delete form FullEditCustoAttributeForm;
+
+#form d'edition d'un attribut (specializsation) (bouton Edit depuis le panel d'affichage des details)
+add form FullEditCustoAttributeForm web
+description "Full Edit Custo Attribute Form"
+field name "attrName" label emxDataSpecialization.label.Name
+setting "Required" true
+setting "Field Type" program
+setting function getAttrName
+setting program emxPackagesConfigurationProgram
+setting Editable false
+setting "Registered Suite" DataSpecialization
+field name "txtattr6w" label emxDataSpecialization.label.Attribute6WPredicats
+setting "Field Type" programHTMLOutput
+setting function getEditAttribute6WpredicateHTML
+setting program emxPackagesConfigurationProgram
+setting Editable true
+setting "Update Function" setAttributePredicate
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+field name "attrType" label emxDataSpecialization.label.AttributeType
+setting "Required" true
+setting "Field Type" program
+setting function getAttrType
+setting program emxPackagesConfigurationProgram
+setting Editable false
+setting "Registered Suite" DataSpecialization
+field name "attrUnit" label emxDataSpecialization.label.AttributePreferredUnit
+#setting "Input Type" combobox
+#setting "Range Program" emxPackagesConfigurationProgram
+#setting "Range Function" getAttributeMagnitudeUnits
+setting "Remove Range Blank" true
+#setting "Field Type" program
+#setting function getAttrUnit
+setting "Field Type" programHTMLOutput
+setting function getEditPreferredUnitHTML
+setting program emxPackagesConfigurationProgram
+setting Editable true
+setting "Update Function" setAttributePreferredUnit
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Access Function" accessFunctionUnitsAttr
+setting "Registered Suite" DataSpecialization
+field name "multiVal" label emxDataSpecialization.label.AttributeMultiVal
+setting "Editable" true
+setting "function" getEditMultiValueHTML
+setting "program" emxPackagesConfigurationProgram
+setting "Access Function" accessEditMultiValAttributes
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Update Function" setAttributeMultiVal
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Field Type" programHTMLOutput
+setting "Registered Suite" DataSpecialization
+field name "attrRange" label emxDataSpecialization.label.AttributeRange
+setting "Field Type" programHTMLOutput
+setting "program" emxPackagesConfigurationProgram
+setting "function" getRangeEditHTML
+setting Editable true
+setting "Update Function" setAttributeRangeValues
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+field name "defaultValue" label emxDataSpecialization.label.AttributeDefaultValue
+setting "Field Type" programHTMLOutput
+setting function getEditAttrDefaultValueHTML
+setting program emxPackagesConfigurationProgram
+setting "Validate" checkDefaultValue
+setting Editable true
+setting "Update Function" setAttributeDefaultValue
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+#field name "attrLength" label emxDataSpecialization.label.AttributeLength
+#setting "Required" false
+#setting "Field Type" program
+#setting function getAttrLength
+#setting program emxPackagesConfigurationProgram
+#setting "Update Function" setAttributeLength
+#setting "Update Program" emxPackagesConfigurationProgram
+#setting Editable true
+#setting "Registered Suite" DataSpecialization
+field name "attrProtection" label emxDataSpecialization.label.AttributeProtection
+setting "Input Type" combobox
+setting "Range Program" emxPackagesConfigurationProgram
+setting "Range Function" getAttributeProtections
+setting "Remove Range Blank" true
+setting "Sort Range Values" disable
+setting "Field Type" program
+setting function getAttrProtection
+setting program emxPackagesConfigurationProgram
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Access Function" accessFunctionBasicAttr
+setting Editable true
+setting "Update Function" setAttributeProtection
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+field name "resetCloning" label emxDataSpecialization.label.AttributeResetCloning
+setting "Input Type" combobox
+setting "Range Program" emxPackagesConfigurationProgram
+setting "Range Function" getTrueFalse
+setting "Remove Range Blank" true
+setting "Sort Range Values" disable
+setting "Field Type" program
+setting function getAttrResetCloning
+setting program emxPackagesConfigurationProgram
+setting Editable true
+setting "Update Function" setAttributeResetCloning
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Registered Suite" DataSpecialization
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Access Function" accessFunctionBasicAttr
+field name "resetNew" label emxDataSpecialization.label.AttributeResetNew
+setting "Input Type" combobox
+setting "Range Program" emxPackagesConfigurationProgram
+setting "Range Function" getTrueFalse
+setting "Remove Range Blank" true
+setting "Sort Range Values" disable
+setting "Field Type" program
+setting function getAttrResetNew
+setting program emxPackagesConfigurationProgram
+setting Editable true
+setting "Update Function" setAttributeResetNew
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Access Function" accessFunctionBasicAttr
+setting "Registered Suite" DataSpecialization
+field name "attrIndexation" label emxDataSpecialization.label.AttributeIndexation
+setting Editable true
+setting "Input Type" combobox
+setting function getAttrIndexation
+setting program emxPackagesConfigurationProgram
+setting "Range Program" emxPackagesConfigurationProgram
+setting "Range Function" getTrueFalse
+setting "Remove Range Blank" true
+setting "Update Function" setAttributeIndexation
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Sort Range Values" disable
+setting "Field Type" program
+setting "Registered Suite" DataSpecialization
+field name "attr3DXML" label emxDataSpecialization.label.Attribute3DXML
+setting Editable true
+setting "Input Type" combobox
+setting function getAttr3Dxml
+setting program emxPackagesConfigurationProgram
+setting "Range Program" emxPackagesConfigurationProgram
+setting "Range Function" getFalseTrue
+setting "Remove Range Blank" true
+setting "Update Function" setAttribute3DXML
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Access Function" access3DXMLExportableAttributes
+setting "Access Program" emxPackagesConfigurationProgram
+setting "Sort Range Values" disable
+setting "Field Type" program
+setting "Registered Suite" DataSpecialization
+field name "attrXPDM" label emxDataSpecialization.label.AttributeXPDM
+setting Editable true
+setting "Input Type" combobox
+setting function getAttrV6Exportable
+setting program emxPackagesConfigurationProgram
+setting "Range Program" emxPackagesConfigurationProgram
+setting "Range Function" getFalseTrue
+setting "Remove Range Blank" true
+setting "Update Function" setAttributeV6Exportable
+setting "Update Program" emxPackagesConfigurationProgram
+setting "Sort Range Values" disable
+setting "Field Type" program
+setting "Registered Suite" DataSpecialization;
+
+

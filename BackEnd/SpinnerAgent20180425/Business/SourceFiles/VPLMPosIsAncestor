@@ -1,0 +1,20 @@
+tcl;
+eval {
+  set parent ${1};
+  set child ${2};
+  if {$parent != $child} {
+    if {[catch {eval "mql print role \'$child\' select ancestor dump \|;"} result] == 0} {
+      set parents [split $result "|"]
+      set i 0
+      for {set i 0} {$i < [llength $parents]} {incr i} {
+        if {[lindex $parents $i] == $parent} {
+          return "TRUE"
+        }
+      }
+    }
+    return "FALSE"
+  } else {
+    return "TRUE"
+  }
+}
+

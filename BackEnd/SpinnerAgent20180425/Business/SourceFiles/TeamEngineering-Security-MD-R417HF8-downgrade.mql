@@ -1,0 +1,11 @@
+# File: TeamEngineering-Security-MD-R417HF8-downgrade.mql
+# Description: This file downgrades VPLM security data from R417 HF8 to R417 GA for One-Click
+#
+# MBH 15:10:29 Created file
+# MBH 15:10:29 IR-405220-3DEXPERIENCER2015x : Datasetup - CS visibility for any org
+
+# IR-405220-3DEXPERIENCER2015x
+modify policy VPLM_PosResourceRef
+   state DEFAULT
+      login VPLMLocalCrossOrgContextAccess key CorporateResourceReadAccess read,show related organization filter "name == 'TeamCorporate'";
+

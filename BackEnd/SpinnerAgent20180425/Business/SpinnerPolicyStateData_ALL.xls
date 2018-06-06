@@ -1,0 +1,1016 @@
+Policy Name	State Name	State Registry Name	Version (boolean)	Promote (boolean)	Checkout History (boolean)	Notify Users (use "|" delim)	Notify Message	Route User	Route Message	Minor Revision (boolean)	Major Revision (boolean)	Published (boolean)	Enforce Reserve Access (boolean)	Before State Name	Icon File
+MyApps_Policy	all		true	false	true					true	true	false	FALSE		
+Configuration Rule	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Release	
+Configuration Rule	Release	Release	false	false	true					false	true	false	FALSE	Obsolete	
+Configuration Rule	Obsolete	Obsolete	false	false	true					false	true	false	FALSE		
+Organization	Inactive	Inactive	false	false	true					true	true	false	FALSE	Active	
+Organization	Active	Active	false	false	true			Corporate	move to corporate ownership	true	true	false	FALSE		
+Requirement Specification	Preliminary		false	true	false					false	true	false	FALSE	Draft	
+Requirement Specification	Draft		false	true	false					false	true	false	FALSE	Review	
+Requirement Specification	Review		false	true	false					false	true	false	FALSE	Release	
+Requirement Specification	Release		false	true	false					false	true	false	FALSE	Obsolete	
+Requirement Specification	Obsolete		false	false	false					false	false	false	FALSE		
+Product Variant	Preliminary	Preliminary	true	true	true					true	true	false	FALSE	Review	
+Product Variant	Review	Review	true	false	true					true	true	false	FALSE	Release	
+Product Variant	Release	Release	true	true	true					true	true	false	FALSE	Obsolete	
+Product Variant	Obsolete	Obsolete	true	true	true					true	true	false	FALSE		
+Inactive Quotation	Inactive	Inactive	true	false	true					true	true	false	FALSE		
+PUE ECO	Create	Create	true	false	true					false	true	false	FALSE	Define Components	
+PUE ECO	Define Components	DefineComponents	true	false	true					false	true	false	FALSE	Design Work	
+PUE ECO	Design Work	DesignWork	true	false	true					false	true	false	FALSE	Review	
+PUE ECO	Review	Review	true	false	true					false	true	false	FALSE	Release	
+PUE ECO	Release	Release	true	false	true					false	true	false	FALSE	Implemented	
+PUE ECO	Implemented	Implemented	true	false	true					false	true	false	FALSE	Cancelled	
+PUE ECO	Cancelled	Cancelled	true	false	true					false	true	false	FALSE		
+Derived Output Policy	Exists	Exists	true	false	true					true	true	false	FALSE		
+Versioned Design Policy	Exists	Review	true	false	false					true	true	false	FALSE		
+IEF-EBOMSyncConfig	Exists	Exists	true	false	true					true	true	false	FALSE		
+Requirement Version	Exists	Exists	false	false	false					false	true	false	FALSE		
+Test Specification	Preliminary	Preliminary	false	true	false					true	true	false	FALSE	Draft	
+Test Specification	Draft	Draft	false	true	false					true	true	false	FALSE	Review	
+Test Specification	Review	Review	false	true	false					true	true	false	FALSE	Release	
+Test Specification	Release	Release	false	true	false					true	true	false	FALSE	Obsolete	
+Test Specification	Obsolete	Obsolete	false	false	false					false	true	false	FALSE		
+Lot	Create	Create	false	false	false					false	true	false	FALSE	Complete	
+Lot	Complete	Complete	false	false	false					false	true	false	FALSE	Obsolete	
+Lot	Obsolete	Obsolete	false	false	false					false	true	false	FALSE		
+Part Marking	Create	Create	false	false	false					false	true	false	FALSE	Review	
+Part Marking	Review	Review	false	false	false					false	true	false	FALSE	Complete	
+Part Marking	Complete	Complete	false	false	false					false	true	false	FALSE	Superseded	
+Part Marking	Superseded	Superseded	false	false	false					false	true	false	FALSE		
+Part Marking Specification	Create	Create	false	false	false					false	true	false	FALSE	Review	
+Part Marking Specification	Review	Review	false	false	false					false	true	false	FALSE	Approved	
+Part Marking Specification	Approved	Approved	false	false	false					false	true	false	FALSE	Obsolete	
+Part Marking Specification	Obsolete	Obsolete	false	false	false					false	true	false	FALSE		
+Controlled Folder	Create	Create	false	false	false					false	true	false	FALSE	Release	
+Controlled Folder	Release	Release	false	false	false					true	true	false	FALSE	Superceded	
+Controlled Folder	Superceded	Superceded	false	false	false					false	true	false	FALSE		
+Resource Request	Create	Create	false	false	false					false	true	false	FALSE	Requested	
+Resource Request	Requested	Requested	false	false	false					false	true	false	FALSE	Proposed	
+Resource Request	Proposed	Proposed	false	false	false					false	true	false	FALSE	Committed	
+Resource Request	Committed	Committed	false	false	false					false	true	false	FALSE	Rejected	
+Resource Request	Rejected	Rejected	false	false	false					false	true	false	FALSE		
+Archived	Archived	Archived	false	false	true					true	true	false	FALSE		
+Managed Series	Exists	Exists	false	true	false					false	true	false	FALSE		
+Person	Inactive	Inactive	false	false	true					false	true	false	FALSE	Active	
+Person	Active	Active	false	false	true					false	true	false	FALSE		
+Project Space Hold Cancel	Hold	Hold	true	false	true					false	true	false	FALSE	Cancel	
+Project Space Hold Cancel	Cancel	Cancel	true	false	true					false	true	false	FALSE		
+Project Review	Create	Create	false	true	false					false	true	false	FALSE	Review	
+Project Review	Review	Review	false	true	false					false	true	false	FALSE	Complete	
+Project Review	Complete	Complete	false	true	false					false	true	false	FALSE		
+Checklist	Active	Active	false	false	false					false	true	false	FALSE	Complete	
+Checklist	Complete	Complete	false	false	false					false	true	false	FALSE		
+Checklist Item	Exists	Exists	false	false	false					false	true	false	FALSE		
+Weekly Timesheet	Exists	Exists	false	true	false					true	true	false	FALSE	Rejected	
+Weekly Timesheet	Rejected	Rejected	false	true	false					true	true	false	FALSE	Submit	
+Weekly Timesheet	Submit	Submit	false	true	false					true	true	false	FALSE	Approved	
+Weekly Timesheet	Approved	Approved	false	true	false					true	true	false	FALSE		
+Supplier Equivalent	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Review	
+Supplier Equivalent	Review	Review	false	false	true					false	true	false	FALSE	Approved	
+Supplier Equivalent	Approved	Approved	false	false	true					false	true	false	FALSE	Release	
+Supplier Equivalent	Release	Release	false	false	true					false	true	false	FALSE	Obsolete	
+Supplier Equivalent	Obsolete	Obsolete	false	false	true					false	true	false	FALSE		
+Qualification	In Process	InProcess	false	true	true					false	true	false	FALSE	Disqualified	
+Qualification	Disqualified	Disqualified	false	false	true					false	true	false	FALSE	Qualified	
+Qualification	Qualified	Qualified	false	false	true					false	true	false	FALSE	Approved	
+Qualification	Approved	Approved	false	false	true					false	true	false	FALSE	Frozen	
+Qualification	Frozen	Frozen	false	false	true					false	true	false	FALSE		
+Actual Transaction	Exists	Exists	true	false	true					false	true	false	FALSE		
+Configuration Feature	Preliminary	Preliminary	false	true	false					false	true	false	FALSE	Review	
+Configuration Feature	Review	Review	false	true	false					false	true	false	FALSE	Release	
+Configuration Feature	Release	Release	false	true	false					true	true	false	FALSE	Obsolete	
+Configuration Feature	Obsolete	Obsolete	false	false	false					true	true	false	FALSE		
+Configuration Option	Exists	Exists	false	false	false					false	true	false	FALSE		
+Logical Feature	Preliminary	Preliminary	false	true	false					false	true	false	FALSE	Review	
+Logical Feature	Review	Review	false	true	false					false	true	false	FALSE	Release	
+Logical Feature	Release	Release	false	true	false					true	true	false	FALSE	Obsolete	
+Logical Feature	Obsolete	Obsolete	false	false	false					true	true	false	FALSE		
+Manufacturing Feature	Preliminary	Preliminary	false	true	false					false	true	false	FALSE	Review	
+Manufacturing Feature	Review	Review	false	true	false					false	true	false	FALSE	Release	
+Manufacturing Feature	Release	Release	false	true	false					true	true	false	FALSE	Obsolete	
+Manufacturing Feature	Obsolete	Obsolete	false	false	false					true	true	false	FALSE		
+Requirement Group	Exists	Exists	false	false	true					false	false	false	FALSE		
+DECO	Create	Create	false	false	true					false	true	false	FALSE	Design Work	
+DECO	Design Work	DesignWork	false	false	true					false	true	false	FALSE	Review	
+DECO	Review	Review	false	false	true					false	true	false	FALSE	Release	
+DECO	Release	Release	false	false	true					false	true	false	FALSE	Cancelled	
+DECO	Cancelled	Cancelled	true	false	true					true	true	false	FALSE		
+Language	Inactive	Inactive	false	true	false					false	true	false	FALSE	Active	
+Language	Active	Active	false	true	false					true	true	false	FALSE	Archived	
+Language	Archived	Archived	false	false	false					false	true	false	FALSE		
+PLBOM Consumption Usage	one	one	true	false	true					true	true	false	FALSE		
+Process	Exists	Exists	true	false	true					false	true	false	FALSE		
+Controlled Documents	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Review	
+Controlled Documents	Review	Review	false	false	true					false	true	false	FALSE	Approved	
+Controlled Documents	Approved	Approved	false	false	true					false	true	false	FALSE	Released	
+Controlled Documents	Released	Released	false	false	true					true	true	false	FALSE	Superseded	
+Controlled Documents	Superseded	Superseded	false	false	true					false	true	false	FALSE	Obsolete	
+Controlled Documents	Obsolete	Obsolete	false	false	true					false	true	false	FALSE		
+Controlled Document Template	Inactive	Inactive	false	false	true					false	true	false	FALSE	Active	
+Controlled Document Template	Active	Active	false	false	true					false	true	false	FALSE	Obsolete	
+Controlled Document Template	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+eForm	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Complete	
+eForm	Complete	Complete	false	false	true					false	true	false	FALSE		
+eForm Template	Inactive	Inactive	false	false	true					false	true	false	FALSE	Active	
+eForm Template	Active	Active	false	false	true					true	true	false	FALSE	Obsolete	
+eForm Template	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Deliverable Intent	Propose	Propose	true	false	true					false	true	false	FALSE	Plan	
+Deliverable Intent	Plan	Plan	true	false	true					false	true	false	FALSE	Deliver	
+Deliverable Intent	Deliver	Deliver	true	false	true					false	true	false	FALSE	Cancel	
+Deliverable Intent	Cancel	Cancel	true	false	true					false	true	false	FALSE		
+Deliverable Template	In Work	InWork	true	false	false					false	true	false	FALSE	Active	
+Deliverable Template	Active	Active	true	false	false					false	true	false	FALSE	Inactive	
+Deliverable Template	Inactive	Inactive	true	false	false					false	true	false	FALSE		
+Deliverable Planning	Private	Private	false	false	false					true	true	false	FALSE	In Work	
+Deliverable Planning	In Work	InWork	false	false	false					true	true	false	FALSE	Validated	
+Deliverable Planning	Validated	Validated	false	false	false					true	true	false	FALSE	Deployed	
+Deliverable Planning	Deployed	Deployed	false	false	false					true	true	false	FALSE	Complete	
+Deliverable Planning	Complete	Complete	false	false	false					false	true	false	FALSE	Terminated	
+Deliverable Planning	Terminated	Terminated	false	false	false					false	true	false	FALSE	Cancelled	
+Deliverable Planning	Cancelled	Cancelled	false	false	false					false	true	false	FALSE		
+RVD	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+RVD	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+VPLM_UNSECURED_CX	DEFAULT		true	false	false					true	true	false	FALSE		
+VPLM_SR	DEFAULT		true	false	false					true	true	false	FALSE		
+VPLM_SMB	IN_WORK		true	false	false					true	true	false	FALSE	PRIVATE	
+VPLM_SMB	PRIVATE	Review	true	false	false					true	true	false	FALSE	WAITAPP	
+VPLM_SMB	WAITAPP	Approved	true	false	false					true	true	false	FALSE	SHARED	
+VPLM_SMB	SHARED	Release	true	false	false					true	true	true	FALSE		
+VPLM_SMB_DOCUMENT	IN_WORK		true	false	false					true	true	false	FALSE	PRIVATE	
+VPLM_SMB_DOCUMENT	PRIVATE		true	false	false					true	true	false	FALSE	WAITAPP	
+VPLM_SMB_DOCUMENT	WAITAPP		true	false	false					true	true	false	FALSE	SHARED	
+VPLM_SMB_DOCUMENT	SHARED		true	false	false					true	true	true	FALSE		
+VPLM_SMB_PORT_CX	DEFAULT		true	false	false					true	true	false	FALSE		
+VPLMInteg-SynchParameters	Exists		false	false	true					false	true	false	FALSE		
+VPLMAutoNaming_Policy	DEFAULT		true	false	true					true	true	false	FALSE		
+VPMCatalogProxy	Exists		false	false	true					false	true	false	FALSE		
+Impact	Create	Create	true	false	true					true	true	false	FALSE	Complete	
+Impact	Complete	Complete	true	false	true					true	true	false	FALSE		
+VPLM_Action	IN_WORK	INWORK	true	false	false					true	true	false	FALSE	WAITAPP	
+VPLM_Action	WAITAPP	WAITAPP	true	false	false					true	true	false	FALSE	SHARED	
+VPLM_Action	SHARED	SHARED	true	false	false					true	true	false	FALSE	PRIVATE	
+VPLM_Action	PRIVATE	PRIVATE	true	false	false					true	true	false	FALSE		
+VPLM_SignoffAction	IN_WORK	INWORK	true	false	false					true	true	false	FALSE	SHARED	
+VPLM_SignoffAction	SHARED	SHARED	true	false	false					true	true	false	FALSE	PRIVATE	
+VPLM_SignoffAction	PRIVATE	PRIVATE	true	false	false					true	true	false	FALSE		
+VPLM_PosResourceRef	DEFAULT		true	false	false					false	true	false	FALSE		
+VPLM_PosResourceRep	DEFAULT		true	false	false					false	true	false	FALSE		
+VPLM_Replication	DEFAULT		true	false	false					false	true	false	FALSE		
+VPLM_PRIVATE	DEFAULT		true	false	false					true	true	true	FALSE		
+VPLM_TaskAction	IN_WORK		true	false	false					true	true	false	FALSE	WAITAPP	
+VPLM_TaskAction	WAITAPP		true	false	false					true	true	false	FALSE	SHARED	
+VPLM_TaskAction	SHARED		true	false	false					true	true	false	FALSE	PRIVATE	
+VPLM_TaskAction	PRIVATE		true	false	false					true	true	false	FALSE		
+VPLMDataMigration_Policy	DEFAULT		true	false	true					true	true	false	FALSE		
+VPLM_SMB_VS_ActivateDeactivate	DEFAULT		true	false	false					false	true	false	TRUE		
+VPLM_MappingModeler	DEFAULT		true	false	true					false	true	false	FALSE		
+VPLMStreamTemporaryHolder_Policy	DEFAULT		true	false	true					true	true	false	FALSE		
+VPLM_SMB_RequirementSpecification	Preliminary		true	false	false					true	true	false	FALSE	Draft	
+VPLM_SMB_RequirementSpecification	Draft		true	false	false					true	true	false	FALSE	Review	
+VPLM_SMB_RequirementSpecification	Review		true	false	false					true	true	false	FALSE	Release	
+VPLM_SMB_RequirementSpecification	Release		true	false	false					true	true	true	FALSE	Obsolete	
+VPLM_SMB_RequirementSpecification	Obsolete		true	false	false					true	true	false	FALSE		
+VPLM_SMB_Requirement	Propose		true	false	false					true	true	false	FALSE	Approve	
+VPLM_SMB_Requirement	Approve		true	false	false					true	true	false	FALSE	Validate	
+VPLM_SMB_Requirement	Validate		true	false	false					true	true	false	FALSE	Review	
+VPLM_SMB_Requirement	Review		true	false	false					true	true	false	FALSE	Release	
+VPLM_SMB_Requirement	Release		true	false	false					true	true	true	FALSE	Obsolete	
+VPLM_SMB_Requirement	Obsolete		true	false	false					true	true	false	FALSE		
+VPLM_SMB_Chapter	Active		true	false	false					true	true	false	FALSE	Release	
+VPLM_SMB_Chapter	Release		true	false	false					true	true	true	FALSE		
+VPLM_SMB_Comment	Active		true	false	false					true	true	false	FALSE	Release	
+VPLM_SMB_Comment	Release		true	false	false					true	true	true	FALSE		
+VPLM_SMB_Definition	PRIVATE	Private	true	false	false					true	true	false	FALSE	IN_WORK	
+VPLM_SMB_Definition	IN_WORK	InWork	true	false	false					true	true	false	TRUE	REMOVED	
+VPLM_SMB_Definition	REMOVED	Removed	true	false	false					true	true	false	TRUE	FROZEN	
+VPLM_SMB_Definition	FROZEN	UnderEvaluation	true	false	false					true	true	false	TRUE	RELEASED	
+VPLM_SMB_Definition	RELEASED	Released	true	false	false					true	true	true	TRUE	OBSOLETE	
+VPLM_SMB_Definition	OBSOLETE	Obsolete	true	false	false					true	true	true	TRUE		
+Issue	Create	Create	true	false	true					true	true	false	FALSE	Assign	
+Issue	Assign	Assign	true	false	true					true	true	false	FALSE	Active	
+Issue	Active	Active	true	false	true					true	true	false	FALSE	Review	
+Issue	Review	Review	true	false	true					true	true	false	FALSE	Closed	
+Issue	Closed	Closed	true	false	true					false	true	false	FALSE		
+VPLM_SMB_Definition_Document	PRIVATE	Private	true	false	false					true	true	false	TRUE	IN_WORK	
+VPLM_SMB_Definition_Document	IN_WORK		true	false	false					true	true	false	TRUE	REMOVED	
+VPLM_SMB_Definition_Document	REMOVED		true	false	false					true	true	false	TRUE	FROZEN	
+VPLM_SMB_Definition_Document	FROZEN		true	false	false					true	true	false	TRUE	RELEASED	
+VPLM_SMB_Definition_Document	RELEASED		true	false	false					true	true	true	TRUE	OBSOLETE	
+VPLM_SMB_Definition_Document	OBSOLETE		true	false	false					true	true	true	TRUE		
+VPLM_SMB_Evaluation	PRIVATE	Private	true	false	false					true	true	false	TRUE	IN_WORK	
+VPLM_SMB_Evaluation	IN_WORK	InWork	true	false	false					true	true	false	TRUE	REMOVED	
+VPLM_SMB_Evaluation	REMOVED	Removed	true	false	false					true	true	false	TRUE	FROZEN	
+VPLM_SMB_Evaluation	FROZEN	UnderEvaluation	true	false	false					true	true	false	TRUE	RELEASED	
+VPLM_SMB_Evaluation	RELEASED	Released	true	false	false					true	true	true	TRUE	OBSOLETE	
+VPLM_SMB_Evaluation	OBSOLETE	Obsolete	true	false	false					true	true	true	TRUE		
+VPLM_SMB_Resource	PRIVATE	Private	true	false	false					true	true	false	TRUE	IN_WORK	
+VPLM_SMB_Resource	IN_WORK	InWork	true	false	false					true	true	false	TRUE	REMOVED	
+VPLM_SMB_Resource	REMOVED	Removed	true	false	false					true	true	false	TRUE	FROZEN	
+VPLM_SMB_Resource	FROZEN	UnderEvaluation	true	false	false					true	true	false	TRUE	RELEASED	
+VPLM_SMB_Resource	RELEASED	Released	true	false	false					true	true	true	TRUE	OBSOLETE	
+VPLM_SMB_Resource	OBSOLETE	Obsolete	true	false	false					true	true	true	TRUE		
+VPLM_SMB_Management	DEFAULT		true	false	false					true	true	false	TRUE		
+VPLM_SMB_PORT_Definition	DEFAULT		true	false	false					true	true	false	TRUE		
+VPLM_SMB_CX_Definition	DEFAULT		true	false	false					true	true	false	TRUE		
+VPLM_SMB_PORT_Evaluation	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_CX_Evaluation	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_CX_Resource	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_CX_Management	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_UNSPEC	DEFAULT		true	false	false					false	true	false	TRUE		
+VPLM_SMB_CoDesignRef	DEFAULT		true	false	false					false	true	false	TRUE		
+VPLM_SMB_CoDesignRepRef	DEFAULT		true	false	false					false	true	false	TRUE		
+VPLM_SMB_FBDIMapping	DEFAULT		true	false	false					false	true	false	TRUE		
+VPLM_SMB_Task_Management	Unspecified	Removed	true	false	false					false	false	true	TRUE	WIP_Active	
+VPLM_SMB_Task_Management	WIP_Active		true	false	false					false	false	true	TRUE	Completed	
+VPLM_SMB_Task_Management	Completed	Released	true	false	false					false	false	true	FALSE	Obsolete	
+VPLM_SMB_Task_Management	Obsolete	Obsolete	true	false	false					false	false	true	FALSE	WIP_Suspended	
+VPLM_SMB_Task_Management	WIP_Suspended		true	false	false					false	false	true	FALSE	WIP_Run	
+VPLM_SMB_Task_Management	WIP_Run		true	false	false					false	false	true	TRUE	WaitApproval	
+VPLM_SMB_Task_Management	WaitApproval	UnderEvaluation	true	false	false					false	false	true	TRUE		
+VPLM_SMB_CX_Task_Management	DEFAULT		true	false	false					false	false	true	TRUE		
+Route	Define	Define	true	false	true					false	true	false	FALSE	In Process	
+Route	In Process	InProcess	true	false	true					false	true	false	FALSE	Complete	
+Route	Complete	Complete	true	false	true					false	true	false	FALSE	Archive	
+Route	Archive	Archive	false	false	false					false	true	false	FALSE		
+VPLM Project Template	Inactive		true	false	false					true	true	false	FALSE	Active	
+VPLM Project Template	Active		true	false	false					true	true	false	FALSE		
+VPLM_SMB_CX_PrdConf	DEFAULT		true	false	false					true	true	false	FALSE		
+XP_Policy	XP_ParameterState		true	false	true					true	true	false	FALSE		
+VPLM_SMB_PostIt_Management	Unspec	Removed	true	false	false					false	false	true	TRUE	In_work	
+VPLM_SMB_PostIt_Management	In_work	InWork	true	false	false					false	false	true	TRUE	Completed	
+VPLM_SMB_PostIt_Management	Completed	Released	true	false	false					false	false	true	TRUE		
+VPLM_SMB_CX_PostIt_Management	DEFAULT		true	false	false					false	false	true	TRUE		
+VPLM_SMB_WorkspaceRootRef	IN_WORK		true	false	false					false	true	false	FALSE		
+OntoDefaultPolicy	Exist		true	false	true					true	true	false	FALSE		
+Parameter	Define	Define	false	false	true					false	false	false	FALSE	InWork	
+Parameter	InWork	InWork	false	false	true					false	false	false	FALSE	Validate	
+Parameter	Validate	Validate	false	false	true					false	false	false	FALSE	Released	
+Parameter	Released	Released	false	false	true					false	true	false	FALSE	Obsolete	
+Parameter	Obsolete	Obsolete	false	false	true					false	false	false	FALSE		
+LTLoginTicket	created		false	false	false					false	true	false	FALSE		
+VPLM_PosDeliverableCnx	DEFAULT		true	false	true					true	true	false	FALSE		
+DS6W	Exists		false	false	true					false	false	false	FALSE		
+VPLM_SMB_PORT_Resource	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_DesignWS	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_CX_DesignWS	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_DesignPrj	DEFAULT		true	false	true					true	true	false	TRUE		
+Route Template	Inactive	Inactive	true	false	true					true	true	false	FALSE	Active	
+Route Template	Active	Exists	true	false	true					true	true	false	FALSE		
+VPLM_SMB_CX_DesignPrj	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_Action	Create	Private	true	false	true					true	true	false	TRUE	DesignWork	
+VPLM_SMB_Action	DesignWork	InWork	true	false	true					true	true	false	TRUE	Review	
+VPLM_SMB_Action	Review	UnderEvaluation	true	false	true					true	true	false	TRUE	Completed	
+VPLM_SMB_Action	Completed	Released	true	false	true					true	true	false	FALSE	Rejected	
+VPLM_SMB_Action	Rejected	Removed	true	false	true					true	true	false	FALSE		
+VPLM_SMB_CX_ActionInputs	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_CX_ActionAttachments	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_CX_ActionApplicability	DEFAULT		true	false	true					true	true	false	TRUE		
+VPLM_SMB_CX_ActionImplementation	DEFAULT		true	false	true					true	true	false	TRUE		
+Library Feature Reference	IN_WORK		true	false	true					true	true	false	FALSE		
+Library Feature Port	DEFAULT		true	false	true					true	true	false	FALSE		
+PLMProfile	PRIVATE		false	false	true					false	true	false	FALSE	IN_WORK	
+PLMProfile	IN_WORK		false	false	true					false	true	false	FALSE	RELEASED	
+PLMProfile	RELEASED		false	false	true					false	true	false	FALSE	OBSOLETE	
+PLMProfile	OBSOLETE		false	false	true					false	true	false	FALSE		
+PLMProfileOneState	EXIST		true	false	true					true	true	false	FALSE		
+Personal Workspace	Active		false	false	false					false	true	false	FALSE		
+Change Action	Pending	Pending	false	false	true					false	true	false	FALSE	In Work	
+Change Action	In Work	InWork	false	false	true					false	true	false	FALSE	In Approval	
+Change Action	In Approval	InApproval	false	false	true					false	true	false	FALSE	Complete	
+Change Action	Complete	Complete	false	false	true					false	true	false	FALSE	On Hold	
+Change Action	On Hold	OnHold	false	false	true					false	true	false	FALSE	Cancelled	
+Change Action	Cancelled	Cancelled	false	false	true					false	true	false	FALSE		
+Change Request	Create	Create	false	false	true					false	true	false	FALSE	Evaluate	
+Change Request	Evaluate	Evaluate	false	false	true					false	true	false	FALSE	In Review	
+Change Request	In Review	InReview	false	false	true					false	true	false	FALSE	In Process CO	
+Change Request	In Process CO	InProcessCO	false	false	true					false	true	false	FALSE	Complete	
+Change Request	Complete	Complete	false	false	true					false	true	false	FALSE	On Hold	
+Change Request	On Hold	OnHold	false	false	true					false	true	false	FALSE	Cancelled	
+Change Request	Cancelled	Cancelled	false	false	true					false	true	false	FALSE		
+Change Template	Inactive	Inactive	true	false	true					true	true	false	FALSE	Active	
+Change Template	Active	Active	true	false	true					true	true	false	FALSE	Obsolete	
+Change Template	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Event	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+Event	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+Fast track Change	Prepare	Prepare	false	false	true					false	true	false	FALSE	In Work	
+Fast track Change	In Work	InWork	false	false	true					false	true	false	FALSE	In Approval	
+Fast track Change	In Approval	InApproval	false	false	true					false	true	false	FALSE	Complete	
+Fast track Change	Complete	Complete	false	false	true					false	true	false	FALSE	Implemented	
+Fast track Change	Implemented	Implemented	false	false	true					false	true	false	FALSE	On Hold	
+Fast track Change	On Hold	OnHold	false	false	true					false	true	false	FALSE	Cancelled	
+Fast track Change	Cancelled	Cancelled	false	false	true					false	true	false	FALSE		
+Formal Change	Propose	Propose	false	false	true					false	true	false	FALSE	Prepare	
+Formal Change	Prepare	Prepare	false	false	true					false	true	false	FALSE	In Review	
+Formal Change	In Review	InReview	false	false	true					false	true	false	FALSE	In Work	
+Formal Change	In Work	InWork	false	false	true					false	true	false	FALSE	In Approval	
+Formal Change	In Approval	InApproval	false	false	true					false	true	false	FALSE	Complete	
+Formal Change	Complete	Complete	false	false	true					false	true	false	FALSE	Implemented	
+Formal Change	Implemented	Implemented	false	false	true					false	true	false	FALSE	On Hold	
+Formal Change	On Hold	OnHold	false	false	true					false	true	false	FALSE	Cancelled	
+Formal Change	Cancelled	Cancelled	false	false	true					false	true	false	FALSE		
+Named Effectivity	Exists	Exists	true	false	true					true	true	false	FALSE		
+Milestone Holder	Active	Active	false	true	false					false	true	false	FALSE		
+Design TEAM Definition	IN_WORK	Preliminary	false	false	false					true	true	false	FALSE	FROZEN	
+Design TEAM Definition	FROZEN	Review	true	false	false					true	true	true	FALSE	RELEASED	
+Design TEAM Definition	RELEASED	Release	false	false	false					true	true	true	FALSE	OBSOLETE	
+Design TEAM Definition	OBSOLETE	Obsolete	false	false	false					true	true	false	FALSE		
+Design TEAM Resource	IN_WORK	Preliminary	false	false	false					true	true	false	FALSE	FROZEN	
+Design TEAM Resource	FROZEN	Review	true	false	false					true	true	true	FALSE	RELEASED	
+Design TEAM Resource	RELEASED	Release	false	false	false					true	true	true	FALSE	OBSOLETE	
+Design TEAM Resource	OBSOLETE	Obsolete	false	false	false					true	true	false	FALSE		
+Versioned Design TEAM Policy	Exists	Review	true	false	false					true	true	false	FALSE		
+Viewable TEAM Policy	Exists		true	false	true					true	true	false	FALSE		
+Derived Output TEAM Policy	Exists		true	false	true					true	true	false	FALSE		
+Startup TEAM Policy	IN_WORK		false	false	false					true	true	false	FALSE		
+TVC Image Annotation	Exists	Exists	true	false	false					true	true	false	FALSE		
+TVC Number Generator Settings	Active	Active	true	false	false					true	true	false	FALSE	Inactive	
+TVC Number Generator Settings	Inactive	Inactive	true	false	false					true	true	false	FALSE		
+TVC View	Active	Active	true	false	false					true	true	false	FALSE	Inactive	
+TVC View	Inactive	Inactive	true	false	false					true	true	false	FALSE		
+RPT Agent	Exists	Exists	false	false	true					false	true	false	FALSE		
+RPT Job	Created	Created	false	false	true					false	true	false	FALSE	Waiting	
+RPT Job	Waiting	Waiting	false	false	true					false	true	false	FALSE	In Work	
+RPT Job	In Work	InWork	false	false	true					false	true	false	FALSE	Done	
+RPT Job	Done	Done	false	false	true					false	true	false	FALSE		
+RPT Queue	Exists	Exists	false	false	true					false	true	false	FALSE		
+Inbox Task	Assigned	Assigned	true	false	true					false	true	false	FALSE	Review	
+Inbox Task	Review	Review	true	false	true					true	true	false	FALSE	Complete	
+Inbox Task	Complete	Complete	true	false	true					true	true	false	FALSE		
+RPT Report Definition	Active	Active	true	false	true					true	true	false	FALSE	Inactive	
+RPT Report Definition	Inactive	Inactive	true	false	true					true	true	false	FALSE		
+Message	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Message	Active	Active	true	false	true					false	true	false	FALSE		
+Publish Subscribe	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+Publish Subscribe	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+Thread	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+Thread	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+Meeting	Create	Create	false	false	true					false	true	false	FALSE	Scheduled	
+Meeting	Scheduled	Scheduled	false	false	true					false	true	false	FALSE	In Progress	
+Meeting	In Progress	InProgress	false	false	true					false	true	false	FALSE	Complete	
+Meeting	Complete	Complete	false	false	true					false	true	false	FALSE		
+Task Escalation Message	Exists	Exists	true	false	true					false	true	false	FALSE		
+Route Task User	Exists	Exists	true	false	true					false	true	false	FALSE		
+Member List	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Member List	Active	Active	true	false	true					false	true	false	FALSE		
+Manufacturing Plan	Preliminary	Preliminary	false	true	false					true	true	false	FALSE	Release	
+Manufacturing Plan	Release	Release	false	true	false					true	true	false	FALSE	Archived	
+Manufacturing Plan	Archived	Archived	false	false	true					true	true	false	FALSE		
+Region	Exists	Exists	true	false	true					false	true	false	FALSE		
+Issue Categorization	Exists	Exists	true	false	true					true	true	false	FALSE		
+Version	Exists	Exists	true	false	true					true	true	false	FALSE		
+Business Skill	Active	Active	true	false	true					true	true	false	FALSE		
+Engineering Change (Standard)	Submit	Submit	false	false	true					false	true	false	FALSE	Evaluate	
+Engineering Change (Standard)	Evaluate	Evaluate	false	false	true					false	true	false	FALSE	Review	
+Engineering Change (Standard)	Review	Review	false	false	true					false	true	false	FALSE	Approved	
+Engineering Change (Standard)	Approved	Approved	false	false	true					false	true	false	FALSE	Implement	
+Engineering Change (Standard)	Implement	Implement	false	false	true					false	true	false	FALSE	Validate	
+Engineering Change (Standard)	Validate	Validate	false	false	true					false	true	false	FALSE	Formal Approval	
+Engineering Change (Standard)	Formal Approval	FormalApproval	false	false	true					false	true	false	FALSE	Complete	
+Engineering Change (Standard)	Complete	Complete	false	false	true					false	true	false	FALSE	Close	
+Engineering Change (Standard)	Close	Close	false	false	true					false	true	false	FALSE	Reject	
+Engineering Change (Standard)	Reject	Reject	false	false	true					false	true	false	FALSE		
+Hardware EC	Create ECR	CreateECR	false	false	true					false	true	false	FALSE	Submit	
+Hardware EC	Submit	Submit	false	false	true					false	true	false	FALSE	Evaluate	
+Hardware EC	Evaluate	Evaluate	false	false	true					false	true	false	FALSE	Review ECR	
+Hardware EC	Review ECR	ReviewECR	false	false	true					false	true	false	FALSE	Plan ECO	
+Hardware EC	Plan ECO	PlanECO	false	false	true					false	true	false	FALSE	Complete ECR	
+Hardware EC	Complete ECR	CompleteECR	false	false	true					false	true	false	FALSE	Create ECO	
+Hardware EC	Create ECO	CreateECO	false	false	true					false	true	false	FALSE	Define Components	
+Hardware EC	Define Components	DefineComponents	false	false	true					false	true	false	FALSE	Design Work	
+Hardware EC	Design Work	DesignWork	false	false	true					false	true	false	FALSE	Review ECO	
+Hardware EC	Review ECO	ReviewECO	false	false	true					false	true	false	FALSE	Release	
+Hardware EC	Release	Release	false	false	true					false	true	false	FALSE	Implemented	
+Hardware EC	Implemented	Implemented	false	false	true					false	true	false	FALSE	Cancelled	
+Hardware EC	Cancelled	Cancelled	false	false	true					false	true	false	FALSE		
+Software EC	Submit	Submit	false	false	true					false	true	false	FALSE	Evaluate	
+Software EC	Evaluate	Evaluate	false	false	true					false	true	false	FALSE	Review	
+Software EC	Review	Review	false	false	true					false	true	false	FALSE	Approved	
+Software EC	Approved	Approved	false	false	true					false	true	false	FALSE	Implement	
+Software EC	Implement	Implement	false	false	true					false	true	false	FALSE	Validate	
+Software EC	Validate	Validate	false	false	true					false	true	false	FALSE	Formal Approval	
+Software EC	Formal Approval	FormalApproval	false	false	true					false	true	false	FALSE	Complete	
+Software EC	Complete	Complete	false	false	true					false	true	false	FALSE	Close	
+Software EC	Close	Close	false	false	true					false	true	false	FALSE	Reject	
+Software EC	Reject	Reject	false	false	true					false	true	false	FALSE		
+Test Execution	Create	Create	false	false	true					false	true	false	FALSE	In Progress	
+Test Execution	In Progress	InProgress	false	false	true					false	true	false	FALSE	Review	
+Test Execution	Review	Review	false	false	true					false	true	false	FALSE	Complete	
+Test Execution	Complete	Complete	false	false	true					false	true	false	FALSE		
+Workflow	Stopped	Stopped	true	false	true					false	true	false	FALSE	Started	
+Workflow	Started	Started	true	false	true					false	true	false	FALSE	Suspended	
+Workflow	Suspended	Suspended	true	false	true					false	true	false	FALSE	Completed	
+Workflow	Completed	Completed	true	false	true					false	true	false	FALSE		
+Workflow Task	Started	Started	true	false	true					false	true	false	FALSE	Assigned	
+Workflow Task	Assigned	Assigned	true	false	true					false	true	false	FALSE	Suspended	
+Workflow Task	Suspended	Suspended	true	false	true					false	true	false	FALSE	Overridden	
+Workflow Task	Overridden	Overridden	true	false	true					false	true	false	FALSE	Completed	
+Workflow Task	Completed	Completed	true	false	true					false	true	false	FALSE		
+Private Message	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Private Message	Active	Active	true	false	true					false	true	false	FALSE		
+mxsysDSFAHolder	Exists	Exists	true	false	true					true	true	false	FALSE		
+Notification Spool	Exists	Exists	true	false	true					false	true	false	FALSE		
+Country	Inactive	Inactive	false	true	false					false	true	false	FALSE	Active	
+Country	Active	Active	false	true	false					false	true	false	FALSE	Archived	
+Country	Archived	Archived	false	false	false					false	true	false	FALSE		
+Business Group	Active	Active	false	false	false					false	true	false	FALSE		
+Document Release	PRIVATE	PRIVATE	true	false	true					true	true	false	FALSE	IN_WORK	
+Document Release	IN_WORK	IN_WORK	true	false	true					true	true	false	FALSE	FROZEN	
+Document Release	FROZEN	FROZEN	true	false	true					true	true	false	FALSE	RELEASED	
+Document Release	RELEASED	RELEASED	true	false	true					true	true	false	FALSE	OBSOLETE	
+Document Release	OBSOLETE	OBSOLETE	true	false	true					true	true	false	FALSE		
+DataCustoPolicy	Exist		true	false	true					true	true	false	FALSE		
+Project Release	Plan	Plan	false	false	true					true	true	false	FALSE	Active	
+Project Release	Active	Active	true	false	true					true	true	false	FALSE	Complete	
+Project Release	Complete	Complete	true	false	true					true	true	false	FALSE		
+Workspace	Create	Create	false	true	false					false	true	false	FALSE	Assign	
+Workspace	Assign	Assign	false	true	false					false	true	false	FALSE	Active	
+Workspace	Active	Active	false	true	false					false	true	false	FALSE	Review	
+Workspace	Review	Review	false	true	false					false	true	false	FALSE	Complete	
+Workspace	Complete	Complete	false	true	false					false	true	false	FALSE	Archive	
+Workspace	Archive	Archive	false	false	false					false	true	false	FALSE		
+Project Folder	Exists	Exists	true	false	true					false	true	false	FALSE		
+Project Member	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+Project Member	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+Workspace Vaults	Exists	Exists	true	false	true					false	true	false	FALSE		
+Template Workspace Vault	Exists	Exists	true	false	true					true	true	false	FALSE		
+Workspace Template	Exists	Exists	true	false	true					true	true	false	FALSE		
+DS Service	Inactive	Inactive	false	false	true					false	true	false	FALSE	Active	
+DS Service	Active	Active	false	false	true					false	true	false	FALSE		
+Service Definition Content	Exists	Exists	true	false	true					true	true	false	FALSE		
+Service Implementation Content	Exists	Exists	true	false	true					true	true	false	FALSE		
+Deployment Definition	Exists	Exists	false	false	true					false	true	false	FALSE		
+Deployment Instance	Undeployed	Undeployed	false	false	true					false	true	false	FALSE	Deployed	
+Deployment Instance	Deployed	Deployed	false	false	true					false	true	false	FALSE		
+Service Key	Active	Active	false	false	true					false	true	false	FALSE	Inactive	
+Service Key	Inactive	Inactive	false	false	true					false	true	false	FALSE	Expired	
+Service Key	Expired	Expired	false	false	true					false	true	false	FALSE		
+Service Folder	Exists	Exists	false	false	true					false	true	false	FALSE		
+Compliance Application	Active	Active	false	true	false					false	true	false	FALSE		
+Compliance Definition (Enterprise)	Inactive	Inactive	false	true	false					false	true	false	FALSE	Active	
+Compliance Definition (Enterprise)	Active	Active	false	true	false					false	true	false	FALSE		
+Compliance Definition (User)	Active	Active	false	true	false					false	true	false	FALSE		
+Compliance Enterprise Part	Preliminary	Preliminary	false	true	false					false	true	false	FALSE	Complete	
+Compliance Enterprise Part	Complete	Complete	false	true	false					false	true	false	FALSE	Obsolete	
+Compliance Enterprise Part	Obsolete	Obsolete	false	true	false					false	true	false	FALSE		
+Compliance Plant Specific Part	Preliminary	Preliminary	false	true	false					false	true	false	FALSE	Complete	
+Compliance Plant Specific Part	Complete	Complete	false	true	false					false	true	false	FALSE	Obsolete	
+Compliance Plant Specific Part	Obsolete	Obsolete	false	true	false					false	true	false	FALSE		
+Compliance Reported Part	Reported	Reported	false	true	false					false	true	false	FALSE	Accepted	
+Compliance Reported Part	Accepted	Accepted	false	true	false					false	true	false	FALSE		
+Compliance Subtier Part	Reported	Reported	false	true	false					false	true	false	FALSE	Accepted	
+Compliance Subtier Part	Accepted	Accepted	false	true	false					false	true	false	FALSE		
+Compliance Type	Active	Active	false	true	false					false	true	false	FALSE		
+Customer Part Number	Active	Active	false	true	false					true	true	false	FALSE	Inactive	
+Customer Part Number	Inactive	Inactive	false	true	false					true	true	false	FALSE		
+Customer Program	Active	Active	false	true	false					true	true	false	FALSE	Inactive	
+Customer Program	Inactive	Inactive	false	true	false					true	true	false	FALSE		
+Export Log	Create	Create	false	true	false					false	true	false	FALSE		
+Material	Active	Active	false	true	false					true	true	false	FALSE		
+Material Classification	Active	Active	false	true	false					false	true	false	FALSE		
+Material Declaration (Active)	Created	Created	false	true	false					false	true	false	FALSE	Requested	
+Material Declaration (Active)	Requested	Requested	false	true	false					false	true	false	FALSE	Submitted	
+Material Declaration (Active)	Submitted	Submitted	false	true	false					false	true	false	FALSE	Received	
+Material Declaration (Active)	Received	Received	false	true	false					false	true	false	FALSE	Accepted	
+Material Declaration (Active)	Accepted	Accepted	false	true	false					false	true	false	FALSE	Superseded	
+Material Declaration (Active)	Superseded	Superseded	false	false	false					false	true	false	FALSE	Rejected	
+Material Declaration (Active)	Rejected	Rejected	false	false	false					false	true	false	FALSE		
+Material Declaration (Canceled)	Canceled	Canceled	false	true	false					false	true	false	FALSE		
+Substance	Active	Active	false	true	false					true	true	false	FALSE		
+Substance Classification	Active	Active	false	true	false					false	true	false	FALSE		
+Update Required	Create	Create	false	true	false					false	true	false	FALSE		
+Security Context	Active	Active	false	false	false					false	true	false	FALSE		
+Reported Material	Exists	Exists	true	false	true					false	true	false	FALSE		
+Substance Purpose	Active	Active	false	true	false					false	true	false	FALSE	Inactive	
+Substance Purpose	Inactive	Inactive	false	true	false					false	true	false	FALSE		
+RRR Recycling Technology	Active	Active	false	true	false					false	true	false	FALSE	Inactive	
+RRR Recycling Technology	Inactive	Inactive	false	true	false					false	true	false	FALSE		
+Declaration Level	Inactive	Inactive	false	true	false					false	true	false	FALSE	Active	
+Declaration Level	Active	Active	false	true	false					false	true	false	FALSE		
+Battery Information	Active	Active	false	true	false					false	true	false	FALSE		
+External Material	Active	Active	false	false	false					true	true	false	FALSE		
+Internal Material	Development	Development	false	false	false					true	true	false	FALSE	Review	
+Internal Material	Review	Review	false	false	false					true	true	false	FALSE	Rejected	
+Internal Material	Rejected	Rejected	false	false	false					true	true	false	FALSE	Approved	
+Internal Material	Approved	Approved	false	false	false					true	true	false	FALSE	Obsolete	
+Internal Material	Obsolete	Obsolete	false	false	false					true	true	false	FALSE		
+WEEE Classification	Active	Active	false	false	false					false	true	false	FALSE		
+Smelter	Active	Active	false	true	false					false	true	false	FALSE	Inactive	
+Smelter	Inactive	Inactive	false	true	false					false	true	false	FALSE		
+Conflict Mineral Declaration	Created	Created	false	true	false					false	true	false	FALSE	Requested	
+Conflict Mineral Declaration	Requested	Requested	false	true	false					false	true	false	FALSE	Approved	
+Conflict Mineral Declaration	Approved	Approved	false	true	false					false	true	false	FALSE	Superseded	
+Conflict Mineral Declaration	Superseded	Superseded	false	false	false					false	true	false	FALSE	Rejected	
+Conflict Mineral Declaration	Rejected	Rejected	false	false	false					false	true	false	FALSE	Canceled	
+Conflict Mineral Declaration	Canceled	Canceled	false	true	false					false	true	false	FALSE		
+Design Policy	Preliminary	Preliminary	false	false	false					true	true	false	FALSE	Review	
+Design Policy	Review	Review	false	false	false					true	true	false	FALSE	Approved	
+Design Policy	Approved	Approved	true	false	false					true	true	true	FALSE	Release	
+Design Policy	Release	Release	false	false	false					true	true	true	FALSE		
+DSCMessagePolicy	Created	Created	true	false	true					true	true	false	FALSE	Submitted	
+DSCMessagePolicy	Submitted	Submitted	true	false	true					true	true	false	FALSE	Running	
+DSCMessagePolicy	Running	Running	true	false	true					true	true	false	FALSE	Completed	
+DSCMessagePolicy	Completed	Completed	true	false	true					true	true	false	FALSE	Archived	
+DSCMessagePolicy	Archived	Archived	true	false	true					true	true	false	FALSE		
+DSCQueuePolicy	Active	Active	true	false	true					true	true	false	FALSE	Inactive	
+DSCQueuePolicy	Inactive	Inactive	true	false	true					true	true	false	FALSE		
+Derived Output Parameter Policy	Active	Active	true	false	true					true	true	false	FALSE	Inactive	
+Derived Output Parameter Policy	Inactive	Inactive	true	false	true					true	true	false	FALSE		
+MCADInteg-ConfigObjectPolicy	Exists	Exists	true	false	true					true	true	false	FALSE		
+DECBaseline	Exists	Exists	true	false	false					true	true	false	FALSE		
+PnOProject	Active	Active	false	false	false					false	true	false	FALSE		
+IEFCommentsPolicy	Exists	Exists	false	false	true					true	true	false	FALSE		
+BPProcessTemplatePolicy	Created	Created	false	true	true					false	true	false	FALSE	In-Review	
+BPProcessTemplatePolicy	In-Review	In-Review	false	true	true					false	true	false	FALSE	Approved	
+BPProcessTemplatePolicy	Approved	Approved	false	true	true					true	true	false	FALSE	Obsolete	
+BPProcessTemplatePolicy	Obsolete	Obsolete	false	true	true					false	true	false	FALSE		
+BPActivityTemplatePolicy	Created	Created	false	true	true					false	true	false	FALSE	Completed	
+BPActivityTemplatePolicy	Completed	Completed	true	true	true					true	true	false	FALSE	Obsolete	
+BPActivityTemplatePolicy	Obsolete	Obsolete	false	false	true					false	true	false	FALSE		
+BPEventPolicy	Created	Created	false	true	true					false	true	false	FALSE	Obsolete	
+BPEventPolicy	Obsolete	Obsolete	false	false	true					false	true	false	FALSE		
+BPGatewayPolicy	Created	Created	false	true	true					false	true	false	FALSE	Obsolete	
+BPGatewayPolicy	Obsolete	Obsolete	false	false	true					false	true	false	FALSE		
+BPUsagePolicy	Created	Created	false	true	true					false	true	false	FALSE	Obsolete	
+BPUsagePolicy	Obsolete	Obsolete	false	false	true					false	true	false	FALSE		
+BPProcessInstancePolicy	Ready	Ready	true	true	false					true	true	false	FALSE	In-Progress	
+BPProcessInstancePolicy	In-Progress	In-Progress	true	true	false					true	true	false	FALSE	Complete	
+BPProcessInstancePolicy	Complete	Complete	false	false	true					false	true	false	FALSE	Suspended	
+BPProcessInstancePolicy	Suspended	Suspended	false	true	true					false	true	false	FALSE	Terminated	
+BPProcessInstancePolicy	Terminated	Terminated	false	false	true					false	true	false	FALSE		
+BPActivityInstancePolicy	Created	Created	true	true	true					true	true	false	FALSE	In-Progress	
+BPActivityInstancePolicy	In-Progress	In-Progress	true	true	true					true	true	false	FALSE	Complete	
+BPActivityInstancePolicy	Complete	Complete	false	true	true					false	true	false	FALSE	Suspended	
+BPActivityInstancePolicy	Suspended	Suspended	false	true	true					false	true	false	FALSE	Terminated	
+BPActivityInstancePolicy	Terminated	Terminated	false	false	true					false	true	false	FALSE		
+Configured Part	Preliminary	Preliminary	false	true	true					false	true	false	FALSE	Release	
+Configured Part	Release	Release	false	true	true					true	true	false	FALSE	Superseded	
+Configured Part	Superseded	Superseded	false	false	false					false	true	false	FALSE		
+Report Model	Private	Private	true	false	true					true	true	false	FALSE	In Work	
+Report Model	In Work	InWork	true	false	true					true	true	false	FALSE	Frozen	
+Report Model	Frozen	Frozen	true	false	true					true	true	false	FALSE	Released	
+Report Model	Released	Released	true	false	true					true	true	false	FALSE	Obsolete	
+Report Model	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Report Document	Private	Private	true	false	true					true	true	false	FALSE	In Work	
+Report Document	In Work	InWork	true	false	true					true	true	false	FALSE	Frozen	
+Report Document	Frozen	Frozen	true	false	true					true	true	false	FALSE	Released	
+Report Document	Released	Released	true	false	true					true	true	false	FALSE	Obsolete	
+Report Document	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Build Archive	Request Archive	RequestArchive	false	false	true					true	true	false	FALSE	Archive	
+Build Archive	Archive	Archive	false	false	true					true	true	false	FALSE	Obsolete	
+Build Archive	Obsolete	Obsolete	false	false	true					true	true	false	FALSE		
+Buyer Desk	Exists	Exists	true	false	true					false	true	false	FALSE		
+Configuration File	Base	Base	false	false	true					true	true	false	FALSE		
+Drawing Print	Preliminary	Preliminary	false	false	true					true	true	false	FALSE	Review	
+Drawing Print	Review	Review	false	false	true					true	true	false	FALSE	Approved	
+Drawing Print	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+Drawing Print	Release	Release	false	false	true					true	true	false	FALSE		
+EC Part	Preliminary	Preliminary	false	false	true					true	true	false	FALSE	Review	
+EC Part	Review	Review	false	false	true					true	true	false	FALSE	Approved	
+EC Part	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+EC Part	Release	Release	false	false	true					true	true	false	FALSE	Obsolete	
+EC Part	Obsolete	Obsolete	false	false	true					true	true	false	FALSE		
+Business Role	Active	Active	false	false	false					false	true	false	FALSE		
+ECR Supporting Document	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Complete	
+ECR Supporting Document	Complete	Complete	false	false	true					false	true	false	FALSE		
+Effort	Exists	Exists	false	false	true					false	true	false	FALSE	Rejected	
+Effort	Rejected	Rejected	true	false	true					true	true	false	FALSE	Submit	
+Effort	Submit	Submit	true	false	true					true	true	false	FALSE	Approved	
+Effort	Approved	Approved	true	false	true					true	true	false	FALSE		
+File Format	Exists	Exists	true	false	true					false	true	false	FALSE		
+Media	Create	Create	false	false	true					true	true	false	FALSE	Validate	
+Media	Validate	Validate	false	false	true					true	true	false	FALSE	Complete	
+Media	Complete	Complete	false	false	true					true	true	false	FALSE		
+Option	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Release	
+Option	Release	Release	false	false	true			Corporate	move to corporate ownership	false	true	false	FALSE		
+Product Configuration	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Active	
+Product Configuration	Active	Active	false	false	true					false	true	false	FALSE	Inactive	
+Product Configuration	Inactive	Inactive	false	false	true					false	true	false	FALSE		
+Product Line	Planned	Planned	false	false	true					false	true	false	FALSE	Marketing	
+Product Line	Marketing	Marketing	false	false	true					false	true	false	FALSE	Review	
+Product Line	Review	Review	false	false	true					false	true	false	FALSE	Complete	
+Product Line	Complete	Complete	false	false	true					false	true	false	FALSE	Inactive	
+Product Line	Inactive	Inactive	false	false	true					true	true	false	FALSE		
+RFQ	Started	Started	true	false	true					false	true	false	FALSE	Initial Review	
+RFQ	Initial Review	InitialReview	true	false	true					false	true	false	FALSE	Sent	
+RFQ	Sent	Sent	true	false	true					true	true	false	FALSE	Response Complete	
+RFQ	Response Complete	ResponseComplete	true	false	true					true	true	false	FALSE	Final Review	
+RFQ	Final Review	FinalReview	true	false	true					true	true	false	FALSE	Complete	
+RFQ	Complete	Complete	true	false	true					false	true	false	FALSE		
+Supplier Line Item	Exists	Exists	true	false	true					true	true	false	FALSE		
+Response	Open	Open	true	false	true					false	true	false	FALSE	Review	
+Response	Review	Review	true	false	true					false	true	false	FALSE	Closed	
+Response	Closed	Closed	true	false	true					false	true	false	FALSE		
+Rule	Preliminary	Preliminary	false	false	true					false	true	false	FALSE	Release	
+Rule	Release	Release	false	false	true					false	true	false	FALSE		
+Sales Order	Not Submitted	NotSubmitted	false	false	true					false	true	false	FALSE	Validate	
+Sales Order	Validate	Validate	false	false	true			Order Entry	move Order Entry group	false	true	false	FALSE	Process	
+Sales Order	Process	Process	false	false	true					false	true	false	FALSE	Manufacture	
+Sales Order	Manufacture	Manufacture	false	false	true			Production Support	move to Production Support group	false	true	false	FALSE	Shipping	
+Sales Order	Shipping	Shipping	false	false	true			Shipping Department	move to Shipping Department group	false	true	false	FALSE	Shipped	
+Sales Order	Shipped	Shipped	false	false	true			Accounts Receivable Department	move to Accounts Receivable Department	false	true	false	FALSE	Payment Received	
+Sales Order	Payment Received	PaymentReceived	false	false	true			Corporate	move to corporate ownership	false	true	false	FALSE		
+Software Architecture	Plan	Plan	false	false	true					true	true	false	FALSE	Working	
+Software Architecture	Working	Working	false	false	true					true	true	false	FALSE	Draft	
+Software Architecture	Draft	Draft	false	false	true					true	true	false	FALSE	Review	
+Software Architecture	Review	Review	false	false	true					true	true	false	FALSE	Complete	
+Software Architecture	Complete	Complete	false	false	true					true	true	false	FALSE		
+Software Build	Plan	Plan	false	false	true					false	true	false	FALSE	Implement	
+Software Build	Implement	Implement	false	false	true					false	true	false	FALSE	Build	
+Software Build	Build	Build	false	false	true					false	true	false	FALSE	Internal Test	
+Software Build	Internal Test	InternalTest	false	false	true					false	true	false	FALSE	External Test	
+Software Build	External Test	ExternalTest	false	false	true					false	true	false	FALSE	Complete	
+Software Build	Complete	Complete	false	false	true					false	true	false	FALSE	Media	
+Software Build	Media	Media	false	false	true					false	true	false	FALSE	Supercede	
+Software Build	Supercede	Supercede	false	false	true					false	true	false	FALSE		
+Software Design Specification	Plan	Plan	false	false	true					true	true	false	FALSE	Working	
+Software Design Specification	Working	Working	false	false	true					true	true	false	FALSE	Draft	
+Software Design Specification	Draft	Draft	false	false	true					true	true	false	FALSE	Review	
+Software Design Specification	Review	Review	false	false	true					true	true	false	FALSE	Complete	
+Software Design Specification	Complete	Complete	false	false	true					true	true	false	FALSE		
+Software Distribution	Plan	Plan	false	false	true					true	true	false	FALSE	Distribute	
+Software Distribution	Distribute	Distribute	false	false	true					true	true	false	FALSE	Test	
+Software Distribution	Test	Test	false	false	true					true	true	false	FALSE	Available	
+Software Distribution	Available	Available	false	false	true					true	true	false	FALSE	Reject	
+Software Distribution	Reject	Reject	false	false	true					true	true	false	FALSE	Archive	
+Software Distribution	Archive	Archive	false	false	true					true	true	false	FALSE		
+eService Trigger Program Policy	Inactive	Inactive	false	false	true					false	true	false	FALSE	Active	
+eService Trigger Program Policy	Active	Active	false	false	true					false	true	false	FALSE		
+Software Functional Specification	Plan	Plan	false	false	true					true	true	false	FALSE	Working	
+Software Functional Specification	Working	Working	false	false	true					true	true	false	FALSE	Draft	
+Software Functional Specification	Draft	Draft	false	false	true					true	true	false	FALSE	Review	
+Software Functional Specification	Review	Review	false	false	true					true	true	false	FALSE	Complete	
+Software Functional Specification	Complete	Complete	false	false	true					true	true	false	FALSE		
+Software Platform	Base	Base	false	false	true					true	true	false	FALSE		
+Software Release	Propose	Propose	false	false	true					true	true	false	FALSE	Plan	
+Software Release	Plan	Plan	false	false	true					true	true	false	FALSE	Implement	
+Software Release	Implement	Implement	false	false	true					true	true	false	FALSE	Test	
+Software Release	Test	Test	false	false	true					true	true	false	FALSE	Final Acceptance	
+Software Release	Final Acceptance	FinalAcceptance	false	false	true					true	true	false	FALSE	Release	
+Software Release	Release	Release	false	false	true					true	true	false	FALSE	Supercede	
+Software Release	Supercede	Supercede	false	false	true					true	true	false	FALSE		
+Software Task	Identify	Identify	false	false	true					true	true	false	FALSE	Assign	
+Software Task	Assign	Assign	false	false	true					true	true	false	FALSE	Working	
+Software Task	Working	Working	false	false	true					true	true	false	FALSE	Complete	
+Software Task	Complete	Complete	false	false	true					true	true	false	FALSE		
+Software Test Specification	Plan	Plan	false	false	true					true	true	false	FALSE	Working	
+Software Test Specification	Working	Working	false	false	true					true	true	false	FALSE	Draft	
+Software Test Specification	Draft	Draft	false	false	true					true	true	false	FALSE	Review	
+Software Test Specification	Review	Review	false	false	true					true	true	false	FALSE	Complete	
+Software Test Specification	Complete	Complete	false	false	true					true	true	false	FALSE		
+Use Case	Plan	Plan	false	false	true					false	true	false	FALSE	Working	
+Use Case	Working	Working	false	false	true					false	true	false	FALSE	Draft	
+Use Case	Draft	Draft	false	false	true					false	true	false	FALSE	Review	
+Use Case	Review	Review	false	false	true					false	true	false	FALSE	Complete	
+Use Case	Complete	Complete	false	false	true					false	true	false	FALSE		
+Requirement	Propose		false	false	true					false	false	false	FALSE	Approve	
+Requirement	Approve		false	false	true					false	false	false	FALSE	Validate	
+Requirement	Validate		false	false	true					false	false	false	FALSE	Review	
+Requirement	Review		false	false	true					false	false	false	FALSE	Release	
+Requirement	Release		true	false	true					false	true	false	FALSE	Obsolete	
+Requirement	Obsolete		false	false	true					false	false	false	FALSE		
+Source File	Create	Create	true	false	true					true	true	false	FALSE	Assign	
+Source File	Assign	Assign	true	false	true					true	true	false	FALSE	Develop	
+Source File	Develop	Develop	true	false	true					true	true	false	FALSE	Unit Test	
+Source File	Unit Test	UnitTest	true	false	true					true	true	false	FALSE	Validate	
+Source File	Validate	Validate	true	false	true					true	true	false	FALSE	Complete	
+Source File	Complete	Complete	true	false	true					true	true	false	FALSE		
+Test Case	Propose	Propose	true	false	true					false	true	false	FALSE	Approve	
+Test Case	Approve	Approve	true	false	true					false	true	false	FALSE	Validate	
+Test Case	Validate	Validate	true	false	true					false	true	false	FALSE	Complete	
+Test Case	Complete	Complete	true	false	true					false	true	false	FALSE		
+EBOM Markup	Proposed	Proposed	true	false	true					false	true	false	FALSE	Approved	
+EBOM Markup	Approved	Approved	true	false	true					false	true	false	FALSE	Applied	
+EBOM Markup	Applied	Applied	true	false	true					false	true	false	FALSE	Rejected	
+EBOM Markup	Rejected	Rejected	true	false	true					false	true	false	FALSE		
+Project Task	Create	Create	false	true	false					false	true	false	FALSE	Assign	
+Project Task	Assign	Assign	false	true	false					false	true	false	FALSE	Active	
+Project Task	Active	Active	false	true	false					false	true	false	FALSE	Review	
+Project Task	Review	Review	false	true	false					false	true	false	FALSE	Complete	
+Project Task	Complete	Complete	false	true	false					false	true	false	FALSE		
+Data Document	Not Submitted	NotSubmitted	true	false	true					false	true	false	FALSE	Submitted	
+Data Document	Submitted	Submitted	true	false	true					false	true	false	FALSE	In Process	
+Data Document	In Process	InProcess	true	false	true					false	true	false	FALSE	Completed	
+Data Document	Completed	Completed	true	false	true					false	true	false	FALSE		
+Request For Quote	Not Submitted	NotSubmitted	true	false	true					false	true	false	FALSE	Submitted	
+Request For Quote	Submitted	Submitted	true	false	true					false	true	false	FALSE	In Process	
+Request For Quote	In Process	InProcess	true	false	true					false	true	false	FALSE	Quoted	
+Request For Quote	Quoted	Quoted	true	false	true					false	true	false	FALSE	Closed	
+Request For Quote	Closed	Closed	true	false	true					false	true	false	FALSE		
+CAD Drawing	Preliminary	Preliminary	false	false	true					true	true	false	FALSE	Review	
+CAD Drawing	Review	Review	false	false	true					true	true	false	FALSE	Approved	
+CAD Drawing	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+CAD Drawing	Release	Release	false	false	true					true	true	false	FALSE		
+CAD Model	Preliminary	Preliminary	false	false	true					true	true	false	FALSE	Review	
+CAD Model	Review	Review	false	false	true					true	true	false	FALSE	Approved	
+CAD Model	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+CAD Model	Release	Release	false	false	true					true	true	false	FALSE		
+Markup	Exists	Exists	true	false	true					true	true	false	FALSE		
+eService Object Generator	Exists	Exists	false	false	true					false	true	false	FALSE		
+Product Documentation	Plan	Plan	false	false	true					true	true	false	FALSE	Document	
+Product Documentation	Document	Document	false	false	true					true	true	false	FALSE	Review	
+Product Documentation	Review	Review	false	false	true					true	true	false	FALSE	Approve	
+Product Documentation	Approve	Approve	false	false	true					true	true	false	FALSE	Supercede	
+Product Documentation	Supercede	Supercede	false	false	true					true	true	false	FALSE		
+Risk	Identified	Identified	false	false	true					true	true	false	FALSE	Assessment	
+Risk	Assessment	Assessment	false	false	true					true	true	false	FALSE	Mitigate	
+Risk	Mitigate	Mitigate	false	false	true					true	true	false	FALSE	Complete	
+Risk	Complete	Complete	false	false	true					true	true	false	FALSE		
+Substitute	Exists	Exists	false	false	true					false	true	false	FALSE		
+Part Master	Exists	Exists	true	false	true					false	true	false	FALSE		
+Container	CREATE	CREATE	false	false	false					false	true	false	FALSE	WIP	
+Container	WIP	WIP	false	false	true					false	true	false	FALSE	REVIEW	
+Container	REVIEW	REVIEW	false	true	true					false	true	false	FALSE	RELEASED	
+Container	RELEASED	RELEASED	false	false	false					true	true	false	FALSE	OBSOLETE	
+Container	OBSOLETE	OBSOLETE	false	false	false					false	true	false	FALSE		
+Document Sheet	WIP	WIP	false	false	false					false	true	false	FALSE	ACTIVE	
+Document Sheet	ACTIVE	ACTIVE	false	false	false					true	true	false	FALSE	IN-ACTIVE	
+Document Sheet	IN-ACTIVE	IN-ACTIVE	false	false	false					false	true	false	FALSE		
+Personal Folder	Active	Active	false	false	false					false	true	false	FALSE		
+Program	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+Program	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+Project Concept	Concept	Concept	true	false	false					false	true	false	FALSE	Prototype	
+Project Concept	Prototype	Prototype	false	false	false					false	true	false	FALSE	Review	
+Project Concept	Review	Review	false	false	false					false	true	false	FALSE	Approved	
+Project Concept	Approved	Approved	false	false	false					false	true	false	FALSE		
+Project Template	Active	Active	false	false	false					false	true	false	FALSE	Inactive	
+Project Template	Inactive	Inactive	false	false	false					false	true	false	FALSE		
+Public Folder	Active	Active	false	false	false					false	true	false	FALSE		
+Question	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+Question	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+Version Document	ACTIVE	ACTIVE	false	false	false					false	true	false	FALSE		
+Certification	Create	Create	true	false	true					false	true	false	FALSE	Review	
+Certification	Review	Review	true	false	true					false	true	false	FALSE	Submit	
+Certification	Submit	Submit	true	false	true					false	true	false	FALSE	Complete	
+Certification	Complete	Complete	true	false	true					false	true	false	FALSE		
+Deliverable	Draft	Draft	true	false	true					false	true	false	FALSE	Active	
+Deliverable	Active	Active	true	false	true					false	true	false	FALSE	Review	
+Deliverable	Review	Review	true	false	true					false	true	false	FALSE	Complete	
+Deliverable	Complete	Complete	true	false	true					false	true	false	FALSE		
+Directed Supplier	Exists	Exists	true	false	true					false	true	false	FALSE		
+Image Holder	Active	Active	false	false	false					false	true	false	FALSE	Inactive	
+Image Holder	Inactive	Inactive	false	false	false					false	true	false	FALSE		
+Line Item	Exists	Exists	true	false	true					true	true	false	FALSE		
+Package	Started	Started	true	false	true					true	true	false	FALSE	Complete	
+Package	Complete	Complete	true	false	true					true	true	false	FALSE		
+Part Quality Plan	Draft	Draft	true	false	true					false	true	false	FALSE	Active	
+Part Quality Plan	Active	Active	true	false	true					false	true	false	FALSE	Complete	
+Part Quality Plan	Complete	Complete	true	false	true					false	true	false	FALSE		
+Plan	Exists	Exists	true	false	true					false	true	false	FALSE		
+Plant Scorecard	Exists	Exists	true	false	true					false	true	false	FALSE		
+Purchase Class	Exists	Exists	true	false	true					false	true	false	FALSE		
+Purchase Class Scorecard	Exists	Exists	true	false	true					false	true	false	FALSE		
+RFQ Quotation	Open	Open	true	false	true					true	true	false	FALSE	Review	
+RFQ Quotation	Review	Review	true	false	true					true	true	false	FALSE	Returned	
+RFQ Quotation	Returned	Returned	true	false	true					true	true	false	FALSE	Closed	
+RFQ Quotation	Closed	Closed	true	false	true					true	true	false	FALSE		
+RTS Quotation Archive	Exists	Exists	true	false	true					true	true	false	FALSE		
+RFQ Template	Inactive	Inactive	true	false	true					true	true	false	FALSE	Active	
+RFQ Template	Active	Active	true	false	true					true	true	false	FALSE		
+Scorecard	Exists	Exists	true	false	true					false	true	false	FALSE		
+Standards Manual	Exists	Exists	true	false	true					false	true	false	FALSE		
+Supplier Development Plan	Draft	Draft	true	false	true					false	true	false	FALSE	Active	
+Supplier Development Plan	Active	Active	true	false	true					false	true	false	FALSE	Complete	
+Supplier Development Plan	Complete	Complete	true	false	true					false	true	false	FALSE		
+Supplier Scorecard	Exists	Exists	true	false	true					false	true	false	FALSE		
+Suspended	Suspended	Suspended	true	false	true					true	true	false	FALSE		
+Attribute Group	Exists	Exists	true	false	true					true	true	false	FALSE		
+Business Rule	Inactive	Inactive	false	false	true					false	true	false	FALSE	Active	
+Business Rule	Active	Active	false	false	true					false	true	false	FALSE		
+Conversion	Exists	Exists	true	false	true					false	true	false	FALSE		
+Line Item Template	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Line Item Template	Active	Active	true	false	true					true	true	false	FALSE		
+Organization List	Exists	Exists	true	false	true					false	true	false	FALSE		
+RFQ Cancelled	Cancelled	Cancelled	true	false	true					true	true	false	FALSE		
+RFQ History Version	Exists	Exists	true	false	true					false	true	false	FALSE		
+RFQ Pending Version	Exists	Exists	true	false	true					false	true	false	FALSE		
+Rate Period	Exists	Exists	true	false	true					false	true	false	FALSE		
+Sourcing Template Obsolete	Obsolete	Obsolete	true	false	true					false	true	false	FALSE		
+Supplier Line Item Price Period	Exists	Exists	true	false	true					false	true	false	FALSE		
+UDA	Exists	Exists	true	false	true					true	true	false	FALSE		
+Development Part	Create	Create	true	false	true					true	true	false	FALSE	Peer Review	
+Development Part	Peer Review	PeerReview	true	false	true					true	true	false	FALSE	Complete	
+Development Part	Complete	Complete	true	false	true					true	true	false	FALSE	Obsolete	
+Development Part	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Part Family	Exists	Exists	true	false	true					false	true	false	FALSE	Obsolete	
+Part Family	Obsolete	Obsolete	true	false	true					false	true	false	FALSE		
+Project Risk	Create	Create	true	false	true					false	true	false	FALSE	Assign	
+Project Risk	Assign	Assign	true	false	true					false	true	false	FALSE	Active	
+Project Risk	Active	Active	true	false	true					false	true	false	FALSE	Review	
+Project Risk	Review	Review	true	false	true					false	true	false	FALSE	Complete	
+Project Risk	Complete	Complete	true	false	true					false	true	false	FALSE		
+Project Space	Create	Create	true	false	true					false	true	false	FALSE	Assign	
+Project Space	Assign	Assign	true	false	true					false	true	false	FALSE	Active	
+Project Space	Active	Active	true	false	true					false	true	false	FALSE	Review	
+Project Space	Review	Review	true	false	true					false	true	false	FALSE	Complete	
+Project Space	Complete	Complete	true	false	true					false	true	false	FALSE	Archive	
+Project Space	Archive	Archive	true	false	true					false	true	false	FALSE		
+RPN	Exists	Exists	true	false	true					false	true	false	FALSE		
+URL	Exists	Exists	true	false	true					false	true	false	FALSE		
+Job	Created	Created	false	true	false					true	true	false	FALSE	Submitted	
+Job	Submitted	Submitted	false	true	false					true	true	false	FALSE	Running	
+Job	Running	Running	false	true	false					true	true	false	FALSE	Completed	
+Job	Completed	Completed	false	true	false					true	true	false	FALSE	Archived	
+Job	Archived	Archived	false	true	false					true	true	false	FALSE		
+Viewable Policy	Exists	Exists	true	false	true					true	true	false	FALSE		
+Assessment	Exists	Exists	true	false	true					true	true	false	FALSE		
+Financial Categories	Exists	Exists	true	false	true					true	true	false	FALSE		
+Financial Items	Plan	Plan	true	false	true					true	true	false	FALSE	Plan Frozen	
+Financial Items	Plan Frozen	PlanFrozen	true	false	true					true	true	false	FALSE		
+Interval Item Data	Exists	Exists	true	false	true					true	true	false	FALSE		
+Project Access List	Exists	Exists	true	false	true					true	true	false	FALSE		
+Baseline Log	Exists	Exists	true	false	true					true	true	false	FALSE		
+Quality	Initiated	Initiated	true	false	true					true	true	false	FALSE	Controlled	
+Quality	Controlled	Controlled	true	false	true					true	true	false	FALSE		
+Quality Metric	Exists	Exists	true	false	true					true	true	false	FALSE		
+Document Classification	Create	Create	true	false	true					false	true	false	FALSE	Review	
+Document Classification	Review	Review	true	false	true					false	true	false	FALSE	Approved	
+Document Classification	Approved	Approved	true	false	true					false	true	false	FALSE	Locked	
+Document Classification	Locked	Locked	true	false	true					true	true	false	FALSE	Obsolete	
+Document Classification	Obsolete	Obsolete	true	false	true					false	true	false	FALSE		
+Controlled Design Release Rev2	Create	Create	true	false	true					false	true	false	FALSE	WIP	
+Controlled Design Release Rev2	WIP	WIP	true	false	true					false	true	false	FALSE	Review	
+Controlled Design Release Rev2	Review	Review	true	false	true					false	true	false	FALSE	Released	
+Controlled Design Release Rev2	Released	Released	true	false	true					true	true	false	FALSE	Obsolete	
+Controlled Design Release Rev2	Obsolete	Obsolete	true	false	true					false	true	false	FALSE		
+Controlled Production Release Rev2	Create	Create	true	false	true					false	true	false	FALSE	WIP	
+Controlled Production Release Rev2	WIP	WIP	true	false	true					false	true	false	FALSE	Review	
+Controlled Production Release Rev2	Review	Review	true	false	true					false	true	false	FALSE	Released	
+Controlled Production Release Rev2	Released	Released	true	false	true					true	true	false	FALSE	Obsolete	
+Controlled Production Release Rev2	Obsolete	Obsolete	true	false	true					false	true	false	FALSE		
+Business Goal	Created	Created	true	false	true					true	true	false	FALSE	Active	
+Business Goal	Active	Active	true	false	true					true	true	false	FALSE	Complete	
+Business Goal	Complete	Complete	true	false	true					true	true	false	FALSE		
+Holder	Exists	Exists	true	false	true					true	true	false	FALSE		
+Manufacturer Equivalent	Preliminary	Preliminary	true	false	true					true	true	false	FALSE	Review	
+Manufacturer Equivalent	Review	Review	true	false	true					true	true	false	FALSE	Approved	
+Manufacturer Equivalent	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+Manufacturer Equivalent	Release	Release	true	false	true					true	true	false	FALSE	Pending Obsolete	
+Manufacturer Equivalent	Pending Obsolete	PendingObsolete	true	false	true					true	true	false	FALSE	Obsolete	
+Manufacturer Equivalent	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Sourcing ECR	Create	Create	true	false	true					true	true	false	FALSE	Buyer Evaluation	
+Sourcing ECR	Buyer Evaluation	BuyerEvaluation	true	false	true					true	true	false	FALSE	Submit	
+Sourcing ECR	Submit	Submit	true	false	true					true	true	false	FALSE		
+Data Holder	Exists	Exists	false	false	false					false	true	false	FALSE		
+Admin Specification Section	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Admin Specification Section	Active	Active	true	false	true					false	true	false	FALSE		
+Basic Specification Section	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Basic Specification Section	Active	Active	true	false	true					false	true	false	FALSE		
+Build	Plan	Plan	false	false	true					false	true	false	FALSE	Build	
+Build	Build	Build	false	false	true					false	true	false	FALSE	Internal Test	
+Build	Internal Test	InternalTest	false	false	true					false	true	false	FALSE	External Test	
+Build	External Test	ExternalTest	false	false	true					false	true	false	FALSE	Complete	
+Build	Complete	Complete	false	false	true					false	true	false	FALSE	Release	
+Build	Release	Release	false	false	true					false	true	false	FALSE	Obsolete	
+Build	Obsolete	Obsolete	false	false	true					true	true	false	FALSE		
+CoOwned List	Exists	Exists	true	false	true					false	true	false	FALSE		
+Image	Exists	Exists	false	false	true					false	true	false	FALSE		
+Legacy Technical Specification	Issued	Issued	true	false	true					true	true	false	FALSE	Obsolete	
+Legacy Technical Specification	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Model	Preliminary	Preliminary	true	false	true					true	true	false	FALSE	Marketing	
+Model	Marketing	Marketing	true	false	true					true	true	false	FALSE	Review	
+Model	Review	Review	true	false	true					true	true	false	FALSE	Active	
+Model	Active	Active	true	false	true					false	true	false	FALSE	Inactive	
+Model	Inactive	Inactive	true	false	true					false	true	false	FALSE		
+Product	Preliminary	Preliminary	true	true	true					true	true	false	FALSE	Product Management	
+Product	Product Management	ProductManagement	true	true	true					true	true	false	FALSE	Design Engineering	
+Product	Design Engineering	DesignEngineering	true	true	true					true	true	false	FALSE	Review	
+Product	Review	Review	true	false	true					true	true	false	FALSE	Release	
+Product	Release	Release	true	true	true					true	true	false	FALSE	Obsolete	
+Product	Obsolete	Obsolete	true	true	true					true	true	false	FALSE		
+Restricted Legacy Technical Specification	Issued	Issued	true	false	true					true	true	false	FALSE	Obsolete	
+Restricted Legacy Technical Specification	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Restricted Technical Specification	Draft	Draft	true	false	true					true	true	false	FALSE	Peer Review	
+Restricted Technical Specification	Peer Review	PeerReview	true	false	true					true	true	false	FALSE	Formal Approval	
+Restricted Technical Specification	Formal Approval	FormalApproval	true	false	true					true	true	false	FALSE	Issued	
+Restricted Technical Specification	Issued	Issued	true	false	true					true	true	false	FALSE	Obsolete	
+Restricted Technical Specification	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+SCO	Draft	Draft	true	false	true					false	true	false	FALSE	Peer Review	
+SCO	Peer Review	PeerReview	true	false	true					false	true	false	FALSE	Formal Approval	
+SCO	Formal Approval	FormalApproval	true	false	true					false	true	false	FALSE	Final Check	
+SCO	Final Check	FinalCheck	true	false	true					false	true	false	FALSE	Approved	
+SCO	Approved	Approved	true	false	true					true	true	false	FALSE		
+Source Code	Create	Create	true	false	true					false	true	false	FALSE	Develop	
+Source Code	Develop	Develop	true	false	true					false	true	false	FALSE	In Test	
+Source Code	In Test	InTest	true	false	true					false	true	false	FALSE	Review	
+Source Code	Review	Review	true	false	true					false	true	false	FALSE	Release	
+Source Code	Release	Release	true	false	true					false	true	false	FALSE	Superceded	
+Source Code	Superceded	Superceded	true	false	true					false	true	false	FALSE		
+Specification	Plan	Plan	false	true	true					true	true	false	FALSE	Preliminary	
+Specification	Preliminary	Preliminary	false	true	true					true	true	false	FALSE	Draft	
+Specification	Draft	Draft	false	true	true					true	true	false	FALSE	Review	
+Specification	Review	Review	false	true	true					true	true	false	FALSE	Obsolete	
+Specification	Obsolete	Obsolete	false	true	true					true	true	false	FALSE		
+Specification Office	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Specification Office	Active	Active	true	false	true					false	true	false	FALSE		
+Specification Template Holder	Exists	Exists	true	false	true					false	true	false	FALSE		
+Technical Specification	Draft	Draft	true	false	true					true	true	false	FALSE	Peer Review	
+Technical Specification	Peer Review	Review	true	false	true					true	true	false	FALSE	Formal Approval	
+Technical Specification	Formal Approval	FormalApproval	true	false	true					true	true	false	FALSE	Issued	
+Technical Specification	Issued	Release	true	false	true					true	true	false	FALSE	Obsolete	
+Technical Specification	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Technical Specification Template	Draft	Draft	true	false	true					true	true	false	FALSE	Peer Review	
+Technical Specification Template	Peer Review	PeerReview	true	false	true					true	true	false	FALSE	Formal Approval	
+Technical Specification Template	Formal Approval	FormalApproval	true	false	true					true	true	false	FALSE	Approved	
+Technical Specification Template	Approved	Approved	true	false	true					true	true	false	FALSE	Obsolete	
+Technical Specification Template	Obsolete	Obsolete	true	false	true					true	true	false	FALSE		
+Template Filter	Exists	Exists	true	false	true					false	true	false	FALSE		
+Characteristic	Draft	Draft	true	false	true					true	true	false	FALSE	Active	
+Characteristic	Active	Active	true	false	true					true	true	false	FALSE		
+HTTP Request	Exists	Exists	true	false	true					true	true	false	FALSE		
+HTTP Request Holder	Exists	Exists	true	false	true					true	true	false	FALSE		
+Application Part	Preliminary	Preliminary	true	false	true					true	true	false	FALSE	Review	
+Application Part	Review	Review	true	false	true					true	true	false	FALSE	Complete	
+Application Part	Complete	Complete	true	false	true					true	true	false	FALSE		
+Location Equivalent	Exists	Exists	true	false	true					true	true	false	FALSE		
+Part Quality Plan Template	Inactive	Inactive	false	false	false					false	true	false	FALSE	Active	
+Part Quality Plan Template	Active	Active	false	false	false					false	true	false	FALSE		
+Calendar	Active	Active	false	false	false					false	true	false	FALSE		
+Portfolio	Exists	Exists	true	false	true					true	true	false	FALSE		
+Part Specification	Preliminary	Preliminary	false	false	true					true	true	false	FALSE	Review	
+Part Specification	Review	Review	false	false	true					true	true	false	FALSE	Approved	
+Part Specification	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+Part Specification	Release	Release	false	false	true					true	true	false	FALSE		
+Classification	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Classification	Active	Active	true	false	true					false	true	false	FALSE	Obsolete	
+Classification	Obsolete	Obsolete	true	false	true					false	true	false	FALSE		
+Libraries	Inactive	Inactive	true	false	true					false	true	false	FALSE	Active	
+Libraries	Active	Active	true	false	true					false	true	false	FALSE	Obsolete	
+Libraries	Obsolete	Obsolete	true	false	true					false	true	false	FALSE		
+Access Request	Submitted	Submitted	true	false	true					false	true	false	FALSE	Review	
+Access Request	Review	Review	true	true	true					false	true	false	FALSE	Rejected	
+Access Request	Rejected	Rejected	true	true	true					false	true	false	FALSE	Approved	
+Access Request	Approved	Approved	true	false	true					true	true	false	FALSE	Expired	
+Access Request	Expired	Expired	true	false	true					true	true	false	FALSE		
+Download	Exists	Exists	true	false	true					false	true	false	FALSE		
+Purged Record	Purged	Purged	false	false	true					false	true	false	FALSE		
+Location	Inactive	Inactive	true	false	true					true	true	false	FALSE	Active	
+Location	Active	Exists	true	false	true					false	true	false	FALSE		
+Retention Hold	Created	Created	false	false	true					false	true	false	FALSE	Active	
+Retention Hold	Active	Active	false	false	true					false	true	false	FALSE	Hold	
+Retention Hold	Hold	Hold	false	false	true					false	true	false	FALSE	Released	
+Retention Hold	Released	Released	false	false	true					false	true	false	FALSE		
+Retention Record	Created	Created	false	false	true					false	true	false	FALSE	Active	
+Retention Record	Active	Active	false	false	true					false	true	false	FALSE	Scheduled	
+Retention Record	Scheduled	Scheduled	false	false	true					false	true	false	FALSE	Purged	
+Retention Record	Purged	Purged	false	false	true					false	true	false	FALSE	Completed	
+Retention Record	Completed	Completed	false	false	true					false	true	false	FALSE		
+ECR	Create	Create	false	false	true					false	true	false	FALSE	Submit	
+ECR	Submit	Submit	false	false	true					false	true	false	FALSE	Evaluate	
+ECR	Evaluate	Evaluate	false	false	true					false	true	false	FALSE	Review	
+ECR	Review	Review	false	true	true					false	true	false	FALSE	Plan ECO	
+ECR	Plan ECO	PlanECO	false	false	true					false	true	false	FALSE	Complete	
+ECR	Complete	Complete	false	false	true			Corporate	just reasign - no iconmail will be sent here	false	true	false	FALSE	Cancelled	
+ECR	Cancelled	Cancelled	false	false	true					false	true	false	FALSE		
+ECO	Create	Create	false	false	true					false	true	false	FALSE	Define Components	
+ECO	Define Components	DefineComponents	false	false	true					false	true	false	FALSE	Design Work	
+ECO	Design Work	DesignWork	false	false	true					false	true	false	FALSE	Review	
+ECO	Review	Review	false	false	true					false	true	false	FALSE	Release	
+ECO	Release	Release	false	false	true			Corporate	just reasign - no iconmail will be sent here	false	true	false	FALSE	Implemented	
+ECO	Implemented	Implemented	true	false	true					false	true	false	FALSE	Cancelled	
+ECO	Cancelled	Cancelled	true	false	true					true	true	false	FALSE		
+Part Markup	Proposed	Proposed	false	false	true					false	true	false	FALSE	Approved	
+Part Markup	Approved	Approved	false	false	true					false	true	false	FALSE	Applied	
+Part Markup	Applied	Applied	false	false	true					false	true	false	FALSE	Rejected	
+Part Markup	Rejected	Rejected	false	false	true					false	true	false	FALSE		
+Development Part Markup	Proposed	Proposed	false	false	true					false	true	false	FALSE	Applied	
+Development Part Markup	Applied	Applied	false	false	true					false	true	false	FALSE	Rejected	
+Development Part Markup	Rejected	Rejected	false	false	true					false	true	false	FALSE		
+DCR	Evaluate	Evaluate	false	false	true					false	true	false	FALSE	Review	
+DCR	Review	Review	false	true	true					false	true	false	FALSE	Plan DCO	
+DCR	Plan DCO	PlanDCO	false	false	true					false	true	false	FALSE	Complete	
+DCR	Complete	Complete	false	false	true			Corporate	just reasign - no iconmail will be sent here	false	true	false	FALSE	Cancelled	
+DCR	Cancelled	Cancelled	false	false	true					false	true	false	FALSE		
+Manufacturing Part	Preliminary	Preliminary	false	true	true					true	true	false	FALSE	Review	
+Manufacturing Part	Review	Review	false	false	true					true	true	false	FALSE	Approved	
+Manufacturing Part	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+Manufacturing Part	Release	Release	false	false	true					true	true	false	FALSE	Obsolete	
+Manufacturing Part	Obsolete	Obsolete	false	false	true					true	true	false	FALSE		
+MCO	Create	Create	true	false	true					false	true	false	FALSE	Review	
+MCO	Review	Review	true	false	true					false	true	false	FALSE	Release	
+MCO	Release	Release	true	false	true					false	true	false	FALSE	Implemented	
+MCO	Implemented	Implemented	true	false	true					false	true	false	FALSE		
+MCO Standard	Create	Create	true	false	true					false	true	false	FALSE	Review	
+MCO Standard	Review	Review	true	false	true					false	true	false	FALSE	Release	
+MCO Standard	Release	Release	true	false	true					false	true	false	FALSE	Implemented	
+MCO Standard	Implemented	Implemented	true	false	true					false	true	false	FALSE		
+MECO	Create	Create	false	false	true					false	true	false	FALSE	Review	
+MECO	Review	Review	false	false	true					false	true	false	FALSE	Release	
+MECO	Release	Release	false	false	true					false	true	false	FALSE	Implemented	
+MECO	Implemented	Implemented	false	false	true					false	true	false	FALSE		
+Split Quantity	Exists	Exists	true	false	true					false	true	false	FALSE		
+Standard Part	Preliminary	Preliminary	false	true	true					true	true	false	FALSE	Review	
+Standard Part	Review	Review	false	false	true					true	true	false	FALSE	Approved	
+Standard Part	Approved	Approved	true	false	true					true	true	false	FALSE	Release	
+Standard Part	Release	Release	false	false	true					true	true	false	FALSE	Obsolete	
+Standard Part	Obsolete	Obsolete	false	false	true					true	true	false	FALSE		
+Chapter	Active	Active	false	true	false					false	false	false	FALSE	Release	
+Chapter	Release	Release	false	true	false					false	true	false	FALSE	Obsolete	
+Chapter	Obsolete	Obsolete	false	false	false					false	false	false	FALSE		
+Comment	Active	Active	false	true	false					false	false	false	FALSE	Release	
+Comment	Release	Release	false	true	false					false	true	false	FALSE	Obsolete	
+Comment	Obsolete	Obsolete	false	false	false					false	false	false	FALSE		
+Decision	Active	Active	false	true	false					true	true	false	FALSE	Release	
+Decision	Release	Release	false	true	false					true	true	false	FALSE	Superceded	
+Decision	Superceded	Superceded	false	false	false					true	true	false	FALSE		
+

@@ -1,0 +1,167 @@
+/*   emxCommonClearTrustAuthenticationBase
+**
+**   Copyright (c) 2003-2015 Dassault Systemes.
+**   All Rights Reserved.
+**   This program contains proprietary and trade secret information of MatrixOne,
+**   Inc.  Copyright notice is precautionary only
+**   and does not evidence any actual or intended publication of such program
+**
+**   static const char RCSID[] = $Id: emxCommonClearTrustAuthenticationBase.java.rca 1.17 Wed Oct 22 15:57:20 2008 przemek Experimental przemek przemek $
+*/
+
+import matrix.db.Context;
+import java.util.Map;
+import java.util.HashMap;
+import sirrus.runtime.*;
+import com.matrixone.apps.domain.util.FrameworkProperties;
+
+/**
+ * The <code>emxCommonClearTrustAuthenticationBase</code> jpo contains Trust Aunthentication methods.
+ *
+ * @version EC 10.5.0.0 - Copyright (c) 2003, MatrixOne, Inc.
+ */
+
+public class ${CLASSNAME} {
+
+    /** USERNAME is a String holds name of the user. */
+    private static final String USERNAME = "MX_PAM_USERNAME";
+    /** PASSWORD is a String holds password of the user. */
+    private static final String PASSWORD = "MX_PAM_PASSWORD";
+    /** AUTHTYPE is a String holds aunthentication type. */
+    private static final String AUTHTYPE = "{ClearTrust}";
+    /** sServerIPAddress is a String holds IPAddress of the server. */
+    private static String sServerIPAddress = null;
+    /** sServerPort is a String holds port of the server. */
+    private static String sServerPort = null;
+    /** Create RuntimeAPI Object. */
+    private RuntimeAPI runtimeAPI= null;
+
+    /**
+     * This method is used to connect runtimeAPI.
+     *
+     * @throws Exception if the operation fails
+     * @since EC 10.5.0.0
+     */
+
+    private void connect() throws Exception
+    {
+        ServerDescriptor dispatcher = null;
+        int iServerPort = Integer.parseInt(sServerPort);
+        dispatcher = new ServerDescriptor(sServerIPAddress,
+                                          iServerPort,
+                                          ServerDescriptor.CLEAR);
+        runtimeAPI = APIFactory.createFromServerDispatcher(dispatcher);
+    }
+
+    /**
+     * This method is used to disconnect runtimeAPI.
+     * @since EC 10.5.0.0
+     */
+
+    private void disconnect()
+    {
+        if (runtimeAPI != null)
+            runtimeAPI.close();
+    }
+
+    /**
+     * This method is used to check for user authentication.
+     *
+     * @param userID String holds id of the user
+     * @param password String which holds password of the user
+     * @return an int 0 for valid user and 1 for invalid user
+     * @throws Exception if the operation fails
+     * @since EC 10.5.0.0
+     */
+
+    private int authenticateUser(String userID, String password) throws Exception
+    {
+        String authcResult = null;
+        String returnCode = null;
+        Map result = null;
+        Map user = new HashMap();
+
+        user.put( UserConstants.SC_USER_ID, userID);
+        user.put( UserConstants.AUTHENTICATION_TYPE, AuthTypes.SC_BASIC );
+        user.put( UserConstants.CREDENTIALS, password );
+
+        result = runtimeAPI.authenticate( user );
+
+        authcResult = (String) result.get(ResultConstants.AUTHENTICATION_RESULT);
+        if (authcResult.equals(ResultConstants.VALID_USER)) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param context the eMatrix <code>Context</code> object
+     * @param args holds no arguments
+     * @throws Exception if the operation fails
+     * @since EC 10.5.0.0
+     */
+
+    public ${CLASSNAME}(Context context, String[] args) throws Exception {
+
+        if (sServerIPAddress == null) {
+            sServerIPAddress = FrameworkProperties.getProperty(context,"emxFramework.ClearTrust.Server.Dispatch");
+            sServerPort = FrameworkProperties.getProperty(context,"emxFramework.ClearTrust.Server.Dispatch.Port");
+        }
+    }
+
+    /**
+     * This method checks the user is a aunthenticated user or not.
+     *
+     * @param context the eMatrix <code>Context</code> object
+     * @param args holds the following input arguments:
+     *       0 - a String containing the username
+     * @return String which contains authentication type and username
+     * @throws Exception if the operation fails
+     * @since EC 10.5.0.0
+     */
+
+
+    public String authenticate(Context context, String[] args) throws Exception {
+        int result;
+        // get credentials map
+        Map map = context.getCredentials();
+        // throw exception if map not found
+        if (map == null)
+            throw new Exception("no credentials");
+
+        // get user name out of sm_user
+        if (args.length > 0) {
+            String sUsername = (String)map.get(args[0]);
+            if (sUsername != null)
+                return AUTHTYPE+sUsername;
+        }
+
+        // get user name
+        String sUsername = (String)map.get(USERNAME);
+        // get password
+        String sPassword = (String)map.get(PASSWORD);
+        // If one of them not found then throw exception
+        if (sUsername == null || sPassword == null)
+            throw new Exception("no username/password");
+
+        // connect to the clear trust server
+        connect();
+
+        // do the authentication
+        result = authenticateUser(sUsername, sPassword);
+
+        // logout
+        disconnect();
+
+        if (result == 1) {
+            throw new Exception("Invalid password");
+        }
+
+        return AUTHTYPE+sUsername;
+    }
+
+}
+

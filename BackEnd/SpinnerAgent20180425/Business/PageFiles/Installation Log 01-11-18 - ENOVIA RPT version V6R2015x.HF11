@@ -1,0 +1,169 @@
+Validating correctness of decimal symbol...
+--> Current decimal symbol is .
+--> Trying to add a table, to check if current decimal symbol setting is ok...
+--> Current decimal symbol setting is OK
+
+#
+# Installation of the database schema is now ready to start.
+#
+# (Info) Starting transaction (System/Servers)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/System/Servers/runfirst.tcl
+# (Info) Committing transaction (System/Servers)
+# (Info) Starting transaction (Formats)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Formats/Job.tcl
+Resolved format_TVCJob to RPT Job
+# (Info) Committing transaction (Formats)
+# (Info) Running pre_install script (Programs)
+# (Info) Starting transaction (Programs)
+# Updating program RPTJPOReportBase
+# Processing: program       - RPTJPOReportBase                    [1.0   -->   1.0]
+# Updating program RPTReportGenerator
+# Processing: program       - RPTReportGenerator                  [1.0   -->   1.0]
+# (Info) Committing transaction (Programs)
+# (Info) Starting transaction (Pages)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Pages/ExampleStylesheets.tcl
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Pages/PrintOutputHandlerConfiguration.tcl
+The symbolic name page_TVCReportGeneratorPrintOutputHandlerConfiguration could not be resolved, will use the default value RPT Report Generator Print Output Handler Configuration
+The symbolic name page_TVCReportGeneratorPrintOutputHandlerConfigurationTemplate could not be resolved, will use the default value RPT Report Generator Print Output Handler Configuration (Template)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Pages/ReportProperties.tcl
+The symbolic name page_TVCReportProperties could not be resolved, will use the default value RPT Settings
+# (Info) Committing transaction (Pages)
+# (Info) Running pre_install script (Attributes)
+# (Info) Starting transaction (Attributes)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/AgentLastAlive.tcl
+Resolved attribute_TVCAgentLastAlive to RPT Agent Last Alive
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/AgentStartup.tcl
+Resolved attribute_TVCAgentStartup to RPT Agent Startup
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/AgentStopRequest.tcl
+Resolved attribute_TVCAgentStopRequest to RPT Agent Stop Request
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/CancelRequested.tcl
+Resolved attribute_TVCCancelRequested to RPT Cancel Requested
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Class.tcl
+Resolved attribute_TVCClass to RPT Class
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/ConversionProps.tcl
+Resolved attribute_TVCConversionProperties to RPT Conversion Properties
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/DataExtractionDefinition.tcl
+Resolved attribute_TVCDataExtractionDefinition to RPT Data Extraction Definition
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/DisplayFormat.tcl
+Resolved attribute_TVCDisplayedFormat to RPT Displayed Output Format
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/ExpandLevel.tcl
+Resolved attribute_TVCExpansionLevel to RPT Expansion Level
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/FilterExpression.tcl
+Resolved attribute_TVCFilterExpression to RPT Filter Expression
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Flags.tcl
+Resolved attribute_TVCFlags to RPT Flags
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Format.tcl
+Resolved attribute_TVCFormat to RPT Output Format
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/GetFrom.tcl
+Resolved attribute_TVCGetFrom to RPT Get From
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/GetTo.tcl
+Resolved attribute_TVCGetTo to RPT Get To
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Global.tcl
+Resolved attribute_TVCGlobal to RPT Global
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Hidden.tcl
+Resolved attribute_TVCHidden to RPT Hidden
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Icon.tcl
+Resolved attribute_TVCIcon to RPT Icon
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Inquiry.tcl
+Resolved attribute_TVCInquiry to RPT Inquiry
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/JobInfo.tcl
+Resolved attribute_TVCJobInfo to RPT Job Info
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/JobStatus.tcl
+Resolved attribute_TVCJobStatus to RPT Job Status
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/KeepJobs.tcl
+Resolved attribute_TVCKeepJobs to RPT Keep Jobs
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/KeepTime.tcl
+Resolved attribute_TVCKeepTime to RPT Keep Time
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Method.tcl
+Resolved attribute_TVCMethod to RPT Method
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/ObjectPattern.tcl
+Resolved attribute_TVCObjectPattern to RPT Object Pattern
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/ObjectWhere.tcl
+Resolved attribute_TVCObjectWhere to RPT Object Where
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/PreProcessPage.tcl
+Resolved attribute_TVCPreProcessPage to RPT PreProcess Page
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/RelationshipPattern.tcl
+Resolved attribute_TVCRelationshipPattern to RPT Relationship Pattern
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/RelationshipWhere.tcl
+Resolved attribute_TVCRelationshipWhere to RPT Relationship Where
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/SortOrder.tcl
+Resolved attribute_TVCSortOrder to RPT Sort Order
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/Stylesheet.tcl
+Resolved attribute_TVCStyleSheet to RPT Stylesheet
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Attributes/SystemTable.tcl
+Resolved attribute_TVCSystemTable to RPT System Table
+# (Info) Committing transaction (Attributes)
+# (Info) Running pre_install script (Types)
+# (Info) Starting transaction (Types)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/AdvancedDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+Resolved type_TVCAdvancedReportDef to RPT Advanced Report
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/Agent.tcl
+Resolved type_TVCAgent to RPT Agent
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/CustomDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+Resolved type_TVCCustomDef to RPT Custom Report
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/ExpansionDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+Resolved type_TVCExpansionDef to RPT Expansion Report
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/InquiryDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+Resolved type_TVInquiryDef to RPT Inquiry Report
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/Job.tcl
+Resolved type_TVCJob to RPT Job
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/JPODef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+Resolved type_TVCJPODef to RPT JPO Report
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/Queue.tcl
+Resolved type_TVCQueue to RPT Queue
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/ReportDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Types/TableBeanDef.tcl
+Resolved type_TVCReportDef to RPT Report Definition
+Resolved type_TVCTableBeanDef to RPT Table Bean Report
+# (Info) Committing transaction (Types)
+# (Info) Running pre_install script (Relationships)
+# (Info) Starting transaction (Relationships)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Relationships/Agent.tcl
+Resolved relationship_TVCAgent to RPT Agent
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Relationships/Job.tcl
+Resolved relationship_TVCJob to RPT Job
+# (Info) Committing transaction (Relationships)
+# (Info) Running pre_install script (Policies)
+# (Info) Starting transaction (Policies)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Policies/Agent.tcl
+Resolved policy_TVCAgent to RPT Agent
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Policies/Job.tcl
+Resolved policy_TVCJob to RPT Job
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Policies/Queue.tcl
+Resolved policy_TVCQueue to RPT Queue
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Policies/ReportDef.tcl
+Resolved policy_TVCReportDef to RPT Report Definition
+# (Info) Committing transaction (Policies)
+# (Info) Running pre_install script (Visuals/SystemTables)
+# (Info) Starting transaction (Visuals/SystemTables)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Visuals/SystemTables/RPTIssueReport.tcl
+# (Info) Committing transaction (Visuals/SystemTables)
+# (Info) Running pre_install script (UI/Commands)
+# (Info) Starting transaction (UI/Commands)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/UI/Commands/ShowGlobalReports.tcl
+Resolved command_TVCShowGlobalReports to RPT Show Global Reports
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/UI/Commands/ShowReports.tcl
+Resolved command_TVCShowReports to RPT Show Reports
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/UI/Commands/ShowReportsInSidePanel.tcl
+Resolved command_TVCShowReportsInSidepanel to RPT Show Reports In Sidepanel
+# (Info) Committing transaction (UI/Commands)
+# (Info) Running pre_install script (UI/Menus)
+# (Info) Running pre_install script (UI/Inquiries)
+# (Info) Starting transaction (UI/Inquiries)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/UI/Inquiries/RPTGetMyIssues.tcl
+# (Info) Committing transaction (UI/Inquiries)
+# (Info) Running pre_install script (Data)
+# (Info) Starting transaction (Data)
+# (Info) Sourcing C:/Users/mayank.ahuja/AppData/Local/Temp/.tvc/1515659352284/tvc-2017.1.0/reportgenerator/db-schema/Data/IssueReport.tcl
+Resolved type_TVInquiryDef to RPT Inquiry Report
+# (Info) Committing transaction (Data)
+
+# Installation successfully completed
+# Terminating installation program
+

@@ -1,0 +1,1 @@
+temp query bus "${type_WebService}" * * select id dump |

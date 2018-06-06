@@ -1,0 +1,82 @@
+tcl;
+eval {
+
+proc checkMarkerStatus {sImplementationName bPrint} {
+# return code = 0 => migration already executed
+	set sReturnCode 0
+	set sResult [mql temp query bus VPLMDataMigration $sImplementationName ---]
+	if {$sResult == ""} {
+		set sReturnCode 1
+	} else {
+		set sStatus [mql print bus VPLMDataMigration $sImplementationName --- select attribute\[VPLMsys/MigrationStatus\] dump;];
+		if {$sStatus == "FINISHED"} {
+			set sReturnCode 0
+		} else {
+			set sReturnCode 2
+		}
+	}
+	return $sReturnCode
+}
+
+proc addMarker {sImplementationName state} {
+	set status [checkMarkerStatus $sImplementationName "true"]
+	
+	# 0 BO exists and in FINISHED state
+	# 1 BO doesn't exist
+	# 2 BO exists but not in FINISHED state
+	if {$status == "1"} {
+	    puts "Adding marker $sImplementationName with state $state"
+		set sStatus [mql add bus VPLMDataMigration $sImplementationName --- policy VPLMDataMigration_Policy vault vplm VPLMsys/MigrationStatus $state ;];
+	}
+	
+	if {$status == "2" && $state == "FINISHED"} {
+	    puts "Changing marker $sImplementationName in state $state"
+		set sStatus [mql mod bus VPLMDataMigration $sImplementationName --- VPLMsys/MigrationStatus $state ;];
+	}
+	
+	return 0
+}
+
+
+set ret [addMarker "FEMDisciplineMigration" "ON_GOING"]
+
+set lObjCmd [list mql temp query bus  * * * where 'attribute\[PLMEntity.V_discipline\]=="Simulation"' select id policy attribute\[PLMEntity.V_usage\] attribute\[PLMEntity.V_discipline\] dump |;
+]
+
+    set mqlret 0
+    set mqlret [catch {eval $lObjCmd} sOut]
+    if {$mqlret == 0} {
+        set lObj [split $sOut "\n"]
+        foreach sObj $lObj {
+            set sObjId           [lindex [split $sObj |] 3]
+			set sObjPolicy       [lindex [split $sObj |] 4]
+			set sObjVUsage       [lindex [split $sObj |] 5]
+			set sObjVDiscipline  [lindex [split $sObj |] 6]
+			
+			puts "sObjId: $sObjId"
+			puts "sObjPolicy:$sObjPolicy"
+			puts "sObjVUsage: $sObjVUsage"
+			puts "sObjVDiscipline: $sObjVDiscipline"
+			
+			
+			if {$sObjVUsage == "FEM"} {
+				puts "Correction: mod bus $sObjId PLMEntity.V_discipline FEM:"
+				mql mod bus $sObjId PLMEntity.V_discipline FEM ;
+			} 
+			
+			if {$sObjVUsage == "Mech" || $sObjVUsage == "Kinematics"}  {
+				puts "Correction: mod bus $sObjId PLMEntity.V_discipline Mechanism:"
+				mql mod bus $sObjId PLMEntity.V_discipline Mechanism ;
+				puts "Correction: mod bus $sObjId PLMEntity.V_usage Kinematics:"
+                mql mod bus $sObjId PLMEntity.V_usage Kinematics ;				
+			} 
+			
+			
+        }
+		set ret [addMarker "FEMDisciplineMigration" "FINISHED"]
+		
+    } else {
+        puts "Error evaluating query $lObjCmd: \n$sOut"
+    }        
+}
+

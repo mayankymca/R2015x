@@ -1,0 +1,134 @@
+<domainAccess>
+    <policy>Default,Workspace,Workspace Vaults,Document,Controlled Folder
+        <logicalMappings>
+            <logical physical="read,show" inheritedLogicalNames="">Basic</logical>
+            <logical physical="read,show,checkout" inheritedLogicalNames="">Read</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,reserve,reserve,unreserve">Read Write</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,reserve,unreserve">Add</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromdisconnect,todisconnect,delete,reserve,unreserve">Remove</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,fromdisconnect,todisconnect,delete,reserve,unreserve">Add Remove</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,fromdisconnect,todisconnect,delete,promote,demote,changeowner,reserve,unreserve">Full</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Route,Route Template
+        <logicalMappings>
+            <logical physical="read,show,checkout" inheritedLogicalNames="">Read</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,reserve,unreserve">Read Write</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,reserve,unreserve">Add</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromdisconnect,todisconnect,delete,reserve,unreserve">Remove</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,fromdisconnect,todisconnect,delete,reserve,unreserve">Add Remove</logical>            
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Project Space, Project Space Hold Cancel, Seasonal Plan, Project Concept, Project Template
+        <logicalMappings>
+            <logical physical="read,show,checkout,toconnect,todisconnect,fromconnect,fromdisconnect,execute" inheritedLogicalNames="">Project Member</logical>
+            <logical physical="read,show,checkout,checkin,fromconnect,fromdisconnect,execute,changeowner,modify,delete,promote,demote,toconnect,todisconnect,changename,changetype,changepolicy,revise">Project Lead</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>VPLM_SMB_DesignWS
+            <logicalMappings>
+                <logical physical="read,show,checkout" inheritedLogicalNames="">Read</logical>
+                <logical physical="all">All</logical>
+            </logicalMappings>
+            <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Requirement,Use Case
+        <logicalMappings>
+            <logical physical="read,show,checkout" inheritedLogicalNames="">Read</logical>
+           <logical physical=" read,show,fromconnect,toconnect,fromdisconnect,todisconnect" > Read and Relate </logical>
+           <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise">Read Write</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect">Add</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromdisconnect,todisconnect,delete">Remove</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,fromdisconnect,todisconnect,delete">Add Remove</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Project Task,Project Review
+        <logicalMappings>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,execute" inheritedLogicalNames="">Project Member</logical>
+            <logical physical="read,show,checkout,checkin,fromconnect,fromdisconnect,execute,promote,demote,changeowner,modify,delete,toconnect,todisconnect,changename,changetype,changepolicy,revise">Project Lead</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Assessment
+        <logicalMappings>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,execute" inheritedLogicalNames="">Project Member</logical>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,execute,changeowner,modify">Project Lead</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+   <policy>Financial Items
+        <logicalMappings>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,execute" inheritedLogicalNames="">Project Member</logical>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,execute,toconnect,todisconnect,changeowner,delete,modify,promote,demote,changename">Project Lead</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Product Data Specification,Restricted Product Data Specification,Production Product Data,Experimental Product Data,Hypothetical-Private Product Data,Hypothetical-Public Product Data,Pilot Product Data,Production Formulation Part,Hypothetical-Private Formulation Part,Hypothetical-Public Formulation Part,Experimental Formulation Part,Pilot Formulation Part
+        <logicalMappings>
+            <logical physical="read,show,checkout" >Read</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,fromdisconnect,todisconnect">Read Write</logical>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,toconnect,todisconnect,changeowner,delete,modify,changename" inheritedLogicalNames="">Subject Matter Expert</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,fromdisconnect,todisconnect,delete,promote,demote,changeowner">All</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Hypothetical-Private Formulation,Hypothetical-Public Formulation,Experimental Formulation,Pilot Formulation,Production Formulation,Hypothetical-Private Formulation Process,Hypothetical-Public Formulation Process,Experimental Formulation Process,Pilot Formulation Process,Production Formulation Process
+        <logicalMappings>
+            <logical physical="read,show,checkout" inheritedLogicalNames="">Read</logical>
+            <logical physical="read,show,checkout,modify">Modify</logical>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,toconnect,todisconnect,changeowner,delete,modify,changename" inheritedLogicalNames="">Subject Matter Expert</logical>
+            <logical physical="read,show,checkout,modify,checkin,lock,unlock,revise,fromconnect,toconnect,fromdisconnect,todisconnect,delete,promote,demote,changeowner">All</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Project Risk
+        <logicalMappings>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,execute" inheritedLogicalNames="">Project Member</logical>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,execute,toconnect,todisconnect,changeowner,delete,modify,promote,demote,changename ">Project Lead</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Development Part,EC Part,Manufacturer Equivalent,CAD Model, CAD Drawing, Drawing Print, Part Specification,Configured Part
+            <logicalMappings>
+                <logical physical="read,show" inheritedLogicalNames="">Read</logical>
+                <logical physical="read,show,fromconnect,toconnect,fromdisconnect,todisconnect" > Read and Connect </logical>
+                <logical physical="read,show,modify">Read Write</logical>
+                <logical physical="read,show,revise,modify">Revise</logical>
+            </logicalMappings>
+            <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Controlled Documents,Controlled Document Template
+        <logicalMappings>
+            <logical physical="read,show,checkout" inheritedLogicalNames="">Read</logical>
+            <logical physical="read,show" inheritedLogicalNames="">Basic</logical>
+            <logical physical="read,show,checkout,fromconnect,fromdisconnect,toconnect,todisconnect,changeowner,delete,modify,changename" inheritedLogicalNames="">Subject Matter Expert</logical>
+            <logical physical="read,show,modify,checkout,checkin" inheritedLogicalNames="">Review</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Effort,Weekly Timesheet
+        <logicalMappings>
+            <logical physical="read,show,checkout,checkin,fromconnect,fromdisconnect,execute,changeowner,modify,delete,promote,demote,toconnect,todisconnect,changename,changetype,changepolicy">Project Lead</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+    <policy>Business Goal,Question,Baseline Log,Interval Item Data,Quality,Quality Metric,Resource Request,RPN,Meeting
+        <logicalMappings>
+            <logical physical="read,show,checkout,checkin,fromconnect,fromdisconnect,execute" inheritedLogicalNames="">Project Member</logical>
+            <logical physical="read,show,checkout,checkin,fromconnect,fromdisconnect,execute,changeowner,modify,delete,promote,demote,toconnect,todisconnect,changename,changetype,changepolicy">Project Lead</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+	 <policy>Hazard Template
+        <logicalMappings>
+            <logical physical="read,show" inheritedLogicalNames="">Read</logical>
+            <logical physical="read,show,modify,promote,demote,fromconnect,fromdisconnect,changeowner">All</logical>
+        </logicalMappings>
+        <accessMasksInheritanceLimit></accessMasksInheritanceLimit>
+    </policy>
+</domainAccess>
+

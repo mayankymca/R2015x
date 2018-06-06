@@ -1,0 +1,60 @@
+var params = proc.declareParameters(["setname", "rootids", "vault", "select", "type", "selectpath"], ["label", "labelSR", "where", "dump", "notsubstitute"]);
+
+// test to prevent injection in setname
+if (!(/^[\w\+-:]+$/.test(setname)))
+{
+	proc.write(label, null, "Invalid set name");
+	proc.write(labelSR, null, "Invalid set name");
+}
+// test to prevent injection in where
+else if (where && !params.isWhereClauseValid(where))
+{
+	proc.write(label, null, "Invalid where clause");
+	proc.write(labelSR, null, "Invalid where clause");
+}
+else
+{
+	mql.startTransaction(true);
+	mql.execute(null, "mod set $1 add connection $2", [setname, JSON.parse(rootids).join()]);
+
+	var fullwhere = "(member[" + setname + "] == TRUE)";
+	if (where)
+		fullwhere += " AND (" + where + ")";
+	
+	var cmd = "query connection where $1 vault $2";
+	params.addVars([fullwhere, vault]);
+
+	cmd += " select";
+	if (dump || params.getBoolean("notsubstitute"))
+		cmd += " notsubstitute";
+	
+	cmd += params.addVars(JSON.parse(select));
+	
+	if (dump)
+		cmd += " dump" + params.addVar(dump)
+	
+	cmd += " tcl";
+	
+	mql.execute(label, cmd, params);
+	
+	// SR query
+	params.clear();
+	cmd = "query path type $1 where $2 vault $3";
+	var pathwhere = "ownermember[" + setname + "] == TRUE";
+	params.addVars(["SemanticRelation", pathwhere, vault]);
+	cmd += " select";
+	if (dump || params.getBoolean("notsubstitute"))
+		cmd += " notsubstitute";
+	
+	cmd += params.addVars(JSON.parse(selectpath));
+	
+	if (dump)
+		cmd += " dump" + params.addVar(dump);
+	
+	cmd += " tcl";
+	
+	mql.execute(labelSR, cmd, params);
+	
+	mql.abortTransaction();
+}
+

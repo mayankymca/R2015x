@@ -1,0 +1,89 @@
+#**********************************************************************************************
+# @progdoc      MxMsCustomDocumentProperties
+#
+# @Brief: This program lets you add to the doc property information that is sent to MS Office documents            
+# used in the Matrix Office Integration.  The Office integration automatically syncs the Business Object
+# attributes to Office document custom properties and creates them if they don't exist.
+# BO Attribute and Value maps to doc property and Value
+# This program allows you to added to that.  To have a Office document updated just add it to either
+# ClauSetProperties or the ClauSetCoversheet sets of the autoClau user.  Or it can also be done in a realTime
+# fashion by using MxMsDisplayInOfficeUpdatedProperties (action) or MxMsDisplayInOfficeUpdatedCoversheet (action)
+# in a Matrix Wizard or program within the Office Integration.  See the Office Integration programming guide for more
+# information.
+#
+# @Description:      
+#
+# @Parameters:   Business Object id     
+#                     
+#
+# @Exit:        
+#
+# @Usage: The string of data must be delimited with the pipe char | and then separated with ~MxMs~
+# DO NOT PUT ~MxMs~ on the last entry.
+#
+# @progdoc      Copyright (c) 2001, MatrixOne
+#**********************************************************************************************
+# @Modifications:
+#
+#**********************************************************************************************
+
+tcl;
+
+eval {
+
+# pass in the boid from autoClau
+set boid [ mql get env 1 ]
+
+# first custom property for autoClau
+append sAll "Type|"
+append sAll [ join [ split [ mql print bus $boid select type dump ] \n ] ]
+# used by autoClau to split name value pairs
+append sAll "~MxMs~"
+
+append sAll "Name|"
+append sAll [ join [ split [ mql print bus $boid select name dump ] \n ] ]
+append sAll "~MxMs~"
+
+append sAll "Revision|"
+append sAll [ join [ split [ mql print bus $boid select revision dump ] \n ] ]
+append sAll "~MxMs~"
+
+append sAll "Current|"
+append sAll [ join [ split [ mql print bus $boid select current dump ] \n ] ]
+append sAll "~MxMs~"
+
+append sAll "Date created|"
+append sAll [ join [ split [ mql print bus $boid select originated dump ] \n ] ]
+append sAll "~MxMs~"
+
+# this is the first custom attribute that the Business Object not have
+# so we will do a catch
+
+append sAll "Author|"
+set ret [ catch { mql print bus $boid select attribute\[Creator\] dump } sTest ]
+
+
+if { $ret == 0 } {
+    # this means it worked
+    append sAll [ join [ split $sTest \n ] ]
+    # since this is the last one DO NOT add "~MxMs~"
+    # if you add to this then put the append "~MxMs~" back in
+    # append sAll "~MxMs~"
+} else {
+    # add the error message
+    append sAll [ join [ split $sTest \n ] ]
+    # since this is the last one DO NOT add "~MxMs~"
+    # if you add to this then put the append "~MxMs~" back in
+    # append sAll "~MxMs~"
+}
+
+
+
+# puts "sAll = $sAll"
+#return $sAll
+return ""
+ }
+
+# end of eval
+
+

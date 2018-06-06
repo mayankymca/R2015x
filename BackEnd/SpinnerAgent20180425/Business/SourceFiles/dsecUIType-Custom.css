@@ -1,0 +1,310 @@
+/* ------------------------------------------------------------------------------
+
+   Best Practices for Writing Custom CSS Classes
+
+   * Class names cannot begin with a number
+
+   * Classes should never be named for the type of formatting they apply. Bad example:
+
+         span.red { color: red; }
+   
+   * Instead, classes should be given semantically-significant names. Good Example:
+
+         span.error-message { color: red; }
+
+   * Class names should be all lowercase, using dashes (-) to separate words.
+
+   * Always separate attributes and values with a colon.
+
+   * Always end each line in a declaration with a semicolon.
+
+   * Do not attempt to alter positioning attributes of any element (i.e. layout,
+     position, float, top, left, bottom, right, overflow, z-index, etc.) because you
+     may inadvertantly affect the layout of an element on the page. The following
+     are some of the attributes that can safely be altered in a custom class:
+
+        * background-color
+        * color
+        * font-family
+        * font-size
+        * font-weight
+        * font-style
+        * text-decoration
+        * vertical-align
+        * text-align
+
+   * Custom classes should be named carefully so that there is no possibility of
+     a collision with default (existing) classes. For example, XYZ Corporation
+     might name an error class as follows:
+
+         span.xyz-error-message { color: red; }
+
+   * Do not attempt to overwrite existing elements, IDs or classes. Without proper
+     knowledge of Cascading Style Sheets and specifically how they are used in
+     Dassault Systemes ENOVIA Corp. web applications you may affect more than
+     simple table cell and text styling.
+
+   ------------------------------------------------------------------------------ */
+/* UNT Configuration entries -start */
+.CellBackGroundColor {
+background-color: rgb(103,254,179);
+}
+
+.RowBackGroundColor {
+background-color: rgb(216,155,249);
+}
+
+.ColumnBackGroundColor {
+background-color: rgb(252,186,186);
+}
+/* UNT Configuration entries - end */
+
+/* Added for Advanced Resource Planning */
+.ResourcePlanningYellowBackGroundColor {
+background-color: rgb(255,255,157);
+}
+
+.ResourcePlanningRedBackGroundColor {
+background-color: rgb(252,186,186);
+}
+
+.ResourcePlanningGreenBackGroundColor {
+background-color: rgb(103,254,179);
+}
+
+/* Added for Sourcing Central No bid Supplier line items*/
+.CellBackGroundColorDisabled {
+background-color: rgb(205,205,193);
+}
+
+.CellTextStrikeThrough{
+background-color: rgb(205,205,193);
+text-decoration: line-through;
+}
+/*Added For Multidimension Measurement Chart Feature in Apparel Accelerator */
+.MeasurementChartCalculatedValueRow {
+background-color: rgb(141,180,227);
+text-align:center;
+}
+
+.MeasurementChartFormulaRow{
+background-color: rgb(197,217,241);
+text-align:center;
+}
+.MeasurementChartFormulaRowOtherCells{
+background-color: rgb(197,217,241);
+}
+
+.MeasurementCalculateColumnBaseSizeColor{
+background-color: rgb(230,185,184);
+text-align:center;
+font-weight:bold;
+}
+.MeasurementFormulaColumnBaseSizeColor{
+background-color: rgb(242,221,220);
+text-align:center;
+font-weight:bold;
+}
+/* End For Multidimensonal Measurement Chart*/
+
+/* Added for Budget */
+.BudgetYellowBackGroundColor {
+background-color: #FFFF9D;
+text-align:right;
+}
+
+.BudgetRedBackGroundColor {
+background-color: #FCBABA;
+text-align:right;
+}
+
+.BudgetGreenBackGroundColor {
+background-color: #67FEB3;
+text-align:right;
+}
+
+.ColumnRightAllign {
+text-align:right;
+}
+
+.BudgetYellowBackGroundColorAndBold {
+background-color: #FFFF9D;
+text-align:right;
+font-weight:bold;
+}
+
+.BudgetRedBackGroundColorAndBold {
+background-color: #FCBABA;
+text-align:right;
+font-weight:bold;
+}
+
+.BudgetGreenBackGroundColorAndBold {
+background-color: #67FEB3;
+text-align:right;
+font-weight:bold;
+}
+
+.ColumnRightAllignAndBold {
+text-align:right;
+font-weight:bold;
+}
+.FinancialItemRightAlignAndBold {
+background-color:#EAF1F3;
+font-weight:bold;
+text-align:right;
+}
+.FinancialItemRightAlign{
+background-color:#FFF;
+text-align:right;
+}
+
+/* End for Budget */
+
+/* Added for FCA */
+
+.ProductForecastTotal {
+background-color: rgb(208,208,208);
+text-align:right;
+}
+.ProductForecastTotalSales {
+background-color: rgb(216,216,216);
+text-align:right;
+}
+.ProductForecastSales {
+background-color: rgb(216,216,216);
+font-weight:200;
+text-align:right;
+}
+.ProductForecastGeneral {
+text-align:right;
+}
+
+/* Ends for FCA */
+
+.right-align{
+    text-align:right;
+}
+
+/* START - Added for Shopper */
+.AssortmentTypoSelected {
+background-color: rgb(0,255,128);
+}
+
+.AssortmentTypoNotSelected {
+}
+
+.SegmentSelected {
+background-color: rgb(0,255,128);
+}
+
+.SegmentNotSelected {
+}
+/* END - Added for Shopper */
+
+/* Added For Apparel Bill Of Material */
+.BOMColorWay{
+text-align:center;
+}
+/*End*/
+
+/* Added For Apparel Sizes Column */
+.number-align{
+text-align:left;
+}
+/*End*/
+
+/* Apparel's swatch, This css has been used in Apparel BOM to show color swatches*/
+.swatch{
+width:25px;
+height:25px;
+margin:0 Auto;
+background-size: 100%;
+background-repeat: no-repeat;
+}
+/*End*/
+
+/*Added for My Calendar Feature*/
+.my-calendar-weekend{
+background-color:#EAF1F3;
+}
+
+.my-calendar-margin-column{
+background-color:#FFFFFF;
+}
+
+.my-calendar-today{
+background-color:#FFCC66;
+}
+
+.my-calendar-holiday{
+background-color:#F2DDDC;
+}
+/*Added for My Calendar Feature*/
+
+/* Apparel Sourcing Plan Styling Start*/ 
+.arp-plan-root {
+background-color: #99B7E4;
+}
+
+.arp-plan-sup {
+background-color: #A9D0F5;
+}
+
+.arp-plan-sup-alt {
+background-color: #C6E2FF;
+}
+
+.arp-plan-sc {
+background-color: #FFFF9D;
+}
+
+.arp-plan-sc-alt {
+background-color: #FFFFCC;
+}
+
+.arp-plan-brand-sg {
+background-color: #ADADAD;
+}
+
+.arp-plan-delta-row {
+font-weight: bold;
+}
+
+.arp-plan-delta-cell {
+background-color: #FCBABA;
+}
+/* Apparel Sourcing Plan Styling End*/ 
+
+/* EBOM Import Error Styles */
+.import-error {
+	color:red;
+	font-weight: bold;
+}
+
+/*Added for Training Column Styling  Start*/
+.doco-cell-background-red{
+background:linear-gradient(to right ,#FF8080, white);
+}
+
+.doco-cell-background-yellow{
+background:linear-gradient(to right , #FFB84D , white);
+}
+
+.doco-cell-background-green{
+background:linear-gradient(to right, #80CC99 , white);
+}
+/*Added for Training Column Styling  End*/
+/* ---------------------------------
+UI Pack Additions
+------------------------------------*/
+.custRed{color:#cc0000;}
+.custGreen{color:#009c00;}
+.custYellow{color:#ff7f00;}
+.custDateRed{font-weight:bold;text-align:right;color:#cc0000;}
+.custDateGreen{font-weight:bold;text-align:right;color:#009c00;}
+.custDateYellow{font-weight:bold;text-align:right;color:#ff7f00;}
+.custDateBlack{text-align:right;color:#000000;}
+.custBoldRight{text-align:right;font-weight:bold !important;}
+.custBoldRightHighlight{text-align:right;font-weight:bold !important;background:#cccccc !important;}
+

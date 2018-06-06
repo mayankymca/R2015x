@@ -1,0 +1,7 @@
+tcl;
+eval {
+	# nothing to downgrade, this is model modification ...
+	puts "ParameterModel-V6R2015x-HF2-downgrade.mql executed."
+}
+exit 0
+

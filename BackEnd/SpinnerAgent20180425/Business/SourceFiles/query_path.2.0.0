@@ -1,0 +1,51 @@
+var CONDITIONS=["startswithany", "startswithsequence", "starting with", "endswithany", "endswithsequence", "ending with", "containsany", "containssequence", "containing"];
+
+var params = proc.declareParameters(["type", "vault", "select"], ["label", "where", "orderby", "limit", "condition", "physicalids", "dump", "notsubstitute"]);
+
+var valid = false;
+var hascondition = !!(condition);
+if (hascondition)
+{
+	if (!physicalids)
+		proc.write(label, null, "condition is defined, but not physicalids");
+	else if (CONDITIONS.indexOf(condition)<0)
+		proc.write(label, null, "unknown condition");
+	else
+		valid = true;
+}
+else
+	valid = true;
+
+if (valid)
+{
+	var cmd = "query path type $1 vault $2";
+	params.addVars([type, vault]);
+	
+	if (hascondition)
+		cmd += " " + condition + params.addVars(JSON.parse(physicalids));
+	
+	if (where)
+		cmd += " where" + params.addVar(where);
+	
+	if (orderby)
+		cmd += " orderby" + params.addVar(orderby);
+	
+	if (limit)
+		cmd += " limit" + params.addVar(limit);
+	
+	cmd += " select";
+	if (dump || params.getBoolean("notsubstitute"))
+		cmd += " notsubstitute";
+	
+	cmd += params.addVars(JSON.parse(select));
+	
+	if (dump)
+		cmd += " dump" + params.addVar(dump);
+	
+	cmd += " tcl";
+	
+	mql.startTransaction(false);
+	mql.execute(label, cmd, params);
+	mql.abortTransaction();
+}
+

@@ -1,0 +1,281 @@
+####################################################################################################################################################
+# QFD - 11/29/2012 : Migration script to move data on New Data Model for SemanticRelations on PATH
+# KPT - 04-03-2013 : Swap recordsep & separator accoridng to JNI's change in transition path 
+# KPT - 04-05-2013 : Ajout blindage lors des add prog.
+# KPT - 04-18-2013 : Swap again recordsep & separator  ==> JNI's change in transition path seems ineffective
+# KPT - 04-18-2013 : Add remove pathtype before transition. 
+# KPT - 04-18-2013 : SRv2 temporary handling 
+# KPT - 04-30-2013 : SRv2 handling : We just add the SRv2 itf attributes to the relbased-SR type
+# KPT - 05-20-2013 : SRv2 handling : attribute are now on an interface
+# KPT - 06-11-2013 : SRv2 handling : need to delete the previously installed interface SRonAttribute (the old one is renamed as SRonAttribute)
+# KPT - 06-20-2013 : SRv2 handling : need to add pathtype SemanticRelation on interface SRonAttribute
+# KPT - 08-12-2014 : Run findSR_WithInvalidProxyStamps_mxJPO to migrate invalid proxystamps ex : For SR pointing CBP objects, the proxystamps are dates. Even with some padding, the kernel will not accept it.
+# FRM - 09-08-2014 : Mapping name removal (VPLMtyp/Port becomes Port, etc.)
+# AKF1- 12-08-2015 : Added '/m' option in 'sort' commands executed on Windows platform for better handling of big files - IR-316321
+####################################################################################################################################################
+
+tcl;
+
+proc getSystemParameter {param} {
+                set sResult [mql print system inivar $param]
+                set lValues [split $sResult "="]
+                set sValue [lindex $lValues 1]
+                return [string trim $sValue]
+}
+
+proc checkMarkerStatus {sImplementationName bPrint} {
+# return code = 0 => migration already executed
+	set sReturnCode 0
+	set sResult [mql temp query bus VPLMDataMigration $sImplementationName ---]
+	if {$sResult == ""} {
+		set sReturnCode 1
+	} else {
+		set sStatus [mql print bus VPLMDataMigration $sImplementationName --- select attribute\[VPLMsys/MigrationStatus\] dump;];
+		if {$sStatus == "FINISHED"} {
+			set sReturnCode 0
+		} else {
+			set sReturnCode 2
+		}
+	}
+	return $sReturnCode
+}
+
+proc addMarker {sImplementationName state} {
+
+	puts "Adding marker $sImplementationName with state $state"
+	
+	set status [checkMarkerStatus $sImplementationName "true"]
+	
+	# 0 BO exists and in FINISHED state
+	# 1 BO doesn't exist
+	# 2 BO exists but not in FINISHED state
+	if {$status == "1"} {
+		set sStatus [mql add bus VPLMDataMigration $sImplementationName --- policy VPLMDataMigration_Policy vault vplm VPLMsys/MigrationStatus $state ;];
+	}
+	
+	if {$status == "2" && $state == "FINISHED"} {
+		set sStatus [mql mod bus VPLMDataMigration $sImplementationName --- VPLMsys/MigrationStatus $state ;];
+	}
+	
+	return 0
+}
+
+eval {
+
+	set mxarch [getSystemParameter "MX_ARCH"]
+    set matrixinstall [getSystemParameter "MATRIXINSTALL"]
+	
+	# default : UNIX
+	set OS "UNIX"
+	
+	# if Win
+	if {$mxarch=="intel_a" || $mxarch=="win_b64"} {
+		set OS "WIN"	
+	}
+
+	puts "Start migrating SRs on new Path data model"
+	set ret [addMarker "SRonPathNewDataModel" "ON_GOING"]
+
+	#set input_dir $env(SRONPATH_INPUT_DIR)
+	
+	set output_dir ""
+	catch {set output_dir $env(SRONPATH_OUTPUT_DIR)}
+	
+	if {$output_dir == ""} {
+		if {"$OS"=="WIN"} {
+			# remove trailing backslash
+			set matrixinstall2 [string trimright $matrixinstall "\x5C"]
+			# replace \ by  /
+			set matrixinstall [string map {"\x5C" "/"} "$matrixinstall2"]
+		} else {
+			set matrixinstall [string trimright $matrixinstall "/"]
+		}
+		set output_dir $matrixinstall/logs
+	}
+	puts "Files will be written to $output_dir"
+	
+	puts "Add programs"
+	#mql add prog outputSR_after java file "$input_dir/outputSR_after_mxJPO.java";
+	#mql add prog outputSR_before java file "$input_dir/outputSR_before_mxJPO.java";
+	#mql add prog generateTCFile java file "$input_dir/generateTCFile_mxJPO.java";
+	
+	set res [mql list prog outputSR_before]
+	if {$res == ""} {       
+	   puts "   Adding prog outputSR_before "
+			mql add prog outputSR_before java;
+	   } else {
+		puts "   prog outputSR_before is already installed...  "
+	}
+	
+	set res [mql list prog outputSR_after]
+	if {$res == ""} {       
+	   puts "   Adding prog outputSR_after "
+			mql add prog outputSR_after java;
+	   } else {
+		puts "   prog outputSR_after is already installed...  "
+	}	
+	
+	set res [mql list prog generateTCFile]
+	if {$res == ""} {       
+	   puts "   Adding prog generateTCFile "
+			mql add prog generateTCFile java;
+	   } else {
+		puts "   prog generateTCFile is already installed...  "
+	}
+	
+	set res [mql list prog FileDiff]
+	if {$res == ""} {       
+	   puts "   Adding prog FileDiff "
+			mql add prog FileDiff java;
+	   } else {
+		puts "   prog FileDiff is already installed...  "
+	}
+
+	set res [mql list prog findSR_WithInvalidProxyStamps]
+	if {$res == ""} {       
+	   puts "   Adding prog findSR_WithInvalidProxyStamps "
+			mql add prog findSR_WithInvalidProxyStamps java;
+	   } else {
+		puts "   prog findSR_WithInvalidProxyStamps is already installed...  "
+	}
+
+     # check if second execution
+	set attr_exists [mql list attribute "VPLMatt/VPMSemanticRelation/V_ProxyStampRelevancies"]
+    
+    if  {"$attr_exists" == "VPLMatt/VPMSemanticRelation/V_ProxyStampRelevancies"} {
+		puts "Generate Types Correspondances File"
+		mql exec prog generateTCFile "$output_dir/TCFile.txt" @ |;
+
+		puts "Find invalid proxystamps"
+		mql exec prog findSR_WithInvalidProxyStamps "$output_dir/proxystamps.mql";
+		
+		puts "Repair invalid proxystamps"
+		mql run "$output_dir/proxystamps.mql";
+
+		puts "Dump SRs before transition"
+		mql exec prog outputSR_before "$output_dir/dump_before.log";
+	
+		puts "Execute transition"
+		set trans_result [mql transition path relationship VPLMrel/VPMSemanticRelation VPLMatt/VPMSemanticRelation/V_TargetPIDs VPLMatt/VPMSemanticRelation/V_TargetLIDs VPLMatt/VPMSemanticRelation/V_TargetMIDs VPLMatt/VPMSemanticRelation/V_TargetTypes VPLMatt/VPMSemanticRelation/V_ProxyStamps VPLMatt/VPMSemanticRelation/V_ProxyStampRelevancies filename "$output_dir/TCFile.txt" separator @ recordsep |]
+	} else {
+		set trans_result ""
+	}
+      
+	if {$trans_result == ""} {
+	
+        # first execution
+		if  {"$attr_exists" == "VPLMatt/VPMSemanticRelation/V_ProxyStampRelevancies"} {
+            puts "Transition ended successfully"
+            puts "Moving attributes"
+            mql del attribute OutOfScopes;
+            mql del attribute Role;
+            mql del attribute Semantics;
+            mql del attribute PrivateData;
+            mql del attribute AppIndex;
+            mql del attribute RoleSemantics;
+            mql del attribute IDRel;
+            
+            puts "Moving PathType"
+            mql del pathtype SemanticRelation;
+
+            mql mod attr VPLMatt/VPMSemanticRelation/V_OutOfScopes name OutOfScopes;
+            mql mod attr VPLMatt/VPMSemanticRelation/C_RoleSemantics name RoleSemantics;
+            mql mod attr VPLMatt/VPMSemanticRelation/V_AppIndex name AppIndex;
+            mql mod attr VPLMatt/VPMSemanticRelation/V_PrivateData name PrivateData;
+            mql mod attr VPLMatt/VPMSemanticRelation/V_Role name Role;
+            mql mod attr VPLMatt/VPMSemanticRelation/V_Semantics name Semantics;
+            mql mod attr VPLMatt/VPMSemanticRelation/C_IDRel name IDRel;
+            
+            # Adjust description and from/to clauses
+            mql mod pathtype VPLMrel/VPMSemanticRelation name SemanticRelation;
+            mql mod pathtype SemanticRelation description "PathType for Semantic Relations" ;
+            mql mod pathtype SemanticRelation from remove type all from add type PLMPort,PLMConnection,PLMCoreRepReference ;
+            mql mod pathtype SemanticRelation from cardinality many;
+            
+            mql del attribute SyncDomain;
+            mql del attribute SyncSpec;
+            mql del attribute SyncValue;
+            mql mod attr VPLMatt/ItfForSRQuadruplet/V_SyncDomain name SyncDomain;
+            mql mod attr VPLMatt/ItfForSRQuadruplet/V_SyncSpec name SyncSpec;
+            mql mod attr VPLMatt/ItfForSRQuadruplet/V_SyncValue name SyncValue;
+            
+            mql del interface SRonAttribute;
+            mql mod interface VPLMitf/ItfForSRQuadruplet name SRonAttribute;	
+            mql mod interface SRonAttribute description "Interface for SR pointing Attributes" ;
+            mql mod interface SRonAttribute add pathtype SemanticRelation remove relationship VPLMrel/VPMSemanticRelation;		
+
+            mql del attribute VPLMatt/VPMSemanticRelation/V_HashReverseTargetMIDs;
+            mql del attribute VPLMatt/VPMSemanticRelation/V_HashReverseTargetPIDs1;
+            mql del attribute VPLMatt/VPMSemanticRelation/V_HashReverseTargetPIDs2;
+            mql del attribute VPLMatt/VPMSemanticRelation/V_HashTargetMIDs;
+            mql del attribute VPLMatt/VPMSemanticRelation/V_HashTargetPIDs1;
+            mql del attribute VPLMatt/VPMSemanticRelation/V_HashTargetPIDs2;
+            mql del attribute VPLMatt/VPMSemanticRelation/V_SRAttributeName;
+            mql del attribute VPLMatt/VPMSemanticRelation/C_LinkedIdRel;
+            mql del attribute VPLMatt/VPMSemanticRelation/V_ProxyStampRelevancies;
+            
+
+            puts "Dump SRs after transition"
+            mql exec prog outputSR_after "$output_dir/dump_after.log";
+		}
+		
+		puts "Sorting dump files"
+		
+		# if Win
+		if {$mxarch=="intel_a" || $mxarch=="win_b64"} {
+			
+            set cmd_before [list exec sort /REC 65000 /M 4000000 /O "$output_dir/dump_before_sorted.log" "$output_dir/dump_before.log"]
+			set cmd_after  [list exec sort /REC 65000 /M 4000000 /O "$output_dir/dump_after_sorted.log" "$output_dir/dump_after.log"]
+			
+			puts "Sorting dump_before.log"
+			set status [catch {eval $cmd_before} res]
+			puts "Done $res"
+			
+			puts "Sorting dump_after.log"
+			set status [catch {eval $cmd_after} res]
+			puts "Done $res"
+            
+		 } else {
+			exec sort "$output_dir/dump_before.log" > "$output_dir/dump_before_sorted.log"
+			exec sort "$output_dir/dump_after.log" > "$output_dir/dump_after_sorted.log"
+		}
+           
+        ## if Win
+        if {$mxarch=="intel_a" || $mxarch=="win_b64"} {
+		#	set cmd [list mql java FileDiff_mxJPO "$output_dir/dump_before_sorted.log" "$output_dir/dump_after_sorted.log"]
+		#	
+		#	set status [catch {eval $cmd} res]
+		#	if {$status == "0"} {
+		#		puts "Dump files comparison successful"
+				set ret [addMarker "SRonPathNewDataModel" "FINISHED"]
+		#	} else {
+		#	puts "Dump files comparison failed:"
+		#	puts "$status"
+		#}		
+		#	
+        } else {
+            puts "Post migration checks"
+		#######################   THIS (OPTIONAL) CHECK CAN ONLY WORK ON UNIX   ########################
+            puts "Dump files comparison"
+            set status [exec diff "$output_dir/dump_before_sorted.log" "$output_dir/dump_after_sorted.log"]
+        
+            if {$status == ""} {
+                puts "Dump files comparison successful"
+                set ret [addMarker "SRonPathNewDataModel" "FINISHED"]
+            } else {
+                puts "Dump files comparison failed:"
+                puts $status
+		    }		
+		################################################################################################
+		}
+		
+	} else {
+		
+		puts "Transition ended with following error:"
+		puts $trans_result
+		
+	}
+
+	puts "End SR migration on new Path data model"
+}
+

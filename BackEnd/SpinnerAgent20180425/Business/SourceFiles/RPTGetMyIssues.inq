@@ -1,0 +1,1 @@
+temp query bus "${TYPE}" * * where "owner=='${USER}'" select id dump |

@@ -1,0 +1,33 @@
+var params = proc.declareParameters(["mcsurl", "stores"], ["label"]);
+
+var cmd = "get checkin fileref mcsurl" + params.addVar(mcsurl);
+
+var allStores = JSON.parse(stores);
+for (var i=0; i<allStores.length; i++)
+{
+	var storeinfo = allStores[i];
+	cmd += " store" + params.addVar(storeinfo.store);
+	
+	var locOverride = storeinfo.locationoverride;
+	if (locOverride)
+		cmd += " locationoverride" + params.addVar(locOverride);	
+	
+	var fileInfos = storeinfo.fileinfo;
+	for (var j=0; j<fileInfos.length; j++)
+	{
+		var fileInfo = fileInfos[j];
+		cmd += " fileurl" + params.addVar(fileInfo.fileurl);
+		var correlationId = fileInfo.correlationid;
+		if (correlationId)
+			cmd += " correlationid" + params.addVar(correlationId);
+		cmd += " format" + params.addVar(fileInfo.format);
+		cmd += " filename" + params.addVar(fileInfo.filename);
+	}
+}
+
+cmd += " tcl";
+
+mql.startTransaction(true);
+mql.execute(label, cmd, params);
+mql.commitTransaction();
+

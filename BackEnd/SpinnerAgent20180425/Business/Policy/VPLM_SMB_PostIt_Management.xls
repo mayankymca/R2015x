@@ -1,0 +1,90 @@
+State	User	Login(boolean)	Key	Revoke(boolean)	Read	Modify	Delete	Checkout	Checkin	Schedule	Lock	Unlock	Execute	Freeze	Thaw	Create	Revise	MajorRevise	Promote	Demote	Grant	Enable	Disable	Override	ChangeName	ChangeType	ChangeOwner	ChangePolicy	Revoke	ChangeVault	FromConnect	ToConnect	FromDisconnect	ToDisconnect	ViewForm	Modifyform	Show	Approve	Reject	Ignore	Reserve	Unreserve	Organization(any|single|ancestor|descendant)	Project(any|single|ancestor|descendant)	Owner	Reserve(Context)	Maturity	Category	Filter	LocalFilter	Branch State
+allstate	Public	FALSE	PublicRevokeDemoteAccess	TRUE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Public	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Public	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Owner	FALSE	DSCoreReservationCheck	TRUE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	-	any	any	any	any	any	any	(reserved == TRUE && reservedby != context.user)		
+allstate	Owner	FALSE	DSCoreSiteOwnershipCheck	TRUE	-	Y	Y	-	Y	-	Y	Y	-	-	-	-	Y	Y	Y	Y	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	Y	-	-	Y	Y	any	any	any	any	any	any	attribute[RepoPrivilege].value==1		
+allstate	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+allstate	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Unspec	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Unspec	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Unspec	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	any	any	any	any	any	any			
+Unspec	VPLMViewer	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	context	any	any	any			
+Unspec	VPLMTeamManager	TRUE	k1	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	no	any	any			
+Unspec	VPLMProjectLeader	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Unspec	VPLMProjectAdministrator	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Unspec	VPLMTeamManager	TRUE	k2	FALSE	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any			
+Unspec	VPLMProjectAdministrator	TRUE	k2	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any			
+Unspec	VPLMViewer	TRUE	k2VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	single	single	context	inclusive	any	any			
+Unspec	VPLMProjectLeader	TRUE	k2VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	single	single	any	inclusive	any	any			
+Unspec	VPLMProjectLeader	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+Unspec	VPLMTeamManager	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+Unspec	VPLMProjectAdministrator	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+Unspec	VPLMViewer	TRUE	k4	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+Unspec	VPLMProjectLeader	TRUE	k2VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any	(!expression[VPLMStrictOrgOwnership])		
+Unspec	VPLMViewer	TRUE	k2VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	Y	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	context	inclusive	any	any	(!expression[VPLMStrictOrgOwnership])		
+Unspec	VPLMViewer	TRUE	k3VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	no	any	any	(!expression[VPLMStrictOrgOwnership]) && expression[VPLMTransferByOwner]		
+Unspec	VPLMViewer	TRUE	k3VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	no	any	any	expression[VPLMTransferByOwner]		
+Unspec	VPLMProjectAdministrator	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Unspec	VPLMProjectLeader	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Unspec	VPLMCreator	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Unspec	VPLMExperimenter	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Unspec	VPLMViewer	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Unspec	VPLMAdmin	FALSE	Start	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+In_work	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+In_work	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+In_work	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	any	any	any	any	any	any			
+In_work	VPLMViewer	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	context	any	any	any			
+In_work	VPLMProjectLeader	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+In_work	VPLMProjectAdministrator	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+In_work	VPLMTeamManager	TRUE	k1	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	no	any	any			
+In_work	VPLMProjectAdministrator	TRUE	k2	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any			
+In_work	VPLMTeamManager	TRUE	k2	FALSE	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any			
+In_work	VPLMViewer	TRUE	k2VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	single	single	context	inclusive	any	any			
+In_work	VPLMProjectLeader	TRUE	k2VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	single	single	any	inclusive	any	any			
+In_work	VPLMProjectLeader	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+In_work	VPLMProjectAdministrator	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+In_work	VPLMTeamManager	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+In_work	VPLMViewer	TRUE	k4	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+In_work	VPLMViewer	TRUE	k2VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	context	inclusive	any	any	(!expression[VPLMStrictOrgOwnership])		
+In_work	VPLMProjectLeader	TRUE	k2VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any	(!expression[VPLMStrictOrgOwnership])		
+In_work	VPLMViewer	TRUE	k3VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	no	any	any	(!expression[VPLMStrictOrgOwnership]) && expression[VPLMTransferByOwner]		
+In_work	VPLMViewer	TRUE	k3VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	no	any	any	expression[VPLMTransferByOwner]		
+In_work	VPLMViewer	FALSE	Complete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+In_work	VPLMAdmin	FALSE	Complete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+In_work	VPLMProjectAdministrator	FALSE	Complete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+In_work	VPLMCreator	FALSE	Complete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+In_work	VPLMExperimenter	FALSE	Complete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+In_work	VPLMProjectLeader	FALSE	Complete	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Completed
+In_work	VPLMProjectLeader	FALSE	Stop	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspec
+In_work	VPLMProjectAdministrator	FALSE	Stop	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspec
+In_work	VPLMAdmin	FALSE	Stop	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspec
+In_work	VPLMCreator	FALSE	Stop	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspec
+In_work	VPLMExperimenter	FALSE	Stop	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspec
+In_work	VPLMViewer	FALSE	Stop	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			Unspec
+Completed	Public	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Completed	Owner	FALSE		FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	any	any	any	any	any			
+Completed	VPLMAdmin	TRUE		FALSE	Y	Y	Y	Y	Y	-	Y	Y	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	Y	-	-	-	Y	Y	Y	Y	-	-	Y	-	-	-	Y	Y	any	any	any	any	any	any			
+Completed	VPLMTeamManager	TRUE	k1	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	any	no	any	any			
+Completed	VPLMProjectLeader	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Completed	VPLMViewer	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	context	any	any	any			
+Completed	VPLMProjectAdministrator	TRUE	k1	FALSE	Y	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	Y	-	-	Y	-	-	-	-	-	any	single	any	any	any	any			
+Completed	VPLMTeamManager	TRUE	k2	FALSE	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any			
+Completed	VPLMProjectAdministrator	TRUE	k2	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any			
+Completed	VPLMViewer	TRUE	k2VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	inclusive	any	any			
+Completed	VPLMProjectLeader	TRUE	k2VPLMStrictOrgOwnershipIsTRUE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	single	single	any	inclusive	any	any			
+Completed	VPLMProjectAdministrator	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+Completed	VPLMViewer	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	any	any	inclusive	any	any			
+Completed	VPLMTeamManager	TRUE	k3	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+Completed	VPLMProjectLeader	TRUE	k4	FALSE	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	any	single	any	any	any	any			
+Completed	VPLMProjectLeader	TRUE	k2VPLMStrictOrgOwnershipIsFALSE	FALSE	-	Y	Y	-	Y	-	Y	-	-	-	-	-	-	-	Y	Y	-	-	-	-	Y	Y	-	-	-	-	Y	-	Y	-	-	-	-	-	-	-	Y	-	any	single	any	inclusive	any	any	(!expression[VPLMStrictOrgOwnership])		
+Completed	VPLMViewer	TRUE	k2VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	inclusive	any	any	(!expression[VPLMStrictOrgOwnership])		
+Completed	VPLMProjectLeader	TRUE	k3VPLMStrictOrgOwnershipIsFALSE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	any	single	context	no	any	any	(!expression[VPLMStrictOrgOwnership]) && expression[VPLMTransferByOwner]		
+Completed	VPLMProjectLeader	TRUE	k3VPLMStrictOrgOwnershipIsTRUE	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	single	single	context	no	any	any	expression[VPLMTransferByOwner]		
+Completed	VPLMProjectLeader	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Completed	VPLMCreator	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Completed	VPLMExperimenter	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Completed	VPLMProjectAdministrator	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Completed	VPLMAdmin	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+Completed	VPLMViewer	FALSE	Refuse	FALSE	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	Y	-	-	-	-	any	any	any	any	any	any			In_work
+

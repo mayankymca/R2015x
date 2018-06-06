@@ -1,0 +1,9 @@
+name	Registry Name	description	tablespace	indexspace	hidden	icon
+eService Sample	eService Sample	this is where the business objects that demo and test the application are stored	MX_DATA15X	MX_INDEX15X	FALSE
+eService Administration	eService Administration	this is where the business objects that support the application are stored	MX_DATA15X	MX_INDEX15X	FALSE
+eService Production	eService Production	this is where customers will create the objects.	MX_DATA15X	MX_INDEX15X	FALSE
+vplm	vplm		MX_DATA15X	MX_INDEX15X	FALSE
+vplm_archive			MX_DATA15X	MX_INDEX15X	FALSE
+SIXW		Holds 6W entities created by the ENOVIA system	MX_DATA15X	MX_INDEX15X	FALSE
+TVC Administration	TVC Administration	Holds administrative object required by TVC	MX_DATA15X	MX_INDEX15X	FALSE
+

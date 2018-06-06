@@ -1,0 +1,1 @@
+expand bus ${ID} from relationship ${REL_SUPPLIER} select businessobject id select relationship id dump |

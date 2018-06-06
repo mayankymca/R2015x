@@ -1,0 +1,63 @@
+var CONDITIONS=["startswithany", "startswithsequence", "starting with", "endswithany", "endswithsequence", "ending with", "containsany", "containssequence", "containing"];
+
+var params = proc.declareParameters(["setname", "rootids", "type", "vault", "select"], ["label", "where", "orderby", "limit", "condition", "physicalids", "dump", "notsubstitute"]);
+
+var valid = false;
+var hascondition = !!(condition);
+if (hascondition)
+{
+	if (!physicalids)
+		proc.write(label, null, "Condition is defined, but not physicalids");
+	else if (CONDITIONS.indexOf(condition)<0)
+		proc.write(label, null, "Unknown condition");
+	else if (proc.get("where") && !params.isWhereClauseValid(where))
+		proc.write(label, null, "Invalid where clause");
+	else
+		valid = true;
+}
+else
+	valid = true;
+	
+if (!(/^[\w\+-:]+$/.test(setname)))
+{
+	proc.write(label, null, "Invalid set name");
+	valid = false;
+}
+
+if (valid)
+{
+	var cmd = "query path type $1 vault $2";
+	params.addVars([type, vault]);
+	
+	if (hascondition)
+		cmd += " " + condition + params.addVars(JSON.parse(physicalids));
+	
+	var fullwhere = "(ownermember[" + setname + "] == TRUE)";
+	if (where)
+		fullwhere += " AND (" + where + ")";
+	
+	cmd += " where" + params.addVar(fullwhere);
+	
+	if (orderby)
+		cmd += " orderby" + params.addVar(orderby);
+	
+	if (limit)
+		cmd += " limit" + params.addVar(limit);
+	
+	cmd += " select";
+	if (dump || params.getBoolean("notsubstitute"))
+		cmd += " notsubstitute";
+	
+	cmd += params.addVars(JSON.parse(select));
+	
+	if (dump)
+		cmd += " dump" + params.addVar(dump);
+	
+	cmd += " tcl";
+	
+	mql.startTransaction(true);
+	mql.execute(null, "mod set $1 add bus $2", [setname, JSON.parse(rootids).join()]);
+	mql.execute(label, cmd, params);
+	mql.abortTransaction();
+}
+

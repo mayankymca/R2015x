@@ -1,0 +1,1 @@
+temp query bus "${type_ServiceKey}" * * where '(attribute[${attribute_WSKeyApplicationID}].value=="CBPWS")' select id dump |

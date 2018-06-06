@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:services xmlns:ds="http://www.3ds.com/enovia/e6w"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.3ds.com/enovia/e6w services.xsd">
+
+  <ds:experience name="ENOVIA_Application_Widget">
+    <ds:style height="600px"/>
+    <ds:location>
+      <ds:url path="/common/emxFrameworkContextManager.jsp?forwardUrl=/common/emxNavigator.jsp?fromIFWE=true"/>
+    </ds:location>  
+  </ds:experience>
+
+  <ds:group name="E6W_WIDGET_CONSTANTS">
+  <!-- help url for ENOVIA installed help -->
+    <ds:field name="HelpURL"><ds:label text="emxFramework.Help.URL" registeredSuite="emxSystem.properties"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.WidgetTitle"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.WidgetLabel"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.NoObjectsFound"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.AllObjectsFiltered"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.SortAscending"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.SortDescending"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Apply"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Cancel"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Sorts"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Loading"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.SortDirection"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.CollaborativeStorages"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.CollaborativeSpaces"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Content"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.View.CHANNEL"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.View.LIST"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.View.CHART"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.View.TABLE"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.View.THUMBNAIL"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Views"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Rows"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.OptionsSelect"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.StorageSelect"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.SpaceSelect"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.NoPreferences"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Error.WidgetNotFound"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Error.WidgetNoAccess"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Error.Unauthorized"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Error.SystemError"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Error.NetworkError"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Error.WidgetUpdateError"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Error.HelpNotAvailable"/></ds:field>
+    <ds:field><ds:label text="emxFramework.ValidationError.CSRFError"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Size"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Small"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Medium"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Large"/></ds:field>
+    <!-- toolbar text  -->
+    <ds:field><ds:label text="emxFramework.Widget.Toolbar.Preferences"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Toolbar.Refresh"/></ds:field>
+    <!-- Chart widget entries  -->
+    <ds:field><ds:label text="emxFramework.Widget.Chart.SUM"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Chart.AVERAGE"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Chart.MINIMUM"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Chart.MAXIMUM"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Widget.Chart.Items"/></ds:field>
+    <!-- BPS language mappings -->
+    <ds:field><ds:label text="emxFramework.Preferences.Language.en"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Preferences.Language.ja"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Preferences.Language.it"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Preferences.Language.fr"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Preferences.Language.de"/></ds:field>
+    <ds:field><ds:label text="emxFramework.Preferences.Language.zh_cn"/></ds:field>
+  </ds:group>
+
+</ds:services>
+

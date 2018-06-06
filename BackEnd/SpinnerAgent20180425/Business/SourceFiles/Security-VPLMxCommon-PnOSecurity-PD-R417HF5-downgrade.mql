@@ -1,0 +1,25 @@
+# File: Security-VPLMxCommon-PnOSecurity-PD-R417HF5-downgrade.mql
+#
+# LFE 15:04:14 Created file
+# LFE 15:05:06 Add check on attribute
+
+tcl;
+eval {
+    puts "Starting Security-VPLMxCommon-PnOSecurity-PD-R417HF5-downgrade.mql..."
+	
+    source "$env(INSTALL_TCL_PROGRAMS_DIR)/VPLMxCommon-PnOSecurity-MD-Utilities-R217.tcl"
+
+	set Res [checkMxAdminObject "attribute" "Licensed Hours"]
+    if {$Res == 1} {
+      mql modify attribute "Licensed Hours" remove trigger modify check;
+	}
+	
+    set Res [checkTrigger "AttributeLicensedHoursModifyCheck" "updateGrantedLicenses"]
+    if {$Res != ""} {
+      mql delete businessobject "eService Trigger Program Parameters" "AttributeLicensedHoursModifyCheck" "updateGrantedLicenses";
+	}
+	
+    puts "Security-VPLMxCommon-PnOSecurity-PD-R417HF5-downgrade.mql ended."
+}
+exit
+

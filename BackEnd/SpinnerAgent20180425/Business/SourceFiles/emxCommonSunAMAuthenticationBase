@@ -1,0 +1,196 @@
+//
+// $Id: emxCommonSunAMAuthenticationBase.java.rca 1.1.2.1.5.4 Wed Oct 22 15:57:14 2008 przemek Experimental przemek przemek $
+//
+// emxCommonSunAMAuthenticationBase.java
+//
+// Copyright (c) 2000-2015 Dassault Systemes.
+// All Rights Reserved
+// This program contains proprietary and trade secret information of
+// MatrixOne, Inc.  Copyright notice is precautionary only and does
+// not evidence any actual or intended publication of such program.
+//
+
+import matrix.db.Context;
+import java.util.*;
+import com.matrixone.apps.domain.util.*;
+
+import javax.security.auth.callback.*;
+import com.sun.identity.authentication.AuthContext;
+import com.iplanet.am.util.SystemProperties;
+
+/**
+ * Miscellaneous info for the about box
+ */
+public class ${CLASSNAME}
+{
+    /** USERNAME is a String holds name of the user. */
+    private static final String USERNAME = "MX_PAM_USERNAME";
+    /** PASSWORD is a String holds password of the user. */
+    private static final String PASSWORD = "MX_PAM_PASSWORD";
+    /** AUTHTYPE is a String holds aunthentication type. */
+    private static final String AUTHTYPE = "{DSAME}";
+    /** sServerNamingUrl is a String holds server's domain name, port, and etc.... */
+    private static String sServerNamingUrl = null;
+    /** sOrganizationName is a String holds the name of organization*/
+    private static String sOrganizationName = null;
+
+    /** Create Server Properties instance. */
+    private static Properties serverProps = null;
+
+    /**
+     * Constructor.
+     *
+     * @param context the eMatrix <code>Context</code> object
+     * @param args holds no arguments
+     * @throws Exception if the operation fails
+     * @since AEF 10.6.SP2
+     */
+    public ${CLASSNAME}(Context context, String[] args) throws Exception
+    {
+        //initialize settings for authentication
+        if (sServerNamingUrl == null) {
+            sServerNamingUrl = FrameworkProperties.getProperty(context, "emxFramework.SunAM.Server.Naming.Url");
+            sOrganizationName = FrameworkProperties.getProperty(context, "emxFramework.SunAM.Server.Organization.Name");
+
+            //set server properties
+            serverProps = new Properties();
+            serverProps.setProperty("com.iplanet.am.naming.url", sServerNamingUrl);
+
+            SystemProperties.initializeProperties(serverProps);
+        }
+    }
+
+   /**
+    * This method checks the user is a aunthenticated user or not.
+    *
+    * @param context the eMatrix <code>Context</code> object
+    * @param args holds the following input arguments:
+    *       0 - a String which holds the username
+    * @return String object containing authentication type and username
+    * @throws Exception if the operation fails
+    * @since AEF 10.6.SP2
+    */
+    public String authenticate(Context context, String[] args) throws Exception
+    {
+        Map map = context.getCredentials();
+
+        if (map == null) {
+            throw new Exception("no credentials");
+        }
+
+        String sUsername = "";
+        // get user name the MX_PAM_AUTHENTICATE_ARG
+        if (args.length > 0) {
+             sUsername = (String)map.get(args[0]);
+            if (sUsername != null) {
+                return AUTHTYPE+sUsername;
+            }
+        }
+
+        // get user name/password
+        sUsername = (String)map.get(USERNAME);
+        String sPassword = (String)map.get(PASSWORD);
+        // If one of them not found then throw exception
+        if (sUsername == null || sPassword == null) {
+            throw new Exception("no username/password");
+        }
+
+        //Aythentication section
+        AuthContext lc = null;
+        try {
+            //instantiates the AuthContext object
+            lc = new AuthContext(sOrganizationName);
+            //initiate the login process...
+            lc.login();
+        } catch (Exception le) {
+            le.printStackTrace();
+         throw new Exception("Loing Failed!!!");
+        }
+
+        //goes through all user's requirements
+        Callback[] callbacks = null;
+        // get information requested from module
+        while (lc.hasMoreRequirements()) {
+            callbacks = lc.getRequirements();
+
+            if (callbacks != null) {
+                try {
+                    addLoginCallbackMessage(callbacks, map);
+                    lc.submitRequirements(callbacks);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw new Exception(e.toString());
+                }
+            }
+        }
+
+        //Check status
+        if (lc.getStatus() == AuthContext.Status.SUCCESS) {
+            //add something else here
+        } else if (lc.getStatus() == AuthContext.Status.FAILED) {
+            //abort if failed to authenticate
+            lc.abort();
+            throw new Exception("Invalid username/password!");
+        } else {
+            //abort for unknown errors
+            lc.abort();
+            throw new Exception("Failed to login - Unknown error!");
+        }
+
+        //invalidate the SSOToken associated with this AuthContext
+        try
+        {
+            lc.logout();
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+            throw new Exception("Unable to invalidate the current context");
+        }
+
+        return AUTHTYPE+sUsername;
+      }
+
+
+   /**
+    * This method add user's credentials into callback array
+    *
+    * @param context the eMatrix <code>Context</code> object
+    * @param credentialMap holds user's credentials
+    * @return void
+    * @throws Exception if the operation fails
+    * @since AEF 10.6.SP2
+    * @grade 0
+    */
+    protected void addLoginCallbackMessage(Callback[] callbacks , Map credentialMap)
+        throws Exception
+    {
+        int i = 0;
+        try
+        {
+            String sUsername = (String)credentialMap.get(USERNAME);
+            String sPassword = (String)credentialMap.get(PASSWORD);
+            for (i = 0; i < callbacks.length; i++)
+            {
+                if (callbacks[i] instanceof NameCallback) {
+                    // set the user's name
+                    NameCallback nc = (NameCallback) callbacks[i];
+                    nc.setName(sUsername);
+                } else if (callbacks[i] instanceof PasswordCallback) {
+                    // set the user's password
+                    PasswordCallback pc = (PasswordCallback) callbacks[i];
+                    pc.setPassword(sPassword.toCharArray());
+                } else if (callbacks[i] instanceof TextOutputCallback) {
+                    throw new Exception("TextOutputCallback is not supported");
+                } else if (callbacks[i] instanceof TextInputCallback) {
+                    throw new Exception("TextInputCallback is not supported");
+                } else if (callbacks[i] instanceof ChoiceCallback) {
+                    throw new Exception("ChoiceCallback is not supported");                }
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            throw new Exception(callbacks[i].toString() + " Callback exception: " + e.toString());
+        }
+    }
+}
+

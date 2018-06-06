@@ -1,0 +1,3 @@
+modify menu type_DELFmiFunctionReference label "${NAME} ${REVISION}";
+modify menu type_DELFmiFunctionReference add setting "Registered Suite" "Framework";
+

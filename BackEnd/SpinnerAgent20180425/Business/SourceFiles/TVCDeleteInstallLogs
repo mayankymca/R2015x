@@ -1,0 +1,12 @@
+tcl;
+
+eval {
+    set lPages [split [mql list page] \n]
+    foreach page $lPages {
+        if { [string first "Installation Log" $page] == 0 } {
+            puts "Removing page object '$page'"
+            mql delete page $page
+        }
+    }
+}
+
